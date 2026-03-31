@@ -1,0 +1,1413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Free Party Invitations | Party Game Truck Maryland</title>
+  <meta name="description" content="Download free video game party invitations from Party Game Truck Maryland. Print or send digitally — included with every booking!" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root { --blue:#007BFF; --yellow:#FFD60A; --neon:#39FF14; --pink:#FF2D8B; --sky:#00C2FF; --dark:#08080F; --card:#0f0f1c; }
+    * { box-sizing:border-box; margin:0; padding:0; }
+    body { background:var(--dark); font-family:'Montserrat',sans-serif; color:#fff; min-height:100vh; }
+    .top-nav { background:rgba(8,8,15,0.97); border-bottom:1px solid rgba(0,123,255,0.2); padding:1rem 2rem; display:flex; align-items:center; justify-content:space-between; position:sticky; top:0; z-index:200; }
+    .nav-logo { font-family:'Anton',sans-serif; font-size:1.3rem; color:#fff; text-decoration:none; letter-spacing:0.04em; }
+    .nav-logo span { color:var(--yellow); }
+    .nav-back { display:inline-flex; align-items:center; gap:0.4rem; color:var(--yellow); font-weight:700; font-size:0.85rem; text-decoration:none; letter-spacing:0.05em; text-transform:uppercase; border:1px solid rgba(255,214,10,0.35); border-radius:8px; padding:0.4rem 0.85rem; transition:background 0.2s,color 0.2s; }
+    .nav-back:hover { background:var(--yellow); color:#000; }
+    .hero { text-align:center; padding:3.5rem 2rem 2.5rem; background:radial-gradient(ellipse 80% 60% at 50% 0%, rgba(0,123,255,0.2) 0%, transparent 70%); }
+    .hero-label { display:inline-block; background:rgba(0,123,255,0.12); border:1px solid rgba(0,123,255,0.35); border-radius:100px; color:var(--blue); font-size:0.75rem; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; padding:0.35rem 1rem; margin-bottom:1rem; }
+    .hero h1 { font-family:'Anton',sans-serif; font-size:clamp(2rem,5vw,3.5rem); line-height:1; text-transform:uppercase; margin-bottom:0.75rem; }
+    .hero h1 span { color:var(--yellow); }
+    .hero p { color:rgba(255,255,255,0.6); font-size:0.95rem; max-width:540px; margin:0 auto 1.25rem; line-height:1.65; }
+    .hero-badge { display:inline-flex; align-items:center; gap:0.5rem; background:linear-gradient(135deg,rgba(57,255,20,0.12),rgba(57,255,20,0.05)); border:1px solid rgba(57,255,20,0.3); border-radius:100px; color:var(--neon); font-size:0.78rem; font-weight:700; padding:0.4rem 1.1rem; letter-spacing:0.06em; }
+    .how-row { max-width:900px; margin:0 auto; padding:2rem 2rem; display:grid; grid-template-columns:repeat(auto-fit,minmax(190px,1fr)); gap:0.85rem; }
+    .how-card { background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); border-radius:12px; padding:1rem 1.1rem; text-align:center; }
+    .how-icon { font-size:1.6rem; margin-bottom:0.4rem; }
+    .how-title { font-weight:800; font-size:0.85rem; color:#fff; margin-bottom:0.2rem; }
+    .how-desc { font-size:0.75rem; color:rgba(255,255,255,0.45); line-height:1.5; }
+    .invites-wrap { max-width:1120px; margin:0 auto; padding:0 2rem 5rem; }
+    .sec-title { font-family:'Anton',sans-serif; font-size:clamp(1.6rem,3vw,2.2rem); text-transform:uppercase; letter-spacing:0.03em; margin-bottom:2rem; text-align:center; }
+    .sec-title span { color:var(--yellow); }
+    .grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(310px,1fr)); gap:1.75rem; }
+    .icard { background:var(--card); border-radius:18px; overflow:hidden; border:1px solid rgba(255,255,255,0.07); box-shadow:0 8px 32px rgba(0,0,0,0.5); transition:transform 0.25s cubic-bezier(.2,.8,.2,1),box-shadow 0.25s; }
+    .icard:hover { transform:translateY(-7px); box-shadow:0 24px 60px rgba(0,0,0,0.7),0 0 30px rgba(255,214,10,0.08); }
+    .icard svg { width:100%; display:block; aspect-ratio:3/2; }
+    .iinfo { padding:1rem 1.25rem 1.25rem; }
+    .itag { display:inline-block; font-size:0.64rem; font-weight:800; letter-spacing:0.09em; text-transform:uppercase; border-radius:6px; padding:0.2rem 0.55rem; margin-bottom:0.45rem; }
+    .iname { font-weight:800; font-size:0.95rem; color:#fff; margin-bottom:0.2rem; }
+    .idesc { font-size:0.78rem; color:rgba(255,255,255,0.45); line-height:1.5; margin-bottom:0.9rem; }
+    .ibtns { display:flex; gap:0.6rem; flex-wrap:wrap; }
+    .btn-dl { display:inline-flex; align-items:center; gap:0.3rem; background:var(--yellow); color:#000; font-weight:800; font-size:0.78rem; letter-spacing:0.04em; text-transform:uppercase; border:none; border-radius:8px; padding:0.5rem 1rem; cursor:pointer; transition:background 0.2s,transform 0.15s; }
+    .btn-dl:hover { background:#ffe033; transform:scale(1.04); }
+    .btn-dl:active { transform:scale(0.97); }
+    .btn-prev { display:inline-flex; align-items:center; gap:0.3rem; background:rgba(0,123,255,0.1); color:var(--blue); font-weight:700; font-size:0.78rem; letter-spacing:0.04em; text-transform:uppercase; border:1px solid rgba(0,123,255,0.3); border-radius:8px; padding:0.5rem 1rem; cursor:pointer; transition:background 0.2s; }
+    .btn-prev:hover { background:rgba(0,123,255,0.2); }
+    /* MODAL */
+    .mo { display:none; position:fixed; inset:0; background:rgba(0,0,0,0.9); z-index:500; align-items:center; justify-content:center; padding:1rem; }
+    .mo.open { display:flex; }
+    .mbox { background:#0d0d1a; border:1px solid rgba(255,255,255,0.1); border-radius:20px; max-width:620px; width:100%; overflow:hidden; }
+    .mhead { padding:1.1rem 1.4rem; border-bottom:1px solid rgba(255,255,255,0.07); display:flex; justify-content:space-between; align-items:center; }
+    .mtitle { font-family:'Anton',sans-serif; font-size:1.1rem; letter-spacing:0.05em; text-transform:uppercase; }
+    .mclose { background:rgba(255,255,255,0.07); border:none; color:#fff; font-size:1.1rem; width:30px; height:30px; border-radius:7px; cursor:pointer; display:flex; align-items:center; justify-content:center; }
+    .mclose:hover { background:rgba(255,255,255,0.15); }
+    .mbody { padding:1.35rem; }
+    .msvg { border-radius:10px; overflow:hidden; margin-bottom:1.1rem; }
+    .msvg svg { width:100%; display:block; }
+    .btn-dl-lg { width:100%; display:flex; align-items:center; justify-content:center; gap:0.5rem; background:linear-gradient(135deg,var(--yellow),#f7c500); color:#000; font-weight:800; font-size:0.95rem; letter-spacing:0.04em; text-transform:uppercase; border:none; border-radius:10px; padding:0.8rem; cursor:pointer; box-shadow:0 4px 18px rgba(255,214,10,0.3); transition:transform 0.15s,box-shadow 0.2s; }
+    .btn-dl-lg:hover { transform:translateY(-2px); box-shadow:0 8px 28px rgba(255,214,10,0.45); }
+    .footer-note { text-align:center; padding:2rem; border-top:1px solid rgba(255,255,255,0.06); color:rgba(255,255,255,0.3); font-size:0.8rem; line-height:1.8; }
+    .footer-note a { color:var(--yellow); text-decoration:none; font-weight:700; }
+    @media(max-width:600px){ .grid{ grid-template-columns:1fr; } .how-row{ grid-template-columns:1fr 1fr; } }
+  </style>
+</head>
+<body>
+
+<nav class="top-nav">
+  <a href="index.html" class="nav-logo">PARTY<span>GAME</span>TRUCK</a>
+  <a href="index.html" class="nav-back">← Back to Home</a>
+</nav>
+
+<div class="hero">
+  <div class="hero-label">🎮 Included With Every Booking</div>
+  <h1>Free Party<br/><span>Invitations</span></h1>
+  <p>6 epic video game character designs — download, fill in your party details, and send to guests. The Best Arcade on Wheels is coming to YOUR party!</p>
+  <div class="hero-badge">✅ 100% Free — No Sign-Up Required</div>
+</div>
+
+<div class="how-row">
+  <div class="how-card"><div class="how-icon">🎮</div><div class="how-title">1. Pick a Design</div><div class="how-desc">Sonic, Mario, Creeper, Pokemon, Space or Victory — choose your favorite!</div></div>
+  <div class="how-card"><div class="how-icon">💾</div><div class="how-title">2. Download SVG</div><div class="how-desc">Click Download — saves instantly as an SVG file, no account needed.</div></div>
+  <div class="how-card"><div class="how-icon">✏️</div><div class="how-title">3. Edit Your Info</div><div class="how-desc">Open in Canva, Google Slides, or any image editor. Swap in name, date, address.</div></div>
+  <div class="how-card"><div class="how-icon">📲</div><div class="how-title">4. Send or Print</div><div class="how-desc">Text it, email it, post it on social, or print it out. Looks great both ways!</div></div>
+</div>
+
+<div class="invites-wrap">
+  <div class="sec-title">Choose Your <span>Design</span></div>
+  <div class="grid">
+
+    <!-- ══ DESIGN 1: SONIC SPEED ══ -->
+    <div class="icard">
+      <svg id="svg1" viewBox="0 0 450 300" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <radialGradient id="d1bg" cx="35%" cy="55%" r="70%">
+            <stop offset="0%" stop-color="#002288"/>
+            <stop offset="100%" stop-color="#000820"/>
+          </radialGradient>
+          <linearGradient id="d1ring" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#FFD60A"/>
+            <stop offset="100%" stop-color="#FF9900"/>
+          </linearGradient>
+        </defs>
+        <!-- BG -->
+        <rect width="450" height="300" fill="url(#d1bg)"/>
+        <!-- Speed lines -->
+        <line x1="0" y1="270" x2="300" y2="80" stroke="#FFD60A" stroke-width="1.2" stroke-opacity="0.18"/>
+        <line x1="0" y1="285" x2="320" y2="110" stroke="#FFD60A" stroke-width="0.8" stroke-opacity="0.13"/>
+        <line x1="0" y1="260" x2="270" y2="55" stroke="#00C2FF" stroke-width="1" stroke-opacity="0.12"/>
+        <line x1="0" y1="240" x2="240" y2="30" stroke="#FFD60A" stroke-width="0.6" stroke-opacity="0.1"/>
+        <line x1="0" y1="295" x2="340" y2="140" stroke="#fff" stroke-width="0.5" stroke-opacity="0.08"/>
+        <line x1="20" y1="300" x2="350" y2="95" stroke="#FFD60A" stroke-width="0.7" stroke-opacity="0.09"/>
+        <line x1="0" y1="210" x2="200" y2="10" stroke="#00C2FF" stroke-width="0.5" stroke-opacity="0.1"/>
+        <!-- Rings -->
+        <circle cx="60" cy="60" r="18" fill="none" stroke="url(#d1ring)" stroke-width="4"/>
+        <circle cx="60" cy="60" r="12" fill="none" stroke="url(#d1ring)" stroke-width="1.5" stroke-opacity="0.4"/>
+        <circle cx="115" cy="40" r="13" fill="none" stroke="url(#d1ring)" stroke-width="3.5"/>
+        <circle cx="155" cy="65" r="10" fill="none" stroke="url(#d1ring)" stroke-width="3"/>
+        <circle cx="50" cy="115" r="9" fill="none" stroke="url(#d1ring)" stroke-width="3"/>
+        <circle cx="90" cy="100" r="7" fill="none" stroke="url(#d1ring)" stroke-width="2.5"/>
+        <!-- ── SONIC CHARACTER (right side) ── -->
+        <!-- Spikes -->
+        <polygon points="330,200 295,100 310,215" fill="#0044CC"/>
+        <polygon points="342,192 312,85 325,205" fill="#0055EE"/>
+        <polygon points="354,183 330,72 340,197" fill="#0066FF"/>
+        <!-- Head -->
+        <circle cx="378" cy="168" r="52" fill="#0057E7"/>
+        <!-- Face/muzzle -->
+        <ellipse cx="387" cy="181" rx="28" ry="22" fill="#F5CBA7"/>
+        <!-- Eye white -->
+        <circle cx="360" cy="153" r="16" fill="white"/>
+        <!-- Eye pupil -->
+        <circle cx="363" cy="155" r="11" fill="#1a0060"/>
+        <!-- Eye shine -->
+        <circle cx="368" cy="150" r="4" fill="white"/>
+        <!-- Nose -->
+        <ellipse cx="383" cy="175" rx="8" ry="6" fill="#1a0010"/>
+        <!-- Mouth (smile) -->
+        <path d="M 373 186 Q 384 194 395 186" stroke="#1a0010" stroke-width="2" fill="none"/>
+        <!-- Ear -->
+        <polygon points="390,120 400,105 410,120" fill="#0057E7"/>
+        <!-- Shoes -->
+        <ellipse cx="358" cy="234" rx="24" ry="13" fill="#CC0000"/>
+        <ellipse cx="398" cy="234" rx="24" ry="13" fill="#CC0000"/>
+        <rect x="344" y="222" width="28" height="8" rx="4" fill="white"/>
+        <rect x="384" y="222" width="28" height="8" rx="4" fill="white"/>
+        <!-- ── TEXT (left side) ── -->
+        <text x="20" y="52" font-family="Arial Black,sans-serif" font-size="9" fill="#FFD60A" letter-spacing="3" font-weight="900">🎮 PARTY GAME TRUCK PRESENTS</text>
+        <text x="18" y="90" font-family="Arial Black,sans-serif" font-size="22" fill="#FFD60A" font-weight="900" letter-spacing="1">GOTTA PARTY</text>
+        <text x="18" y="118" font-family="Arial Black,sans-serif" font-size="22" fill="#fff" font-weight="900" letter-spacing="1">FAST! 💨</text>
+        <text x="18" y="142" font-family="Arial Black,sans-serif" font-size="11" fill="#00C2FF" letter-spacing="2">[NAME]'S BIRTHDAY!</text>
+        <line x1="15" y1="152" x2="285" y2="152" stroke="#FFD60A" stroke-width="1" stroke-opacity="0.4"/>
+        <text x="18" y="170" font-family="Arial,sans-serif" font-size="9" fill="rgba(255,255,255,0.55)">DATE: ____________   TIME: ________</text>
+        <text x="18" y="186" font-family="Arial,sans-serif" font-size="9" fill="rgba(255,255,255,0.55)">ADDRESS: _____________________</text>
+        <text x="18" y="202" font-family="Arial,sans-serif" font-size="9" fill="rgba(255,255,255,0.55)">RSVP: ________________________</text>
+        <!-- Truck coming banner -->
+        <rect x="15" y="220" width="270" height="46" rx="10" fill="rgba(0,87,231,0.25)" stroke="#0057E7" stroke-width="1.2" stroke-opacity="0.5"/>
+        <text x="150" y="238" text-anchor="middle" font-family="Arial Black,sans-serif" font-size="8.5" fill="#FFD60A" letter-spacing="1.5">🚚 THE BEST ARCADE ON WHEELS</text>
+        <text x="150" y="254" text-anchor="middle" font-family="Arial Black,sans-serif" font-size="8.5" fill="#fff" letter-spacing="1">IS COMING TO THE PARTY!</text>
+        <text x="150" y="286" text-anchor="middle" font-family="Arial,sans-serif" font-size="7.5" fill="rgba(255,255,255,0.3)" letter-spacing="1">partygametruck.com  •  877-399-1997  •  Maryland &amp; DMV</text>
+      </svg>
+      <div class="iinfo">
+        <span class="itag" style="background:rgba(0,87,231,0.15);color:#4488FF;">Sonic Speed</span>
+        <div class="iname">Gotta Party Fast! — Sonic Edition</div>
+        <div class="idesc">Sonic-inspired speed lines, golden rings, and the iconic blue hedgehog charging into your birthday bash!</div>
+        <div class="ibtns">
+          <button class="btn-dl" onclick="dlInvite('svg1','sonic-speed-invitation')">⬇ Download</button>
+          <button class="btn-prev" onclick="openModal('m1','svg1','Gotta Party Fast — Sonic Edition')">👁 Preview</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ DESIGN 2: SUPER MARIO PARTY ══ -->
+    <div class="icard">
+      <svg id="svg2" viewBox="0 0 450 300" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="d2sky" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#1565C0"/>
+            <stop offset="100%" stop-color="#1a006a"/>
+          </linearGradient>
+        </defs>
+        <!-- BG sky -->
+        <rect width="450" height="300" fill="#1a006a"/>
+        <!-- Sky gradient top -->
+        <rect width="450" height="120" fill="url(#d2sky)"/>
+        <!-- Ground -->
+        <rect x="0" y="248" width="450" height="52" fill="#5D4037"/>
+        <rect x="0" y="245" width="450" height="8" rx="2" fill="#4CAF50"/>
+        <!-- Clouds -->
+        <ellipse cx="80" cy="40" rx="35" ry="18" fill="white" opacity="0.9"/>
+        <ellipse cx="105" cy="33" rx="25" ry="16" fill="white" opacity="0.9"/>
+        <ellipse cx="55" cy="35" rx="20" ry="14" fill="white" opacity="0.9"/>
+        <ellipse cx="340" cy="50" rx="30" ry="16" fill="white" opacity="0.85"/>
+        <ellipse cx="365" cy="44" rx="22" ry="14" fill="white" opacity="0.85"/>
+        <!-- Question blocks -->
+        <rect x="60" y="120" width="36" height="36" rx="4" fill="#C98A00"/>
+        <rect x="62" y="122" width="32" height="32" rx="3" fill="#FFB300"/>
+        <text x="78" y="146" text-anchor="middle" font-family="Arial Black,sans-serif" font-size="18" fill="#5D1A00" font-weight="900">?</text>
+        <rect x="115" y="120" width="36" height="36" rx="4" fill="#C98A00"/>
+        <rect x="117" y="122" width="32" height="32" rx="3" fill="#FFB300"/>
+        <text x="133" y="146" text-anchor="middle" font-family="Arial Black,sans-serif" font-size="18" fill="#5D1A00" font-weight="900">?</text>
+        <!-- Coins -->
+        <circle cx="85" cy="95" r="9" fill="#FFD60A"/>
+        <circle cx="85" cy="95" r="6" fill="#FF9900"/>
+        <circle cx="108" cy="80" r="8" fill="#FFD60A"/>
+        <circle cx="108" cy="80" r="5" fill="#FF9900"/>
+        <circle cx="60" cy="75" r="7" fill="#FFD60A"/>
+        <circle cx="60" cy="75" r="4" fill="#FF9900"/>
+        <text x="85" y="99" text-anchor="middle" font-family="Arial Black,sans-serif" font-size="8" fill="#5D1A00" font-weight="900">$</text>
+        <text x="108" y="84" text-anchor="middle" font-family="Arial Black,sans-serif" font-size="7" fill="#5D1A00" font-weight="900">$</text>
+        <!-- Stars -->
+        <text x="175" y="85" font-size="22" fill="#FFD60A" opacity="0.9">⭐</text>
+        <text x="155" y="115" font-size="16" fill="#FFD60A" opacity="0.7">⭐</text>
+        <!-- Pixel MARIO (right side, y baseline=248) -->
+        <!-- Hat (red) -->
+        <rect x="360" y="170" width="40" height="8" rx="3" fill="#CC0000"/>
+        <rect x="364" y="158" width="32" height="14" rx="2" fill="#CC0000"/>
+        <!-- Hair/face -->
+        <rect x="362" y="172" width="36" height="26" rx="3" fill="#F5CBA7"/>
+        <!-- Eyes -->
+        <rect x="368" y="178" width="6" height="6" rx="1" fill="#1a0000"/>
+        <rect x="386" y="178" width="6" height="6" rx="1" fill="#1a0000"/>
+        <!-- Mustache -->
+        <rect x="364" y="188" width="12" height="5" rx="2" fill="#5D2A00"/>
+        <rect x="384" y="188" width="12" height="5" rx="2" fill="#5D2A00"/>
+        <!-- Overalls (blue) -->
+        <rect x="360" y="198" width="40" height="30" rx="3" fill="#1565C0"/>
+        <!-- Shirt (red) -->
+        <rect x="356" y="204" width="14" height="22" rx="2" fill="#CC0000"/>
+        <rect x="390" y="204" width="14" height="22" rx="2" fill="#CC0000"/>
+        <!-- Legs -->
+        <rect x="360" y="228" width="16" height="18" rx="2" fill="#1565C0"/>
+        <rect x="384" y="228" width="16" height="18" rx="2" fill="#1565C0"/>
+        <!-- Shoes -->
+        <rect x="356" y="242" width="20" height="10" rx="3" fill="#5D2A00"/>
+        <rect x="384" y="242" width="20" height="10" rx="3" fill="#5D2A00"/>
+        <!-- Text (center/right) -->
+        <text x="290" y="115" text-anchor="middle" font-family="Arial Black,sans-serif" font-size="10" fill="#FFD60A" letter-spacing="2">PARTY GAME TRUCK PRESENTS</text>
+        <text x="290" y="145" text-anchor="middle" font-family="Arial Black,sans-serif" font-size="21" fill="#FF3300" font-weight="900" letter-spacing="1" stroke="#fff" stroke-width="1.5" paint-order="stroke">LET'S-A GO!</text>
+        <text x="290" y="170" text-anchor="middle" font-family="Arial Black,sans-serif" font-size="13" fill="#FFD60A" font-weight="900" letter-spacing="2">[NAME]'S BIRTHDAY!</text>
+        <!-- Info box -->
+        <rect x="165" y="180" width="170" height="58" rx="8" fill="rgba(0,0,0,0.45)"/>
+        <text x="250" y="196" text-anchor="middle" font-family="Arial,sans-serif" font-size="8.5" fill="rgba(255,255,255,0.7)">📅 DATE: _______________</text>
+        <text x="250" y="210" text-anchor="middle" font-family="Arial,sans-serif" font-size="8.5" fill="rgba(255,255,255,0.7)">⏰ TIME: _______________</text>
+        <text x="250" y="224" text-anchor="middle" font-family="Arial,sans-serif" font-size="8.5" fill="rgba(255,255,255,0.7)">📍 ADDRESS: ___________</text>
+        <text x="250" y="238" text-anchor="middle" font-family="Arial,sans-serif" font-size="8.5" fill="rgba(255,255,255,0.7)">📞 RSVP: ______________</text>
+        <!-- Bottom truck banner -->
+        <text x="225" y="266" text-anchor="middle" font-family="Arial Black,sans-serif" font-size="9" fill="#FFD60A" letter-spacing="2">🚚 THE BEST ARCADE ON WHEELS IS COMING!</text>
+        <text x="225" y="282" text-anchor="middle" font-family="Arial,sans-serif" font-size="7.5" fill="rgba(255,255,255,0.35)">partygametruck.com  •  877-399-1997  •  Maryland &amp; DMV</text>
+      </svg>
+      <div class="iinfo">
+        <span class="itag" style="background:rgba(204,0,0,0.15);color:#FF5555;">Mario World</span>
+        <div class="iname">Let's-A Go! — Mario Party Edition</div>
+        <div class="idesc">Pixel Mario, question blocks, gold coins, and a bright birthday sky. Kids LOVE this one!</div>
+        <div class="ibtns">
+          <button class="btn-dl" onclick="dlInvite('svg2','mario-party-invitation')">⬇ Download</button>
+          <button class="btn-prev" onclick="openModal('m2','svg2','Let\'s-A Go — Mario Party Edition')">👁 Preview</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ DESIGN 3: MINECRAFT CREEPER ══ -->
+    <div class="icard">
+      <svg id="svg3" viewBox="0 0 450 300" xmlns="http://www.w3.org/2000/svg">
+        <!-- BG dark forest -->
+        <rect width="450" height="300" fill="#0D1F0D"/>
+        <!-- Background pixel trees (simple) -->
+        <rect x="5" y="60" width="14" height="60" fill="#1B3A1B" opacity="0.5"/>
+        <rect x="0" y="35" width="24" height="30" fill="#1B3A1B" opacity="0.5"/>
+        <rect x="420" y="55" width="14" height="65" fill="#1B3A1B" opacity="0.5"/>
+        <rect x="414" y="30" width="26" height="32" fill="#1B3A1B" opacity="0.5"/>
+        <!-- Pixel stars -->
+        <rect x="50" y="20" width="3" height="3" fill="#fff" opacity="0.6"/>
+        <rect x="120" y="15" width="3" height="3" fill="#fff" opacity="0.5"/>
+        <rect x="200" y="8" width="3" height="3" fill="#fff" opacity="0.7"/>
+        <rect x="280" y="18" width="3" height="3" fill="#fff" opacity="0.5"/>
+        <rect x="380" y="12" width="3" height="3" fill="#fff" opacity="0.6"/>
+        <rect x="430" y="25" width="2" height="2" fill="#fff" opacity="0.5"/>
+        <!-- Grass blocks bottom -->
+        <rect x="0" y="255" width="450" height="45" fill="#5D2A00"/>
+        <rect x="0" y="250" width="450" height="10" fill="#4CAF50"/>
+        <!-- Grass block grid lines -->
+        <line x1="50" y1="250" x2="50" y2="300" stroke="#3a1a00" stroke-width="1"/>
+        <line x1="100" y1="250" x2="100" y2="300" stroke="#3a1a00" stroke-width="1"/>
+        <line x1="150" y1="250" x2="150" y2="300" stroke="#3a1a00" stroke-width="1"/>
+        <line x1="200" y1="250" x2="200" y2="300" stroke="#3a1a00" stroke-width="1"/>
+        <line x1="250" y1="250" x2="250" y2="300" stroke="#3a1a00" stroke-width="1"/>
+        <line x1="300" y1="250" x2="300" y2="300" stroke="#3a1a00" stroke-width="1"/>
+        <line x1="350" y1="250" x2="350" y2="300" stroke="#3a1a00" stroke-width="1"/>
+        <line x1="400" y1="250" x2="400" y2="300" stroke="#3a1a00" stroke-width="1"/>
+        <!-- ── PIXEL CREEPER FACE (centered, px=17, ox=157, oy=70) ── -->
+        <!-- Green face background square -->
+        <rect x="157" y="70" width="136" height="136" rx="4" fill="#3A7A3A"/>
+        <!-- Row 1 (dark eyes): cols 1,2,5,6 -->
+        <rect x="174" y="87" width="17" height="17" fill="#1a1a1a"/>
+        <rect x="191" y="87" width="17" height="17" fill="#1a1a1a"/>
+        <rect x="242" y="87" width="17" height="17" fill="#1a1a1a"/>
+        <rect x="259" y="87" width="17" height="17" fill="#1a1a1a"/>
+        <!-- Row 2 (eyes continue): cols 1,2,5,6 -->
+        <rect x="174" y="104" width="17" height="17" fill="#1a1a1a"/>
+        <rect x="191" y="104" width="17" height="17" fill="#1a1a1a"/>
+        <rect x="242" y="104" width="17" height="17" fill="#1a1a1a"/>
+        <rect x="259" y="104" width="17" height="17" fill="#1a1a1a"/>
+        <!-- Row 3 (nose top): cols 3,4 -->
+        <rect x="208" y="121" width="17" height="17" fill="#1a1a1a"/>
+        <rect x="225" y="121" width="17" height="17" fill="#1a1a1a"/>
+        <!-- Row 4 (nose wide): cols 2,3,4,5 -->
+        <rect x="191" y="138" width="17" height="17" fill="#1a1a1a"/>
+        <rect x="208" y="138" width="17" height="17" fill="#1a1a1a"/>
+        <rect x="225" y="138" width="17" height="17" fill="#1a1a1a"/>
+        <rect x="242" y="138" width="17" height="17" fill="#1a1a1a"/>
+        <!-- Row 5 (cheeks): cols 2,5 -->
+        <rect x="191" y="155" width="17" height="17" fill="#1a1a1a"/>
+        <rect x="242" y="155" width="17" height="17" fill="#1a1a1a"/>
+        <!-- Row 6 (mouth wide): cols 1,2,5,6 -->
+        <rect x="174" y="172" width="17" height="17" fill="#1a1a1a"/>
+        <rect x="191" y="172" width="17" height="17" fill="#1a1a1a"/>
+        <rect x="242" y="172" width="17" height="17" fill="#1a1a1a"/>
+        <rect x="259" y="172" width="17" height="17" fill="#1a1a1a"/>
+        <!-- Row 7 (chin): cols 1,6 -->
+        <rect x="174" y="189" width="17" height="17" fill="#1a1a1a"/>
+        <rect x="259" y="189" width="17" height="17" fill="#1a1a1a"/>
+        <!-- Text above -->
+        <text x="225" y="28" text-anchor="middle" font-family="'Courier New',monospace" font-size="10" fill="#4CAF50" letter-spacing="3" font-weight="900">⚠ PARTY GAME TRUCK ⚠</text>
+        <text x="225" y="52" text-anchor="middle" font-family="Arial Black,sans-serif" font-size="16" fill="#FFD60A" font-weight="900" letter-spacing="2">CREEPER ALERT!</text>
+        <text x="225" y="66" text-anchor="middle" font-family="'Courier New',monospace" font-size="9" fill="#4CAF50" opacity="0.8">BIRTHDAY PARTY DETECTED</text>
+        <!-- Bottom text -->
+        <text x="225" y="242" text-anchor="middle" font-family="'Courier New',monospace" font-size="9" fill="#4CAF50">&gt; [NAME]'S B-DAY: [DATE] [TIME]</text>
+        <text x="225" y="256" text-anchor="middle" font-family="'Courier New',monospace" font-size="8.5" fill="#4CAF50">&gt; LOCATION: [ADDRESS]</text>
+        <text x="225" y="270" text-anchor="middle" font-family="'Courier New',monospace" font-size="8.5" fill="#FFD60A">&gt; RSVP: [PHONE OR EMAIL]</text>
+        <text x="225" y="290" text-anchor="middle" font-family="Arial Black,sans-serif" font-size="8" fill="rgba(76,175,80,0.6)" letter-spacing="1.5">🚚 THE BEST ARCADE ON WHEELS IS SPAWNING!</text>
+      </svg>
+      <div class="iinfo">
+        <span class="itag" style="background:rgba(76,175,80,0.15);color:#4CAF50;">Minecraft</span>
+        <div class="iname">Creeper Alert! — Minecraft Edition</div>
+        <div class="idesc">Full pixel-art Creeper face with green forest, grass blocks, and creepy terminal text. Kids go CRAZY for this one!</div>
+        <div class="ibtns">
+          <button class="btn-dl" onclick="dlInvite('svg3','minecraft-creeper-invitation')">⬇ Download</button>
+          <button class="btn-prev" onclick="openModal('m3','svg3','Creeper Alert — Minecraft Edition')">👁 Preview</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ DESIGN 4: POKEMON I CHOOSE YOU ══ -->
+    <div class="icard">
+      <svg id="svg4" viewBox="0 0 450 300" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <radialGradient id="d4glow" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#FFE566" stop-opacity="0.35"/>
+            <stop offset="100%" stop-color="#FFE566" stop-opacity="0"/>
+          </radialGradient>
+        </defs>
+        <!-- BG split: top red, bottom dark -->
+        <rect width="450" height="150" fill="#8B0000"/>
+        <rect y="150" width="450" height="150" fill="#0a0a0a"/>
+        <!-- Black band -->
+        <rect y="132" width="450" height="36" fill="#1a1a1a"/>
+        <!-- Center button (pokeball) -->
+        <circle cx="225" cy="150" r="28" fill="#ddd" stroke="#1a1a1a" stroke-width="5"/>
+        <circle cx="225" cy="150" r="14" fill="white" stroke="#1a1a1a" stroke-width="3"/>
+        <circle cx="225" cy="150" r="7" fill="#ddd"/>
+        <!-- Pokeball decorative lines -->
+        <line x1="0" y1="150" x2="196" y2="150" stroke="white" stroke-width="2" stroke-opacity="0.15"/>
+        <line x1="254" y1="150" x2="450" y2="150" stroke="white" stroke-width="2" stroke-opacity="0.15"/>
+        <!-- Radial glow center -->
+        <circle cx="225" cy="150" r="130" fill="url(#d4glow)"/>
+        <!-- Lightning bolts (Pikachu energy) -->
+        <polygon points="80,50 95,80 82,80 100,115 85,115 103,50" fill="#FFE566" opacity="0.85"/>
+        <polygon points="350,45 365,78 352,78 370,115 355,115 373,45" fill="#FFE566" opacity="0.85"/>
+        <polygon points="30,160 40,185 33,185 44,210 35,210 48,160" fill="#FFE566" opacity="0.6"/>
+        <polygon points="405,160 415,185 408,185 419,210 410,210 423,160" fill="#FFE566" opacity="0.6"/>
+        <!-- Stars/sparkles -->
+        <text x="130" y="45" font-size="12" fill="#FFE566" opacity="0.7">✦</text>
+        <text x="310" y="40" font-size="10" fill="#FFE566" opacity="0.6">✦</text>
+        <text x="60" y="130" font-size="8" fill="#FFE566" opacity="0.5">★</text>
+        <text x="385" y="125" font-size="8" fill="#FFE566" opacity="0.5">★</text>
+        <!-- Top text (white on red) -->
+        <text x="225" y="35" text-anchor="middle" font-family="Arial Black,sans-serif" font-size="10" fill="white" letter-spacing="4" font-weight="900">PARTY GAME TRUCK PRESENTS</text>
+        <text x="225" y="70" text-anchor="middle" font-family="Arial Black,sans-serif" font-size="26" fill="#FFE566" font-weight="900" letter-spacing="1" stroke="#5D0000" stroke-width="2" paint-order="stroke">I CHOOSE YOU!</text>
+        <text x="225" y="96" text-anchor="middle" font-family="Arial Black,sans-serif" font-size="13" fill="white" font-weight="900" letter-spacing="3">TO COME TO</text>
+        <text x="225" y="118" text-anchor="middle" font-family="Arial Black,sans-serif" font-size="14" fill="#FFE566" font-weight="900" letter-spacing="2">[NAME]'S BIRTHDAY!</text>
+        <!-- Bottom text (white on dark) -->
+        <text x="225" y="192" text-anchor="middle" font-family="Arial,sans-serif" font-size="9" fill="rgba(255,255,255,0.65)">📅 DATE: ___________________</text>
+        <text x="225" y="208" text-anchor="middle" font-family="Arial,sans-serif" font-size="9" fill="rgba(255,255,255,0.65)">⏰ TIME: ___________________</text>
+        <text x="225" y="224" text-anchor="middle" font-family="Arial,sans-serif" font-size="9" fill="rgba(255,255,255,0.65)">📍 ADDRESS: ________________</text>
+        <text x="225" y="240" text-anchor="middle" font-family="Arial,sans-serif" font-size="9" fill="rgba(255,255,255,0.65)">📞 RSVP: __________________</text>
+        <!-- Truck banner bottom -->
+        <rect x="30" y="255" width="390" height="32" rx="8" fill="rgba(255,229,102,0.1)" stroke="#FFE566" stroke-width="1" stroke-opacity="0.4"/>
+        <text x="225" y="267" text-anchor="middle" font-family="Arial Black,sans-serif" font-size="8.5" fill="#FFE566" letter-spacing="1.5">🚚 THE BEST ARCADE ON WHEELS IS COMING!</text>
+        <text x="225" y="280" text-anchor="middle" font-family="Arial,sans-serif" font-size="7.5" fill="rgba(255,255,255,0.3)">partygametruck.com  •  877-399-1997  •  Maryland &amp; DMV</text>
+      </svg>
+      <div class="iinfo">
+        <span class="itag" style="background:rgba(255,229,102,0.12);color:#FFE566;">Pokemon</span>
+        <div class="iname">I Choose You! — Pokemon Edition</div>
+        <div class="idesc">Giant Pokeball split design with Pikachu lightning bolts and the iconic "I Choose You!" call-out.</div>
+        <div class="ibtns">
+          <button class="btn-dl" onclick="dlInvite('svg4','pokemon-i-choose-you-invitation')">⬇ Download</button>
+          <button class="btn-prev" onclick="openModal('m4','svg4','I Choose You — Pokemon Edition')">👁 Preview</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ DESIGN 5: SPACE MISSION ══ -->
+    <div class="icard">
+      <svg id="svg5" viewBox="0 0 450 300" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <radialGradient id="d5nebula" cx="60%" cy="40%" r="60%">
+            <stop offset="0%" stop-color="#6A0DAD" stop-opacity="0.4"/>
+            <stop offset="50%" stop-color="#003F88" stop-opacity="0.3"/>
+            <stop offset="100%" stop-color="#000010" stop-opacity="0"/>
+          </radialGradient>
+        </defs>
+        <!-- Deep space BG -->
+        <rect width="450" height="300" fill="#000010"/>
+        <rect width="450" height="300" fill="url(#d5nebula)"/>
+        <!-- Stars (scattered dots) -->
+        <circle cx="15" cy="20" r="1.2" fill="white" opacity="0.8"/>
+        <circle cx="45" cy="8" r="1" fill="white" opacity="0.6"/>
+        <circle cx="88" cy="32" r="1.5" fill="white" opacity="0.9"/>
+        <circle cx="130" cy="15" r="1" fill="white" opacity="0.7"/>
+        <circle cx="175" cy="5" r="1.2" fill="white" opacity="0.8"/>
+        <circle cx="210" cy="22" r="0.8" fill="white" opacity="0.6"/>
+        <circle cx="255" cy="10" r="1.5" fill="white" opacity="0.9"/>
+        <circle cx="310" cy="28" r="1" fill="white" opacity="0.7"/>
+        <circle cx="360" cy="8" r="1.2" fill="white" opacity="0.8"/>
+        <circle cx="400" cy="18" r="1" fill="white" opacity="0.6"/>
+        <circle cx="435" cy="35" r="1.5" fill="white" opacity="0.9"/>
+        <circle cx="25" cy="80" r="0.8" fill="white" opacity="0.5"/>
+        <circle cx="70" cy="65" r="1" fill="white" opacity="0.7"/>
+        <circle cx="420" cy="70" r="1.2" fill="white" opacity="0.8"/>
+        <circle cx="390" cy="55" r="0.8" fill="white" opacity="0.5"/>
+        <circle cx="20" cy="200" r="1" fill="white" opacity="0.6"/>
+        <circle cx="440" cy="180" r="1.2" fill="white" opacity="0.7"/>
+        <circle cx="55" cy="260" r="0.8" fill="white" opacity="0.5"/>
+        <circle cx="410" cy="250" r="1" fill="white" opacity="0.6"/>
+        <!-- Shooting star -->
+        <line x1="300" y1="45" x2="360" y2="75" stroke="white" stroke-width="1.5" stroke-opacity="0.5"/>
+        <line x1="290" y1="42" x2="298" y2="46" stroke="white" stroke-width="2.5" stroke-opacity="0.8"/>
+        <!-- Planet (right side) -->
+        <circle cx="390" cy="90" r="38" fill="#1E3A5F"/>
+        <ellipse cx="390" cy="90" rx="55" ry="14" fill="none" stroke="#7B68EE" stroke-width="3" stroke-opacity="0.7"/>
+        <circle cx="382" cy="82" r="8" fill="rgba(255,255,255,0.08)"/>
+        <!-- Small moon -->
+        <circle cx="350" cy="40" r="10" fill="#555"/>
+        <circle cx="346" cy="37" r="4" fill="rgba(0,0,0,0.3)"/>
+        <!-- ── ROCKET SHIP (left-center) ── -->
+        <!-- Flame -->
+        <ellipse cx="155" cy="248" rx="12" ry="18" fill="#FF6600" opacity="0.9"/>
+        <ellipse cx="155" cy="250" rx="7" ry="12" fill="#FFD60A" opacity="0.9"/>
+        <!-- Body -->
+        <rect x="140" y="160" width="30" height="80" rx="8" fill="#C0C0C0"/>
+        <!-- Nose cone -->
+        <polygon points="155,100 138,165 172,165" fill="#007BFF"/>
+        <!-- Window -->
+        <circle cx="155" cy="185" r="11" fill="#001440"/>
+        <circle cx="155" cy="185" r="8" fill="#00C2FF" opacity="0.6"/>
+        <circle cx="158" cy="182" r="3" fill="rgba(255,255,255,0.5)"/>
+        <!-- Fins -->
+        <polygon points="140,225 118,255 140,255" fill="#888"/>
+        <polygon points="170,225 192,255 170,255" fill="#888"/>
+        <!-- Stripe -->
+        <rect x="138" y="200" width="34" height="8" rx="2" fill="#CC0000"/>
+        <!-- TEXT -->
+        <text x="260" y="58" text-anchor="middle" font-family="Arial Black,sans-serif" font-size="8.5" fill="#00C2FF" letter-spacing="3">📡 INCOMING TRANSMISSION</text>
+        <text x="260" y="85" text-anchor="middle" font-family="Arial Black,sans-serif" font-size="11" fill="#FFD60A" letter-spacing="1" font-weight="900">BIRTHDAY MISSION</text>
+        <text x="260" y="108" text-anchor="middle" font-family="Arial Black,sans-serif" font-size="20" fill="white" font-weight="900" letter-spacing="1">BRIEFING 🚀</text>
+        <text x="260" y="130" text-anchor="middle" font-family="Arial Black,sans-serif" font-size="11" fill="#00C2FF" letter-spacing="2">[NAME] IS TURNING [AGE]!</text>
+        <line x1="175" y1="142" x2="345" y2="142" stroke="#6A0DAD" stroke-width="1" stroke-opacity="0.6"/>
+        <text x="260" y="162" text-anchor="middle" font-family="Arial,sans-serif" font-size="8.5" fill="rgba(255,255,255,0.6)">📅 DATE: _________________</text>
+        <text x="260" y="178" text-anchor="middle" font-family="Arial,sans-serif" font-size="8.5" fill="rgba(255,255,255,0.6)">⏰ TIME: _________________</text>
+        <text x="260" y="194" text-anchor="middle" font-family="Arial,sans-serif" font-size="8.5" fill="rgba(255,255,255,0.6)">📍 LOCATION: _____________</text>
+        <text x="260" y="210" text-anchor="middle" font-family="Arial,sans-serif" font-size="8.5" fill="rgba(255,255,255,0.6)">📞 RSVP: ________________</text>
+        <!-- Bottom banner -->
+        <rect x="25" y="258" width="400" height="32" rx="8" fill="rgba(106,13,173,0.25)" stroke="#6A0DAD" stroke-width="1" stroke-opacity="0.5"/>
+        <text x="225" y="270" text-anchor="middle" font-family="Arial Black,sans-serif" font-size="8.5" fill="#FFD60A" letter-spacing="1.5">🚚 THE BEST ARCADE ON WHEELS IS LAUNCHING!</text>
+        <text x="225" y="283" text-anchor="middle" font-family="Arial,sans-serif" font-size="7.5" fill="rgba(255,255,255,0.3)">partygametruck.com  •  877-399-1997  •  Maryland &amp; DMV</text>
+      </svg>
+      <div class="iinfo">
+        <span class="itag" style="background:rgba(106,13,173,0.15);color:#9B59FF;">Space Mission</span>
+        <div class="iname">Birthday Mission Briefing — Space Edition</div>
+        <div class="idesc">Deep space nebula, shooting stars, a rocket launching, and a ringed planet. Out-of-this-world birthday vibes!</div>
+        <div class="ibtns">
+          <button class="btn-dl" onclick="dlInvite('svg5','space-mission-invitation')">⬇ Download</button>
+          <button class="btn-prev" onclick="openModal('m5','svg5','Birthday Mission — Space Edition')">👁 Preview</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ DESIGN 6: VICTORY ROYALE ══ -->
+    <div class="icard">
+      <svg id="svg6" viewBox="0 0 450 300" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <radialGradient id="d6storm" cx="50%" cy="50%" r="70%">
+            <stop offset="0%" stop-color="#4B0082" stop-opacity="0.6"/>
+            <stop offset="60%" stop-color="#2D005A" stop-opacity="0.5"/>
+            <stop offset="100%" stop-color="#0a000f" stop-opacity="0"/>
+          </radialGradient>
+          <linearGradient id="d6crown" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#FFD700"/>
+            <stop offset="100%" stop-color="#FF9900"/>
+          </linearGradient>
+        </defs>
+        <!-- BG -->
+        <rect width="450" height="300" fill="#0a000f"/>
+        <rect width="450" height="300" fill="url(#d6storm)"/>
+        <!-- Storm circle effect -->
+        <circle cx="225" cy="150" r="180" fill="none" stroke="#7B00CC" stroke-width="6" stroke-opacity="0.2"/>
+        <circle cx="225" cy="150" r="150" fill="none" stroke="#9B00FF" stroke-width="3" stroke-opacity="0.15"/>
+        <circle cx="225" cy="150" r="120" fill="none" stroke="#B833FF" stroke-width="2" stroke-opacity="0.12"/>
+        <!-- Confetti -->
+        <rect x="30" y="40" width="8" height="5" rx="1" fill="#FFD60A" opacity="0.8" transform="rotate(25,34,42)"/>
+        <rect x="80" y="25" width="6" height="4" rx="1" fill="#FF2D8B" opacity="0.8" transform="rotate(-15,83,27)"/>
+        <rect x="140" y="55" width="7" height="4" rx="1" fill="#00C2FF" opacity="0.8" transform="rotate(40,143,57)"/>
+        <rect x="390" y="35" width="8" height="5" rx="1" fill="#39FF14" opacity="0.8" transform="rotate(-30,394,37)"/>
+        <rect x="420" y="70" width="6" height="4" rx="1" fill="#FFD60A" opacity="0.8" transform="rotate(20,423,72)"/>
+        <rect x="350" y="20" width="7" height="4" rx="1" fill="#FF2D8B" opacity="0.8" transform="rotate(35,353,22)"/>
+        <rect x="20" y="200" width="8" height="5" rx="1" fill="#00C2FF" opacity="0.7" transform="rotate(-20,24,202)"/>
+        <rect x="430" y="220" width="6" height="4" rx="1" fill="#39FF14" opacity="0.7" transform="rotate(30,433,222)"/>
+        <rect x="55" y="260" width="7" height="4" rx="1" fill="#FFD60A" opacity="0.7" transform="rotate(15,58,262)"/>
+        <rect x="400" y="265" width="8" height="5" rx="1" fill="#FF2D8B" opacity="0.7" transform="rotate(-25,404,267)"/>
+        <!-- ── CROWN (SVG paths) ── -->
+        <polygon points="165,85 165,145 285,145 285,85 255,110 225,82 195,110" fill="url(#d6crown)" stroke="#CC7700" stroke-width="2"/>
+        <!-- Crown gems -->
+        <circle cx="225" cy="90" r="8" fill="#FF2D8B"/>
+        <circle cx="195" cy="113" r="6" fill="#00C2FF"/>
+        <circle cx="255" cy="113" r="6" fill="#39FF14"/>
+        <!-- Crown shine -->
+        <polygon points="165,85 165,98 195,110 165,85" fill="rgba(255,255,255,0.15)"/>
+        <polygon points="285,85 285,98 255,110 285,85" fill="rgba(255,255,255,0.15)"/>
+        <!-- TEXT -->
+        <text x="225" y="38" text-anchor="middle" font-family="Arial Black,sans-serif" font-size="9" fill="#B833FF" letter-spacing="4">✦ PARTY GAME TRUCK PRESENTS ✦</text>
+        <text x="225" y="62" text-anchor="middle" font-family="Arial Black,sans-serif" font-size="22" fill="#FFD60A" font-weight="900" letter-spacing="2" stroke="#4B0082" stroke-width="2" paint-order="stroke">VICTORY ROYALE!</text>
+        <text x="225" y="164" text-anchor="middle" font-family="Arial Black,sans-serif" font-size="11" fill="#fff" letter-spacing="3">YOU'VE BEEN CHOSEN</text>
+        <text x="225" y="185" text-anchor="middle" font-family="Arial Black,sans-serif" font-size="14" fill="#FFD60A" font-weight="900" letter-spacing="2">[NAME]'S BIRTHDAY PARTY</text>
+        <!-- Divider -->
+        <line x1="80" y1="196" x2="370" y2="196" stroke="#7B00CC" stroke-width="1" stroke-opacity="0.5"/>
+        <!-- Details -->
+        <text x="225" y="213" text-anchor="middle" font-family="Arial,sans-serif" font-size="9" fill="rgba(255,255,255,0.6)">📅 DATE: ___________   ⏰ TIME: __________</text>
+        <text x="225" y="229" text-anchor="middle" font-family="Arial,sans-serif" font-size="9" fill="rgba(255,255,255,0.6)">📍 ADDRESS: _________________________</text>
+        <text x="225" y="245" text-anchor="middle" font-family="Arial,sans-serif" font-size="9" fill="rgba(255,255,255,0.6)">📞 RSVP: ___________________________</text>
+        <!-- Truck banner -->
+        <rect x="25" y="257" width="400" height="32" rx="8" fill="rgba(75,0,130,0.3)" stroke="#B833FF" stroke-width="1" stroke-opacity="0.5"/>
+        <text x="225" y="269" text-anchor="middle" font-family="Arial Black,sans-serif" font-size="8.5" fill="#FFD60A" letter-spacing="1.5">🚚 THE BEST ARCADE ON WHEELS IS DROPPING IN!</text>
+        <text x="225" y="282" text-anchor="middle" font-family="Arial,sans-serif" font-size="7.5" fill="rgba(255,255,255,0.3)">partygametruck.com  •  877-399-1997  •  Maryland &amp; DMV</text>
+      </svg>
+      <div class="iinfo">
+        <span class="itag" style="background:rgba(184,51,255,0.12);color:#B833FF;">Victory Royale</span>
+        <div class="iname">Victory Royale! — Battle Royale Edition</div>
+        <div class="idesc">Purple storm rings, a golden crown with gems, colorful confetti, and the ultimate "You've Been Chosen" energy!</div>
+        <div class="ibtns">
+          <button class="btn-dl" onclick="dlInvite('svg6','victory-royale-invitation')">⬇ Download</button>
+          <button class="btn-prev" onclick="openModal('m6','svg6','Victory Royale — Battle Royale Edition')">👁 Preview</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ DESIGN 7: ULTIMATE GAME TRUCK PARTY ══ -->
+    <div class="icard">
+      <svg id="svg7" viewBox="0 0 450 300" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <radialGradient id="d7bg" cx="55%" cy="45%" r="75%">
+            <stop offset="0%" stop-color="#1a0060"/>
+            <stop offset="55%" stop-color="#05001a"/>
+            <stop offset="100%" stop-color="#000010"/>
+          </radialGradient>
+          <radialGradient id="d7glow" cx="70%" cy="40%" r="55%">
+            <stop offset="0%" stop-color="#3300aa" stop-opacity="0.5"/>
+            <stop offset="100%" stop-color="#3300aa" stop-opacity="0"/>
+          </radialGradient>
+        </defs>
+        <rect width="450" height="300" fill="url(#d7bg)"/>
+        <rect width="450" height="300" fill="url(#d7glow)"/>
+        <!-- Energy particles -->
+        <circle cx="320" cy="30" r="2" fill="#00C2FF" opacity="0.8"/>
+        <circle cx="360" cy="55" r="1.5" fill="#FFD60A" opacity="0.7"/>
+        <circle cx="395" cy="22" r="2" fill="#FF2D8B" opacity="0.8"/>
+        <circle cx="430" cy="60" r="1.5" fill="#00C2FF" opacity="0.6"/>
+        <circle cx="310" cy="80" r="1" fill="#39FF14" opacity="0.6"/>
+        <circle cx="440" cy="100" r="2" fill="#FFD60A" opacity="0.5"/>
+        <circle cx="350" cy="110" r="1.5" fill="#FF2D8B" opacity="0.6"/>
+        <circle cx="280" cy="45" r="1" fill="#fff" opacity="0.5"/>
+        <circle cx="415" cy="145" r="2" fill="#00C2FF" opacity="0.5"/>
+        <circle cx="340" cy="160" r="1.5" fill="#FFD60A" opacity="0.4"/>
+        <!-- Lightning energy bolts top-right -->
+        <polygon points="390,15 398,38 388,38 400,62 390,62 405,15" fill="#00C2FF" opacity="0.5"/>
+        <polygon points="415,25 421,45 413,45 423,65 415,65 428,25" fill="#FFD60A" opacity="0.4"/>
+        <!-- ── GAME TRUCK SILHOUETTE (right, semi-transparent) ── -->
+        <!-- Trailer -->
+        <rect x="255" y="155" width="190" height="75" rx="6" fill="#001A60" opacity="0.6"/>
+        <rect x="257" y="157" width="186" height="71" rx="5" fill="none" stroke="#00C2FF" stroke-width="1" stroke-opacity="0.4"/>
+        <!-- PGT on trailer -->
+        <text x="350" y="198" text-anchor="middle" font-family="Arial Black,sans-serif" font-size="11" fill="#007BFF" opacity="0.5" letter-spacing="2" font-weight="900">PARTY GAME TRUCK</text>
+        <!-- Cab -->
+        <rect x="412" y="135" width="70" height="95" rx="8" fill="#002288" opacity="0.6"/>
+        <rect x="418" y="142" width="56" height="35" rx="4" fill="#00C2FF" opacity="0.2"/>
+        <!-- Wheels -->
+        <circle cx="290" cy="240" r="16" fill="#111" opacity="0.7"/>
+        <circle cx="290" cy="240" r="9" fill="#333" opacity="0.7"/>
+        <circle cx="380" cy="240" r="16" fill="#111" opacity="0.7"/>
+        <circle cx="380" cy="240" r="9" fill="#333" opacity="0.7"/>
+        <circle cx="430" cy="238" r="14" fill="#111" opacity="0.7"/>
+        <circle cx="430" cy="238" r="8" fill="#333" opacity="0.7"/>
+        <!-- ── KIDS SILHOUETTES (bottom-left) ── -->
+        <!-- Kid 1 (left) -->
+        <circle cx="82" cy="200" r="14" fill="#1a1a3a" opacity="0.85"/>
+        <rect x="70" y="214" width="24" height="30" rx="6" fill="#CC0000" opacity="0.85"/>
+        <rect x="58" y="220" width="14" height="8" rx="4" fill="#1a1a3a" opacity="0.8"/>
+        <rect x="92" y="218" width="14" height="8" rx="4" fill="#1a1a3a" opacity="0.8"/>
+        <!-- Controller in hands -->
+        <rect x="60" y="224" width="10" height="6" rx="2" fill="#444" opacity="0.9"/>
+        <rect x="94" y="222" width="10" height="6" rx="2" fill="#444" opacity="0.9"/>
+        <!-- Kid 2 (center, taller) -->
+        <circle cx="130" cy="190" r="16" fill="#1a1a3a" opacity="0.9"/>
+        <rect x="116" y="206" width="28" height="36" rx="6" fill="#004488" opacity="0.9"/>
+        <rect x="102" y="214" width="16" height="9" rx="4" fill="#1a1a3a" opacity="0.85"/>
+        <rect x="142" y="212" width="16" height="9" rx="4" fill="#1a1a3a" opacity="0.85"/>
+        <!-- Kid 3 (right) -->
+        <circle cx="178" cy="198" r="13" fill="#1a1a3a" opacity="0.85"/>
+        <rect x="167" y="211" width="22" height="28" rx="5" fill="#880044" opacity="0.85"/>
+        <!-- Glow behind kids -->
+        <ellipse cx="130" cy="260" rx="90" ry="18" fill="#3300aa" opacity="0.3"/>
+        <!-- ── LEFT TEXT ── -->
+        <!-- Top label -->
+        <rect x="10" y="12" width="240" height="18" rx="4" fill="rgba(0,123,255,0.2)"/>
+        <text x="130" y="25" text-anchor="middle" font-family="Arial Black,sans-serif" font-size="8.5" fill="#00C2FF" letter-spacing="3">🎮 PARTY GAME TRUCK PRESENTS</text>
+        <!-- Main headline -->
+        <text x="14" y="52" font-family="Arial Black,sans-serif" font-size="11" fill="rgba(255,255,255,0.75)" letter-spacing="2">YOU'RE INVITED TO</text>
+        <text x="12" y="80" font-family="Arial Black,sans-serif" font-size="24" fill="#FFD60A" font-weight="900" letter-spacing="1" stroke="#1a0060" stroke-width="2" paint-order="stroke">THE ULTIMATE</text>
+        <text x="12" y="105" font-family="Arial Black,sans-serif" font-size="18" fill="#fff" font-weight="900" letter-spacing="1">GAME TRUCK</text>
+        <text x="12" y="128" font-family="Arial Black,sans-serif" font-size="18" fill="#00C2FF" font-weight="900" letter-spacing="1">PARTY! 🎉</text>
+        <!-- Divider -->
+        <line x1="12" y1="137" x2="248" y2="137" stroke="#FFD60A" stroke-width="1" stroke-opacity="0.5"/>
+        <!-- Date/Time/Location fields -->
+        <text x="14" y="152" font-family="Arial,sans-serif" font-size="8.5" fill="rgba(255,255,255,0.7)">📅 Date: _________________________</text>
+        <text x="14" y="167" font-family="Arial,sans-serif" font-size="8.5" fill="rgba(255,255,255,0.7)">⏰ Time: _________________________</text>
+        <text x="14" y="182" font-family="Arial,sans-serif" font-size="8.5" fill="rgba(255,255,255,0.7)">📍 Location: ______________________</text>
+        <!-- Feature bullets -->
+        <circle cx="19" cy="198" r="4" fill="#FFD60A"/>
+        <text x="28" y="202" font-family="Arial Black,sans-serif" font-size="8.5" fill="#FFD60A" font-weight="800">Multiplayer Gaming Battles</text>
+        <circle cx="19" cy="214" r="4" fill="#00C2FF"/>
+        <text x="28" y="218" font-family="Arial Black,sans-serif" font-size="8.5" fill="#00C2FF" font-weight="800">Racing Simulators</text>
+        <circle cx="19" cy="230" r="4" fill="#39FF14"/>
+        <text x="28" y="234" font-family="Arial Black,sans-serif" font-size="8.5" fill="#39FF14" font-weight="800">Sports &amp; Action Games!</text>
+        <!-- Tagline -->
+        <text x="130" y="268" text-anchor="middle" font-family="Arial Black,sans-serif" font-size="8.5" fill="#FFD60A" font-style="italic" letter-spacing="0.5">Spots are limited – get ready to GAME!</text>
+        <text x="225" y="285" text-anchor="middle" font-family="Arial,sans-serif" font-size="7.5" fill="rgba(255,255,255,0.25)" letter-spacing="1">partygametruck.com  •  877-399-1997  •  Maryland &amp; DMV</text>
+      </svg>
+      <div class="iinfo">
+        <span class="itag" style="background:rgba(0,194,255,0.12);color:#00C2FF;">Ultimate Party</span>
+        <div class="iname">The Ultimate Game Truck Party!</div>
+        <div class="idesc">Kids gaming, Party Game Truck silhouette, neon energy — with Date, Time, Location fields and feature highlights.</div>
+        <div class="ibtns">
+          <button class="btn-dl" onclick="dlInvite('svg7','ultimate-game-truck-party-invitation')">⬇ Download</button>
+          <button class="btn-prev" onclick="openModal('m7','svg7','The Ultimate Game Truck Party')">👁 Preview</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ DESIGN 8: START YOUR ENGINES RACING PARTY ══ -->
+    <div class="icard">
+      <svg id="svg8" viewBox="0 0 450 300" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="d8sky" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#87CEEB"/>
+            <stop offset="100%" stop-color="#4A90D9"/>
+          </linearGradient>
+          <linearGradient id="d8track" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#3a3a3a"/>
+            <stop offset="100%" stop-color="#1a1a1a"/>
+          </linearGradient>
+        </defs>
+        <!-- Sky BG -->
+        <rect width="450" height="300" fill="url(#d8sky)"/>
+        <!-- Track bottom -->
+        <rect x="0" y="185" width="450" height="115" fill="url(#d8track)"/>
+        <!-- Track markings -->
+        <rect x="0" y="182" width="450" height="6" fill="#FFD60A"/>
+        <!-- Dashed center line -->
+        <rect x="20" y="225" width="35" height="5" rx="2" fill="#FFD60A" opacity="0.7"/>
+        <rect x="75" y="225" width="35" height="5" rx="2" fill="#FFD60A" opacity="0.7"/>
+        <rect x="130" y="225" width="35" height="5" rx="2" fill="#FFD60A" opacity="0.7"/>
+        <rect x="185" y="225" width="35" height="5" rx="2" fill="#FFD60A" opacity="0.7"/>
+        <rect x="240" y="225" width="35" height="5" rx="2" fill="#FFD60A" opacity="0.7"/>
+        <rect x="295" y="225" width="35" height="5" rx="2" fill="#FFD60A" opacity="0.7"/>
+        <rect x="350" y="225" width="35" height="5" rx="2" fill="#FFD60A" opacity="0.7"/>
+        <rect x="405" y="225" width="35" height="5" rx="2" fill="#FFD60A" opacity="0.7"/>
+        <!-- ── CHECKERED FLAG BORDERS (top and bottom strips) ── -->
+        <!-- Top checkered strip -->
+        <rect x="0" y="0" width="450" height="20" fill="white"/>
+        <rect x="0" y="0" width="20" height="20" fill="black"/>
+        <rect x="40" y="0" width="20" height="20" fill="black"/>
+        <rect x="80" y="0" width="20" height="20" fill="black"/>
+        <rect x="120" y="0" width="20" height="20" fill="black"/>
+        <rect x="160" y="0" width="20" height="20" fill="black"/>
+        <rect x="200" y="0" width="20" height="20" fill="black"/>
+        <rect x="240" y="0" width="20" height="20" fill="black"/>
+        <rect x="280" y="0" width="20" height="20" fill="black"/>
+        <rect x="320" y="0" width="20" height="20" fill="black"/>
+        <rect x="360" y="0" width="20" height="20" fill="black"/>
+        <rect x="400" y="0" width="20" height="20" fill="black"/>
+        <rect x="440" y="0" width="20" height="20" fill="black"/>
+        <!-- Bottom checkered strip -->
+        <rect x="0" y="280" width="450" height="20" fill="white"/>
+        <rect x="0" y="280" width="20" height="20" fill="black"/>
+        <rect x="40" y="280" width="20" height="20" fill="black"/>
+        <rect x="80" y="280" width="20" height="20" fill="black"/>
+        <rect x="120" y="280" width="20" height="20" fill="black"/>
+        <rect x="160" y="280" width="20" height="20" fill="black"/>
+        <rect x="200" y="280" width="20" height="20" fill="black"/>
+        <rect x="240" y="280" width="20" height="20" fill="black"/>
+        <rect x="280" y="280" width="20" height="20" fill="black"/>
+        <rect x="320" y="280" width="20" height="20" fill="black"/>
+        <rect x="360" y="280" width="20" height="20" fill="black"/>
+        <rect x="400" y="280" width="20" height="20" fill="black"/>
+        <rect x="440" y="280" width="20" height="20" fill="black"/>
+        <!-- Checkered flags top corners -->
+        <text x="22" y="72" font-size="32" opacity="0.9">🏁</text>
+        <text x="388" y="72" font-size="32" opacity="0.9">🏁</text>
+        <!-- ── GO-KART (right side, SVG drawn) ── -->
+        <!-- Speed trail/exhaust -->
+        <ellipse cx="255" cy="234" rx="22" ry="7" fill="#FF6600" opacity="0.6"/>
+        <ellipse cx="240" cy="234" rx="12" ry="4" fill="#FFD60A" opacity="0.5"/>
+        <!-- Kart body -->
+        <rect x="260" y="215" width="100" height="28" rx="10" fill="#CC0000"/>
+        <rect x="263" y="217" width="94" height="24" rx="9" fill="#EE1111"/>
+        <!-- Kart nose/front -->
+        <polygon points="355,218 375,228 355,238" fill="#CC0000"/>
+        <!-- Windshield -->
+        <rect x="310" y="208" width="40" height="18" rx="5" fill="#88CCFF" opacity="0.8"/>
+        <rect x="312" y="210" width="36" height="14" rx="4" fill="#AADDFF" opacity="0.5"/>
+        <!-- Driver (Mario-inspired) -->
+        <!-- Hat (red) -->
+        <rect x="318" y="188" width="28" height="10" rx="5" fill="#CC0000"/>
+        <rect x="322" y="178" width="20" height="12" rx="3" fill="#CC0000"/>
+        <!-- Face -->
+        <circle cx="332" cy="200" r="12" fill="#F5CBA7"/>
+        <!-- Eyes -->
+        <circle cx="327" cy="198" r="3" fill="#1a0000"/>
+        <circle cx="337" cy="198" r="3" fill="#1a0000"/>
+        <!-- Mustache -->
+        <rect x="323" y="205" width="8" height="3" rx="2" fill="#5D2A00"/>
+        <rect x="333" y="205" width="8" height="3" rx="2" fill="#5D2A00"/>
+        <!-- Body (blue overalls) -->
+        <rect x="322" y="212" width="20" height="8" rx="3" fill="#1565C0"/>
+        <!-- Kart number -->
+        <circle cx="278" cy="228" r="10" fill="white"/>
+        <text x="278" y="233" text-anchor="middle" font-family="Arial Black,sans-serif" font-size="10" fill="#CC0000" font-weight="900">8</text>
+        <!-- Spoiler -->
+        <rect x="258" y="206" width="18" height="5" rx="2" fill="#880000"/>
+        <rect x="264" y="200" width="6" height="12" rx="2" fill="#880000"/>
+        <!-- Wheels -->
+        <circle cx="278" cy="248" r="12" fill="#111"/>
+        <circle cx="278" cy="248" r="7" fill="#444"/>
+        <circle cx="278" cy="248" r="3" fill="#888"/>
+        <circle cx="348" cy="248" r="12" fill="#111"/>
+        <circle cx="348" cy="248" r="7" fill="#444"/>
+        <circle cx="348" cy="248" r="3" fill="#888"/>
+        <!-- ── TEXT (left/center) ── -->
+        <text x="155" y="38" text-anchor="middle" font-family="Arial Black,sans-serif" font-size="10" fill="#CC0000" letter-spacing="2" font-weight="900">🎮 PARTY GAME TRUCK PRESENTS</text>
+        <text x="155" y="65" text-anchor="middle" font-family="Arial Black,sans-serif" font-size="20" fill="#FFD60A" font-weight="900" letter-spacing="1" stroke="#880000" stroke-width="2" paint-order="stroke">START YOUR ENGINES!</text>
+        <text x="155" y="84" text-anchor="middle" font-family="Arial,sans-serif" font-size="9" fill="#1a1a3a">You're invited to a high-speed</text>
+        <text x="155" y="108" text-anchor="middle" font-family="Arial Black,sans-serif" font-size="18" fill="#003399" font-weight="900" letter-spacing="1">GAME TRUCK</text>
+        <text x="155" y="132" text-anchor="middle" font-family="Arial Black,sans-serif" font-size="18" fill="#CC0000" font-weight="900" letter-spacing="1">RACING PARTY! 🏆</text>
+        <!-- Info box -->
+        <rect x="18" y="142" width="274" height="72" rx="8" fill="rgba(255,255,255,0.88)"/>
+        <rect x="20" y="144" width="270" height="68" rx="7" fill="none" stroke="#333" stroke-width="0.75"/>
+        <!-- Checkered flag icon -->
+        <text x="30" y="160" font-size="12">🏁</text>
+        <text x="48" y="161" font-family="Arial Black,sans-serif" font-size="8.5" fill="#1a1a1a" font-weight="800">Mario Kart Racing Setup</text>
+        <circle cx="48" cy="172" r="3" fill="#CC0000"/>
+        <text x="56" y="176" font-family="Arial,sans-serif" font-size="8.5" fill="#1a1a1a">Head-to-Head Competition</text>
+        <circle cx="48" cy="188" r="3" fill="#CC0000"/>
+        <text x="56" y="192" font-family="Arial,sans-serif" font-size="8.5" fill="#1a1a1a">Multiplayer Gaming Action</text>
+        <!-- Bottom info -->
+        <text x="155" y="210" text-anchor="middle" font-family="Arial Black,sans-serif" font-size="11" fill="#FFD60A" font-weight="900">📞 877-399-1997</text>
+        <text x="155" y="226" text-anchor="middle" font-family="Arial,sans-serif" font-size="9" fill="rgba(255,255,255,0.8)">www.partygametruck.com</text>
+        <text x="225" y="270" text-anchor="middle" font-family="Arial Black,sans-serif" font-size="8.5" fill="white" letter-spacing="1.5">🚚 THE BEST ARCADE ON WHEELS IS RACING TO YOU!</text>
+      </svg>
+      <div class="iinfo">
+        <span class="itag" style="background:rgba(204,0,0,0.15);color:#FF4444;">Racing Party</span>
+        <div class="iname">Start Your Engines! — Racing Party</div>
+        <div class="idesc">Checkered flag borders, a Mario Kart go-kart, racing track, and "Start Your Engines!" energy for the ultimate racing birthday!</div>
+        <div class="ibtns">
+          <button class="btn-dl" onclick="dlInvite('svg8','racing-party-invitation')">⬇ Download</button>
+          <button class="btn-prev" onclick="openModal('m8','svg8','Start Your Engines — Racing Party')">👁 Preview</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ DESIGN 9: VIP LIST ══ -->
+    <div class="icard">
+      <svg id="svg9" viewBox="0 0 450 300" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="d9bg" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#000a1f"/>
+            <stop offset="100%" stop-color="#000518"/>
+          </linearGradient>
+          <linearGradient id="d9gold" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#FFD700"/>
+            <stop offset="100%" stop-color="#FF9900"/>
+          </linearGradient>
+          <radialGradient id="d9glow" cx="75%" cy="55%" r="55%">
+            <stop offset="0%" stop-color="#001A88" stop-opacity="0.7"/>
+            <stop offset="100%" stop-color="#001A88" stop-opacity="0"/>
+          </radialGradient>
+        </defs>
+        <rect width="450" height="300" fill="url(#d9bg)"/>
+        <rect width="450" height="300" fill="url(#d9glow)"/>
+        <!-- ── PARTY GAME TRUCK (right side, large) ── -->
+        <!-- Trailer -->
+        <rect x="240" y="118" width="210" height="100" rx="8" fill="#001A88"/>
+        <rect x="242" y="120" width="206" height="96" rx="7" fill="none" stroke="#007BFF" stroke-width="1.5" stroke-opacity="0.6"/>
+        <!-- Trailer window detail -->
+        <rect x="252" y="128" width="186" height="32" rx="4" fill="rgba(0,123,255,0.15)"/>
+        <!-- Screen dots pattern -->
+        <circle cx="268" cy="144" r="4" fill="#007BFF" opacity="0.5"/>
+        <circle cx="285" cy="144" r="4" fill="#007BFF" opacity="0.5"/>
+        <circle cx="302" cy="144" r="4" fill="#00C2FF" opacity="0.5"/>
+        <circle cx="319" cy="144" r="4" fill="#007BFF" opacity="0.5"/>
+        <circle cx="336" cy="144" r="4" fill="#007BFF" opacity="0.5"/>
+        <circle cx="353" cy="144" r="4" fill="#00C2FF" opacity="0.5"/>
+        <circle cx="370" cy="144" r="4" fill="#007BFF" opacity="0.5"/>
+        <circle cx="387" cy="144" r="4" fill="#007BFF" opacity="0.5"/>
+        <!-- PGT text on trailer -->
+        <text x="345" y="183" text-anchor="middle" font-family="Arial Black,sans-serif" font-size="9" fill="#007BFF" opacity="0.7" letter-spacing="1.5" font-weight="900">PARTY GAME TRUCK</text>
+        <text x="345" y="197" text-anchor="middle" font-family="Arial,sans-serif" font-size="7.5" fill="#00C2FF" opacity="0.6" letter-spacing="1">877-399-1997</text>
+        <!-- Cab -->
+        <rect x="418" y="95" width="32" height="125" rx="6" fill="#0022AA"/>
+        <rect x="421" y="103" width="26" height="40" rx="4" fill="#00C2FF" opacity="0.3"/>
+        <!-- Headlights -->
+        <ellipse cx="449" cy="165" rx="4" ry="6" fill="#FFD60A" opacity="0.8"/>
+        <!-- Truck wheels -->
+        <circle cx="268" cy="228" r="16" fill="#1a1a1a"/>
+        <circle cx="268" cy="228" r="10" fill="#333"/>
+        <circle cx="268" cy="228" r="4" fill="#777"/>
+        <circle cx="340" cy="228" r="16" fill="#1a1a1a"/>
+        <circle cx="340" cy="228" r="10" fill="#333"/>
+        <circle cx="340" cy="228" r="4" fill="#777"/>
+        <circle cx="430" cy="228" r="14" fill="#1a1a1a"/>
+        <circle cx="430" cy="228" r="9" fill="#333"/>
+        <!-- Ground reflection -->
+        <rect x="235" y="244" width="215" height="4" rx="2" fill="#007BFF" opacity="0.15"/>
+        <!-- ── CONFETTI ── -->
+        <rect x="18" y="15" width="9" height="5" rx="1" fill="#FFD60A" opacity="0.9" transform="rotate(20,22,17)"/>
+        <rect x="55" y="8" width="7" height="4" rx="1" fill="#FF2D8B" opacity="0.9" transform="rotate(-15,58,10)"/>
+        <rect x="95" y="20" width="8" height="4" rx="1" fill="#00C2FF" opacity="0.9" transform="rotate(35,99,22)"/>
+        <rect x="145" y="10" width="9" height="5" rx="1" fill="#39FF14" opacity="0.8" transform="rotate(-25,149,12)"/>
+        <rect x="195" y="18" width="7" height="4" rx="1" fill="#FFD60A" opacity="0.9" transform="rotate(40,198,20)"/>
+        <rect x="30" y="260" width="8" height="5" rx="1" fill="#FF2D8B" opacity="0.8" transform="rotate(-20,34,262)"/>
+        <rect x="80" y="270" width="9" height="4" rx="1" fill="#FFD60A" opacity="0.9" transform="rotate(15,84,272)"/>
+        <rect x="130" y="258" width="7" height="5" rx="1" fill="#00C2FF" opacity="0.8" transform="rotate(-35,133,260)"/>
+        <rect x="185" y="265" width="8" height="4" rx="1" fill="#39FF14" opacity="0.8" transform="rotate(25,189,267)"/>
+        <rect x="235" y="15" width="8" height="4" rx="1" fill="#FF2D8B" opacity="0.7" transform="rotate(-10,239,17)"/>
+        <rect x="420" y="25" width="9" height="5" rx="1" fill="#FFD60A" opacity="0.8" transform="rotate(30,424,27)"/>
+        <circle cx="42" cy="40" r="3" fill="#FF2D8B" opacity="0.7"/>
+        <circle cx="170" cy="35" r="2.5" fill="#FFD60A" opacity="0.8"/>
+        <circle cx="210" cy="50" r="3" fill="#00C2FF" opacity="0.7"/>
+        <!-- ── VIP BANNER ── -->
+        <rect x="8" y="22" width="225" height="42" rx="6" fill="url(#d9gold)"/>
+        <rect x="10" y="24" width="221" height="38" rx="5" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="1"/>
+        <text x="120" y="38" text-anchor="middle" font-family="Arial Black,sans-serif" font-size="9.5" fill="#5D1A00" letter-spacing="3" font-weight="900">★ YOU'RE ON THE ★</text>
+        <text x="120" y="56" text-anchor="middle" font-family="Arial Black,sans-serif" font-size="13" fill="#1a0800" letter-spacing="3" font-weight="900">VIP LIST! 👑</text>
+        <!-- Date/Time/Location -->
+        <rect x="8" y="72" width="225" height="58" rx="8" fill="rgba(255,255,255,0.06)" stroke="rgba(255,214,10,0.25)" stroke-width="1"/>
+        <text x="18" y="89" font-family="Arial,sans-serif" font-size="8.5" fill="rgba(255,255,255,0.75)">📅  Date: ______________________</text>
+        <text x="18" y="106" font-family="Arial,sans-serif" font-size="8.5" fill="rgba(255,255,255,0.75)">⏰  Time: ______________________</text>
+        <text x="18" y="123" font-family="Arial,sans-serif" font-size="8.5" fill="rgba(255,255,255,0.75)">📍  Location: ___________________</text>
+        <!-- Featuring box -->
+        <rect x="8" y="138" width="225" height="90" rx="8" fill="rgba(0,123,255,0.12)" stroke="rgba(0,123,255,0.3)" stroke-width="1"/>
+        <text x="120" y="155" text-anchor="middle" font-family="Arial Black,sans-serif" font-size="9.5" fill="#FFD60A" letter-spacing="2" font-weight="900">🎮 Featuring:</text>
+        <circle cx="22" cy="169" r="4" fill="#FFD60A"/>
+        <text x="30" y="173" font-family="Arial Black,sans-serif" font-size="8.5" fill="#fff" font-weight="800">Mario Kart Racing Setup</text>
+        <circle cx="22" cy="185" r="4" fill="#00C2FF"/>
+        <text x="30" y="189" font-family="Arial Black,sans-serif" font-size="8.5" fill="#fff" font-weight="800">Head-to-Head Competition</text>
+        <circle cx="22" cy="201" r="4" fill="#39FF14"/>
+        <text x="30" y="205" font-family="Arial Black,sans-serif" font-size="8.5" fill="#fff" font-weight="800">Multiplayer Gaming Action</text>
+        <!-- CTA -->
+        <rect x="8" y="236" width="225" height="28" rx="6" fill="url(#d9gold)"/>
+        <text x="120" y="254" text-anchor="middle" font-family="Arial Black,sans-serif" font-size="11" fill="#1a0800" letter-spacing="2" font-weight="900">Book yours next! 🚀</text>
+        <!-- Bottom branding -->
+        <text x="120" y="272" text-anchor="middle" font-family="Arial Black,sans-serif" font-size="9.5" fill="#FFD60A" letter-spacing="1">📞 877-399-1997</text>
+        <text x="120" y="286" text-anchor="middle" font-family="Arial,sans-serif" font-size="8" fill="rgba(255,255,255,0.4)">www.partygametruck.com  •  Maryland &amp; DMV</text>
+      </svg>
+      <div class="iinfo">
+        <span class="itag" style="background:rgba(255,215,0,0.12);color:#FFD700;">VIP Edition</span>
+        <div class="iname">You're on the VIP List! — Gold Edition</div>
+        <div class="idesc">Gold VIP banner, Party Game Truck front and center, confetti rain, featuring section, and "Book yours next!" CTA.</div>
+        <div class="ibtns">
+          <button class="btn-dl" onclick="dlInvite('svg9','vip-list-invitation')">⬇ Download</button>
+          <button class="btn-prev" onclick="openModal('m9','svg9','You\'re on the VIP List — Gold Edition')">👁 Preview</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ DESIGN 10: EPIC GAME TRUCK PARTY (MINECRAFT) ══ -->
+    <div class="icard">
+      <svg id="svg10" viewBox="0 0 450 300" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="d10sky" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#5BC8F5"/>
+            <stop offset="60%" stop-color="#87CEEB"/>
+            <stop offset="100%" stop-color="#5a9e2f"/>
+          </linearGradient>
+        </defs>
+        <!-- Sky + ground BG -->
+        <rect width="450" height="300" fill="url(#d10sky)"/>
+        <!-- Clouds -->
+        <ellipse cx="80" cy="30" rx="38" ry="16" fill="white" opacity="0.9"/>
+        <ellipse cx="108" cy="24" rx="26" ry="14" fill="white" opacity="0.9"/>
+        <ellipse cx="54" cy="26" rx="20" ry="13" fill="white" opacity="0.9"/>
+        <ellipse cx="350" cy="35" rx="32" ry="14" fill="white" opacity="0.85"/>
+        <ellipse cx="375" cy="28" rx="22" ry="12" fill="white" opacity="0.85"/>
+        <!-- Minecraft grass blocks (bottom row) -->
+        <rect x="0"   y="248" width="56" height="52" fill="#5D4037"/>
+        <rect x="0"   y="248" width="56" height="8"  fill="#4CAF50"/>
+        <rect x="56"  y="255" width="56" height="45" fill="#6D4C41"/>
+        <rect x="56"  y="255" width="56" height="8"  fill="#43A047"/>
+        <rect x="112" y="252" width="56" height="48" fill="#5D4037"/>
+        <rect x="112" y="252" width="56" height="8"  fill="#4CAF50"/>
+        <rect x="168" y="258" width="56" height="42" fill="#6D4C41"/>
+        <rect x="168" y="258" width="56" height="8"  fill="#43A047"/>
+        <rect x="224" y="250" width="56" height="50" fill="#5D4037"/>
+        <rect x="224" y="250" width="56" height="8"  fill="#4CAF50"/>
+        <rect x="280" y="255" width="56" height="45" fill="#6D4C41"/>
+        <rect x="280" y="255" width="56" height="8"  fill="#43A047"/>
+        <rect x="336" y="252" width="56" height="48" fill="#5D4037"/>
+        <rect x="336" y="252" width="56" height="8"  fill="#4CAF50"/>
+        <rect x="392" y="248" width="58" height="52" fill="#5D4037"/>
+        <rect x="392" y="248" width="58" height="8"  fill="#4CAF50"/>
+        <!-- Block grid lines (Minecraft detail) -->
+        <line x1="0" y1="248" x2="450" y2="248" stroke="#388E3C" stroke-width="1"/>
+        <!-- Stone blocks behind (upper) -->
+        <rect x="0"   y="200" width="40" height="48" fill="#8D9B8D" opacity="0.6"/>
+        <rect x="0"   y="200" width="40" height="48" fill="none" stroke="#666" stroke-width="0.5" opacity="0.4"/>
+        <rect x="410" y="205" width="40" height="43" fill="#8D9B8D" opacity="0.6"/>
+        <rect x="410" y="205" width="40" height="43" fill="none" stroke="#666" stroke-width="0.5" opacity="0.4"/>
+        <!-- ── PARTY GAME TRUCK (right, center) ── -->
+        <rect x="215" y="125" width="220" height="85" rx="6" fill="#1A237E"/>
+        <rect x="217" y="127" width="216" height="81" rx="5" fill="none" stroke="#42A5F5" stroke-width="1.5"/>
+        <!-- Screen windows on truck -->
+        <rect x="225" y="133" width="55" height="40" rx="3" fill="#0D47A1"/>
+        <rect x="287" y="133" width="55" height="40" rx="3" fill="#0D47A1"/>
+        <rect x="349" y="133" width="55" height="40" rx="3" fill="#0D47A1"/>
+        <!-- Screen glow -->
+        <rect x="227" y="135" width="51" height="36" rx="2" fill="#1565C0" opacity="0.8"/>
+        <rect x="289" y="135" width="51" height="36" rx="2" fill="#1565C0" opacity="0.8"/>
+        <rect x="351" y="135" width="51" height="36" rx="2" fill="#1565C0" opacity="0.8"/>
+        <!-- GREAT DOMINATORS text -->
+        <text x="325" y="190" text-anchor="middle" font-family="Arial Black,sans-serif" font-size="7" fill="#FFD60A" letter-spacing="1.5" font-weight="900">GREAT DOMINATORS</text>
+        <!-- Truck cab -->
+        <rect x="415" y="110" width="35" height="100" rx="6" fill="#283593"/>
+        <rect x="418" y="118" width="28" height="32" rx="3" fill="#42A5F5" opacity="0.4"/>
+        <!-- Truck wheels -->
+        <circle cx="240" cy="220" r="14" fill="#111"/><circle cx="240" cy="220" r="8" fill="#333"/><circle cx="240" cy="220" r="3" fill="#888"/>
+        <circle cx="320" cy="220" r="14" fill="#111"/><circle cx="320" cy="220" r="8" fill="#333"/><circle cx="320" cy="220" r="3" fill="#888"/>
+        <circle cx="418" cy="218" r="12" fill="#111"/><circle cx="418" cy="218" r="7" fill="#333"/>
+        <!-- ── MINECRAFT KIDS (bottom-left, blocky style) ── -->
+        <!-- Kid 1 (Steve-like, green shirt) -->
+        <rect x="28"  y="195" width="22" height="18" rx="2" fill="#F5CBA7"/><!-- head -->
+        <rect x="26"  y="213" width="26" height="28" rx="2" fill="#2E7D32"/><!-- body -->
+        <rect x="14"  y="215" width="12" height="20" rx="2" fill="#2E7D32"/><!-- left arm -->
+        <rect x="52"  y="215" width="12" height="20" rx="2" fill="#2E7D32"/><!-- right arm -->
+        <!-- Minecraft pickaxe in right hand -->
+        <rect x="62"  y="208" width="4"  height="18" rx="1" fill="#8D6E63"/>
+        <rect x="56"  y="205" width="14" height="6"  rx="2" fill="#90A4AE"/>
+        <!-- Kid 2 (pink shirt) -->
+        <rect x="88"  y="200" width="20" height="16" rx="2" fill="#F5CBA7"/>
+        <rect x="86"  y="216" width="24" height="25" rx="2" fill="#E91E63"/>
+        <rect x="75"  y="218" width="11" height="18" rx="2" fill="#E91E63"/>
+        <rect x="110" y="218" width="11" height="18" rx="2" fill="#E91E63"/>
+        <!-- Minecraft sword -->
+        <rect x="118" y="210" width="4"  height="20" rx="1" fill="#8D6E63"/>
+        <rect x="114" y="207" width="10" height="5"  rx="1" fill="#5C6BC0"/>
+        <!-- Pixel eyes on kid 1 -->
+        <rect x="33" y="200" width="4" height="4" fill="#1a0000"/>
+        <rect x="41" y="200" width="4" height="4" fill="#1a0000"/>
+        <!-- Pixel eyes on kid 2 -->
+        <rect x="92" y="205" width="3" height="3" fill="#1a0000"/>
+        <rect x="99" y="205" width="3" height="3" fill="#1a0000"/>
+        <!-- ── TEXT OVERLAY (semi-transparent dark panel top) ── -->
+        <rect x="0" y="0" width="450" height="120" fill="rgba(0,0,30,0.45)"/>
+        <!-- Headline -->
+        <text x="225" y="28" text-anchor="middle" font-family="Arial Black,sans-serif" font-size="10" fill="white" letter-spacing="2" stroke="#000" stroke-width="1" paint-order="stroke">YOU'RE INVITED TO AN</text>
+        <text x="225" y="58" text-anchor="middle" font-family="Arial Black,sans-serif" font-size="26" fill="#FFD60A" font-weight="900" letter-spacing="1" stroke="#1a0000" stroke-width="2.5" paint-order="stroke">EPIC GAME</text>
+        <text x="225" y="86" text-anchor="middle" font-family="Arial Black,sans-serif" font-size="20" fill="#fff" font-weight="900" letter-spacing="1" stroke="#000" stroke-width="2" paint-order="stroke">TRUCK PARTY!</text>
+        <!-- ── INFO BOX (bottom, wood-style) ── -->
+        <rect x="10" y="188" width="200" height="58" rx="6" fill="rgba(93,64,55,0.88)"/>
+        <rect x="12" y="190" width="196" height="54" rx="5" fill="none" stroke="#FFD60A" stroke-width="1" stroke-opacity="0.6"/>
+        <text x="20" y="205" font-family="Arial,sans-serif" font-size="8.5" fill="#FFD60A">📅 Date: _________________</text>
+        <text x="20" y="220" font-family="Arial,sans-serif" font-size="8.5" fill="#FFD60A">⏰ Time: _________________</text>
+        <text x="20" y="235" font-family="Arial,sans-serif" font-size="8.5" fill="#FFD60A">📍 Location: ______________</text>
+        <!-- Bullets -->
+        <circle cx="18" cy="256" r="3.5" fill="#FFD60A"/>
+        <text x="26" y="260" font-family="Arial Black,sans-serif" font-size="8" fill="#FFD60A" font-weight="800">Build, Battle &amp; Adventure</text>
+        <circle cx="18" cy="269" r="3.5" fill="#FFD60A"/>
+        <text x="26" y="273" font-family="Arial Black,sans-serif" font-size="8" fill="#FFD60A" font-weight="800">Massive Gaming Library</text>
+        <circle cx="18" cy="282" r="3.5" fill="#FFD60A"/>
+        <text x="26" y="286" font-family="Arial Black,sans-serif" font-size="8" fill="#FFD60A" font-weight="800">Multiplayer Fun for Everyone!</text>
+        <!-- Footer -->
+        <rect x="0" y="290" width="450" height="10" fill="rgba(0,0,0,0.5)"/>
+        <text x="320" y="263" text-anchor="middle" font-family="Arial Black,sans-serif" font-size="8" fill="#FFD60A" font-style="italic">Book the ultimate gaming adventure!</text>
+        <text x="320" y="278" text-anchor="middle" font-family="Arial Black,sans-serif" font-size="11" fill="#FFD60A" font-weight="900">📞 877-399-1997</text>
+      </svg>
+      <div class="iinfo">
+        <span class="itag" style="background:rgba(76,175,80,0.15);color:#4CAF50;">Minecraft Epic</span>
+        <div class="iname">Epic Game Truck Party! — Minecraft Edition</div>
+        <div class="idesc">Minecraft pixel blocks, game truck with screens, blocky kids with tools, and wood-panel info fields.</div>
+        <div class="ibtns">
+          <button class="btn-dl" onclick="dlInvite('svg10','epic-game-truck-party-invitation')">⬇ Download</button>
+          <button class="btn-prev" onclick="openModal('m10','svg10','Epic Game Truck Party — Minecraft Edition')">👁 Preview</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ DESIGN 11: IT'S GAME ON (PURPLE GALAXY) ══ -->
+    <div class="icard">
+      <svg id="svg11" viewBox="0 0 450 300" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <radialGradient id="d11bg" cx="50%" cy="30%" r="75%">
+            <stop offset="0%" stop-color="#3d0070"/>
+            <stop offset="55%" stop-color="#1a0035"/>
+            <stop offset="100%" stop-color="#0a0018"/>
+          </radialGradient>
+          <radialGradient id="d11burst" cx="50%" cy="25%" r="55%">
+            <stop offset="0%" stop-color="#FF9900" stop-opacity="0.5"/>
+            <stop offset="40%" stop-color="#FF4400" stop-opacity="0.2"/>
+            <stop offset="100%" stop-color="#FF4400" stop-opacity="0"/>
+          </radialGradient>
+        </defs>
+        <!-- BG -->
+        <rect width="450" height="300" fill="url(#d11bg)"/>
+        <rect width="450" height="300" fill="url(#d11burst)"/>
+        <!-- Star burst rays from top center (behind truck) -->
+        <line x1="225" y1="60"  x2="50"  y2="0"   stroke="#FFD60A" stroke-width="1.5" stroke-opacity="0.25"/>
+        <line x1="225" y1="60"  x2="120" y2="0"    stroke="#FFD60A" stroke-width="1"   stroke-opacity="0.2"/>
+        <line x1="225" y1="60"  x2="180" y2="0"    stroke="#FFD60A" stroke-width="1"   stroke-opacity="0.18"/>
+        <line x1="225" y1="60"  x2="270" y2="0"    stroke="#FFD60A" stroke-width="1"   stroke-opacity="0.18"/>
+        <line x1="225" y1="60"  x2="330" y2="0"    stroke="#FFD60A" stroke-width="1"   stroke-opacity="0.2"/>
+        <line x1="225" y1="60"  x2="400" y2="0"    stroke="#FFD60A" stroke-width="1.5" stroke-opacity="0.25"/>
+        <line x1="225" y1="60"  x2="0"   y2="80"   stroke="#FF9900" stroke-width="1"   stroke-opacity="0.18"/>
+        <line x1="225" y1="60"  x2="450" y2="80"   stroke="#FF9900" stroke-width="1"   stroke-opacity="0.18"/>
+        <line x1="225" y1="60"  x2="0"   y2="150"  stroke="#FF2D8B" stroke-width="0.8" stroke-opacity="0.12"/>
+        <line x1="225" y1="60"  x2="450" y2="150"  stroke="#FF2D8B" stroke-width="0.8" stroke-opacity="0.12"/>
+        <!-- Neon sparkles/confetti particles -->
+        <circle cx="30"  cy="25"  r="2.5" fill="#FFD60A" opacity="0.9"/>
+        <circle cx="70"  cy="10"  r="2"   fill="#FF2D8B" opacity="0.8"/>
+        <circle cx="120" cy="30"  r="3"   fill="#00C2FF" opacity="0.9"/>
+        <circle cx="155" cy="8"   r="2"   fill="#39FF14" opacity="0.8"/>
+        <circle cx="290" cy="12"  r="2.5" fill="#FFD60A" opacity="0.9"/>
+        <circle cx="340" cy="28"  r="2"   fill="#FF2D8B" opacity="0.8"/>
+        <circle cx="390" cy="10"  r="3"   fill="#00C2FF" opacity="0.9"/>
+        <circle cx="425" cy="32"  r="2"   fill="#39FF14" opacity="0.8"/>
+        <circle cx="20"  cy="120" r="2"   fill="#FF2D8B" opacity="0.6"/>
+        <circle cx="430" cy="110" r="2.5" fill="#FFD60A" opacity="0.6"/>
+        <circle cx="45"  cy="200" r="2"   fill="#00C2FF" opacity="0.5"/>
+        <circle cx="415" cy="210" r="2.5" fill="#39FF14" opacity="0.5"/>
+        <!-- Small diamond sparkles -->
+        <polygon points="65,55  68,50  71,55  68,60" fill="#FFD60A" opacity="0.8"/>
+        <polygon points="380,45 383,40 386,45 383,50" fill="#FF2D8B" opacity="0.8"/>
+        <polygon points="170,22 173,17 176,22 173,27" fill="#00C2FF" opacity="0.7"/>
+        <polygon points="275,18 278,13 281,18 278,23" fill="#39FF14" opacity="0.7"/>
+        <!-- ── PARTY GAME TRUCK (center-upper) ── -->
+        <rect x="80"  y="58"  width="295" height="78" rx="7" fill="#1A237E"/>
+        <rect x="82"  y="60"  width="291" height="74" rx="6" fill="none" stroke="#7C4DFF" stroke-width="1.5"/>
+        <!-- Screens on truck -->
+        <rect x="90"  y="66"  width="65" height="48" rx="3" fill="#4527A0"/>
+        <rect x="163" y="66"  width="65" height="48" rx="3" fill="#4527A0"/>
+        <rect x="236" y="66"  width="65" height="48" rx="3" fill="#4527A0"/>
+        <!-- Screen glow content -->
+        <rect x="92"  y="68"  width="61" height="44" rx="2" fill="#311B92" opacity="0.9"/>
+        <rect x="165" y="68"  width="61" height="44" rx="2" fill="#311B92" opacity="0.9"/>
+        <rect x="238" y="68"  width="61" height="44" rx="2" fill="#311B92" opacity="0.9"/>
+        <!-- GREAT DOMINATORS on truck -->
+        <text x="225" y="124" text-anchor="middle" font-family="Arial Black,sans-serif" font-size="7.5" fill="#FFD60A" letter-spacing="2" font-weight="900">GREAT DOMINATORS</text>
+        <!-- Cab (right) -->
+        <rect x="365" y="45" width="40" height="93" rx="6" fill="#283593"/>
+        <rect x="368" y="52" width="30" height="32" rx="4" fill="#7C4DFF" opacity="0.35"/>
+        <!-- Wheels -->
+        <circle cx="110" cy="150" r="13" fill="#111"/><circle cx="110" cy="150" r="7" fill="#333"/>
+        <circle cx="210" cy="150" r="13" fill="#111"/><circle cx="210" cy="150" r="7" fill="#333"/>
+        <circle cx="340" cy="150" r="13" fill="#111"/><circle cx="340" cy="150" r="7" fill="#333"/>
+        <circle cx="385" cy="148" r="11" fill="#111"/><circle cx="385" cy="148" r="6" fill="#333"/>
+        <!-- ── GAMING KIDS AT STATIONS (bottom-left) ── -->
+        <!-- Arcade cabinet -->
+        <rect x="28" y="185" width="38" height="58" rx="4" fill="#1a1a3a"/>
+        <rect x="31" y="188" width="32" height="28" rx="2" fill="#4527A0"/>
+        <rect x="32" y="189" width="30" height="26" rx="1" fill="#311B92"/>
+        <!-- "INSERT" marquee -->
+        <rect x="31" y="218" width="32" height="8" rx="1" fill="#FF0000" opacity="0.8"/>
+        <text x="47" y="225" text-anchor="middle" font-family="Arial,sans-serif" font-size="5" fill="white" letter-spacing="1">INSERT</text>
+        <!-- Joystick -->
+        <circle cx="47" cy="232" r="4" fill="#888"/>
+        <circle cx="47" cy="228" r="3" fill="#555"/>
+        <!-- Kid 1 (girl with headband at arcade) -->
+        <circle cx="80" cy="200" r="12" fill="#F5CBA7"/>
+        <rect x="70"  cy="197" width="20" height="6" rx="3" fill="#FF69B4"/><!-- headband -->
+        <rect x="70"  y="197" width="20" height="5" rx="2" fill="#FF69B4"/>
+        <rect x="68"  y="212" width="24" height="30" rx="4" fill="#9C27B0"/>
+        <rect x="56"  y="216" width="14" height="8"  rx="3" fill="#9C27B0"/>
+        <rect x="90"  y="216" width="14" height="8"  rx="3" fill="#9C27B0"/>
+        <!-- Controller in hands -->
+        <rect x="90" y="220" width="12" height="7" rx="2" fill="#444"/>
+        <!-- Kid 2 (boy) -->
+        <circle cx="130" cy="198" r="11" fill="#F5CBA7"/>
+        <rect x="120" y="209" width="22" height="28" rx="4" fill="#1565C0"/>
+        <rect x="108" y="213" width="13" height="8"  rx="3" fill="#1565C0"/>
+        <rect x="141" y="213" width="13" height="8"  rx="3" fill="#1565C0"/>
+        <!-- Controller -->
+        <rect x="142" y="218" width="12" height="7" rx="2" fill="#444"/>
+        <!-- Popcorn bucket -->
+        <rect x="160" y="228" width="16" height="18" rx="2" fill="#FF6600"/>
+        <rect x="158" y="226" width="20" height="6"  rx="2" fill="#FF9900"/>
+        <!-- ── TEXT (center/right) ── -->
+        <text x="305" y="178" text-anchor="middle" font-family="Arial Black,sans-serif" font-size="24" fill="#FFD60A" font-weight="900" letter-spacing="1" stroke="#3d0070" stroke-width="3" paint-order="stroke">IT'S GAME ON!</text>
+        <text x="305" y="196" text-anchor="middle" font-family="Arial,sans-serif" font-size="9.5" fill="rgba(255,255,255,0.85)">You're invited for nonstop fun!</text>
+        <!-- Info box -->
+        <rect x="190" y="208" width="252" height="62" rx="7" fill="rgba(75,0,130,0.55)" stroke="#7C4DFF" stroke-width="1"/>
+        <text x="200" y="224" font-family="Arial,sans-serif" font-size="8.5" fill="#FFD60A">📅 Date: ____________________</text>
+        <text x="200" y="239" font-family="Arial,sans-serif" font-size="8.5" fill="#FFD60A">⏰ Time: ____________________</text>
+        <text x="200" y="254" font-family="Arial,sans-serif" font-size="8.5" fill="#FFD60A">📍 Location: _________________</text>
+        <!-- Bullets bottom-left -->
+        <circle cx="18" cy="258" r="3.5" fill="#FFD60A"/>
+        <text x="26" y="262" font-family="Arial Black,sans-serif" font-size="8" fill="#FFD60A" font-weight="800">Retro &amp; Modern Arcade Games</text>
+        <circle cx="18" cy="272" r="3.5" fill="#00C2FF"/>
+        <text x="26" y="276" font-family="Arial Black,sans-serif" font-size="8" fill="#00C2FF" font-weight="800">Massive Multiplayer Screens</text>
+        <circle cx="18" cy="286" r="3.5" fill="#39FF14"/>
+        <text x="26" y="290" font-family="Arial Black,sans-serif" font-size="8" fill="#39FF14" font-weight="800">Prizes &amp; High Score Challenges!</text>
+        <!-- Bottom right branding -->
+        <text x="316" y="276" text-anchor="middle" font-family="Arial Black,sans-serif" font-size="10" fill="#FFD60A" font-weight="900">📞 877-399-1997</text>
+        <text x="316" y="291" text-anchor="middle" font-family="Arial,sans-serif" font-size="8.5" fill="rgba(255,255,255,0.55)">www.partygametruck.com</text>
+      </svg>
+      <div class="iinfo">
+        <span class="itag" style="background:rgba(124,77,255,0.15);color:#7C4DFF;">Game On!</span>
+        <div class="iname">It's Game On! — Purple Galaxy Edition</div>
+        <div class="idesc">Neon galaxy, starburst rays, game truck with screens, arcade kids, "It's Game On!" — nonstop fun vibes!</div>
+        <div class="ibtns">
+          <button class="btn-dl" onclick="dlInvite('svg11','its-game-on-invitation')">⬇ Download</button>
+          <button class="btn-prev" onclick="openModal('m11','svg11','It\'s Game On — Purple Galaxy Edition')">👁 Preview</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ DESIGN 12: GAME TRUCK MEETS LASER TAG ══ -->
+    <div class="icard">
+      <svg id="svg12" viewBox="0 0 450 300" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="d12bg" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#000a18"/>
+            <stop offset="100%" stop-color="#001a10"/>
+          </linearGradient>
+          <radialGradient id="d12glow" cx="70%" cy="50%" r="60%">
+            <stop offset="0%" stop-color="#003320" stop-opacity="0.7"/>
+            <stop offset="100%" stop-color="#003320" stop-opacity="0"/>
+          </radialGradient>
+        </defs>
+        <!-- BG -->
+        <rect width="450" height="300" fill="url(#d12bg)"/>
+        <rect width="450" height="300" fill="url(#d12glow)"/>
+        <!-- ── LASER BEAMS (diagonal) ── -->
+        <line x1="0"   y1="280" x2="450" y2="50"  stroke="#39FF14" stroke-width="1.5" stroke-opacity="0.35"/>
+        <line x1="0"   y1="260" x2="450" y2="30"  stroke="#39FF14" stroke-width="0.8" stroke-opacity="0.2"/>
+        <line x1="0"   y1="300" x2="350" y2="0"   stroke="#00C2FF" stroke-width="1.2" stroke-opacity="0.3"/>
+        <line x1="50"  y1="300" x2="450" y2="80"  stroke="#00C2FF" stroke-width="0.8" stroke-opacity="0.2"/>
+        <line x1="0"   y1="100" x2="450" y2="240" stroke="#FF2D8B" stroke-width="1"   stroke-opacity="0.25"/>
+        <line x1="0"   y1="80"  x2="400" y2="300" stroke="#FFD60A" stroke-width="0.8" stroke-opacity="0.2"/>
+        <line x1="100" y1="0"   x2="450" y2="200" stroke="#39FF14" stroke-width="0.6" stroke-opacity="0.18"/>
+        <line x1="200" y1="0"   x2="450" y2="140" stroke="#00C2FF" stroke-width="0.6" stroke-opacity="0.15"/>
+        <!-- Laser dots/hit effects -->
+        <circle cx="380" cy="65"  r="4" fill="#39FF14" opacity="0.8"/>
+        <circle cx="380" cy="65"  r="8" fill="#39FF14" opacity="0.2"/>
+        <circle cx="60"  cy="240" r="3" fill="#00C2FF" opacity="0.8"/>
+        <circle cx="60"  cy="240" r="6" fill="#00C2FF" opacity="0.2"/>
+        <circle cx="290" cy="180" r="3.5" fill="#FF2D8B" opacity="0.7"/>
+        <circle cx="290" cy="180" r="7" fill="#FF2D8B" opacity="0.15"/>
+        <circle cx="150" cy="130" r="3" fill="#FFD60A" opacity="0.7"/>
+        <circle cx="150" cy="130" r="6" fill="#FFD60A" opacity="0.15"/>
+        <!-- BG screens/monitors (game truck screens implied) -->
+        <rect x="360" y="90" width="75" height="55" rx="4" fill="#001a08" stroke="#39FF14" stroke-width="1" stroke-opacity="0.4"/>
+        <rect x="362" y="92" width="71" height="51" rx="3" fill="#002210" opacity="0.8"/>
+        <!-- Screen glow pattern -->
+        <circle cx="375" cy="108" r="5" fill="#39FF14" opacity="0.3"/>
+        <circle cx="395" cy="115" r="4" fill="#00C2FF" opacity="0.3"/>
+        <circle cx="415" cy="105" r="5" fill="#FFD60A" opacity="0.3"/>
+        <!-- ── LASER TAG KIDS (right side, holding guns) ── -->
+        <!-- Kid 1 (girl, left) -->
+        <circle cx="315" cy="185" r="16" fill="#F5CBA7"/>
+        <rect x="304" cy="200" width="22" height="10" rx="2" fill="#001a2e"/><!-- vest -->
+        <rect x="302" y="201" width="26" height="35" rx="5" fill="#004d2e"/><!-- body -->
+        <rect x="286" y="206" width="18" height="9"  rx="3" fill="#004d2e"/>
+        <rect x="328" y="206" width="18" height="9"  rx="3" fill="#004d2e"/>
+        <!-- Laser gun (left girl) -->
+        <rect x="340" y="204" width="28" height="10" rx="3" fill="#222"/>
+        <rect x="362" y="200" width="8"  height="6"  rx="1" fill="#444"/>
+        <circle cx="344" cy="208" r="2.5" fill="#FF0000" opacity="0.9"/>
+        <!-- Hair -->
+        <ellipse cx="315" cy="178" rx="16" ry="8" fill="#C0392B"/>
+        <!-- Kid 2 (boy, right) -->
+        <circle cx="380" cy="182" r="15" fill="#F5CBA7"/>
+        <rect x="369" y="197" width="22" height="35" rx="5" fill="#003366"/>
+        <rect x="355" y="202" width="16" height="9"  rx="3" fill="#003366"/>
+        <rect x="391" y="202" width="16" height="9"  rx="3" fill="#003366"/>
+        <!-- Laser gun (boy) -->
+        <rect x="395" y="200" width="30" height="11" rx="3" fill="#1a1a1a"/>
+        <rect x="418" y="196" width="9"  height="7"  rx="1" fill="#333"/>
+        <circle cx="400" cy="205" r="2.5" fill="#39FF14" opacity="0.9"/>
+        <!-- Laser vest glow -->
+        <rect x="372" y="205" width="16" height="20" rx="2" fill="rgba(57,255,20,0.1)" stroke="#39FF14" stroke-width="0.75"/>
+        <!-- Glow under kids -->
+        <ellipse cx="355" cy="250" rx="70" ry="14" fill="#004d2e" opacity="0.4"/>
+        <!-- ── TEXT (left side) ── -->
+        <text x="14" y="32" font-family="Arial Black,sans-serif" font-size="16" fill="#FFD60A" font-weight="900" letter-spacing="1" stroke="#000" stroke-width="2" paint-order="stroke">GAME TRUCK MEETS</text>
+        <text x="14" y="62" font-family="Arial Black,sans-serif" font-size="22" fill="#39FF14" font-weight="900" letter-spacing="1" stroke="#001a10" stroke-width="2.5" paint-order="stroke">LASER TAG! 🎯</text>
+        <text x="14" y="82" font-family="Arial Black,sans-serif" font-size="11" fill="white" letter-spacing="2">You're Invited!</text>
+        <!-- Date/Time/Location box -->
+        <rect x="10" y="92" width="220" height="66" rx="8" fill="rgba(255,255,255,0.08)" stroke="rgba(57,255,20,0.3)" stroke-width="1"/>
+        <text x="20" y="110" font-family="Arial,sans-serif" font-size="8.5" fill="rgba(255,255,255,0.8)">✉  Date: _____________________</text>
+        <text x="20" y="127" font-family="Arial,sans-serif" font-size="8.5" fill="rgba(255,255,255,0.8)">✔  Time: _____________________</text>
+        <text x="20" y="144" font-family="Arial,sans-serif" font-size="8.5" fill="rgba(255,255,255,0.8)">📍 Location: __________________</text>
+        <!-- Bullet features -->
+        <circle cx="17" cy="173" r="3.5" fill="#39FF14"/>
+        <text x="25" y="177" font-family="Arial Black,sans-serif" font-size="8.5" fill="#fff" font-weight="800">Laser Tag Battles Onboard</text>
+        <circle cx="17" cy="190" r="3.5" fill="#00C2FF"/>
+        <text x="25" y="194" font-family="Arial Black,sans-serif" font-size="8.5" fill="#fff" font-weight="800">Multiplayer Video Games</text>
+        <circle cx="17" cy="207" r="3.5" fill="#FFD60A"/>
+        <text x="25" y="211" font-family="Arial Black,sans-serif" font-size="8.5" fill="#fff" font-weight="800">Ultimate Party Experience!</text>
+        <!-- Bottom branding bar -->
+        <rect x="0" y="258" width="450" height="42" fill="rgba(0,0,0,0.55)"/>
+        <line x1="0" y1="259" x2="450" y2="259" stroke="#39FF14" stroke-width="1" stroke-opacity="0.5"/>
+        <text x="130" y="276" text-anchor="middle" font-family="Arial Black,sans-serif" font-size="13" fill="#FFD60A" font-weight="900">📞 877-399-1997</text>
+        <text x="130" y="292" text-anchor="middle" font-family="Arial,sans-serif" font-size="9" fill="rgba(255,255,255,0.55)">www.partygametruck.com  •  Maryland &amp; DMV</text>
+        <text x="340" y="280" text-anchor="middle" font-family="Arial Black,sans-serif" font-size="8.5" fill="#39FF14" letter-spacing="1">🚚 THE BEST ARCADE ON WHEELS</text>
+      </svg>
+      <div class="iinfo">
+        <span class="itag" style="background:rgba(57,255,20,0.1);color:#39FF14;">Laser Tag</span>
+        <div class="iname">Game Truck Meets Laser Tag! — Neon Edition</div>
+        <div class="idesc">Diagonal laser beams, glowing hit effects, kids with laser guns, "Game Truck Meets Laser Tag!" in neon green!</div>
+        <div class="ibtns">
+          <button class="btn-dl" onclick="dlInvite('svg12','laser-tag-party-invitation')">⬇ Download</button>
+          <button class="btn-prev" onclick="openModal('m12','svg12','Game Truck Meets Laser Tag — Neon Edition')">👁 Preview</button>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /grid -->
+</div>
+
+<!-- ── MODALS (6) ── -->
+<div class="mo" id="m1"><div class="mbox"><div class="mhead"><span class="mtitle" id="mt1"></span><button class="mclose" onclick="closeModal('m1')">✕</button></div><div class="mbody"><div class="msvg" id="ms1"></div><button class="btn-dl-lg" onclick="dlInvite('svg1','sonic-speed-invitation')">⬇ Download Invitation</button></div></div></div>
+<div class="mo" id="m2"><div class="mbox"><div class="mhead"><span class="mtitle" id="mt2"></span><button class="mclose" onclick="closeModal('m2')">✕</button></div><div class="mbody"><div class="msvg" id="ms2"></div><button class="btn-dl-lg" onclick="dlInvite('svg2','mario-party-invitation')">⬇ Download Invitation</button></div></div></div>
+<div class="mo" id="m3"><div class="mbox"><div class="mhead"><span class="mtitle" id="mt3"></span><button class="mclose" onclick="closeModal('m3')">✕</button></div><div class="mbody"><div class="msvg" id="ms3"></div><button class="btn-dl-lg" onclick="dlInvite('svg3','minecraft-creeper-invitation')">⬇ Download Invitation</button></div></div></div>
+<div class="mo" id="m4"><div class="mbox"><div class="mhead"><span class="mtitle" id="mt4"></span><button class="mclose" onclick="closeModal('m4')">✕</button></div><div class="mbody"><div class="msvg" id="ms4"></div><button class="btn-dl-lg" onclick="dlInvite('svg4','pokemon-i-choose-you-invitation')">⬇ Download Invitation</button></div></div></div>
+<div class="mo" id="m5"><div class="mbox"><div class="mhead"><span class="mtitle" id="mt5"></span><button class="mclose" onclick="closeModal('m5')">✕</button></div><div class="mbody"><div class="msvg" id="ms5"></div><button class="btn-dl-lg" onclick="dlInvite('svg5','space-mission-invitation')">⬇ Download Invitation</button></div></div></div>
+<div class="mo" id="m6"><div class="mbox"><div class="mhead"><span class="mtitle" id="mt6"></span><button class="mclose" onclick="closeModal('m6')">✕</button></div><div class="mbody"><div class="msvg" id="ms6"></div><button class="btn-dl-lg" onclick="dlInvite('svg6','victory-royale-invitation')">⬇ Download Invitation</button></div></div></div>
+<div class="mo" id="m7"><div class="mbox"><div class="mhead"><span class="mtitle" id="mt7"></span><button class="mclose" onclick="closeModal('m7')">✕</button></div><div class="mbody"><div class="msvg" id="ms7"></div><button class="btn-dl-lg" onclick="dlInvite('svg7','ultimate-game-truck-party-invitation')">⬇ Download Invitation</button></div></div></div>
+<div class="mo" id="m8"><div class="mbox"><div class="mhead"><span class="mtitle" id="mt8"></span><button class="mclose" onclick="closeModal('m8')">✕</button></div><div class="mbody"><div class="msvg" id="ms8"></div><button class="btn-dl-lg" onclick="dlInvite('svg8','racing-party-invitation')">⬇ Download Invitation</button></div></div></div>
+<div class="mo" id="m9"><div class="mbox"><div class="mhead"><span class="mtitle" id="mt9"></span><button class="mclose" onclick="closeModal('m9')">✕</button></div><div class="mbody"><div class="msvg" id="ms9"></div><button class="btn-dl-lg" onclick="dlInvite('svg9','vip-list-invitation')">⬇ Download Invitation</button></div></div></div>
+<div class="mo" id="m10"><div class="mbox"><div class="mhead"><span class="mtitle" id="mt10"></span><button class="mclose" onclick="closeModal('m10')">✕</button></div><div class="mbody"><div class="msvg" id="ms10"></div><button class="btn-dl-lg" onclick="dlInvite('svg10','epic-game-truck-party-invitation')">⬇ Download Invitation</button></div></div></div>
+<div class="mo" id="m11"><div class="mbox"><div class="mhead"><span class="mtitle" id="mt11"></span><button class="mclose" onclick="closeModal('m11')">✕</button></div><div class="mbody"><div class="msvg" id="ms11"></div><button class="btn-dl-lg" onclick="dlInvite('svg11','its-game-on-invitation')">⬇ Download Invitation</button></div></div></div>
+<div class="mo" id="m12"><div class="mbox"><div class="mhead"><span class="mtitle" id="mt12"></span><button class="mclose" onclick="closeModal('m12')">✕</button></div><div class="mbody"><div class="msvg" id="ms12"></div><button class="btn-dl-lg" onclick="dlInvite('svg12','laser-tag-party-invitation')">⬇ Download Invitation</button></div></div></div>
+
+<div class="footer-note">
+  All invitations are free — included with every Party Game Truck booking.<br/>
+  Need a custom design? <a href="index.html#contact">Contact us</a> and we'll hook you up!<br/>
+  <a href="index.html">← Back to Party Game Truck Home</a>
+</div>
+
+<script>
+  const NS = 'http://www.w3.org/2000/svg';
+
+  // ── LOGO POSITIONS per SVG ──
+  const LOGO_POS = {
+    svg1: { cx:416, cy:30, x:390, y:4 },
+    svg2: { cx:416, cy:30, x:390, y:4 },
+    svg3: { cx:416, cy:30, x:390, y:4 },
+    svg4: { cx:416, cy:30, x:390, y:4 },
+    svg5: { cx:34,  cy:30, x:8,   y:4 },  // top-left (planet on right)
+    svg6: { cx:416, cy:30, x:390, y:4 },
+    svg7:  { cx:34,  cy:30, x:8,   y:4  },  // top-left (text on right)
+    svg8:  { cx:416, cy:38, x:390, y:12 },  // below checkered strip
+    svg9:  { cx:416, cy:30, x:390, y:4  },
+    svg10: { cx:34,  cy:30, x:8,   y:4  },  // top-left (sky area)
+    svg11: { cx:416, cy:30, x:390, y:4  },
+    svg12: { cx:416, cy:30, x:390, y:4  }
+  };
+
+  function addLogoToSvg(svg, svgId, logoDataUrl) {
+    const pos = LOGO_POS[svgId] || LOGO_POS.svg1;
+    const clipId = 'lclip-' + svgId;
+
+    // Avoid duplicates
+    if (svg.querySelector('[data-pglogo]')) return;
+
+    // Ensure defs exists
+    let defs = svg.querySelector('defs');
+    if (!defs) {
+      defs = document.createElementNS(NS, 'defs');
+      svg.insertBefore(defs, svg.firstChild);
+    }
+
+    // ClipPath (circle)
+    const cp = document.createElementNS(NS, 'clipPath');
+    cp.setAttribute('id', clipId);
+    const cpCirc = document.createElementNS(NS, 'circle');
+    cpCirc.setAttribute('cx', String(pos.cx));
+    cpCirc.setAttribute('cy', String(pos.cy));
+    cpCirc.setAttribute('r', '24');
+    cp.appendChild(cpCirc);
+    defs.appendChild(cp);
+
+    // White background circle
+    const bg = document.createElementNS(NS, 'circle');
+    bg.setAttribute('cx', String(pos.cx));
+    bg.setAttribute('cy', String(pos.cy));
+    bg.setAttribute('r', '26');
+    bg.setAttribute('fill', 'white');
+    bg.setAttribute('data-pglogo', '1');
+    svg.appendChild(bg);
+
+    // Magenta border ring (matches logo)
+    const ring = document.createElementNS(NS, 'circle');
+    ring.setAttribute('cx', String(pos.cx));
+    ring.setAttribute('cy', String(pos.cy));
+    ring.setAttribute('r', '26');
+    ring.setAttribute('fill', 'none');
+    ring.setAttribute('stroke', '#BB004B');
+    ring.setAttribute('stroke-width', '2');
+    svg.appendChild(ring);
+
+    // Logo image (clipped to circle)
+    const img = document.createElementNS(NS, 'image');
+    img.setAttribute('href', logoDataUrl);
+    img.setAttribute('x', String(pos.x));
+    img.setAttribute('y', String(pos.y));
+    img.setAttribute('width', '52');
+    img.setAttribute('height', '52');
+    img.setAttribute('clip-path', 'url(#' + clipId + ')');
+    img.setAttribute('preserveAspectRatio', 'xMidYMid meet');
+    svg.appendChild(img);
+  }
+
+  // ── PRELOAD LOGO AS BASE64 ──
+  window.logoDataUrl = 'logo.jpg'; // fallback relative path
+  fetch('logo.jpg')
+    .then(function(r){ return r.blob(); })
+    .then(function(blob){
+      return new Promise(function(res){
+        const fr = new FileReader();
+        fr.onload = function(e){ res(e.target.result); };
+        fr.readAsDataURL(blob);
+      });
+    })
+    .then(function(dataUrl){
+      window.logoDataUrl = dataUrl;
+      // Inject logo into all 12 preview SVGs
+      ['svg1','svg2','svg3','svg4','svg5','svg6','svg7','svg8','svg9','svg10','svg11','svg12'].forEach(function(id){
+        const svg = document.getElementById(id);
+        if (svg) addLogoToSvg(svg, id, dataUrl);
+      });
+    })
+    .catch(function(){ /* server not running — show without logo */ });
+
+  // ── MODAL ──
+  function openModal(modalId, svgId, title) {
+    const modal = document.getElementById(modalId);
+    const num = modalId.replace('m','');
+    document.getElementById('mt' + num).textContent = title;
+    const target = document.getElementById('ms' + num);
+    // Clear and re-clone so logo is included
+    target.innerHTML = '';
+    const srcSvg = document.getElementById(svgId).cloneNode(true);
+    srcSvg.removeAttribute('id');
+    target.appendChild(srcSvg);
+    modal.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeModal(id) {
+    document.getElementById(id).classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  document.querySelectorAll('.mo').forEach(function(o) {
+    o.addEventListener('click', function(e) {
+      if (e.target === o) { o.classList.remove('open'); document.body.style.overflow = ''; }
+    });
+  });
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      document.querySelectorAll('.mo.open').forEach(function(m){ m.classList.remove('open'); });
+      document.body.style.overflow = '';
+    }
+  });
+
+  // ── DOWNLOAD ──
+  function dlInvite(svgId, filename) {
+    const el = document.getElementById(svgId);
+    const svg = el && el.tagName === 'svg' ? el : el && el.querySelector('svg');
+    if (!svg) { alert('Please refresh and try again.'); return; }
+    // Clone so we don't mutate the page SVG
+    const clone = svg.cloneNode(true);
+    // Ensure logo is embedded (in case fetch hadn't finished)
+    if (!clone.querySelector('[data-pglogo]')) {
+      addLogoToSvg(clone, svgId, window.logoDataUrl);
+    }
+    let str = new XMLSerializer().serializeToString(clone);
+    if (!str.includes('xmlns=')) str = str.replace('<svg','<svg xmlns="http://www.w3.org/2000/svg"');
+    const blob = new Blob([str], { type:'image/svg+xml;charset=utf-8' });
+    const url  = URL.createObjectURL(blob);
+    const a    = document.createElement('a');
+    a.href = url; a.download = filename + '.svg';
+    document.body.appendChild(a); a.click();
+    document.body.removeChild(a); URL.revokeObjectURL(url);
+  }
+</script>
+</body>
+</html>

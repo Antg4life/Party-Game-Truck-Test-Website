@@ -1,0 +1,1407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>School Event Calculator | Party Game Truck Maryland DC VA</title>
+  <meta name="description" content="Free school event calculator — instant pricing for mobile game theater rentals in Maryland, DC, and Virginia. No guesswork, no signup."/>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+  <style>
+    :root{
+      --blue:#007BFF; --deep:#003F88; --yellow:#FFD60A;
+      --neon:#39FF14; --pink:#FF2D8B; --sky:#00C2FF;
+      --dark:#08080F; --card:#0f0f1c; --border:rgba(0,123,255,0.18);
+      --white:#ffffff;
+    }
+    *{ box-sizing:border-box; margin:0; padding:0; }
+    html{ scroll-behavior:smooth; }
+    body{ background:var(--dark); font-family:'Montserrat',sans-serif; color:#fff; overflow-x:hidden; }
+
+    /* ── NAV ── */
+    .top-nav{
+      background:rgba(8,8,15,0.97); border-bottom:1px solid var(--border);
+      padding:0 2rem; height:68px; display:flex; align-items:center;
+      justify-content:space-between; position:sticky; top:0; z-index:200;
+    }
+    .nav-logo{ font-family:'Anton',sans-serif; font-size:1.35rem; color:#fff; text-decoration:none; letter-spacing:0.04em; display:flex; align-items:center; gap:0.5rem; }
+    .nav-logo img{ height:36px; border-radius:50%; }
+    .nav-logo span{ color:var(--yellow); }
+    .nav-links-row{ display:flex; align-items:center; gap:1.4rem; }
+    .nav-links-row a{ color:rgba(255,255,255,0.72); font-size:0.8rem; font-weight:600; text-decoration:none; letter-spacing:0.04em; transition:color 0.18s; }
+    .nav-links-row a:hover{ color:#fff; }
+    .nav-cta{ background:var(--yellow); color:#000; font-weight:800; font-size:0.78rem; letter-spacing:0.06em; text-transform:uppercase; padding:0.48rem 1.1rem; border-radius:8px; text-decoration:none; transition:background 0.18s,transform 0.14s; white-space:nowrap; }
+    .nav-cta:hover{ background:#ffe033; transform:scale(1.04); }
+    @media(max-width:680px){
+      .nav-links-row{ display:none; }
+    }
+
+    /* ── HERO BANNER ── */
+    .hero-banner{
+      position:relative; overflow:hidden; padding:4.5rem 2rem 3.5rem;
+      text-align:center;
+      background:
+        radial-gradient(ellipse 80% 60% at 50% 40%, rgba(0,123,255,0.28) 0%, transparent 65%),
+        radial-gradient(ellipse 50% 40% at 85% 80%, rgba(57,255,20,0.10) 0%, transparent 55%),
+        linear-gradient(180deg,#000820 0%,#000510 100%);
+    }
+    .hero-banner::before{
+      content:''; position:absolute; inset:0; pointer-events:none;
+      background-image:
+        linear-gradient(rgba(0,123,255,0.06) 1px, transparent 1px),
+        linear-gradient(90deg,rgba(0,123,255,0.06) 1px, transparent 1px);
+      background-size:50px 50px;
+      animation:gridScroll 18s linear infinite;
+    }
+    @keyframes gridScroll{ 0%{background-position:0 0} 100%{background-position:50px 50px} }
+    .hero-badge{
+      display:inline-flex; align-items:center; gap:0.5rem;
+      background:rgba(57,255,20,0.1); border:1px solid rgba(57,255,20,0.3);
+      border-radius:100px; color:var(--neon); font-size:0.72rem; font-weight:700;
+      letter-spacing:0.12em; text-transform:uppercase; padding:0.38rem 1rem; margin-bottom:1.2rem;
+    }
+    .hero-badge .dot{ width:7px; height:7px; background:var(--neon); border-radius:50%; box-shadow:0 0 8px var(--neon); animation:pulse 1.8s infinite; }
+    @keyframes pulse{ 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.4;transform:scale(0.7)} }
+    .hero-banner h1{
+      font-family:'Anton',sans-serif;
+      font-size:clamp(2.2rem,6vw,4.8rem);
+      line-height:0.94; text-transform:uppercase; letter-spacing:-0.01em;
+      margin-bottom:1rem; position:relative;
+    }
+    .hero-banner p{
+      font-size:clamp(0.92rem,1.8vw,1.1rem); line-height:1.7;
+      color:rgba(255,255,255,0.65); max-width:580px; margin:0 auto 1.5rem; position:relative;
+    }
+    .min-badge{
+      display:inline-flex; align-items:center; gap:0.4rem;
+      background:rgba(255,214,10,0.1); border:1px solid rgba(255,214,10,0.3);
+      border-radius:8px; color:var(--yellow); font-size:0.78rem; font-weight:700; padding:0.35rem 0.9rem;
+      position:relative;
+    }
+
+    /* ── STEP PROGRESS ── */
+    .step-bar{
+      display:flex; align-items:center; justify-content:center; gap:0; padding:2rem 1rem 0; max-width:560px; margin:0 auto;
+    }
+    .step-node{
+      display:flex; flex-direction:column; align-items:center; gap:0.3rem; flex:1; position:relative;
+    }
+    .step-node::after{
+      content:''; position:absolute; top:18px; left:calc(50% + 22px); right:calc(-50% + 22px);
+      height:2px; background:rgba(255,255,255,0.1); z-index:0;
+    }
+    .step-node:last-child::after{ display:none; }
+    .step-node.active .step-circle{ background:var(--blue); color:#fff; box-shadow:0 0 20px rgba(0,123,255,0.6); }
+    .step-node.done .step-circle{ background:var(--neon); color:#000; }
+    .step-node.done::after{ background:var(--neon); }
+    .step-node.active::after{ background:rgba(0,123,255,0.35); }
+    .step-circle{
+      width:38px; height:38px; border-radius:50%; background:rgba(255,255,255,0.08);
+      border:2px solid rgba(255,255,255,0.15); display:flex; align-items:center; justify-content:center;
+      font-family:'Anton',sans-serif; font-size:1rem; color:rgba(255,255,255,0.4);
+      transition:background 0.3s,color 0.3s,box-shadow 0.3s; position:relative; z-index:1;
+    }
+    .step-label{ font-size:0.65rem; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; color:rgba(255,255,255,0.4); text-align:center; white-space:nowrap; }
+    .step-node.active .step-label{ color:var(--blue); }
+    .step-node.done .step-label{ color:var(--neon); }
+
+    /* ── CALCULATOR LAYOUT ── */
+    .calc-wrap{
+      max-width:960px; margin:0 auto; padding:2.5rem 1.5rem 6rem;
+      display:grid; grid-template-columns:1fr 340px; gap:2rem; align-items:start;
+    }
+    @media(max-width:820px){
+      .calc-wrap{ grid-template-columns:1fr; }
+    }
+
+    /* ── STEP PANELS ── */
+    .step-panel{ display:none; }
+    .step-panel.active{ display:block; animation:slideIn 0.3s ease; }
+    @keyframes slideIn{ from{opacity:0;transform:translateY(14px)} to{opacity:1;transform:translateY(0)} }
+    .panel-card{
+      background:rgba(15,15,28,0.9); border:1px solid var(--border);
+      border-radius:18px; padding:2rem;
+      box-shadow:0 8px 40px rgba(0,0,0,0.5), 0 0 0 1px rgba(0,123,255,0.05);
+    }
+    .panel-title{
+      font-family:'Anton',sans-serif; font-size:1.55rem; letter-spacing:0.03em;
+      text-transform:uppercase; margin-bottom:0.4rem;
+    }
+    .panel-sub{ font-size:0.82rem; color:rgba(255,255,255,0.55); margin-bottom:1.8rem; line-height:1.6; }
+
+    /* ── FORM ELEMENTS ── */
+    .field{ margin-bottom:1.4rem; }
+    .field label{ display:block; font-size:0.75rem; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:rgba(255,255,255,0.6); margin-bottom:0.5rem; }
+    .field label span.req{ color:var(--pink); }
+    .field select, .field input[type=text], .field input[type=number], .field input[type=date], .field input[type=email], .field input[type=tel], .field textarea{
+      width:100%; background:rgba(255,255,255,0.05); border:1.5px solid rgba(0,123,255,0.25);
+      border-radius:10px; color:#fff; font-family:'Montserrat',sans-serif; font-size:0.9rem; font-weight:500;
+      padding:0.75rem 1rem; outline:none; transition:border-color 0.2s,box-shadow 0.2s; appearance:none; -webkit-appearance:none;
+    }
+    .field select{ background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23007BFF' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat:no-repeat; background-position:right 1rem center; padding-right:2.5rem; cursor:pointer; }
+    .field select option{ background:#0f0f1c; }
+    .field select:focus, .field input:focus, .field textarea:focus{ border-color:var(--blue); box-shadow:0 0 0 3px rgba(0,123,255,0.15); }
+    .field textarea{ resize:vertical; min-height:90px; }
+
+    /* ── EVENT TYPE CARDS ── */
+    .event-type-grid{ display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
+    @media(max-width:520px){ .event-type-grid{ grid-template-columns:1fr; } }
+    .event-type-card{
+      border:2px solid rgba(255,255,255,0.1); border-radius:14px; padding:1.2rem 1rem;
+      cursor:pointer; transition:border-color 0.2s,background 0.2s,transform 0.18s;
+      background:rgba(255,255,255,0.03);
+    }
+    .event-type-card:hover{ border-color:rgba(0,123,255,0.5); background:rgba(0,123,255,0.06); transform:translateY(-2px); }
+    .event-type-card.selected{ border-color:var(--blue); background:rgba(0,123,255,0.12); box-shadow:0 0 20px rgba(0,123,255,0.2); }
+    .event-type-card .etc-icon{ font-size:1.8rem; margin-bottom:0.5rem; }
+    .event-type-card .etc-title{ font-family:'Anton',sans-serif; font-size:1rem; letter-spacing:0.04em; text-transform:uppercase; margin-bottom:0.35rem; }
+    .event-type-card .etc-desc{ font-size:0.72rem; color:rgba(255,255,255,0.5); line-height:1.55; }
+    .event-type-card.selected .etc-title{ color:var(--sky); }
+
+    /* ── TRUCK SELECTOR ── */
+    .truck-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:1rem; }
+    @media(max-width:480px){ .truck-grid{ grid-template-columns:1fr; } }
+    .truck-card{
+      border:2px solid rgba(255,255,255,0.1); border-radius:14px; padding:1.2rem 0.8rem;
+      cursor:pointer; transition:border-color 0.2s,background 0.2s,transform 0.18s;
+      background:rgba(255,255,255,0.03); text-align:center; position:relative;
+    }
+    .truck-card:hover{ border-color:rgba(255,214,10,0.4); transform:translateY(-2px); }
+    .truck-card.selected{ border-color:var(--yellow); background:rgba(255,214,10,0.08); box-shadow:0 0 20px rgba(255,214,10,0.2); }
+    .truck-card.recommended::before{
+      content:'RECOMMENDED'; position:absolute; top:-1px; left:50%; transform:translateX(-50%);
+      background:var(--neon); color:#000; font-size:0.56rem; font-weight:800; letter-spacing:0.1em;
+      padding:0.18rem 0.6rem; border-radius:0 0 6px 6px;
+    }
+    .truck-card .tc-emoji{ font-size:1.6rem; margin-bottom:0.4rem; }
+    .truck-card .tc-count{ font-family:'Anton',sans-serif; font-size:1.2rem; letter-spacing:0.04em; }
+    .truck-card .tc-label{ font-size:0.68rem; color:rgba(255,255,255,0.45); margin-bottom:0.6rem; }
+    .truck-card .tc-price{ font-size:0.82rem; font-weight:700; color:var(--yellow); }
+    .truck-card.selected .tc-count{ color:var(--yellow); }
+
+    /* ── HOURS SELECTOR ── */
+    .hours-row{ display:flex; align-items:center; gap:1rem; }
+    .hrs-btn{
+      width:42px; height:42px; border-radius:10px; border:2px solid rgba(255,255,255,0.15);
+      background:rgba(255,255,255,0.04); color:#fff; font-size:1.3rem; font-weight:700;
+      cursor:pointer; display:flex; align-items:center; justify-content:center;
+      transition:border-color 0.18s,background 0.18s;
+    }
+    .hrs-btn:hover{ border-color:var(--blue); background:rgba(0,123,255,0.1); }
+    .hrs-display{
+      flex:1; text-align:center;
+      font-family:'Anton',sans-serif; font-size:2.2rem; color:var(--yellow); letter-spacing:0.03em;
+    }
+    .hrs-display span{ font-size:0.9rem; color:rgba(255,255,255,0.4); font-family:'Montserrat',sans-serif; font-weight:600; display:block; margin-top:-4px; }
+
+    /* ── ROTATION ANALYSIS BOX ── */
+    .rotation-box{
+      background:rgba(0,194,255,0.07); border:1px solid rgba(0,194,255,0.25);
+      border-radius:12px; padding:1.2rem 1.4rem; margin-top:1.2rem;
+      display:none;
+    }
+    .rotation-box.show{ display:block; }
+    .rotation-box h4{ font-family:'Anton',sans-serif; font-size:0.95rem; letter-spacing:0.06em; color:var(--sky); margin-bottom:0.8rem; }
+    .rot-row{ display:flex; align-items:center; justify-content:space-between; font-size:0.8rem; color:rgba(255,255,255,0.65); padding:0.3rem 0; border-bottom:1px solid rgba(255,255,255,0.05); }
+    .rot-row:last-child{ border-bottom:none; }
+    .rot-row strong{ color:#fff; font-weight:700; }
+
+    /* ── NO TRAVEL FEE BANNER ── */
+    .no-travel{
+      display:flex; align-items:center; gap:0.75rem;
+      background:rgba(57,255,20,0.07); border:1px solid rgba(57,255,20,0.25);
+      border-radius:10px; padding:0.85rem 1rem; margin-bottom:1.4rem;
+      font-size:0.8rem; color:rgba(255,255,255,0.75);
+    }
+    .no-travel .nt-icon{ font-size:1.3rem; }
+    .no-travel strong{ color:var(--neon); }
+
+    /* ── TRAVEL INFO ACCORDION ── */
+    .travel-toggle{
+      font-size:0.75rem; color:var(--blue); cursor:pointer; text-decoration:underline;
+      background:none; border:none; padding:0; font-family:'Montserrat',sans-serif; font-weight:600;
+      margin-top:0.3rem; display:inline-block;
+    }
+    .travel-detail{
+      display:none; margin-top:0.8rem;
+      background:rgba(0,0,0,0.3); border:1px solid rgba(255,255,255,0.08);
+      border-radius:10px; padding:1rem; font-size:0.78rem; line-height:1.6;
+      color:rgba(255,255,255,0.65);
+    }
+    .travel-detail.open{ display:block; }
+    .travel-tier{ display:flex; align-items:center; justify-content:space-between; padding:0.3rem 0; border-bottom:1px solid rgba(255,255,255,0.05); }
+    .travel-tier:last-child{ border-bottom:none; }
+    .travel-tier .miles{ color:rgba(255,255,255,0.45); }
+    .travel-tier .fee{ font-weight:700; color:var(--yellow); }
+    .travel-tier .fee.free{ color:var(--neon); }
+    .travel-tier .fee.doubles{ color:var(--pink); }
+
+    /* ── NAV BUTTONS ── */
+    .step-nav{ display:flex; align-items:center; justify-content:space-between; margin-top:1.8rem; gap:1rem; }
+    .btn-back{
+      background:transparent; border:2px solid rgba(255,255,255,0.15); color:rgba(255,255,255,0.65);
+      font-family:'Montserrat',sans-serif; font-size:0.82rem; font-weight:700;
+      padding:0.75rem 1.6rem; border-radius:10px; cursor:pointer;
+      transition:border-color 0.18s,color 0.18s;
+    }
+    .btn-back:hover{ border-color:rgba(255,255,255,0.4); color:#fff; }
+    .btn-next{
+      flex:1; background:var(--blue); color:#fff;
+      font-family:'Anton',sans-serif; font-size:1.1rem; letter-spacing:0.06em; text-transform:uppercase;
+      border:none; padding:0.85rem 2rem; border-radius:10px; cursor:pointer;
+      transition:background 0.18s,transform 0.15s,box-shadow 0.18s;
+      box-shadow:0 4px 20px rgba(0,123,255,0.4);
+    }
+    .btn-next:hover{ background:#1a8eff; transform:translateY(-2px); box-shadow:0 6px 28px rgba(0,123,255,0.55); }
+    .btn-next:active{ transform:translateY(0); }
+    .btn-submit{
+      flex:1; background:linear-gradient(135deg,var(--yellow),#ffb300);
+      color:#000; font-family:'Anton',sans-serif; font-size:1.15rem; letter-spacing:0.06em; text-transform:uppercase;
+      border:none; padding:0.9rem 2rem; border-radius:10px; cursor:pointer;
+      transition:transform 0.15s,box-shadow 0.18s;
+      box-shadow:0 4px 20px rgba(255,214,10,0.4);
+    }
+    .btn-submit:hover{ transform:translateY(-2px); box-shadow:0 6px 28px rgba(255,214,10,0.6); }
+
+    /* ── PRICE SIDEBAR ── */
+    .price-sidebar{ position:sticky; top:90px; }
+    .price-card{
+      background:rgba(15,15,28,0.95); border:1px solid rgba(255,214,10,0.2);
+      border-radius:18px; padding:1.6rem;
+      box-shadow:0 8px 40px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,214,10,0.05);
+    }
+    .price-card h3{
+      font-family:'Anton',sans-serif; font-size:1rem; letter-spacing:0.08em; text-transform:uppercase;
+      color:rgba(255,255,255,0.5); margin-bottom:1.2rem;
+    }
+    .price-line{ display:flex; align-items:flex-start; justify-content:space-between; font-size:0.8rem; padding:0.55rem 0; border-bottom:1px solid rgba(255,255,255,0.06); gap:0.5rem; }
+    .price-line:last-of-type{ border-bottom:none; }
+    .price-line .pl-label{ color:rgba(255,255,255,0.55); flex:1; line-height:1.4; }
+    .price-line .pl-val{ font-weight:700; color:#fff; white-space:nowrap; }
+    .price-line .pl-val.free{ color:var(--neon); }
+    .price-total-box{
+      margin-top:1rem; padding:1rem; background:rgba(255,214,10,0.08);
+      border:1px solid rgba(255,214,10,0.25); border-radius:12px; text-align:center;
+    }
+    .price-total-box .pt-label{ font-size:0.7rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:rgba(255,255,255,0.4); margin-bottom:0.3rem; }
+    .price-total-box .pt-amount{ font-family:'Anton',sans-serif; font-size:2.4rem; color:var(--yellow); letter-spacing:0.02em; line-height:1; }
+    .price-total-box .pt-note{ font-size:0.68rem; color:rgba(255,255,255,0.4); margin-top:0.3rem; }
+    .price-detail-link{ display:block; text-align:center; font-size:0.72rem; color:var(--blue); font-weight:600; text-decoration:underline; margin-top:1rem; cursor:pointer; background:none; border:none; width:100%; font-family:'Montserrat',sans-serif; }
+
+    /* ── FREE PERKS ── */
+    .perks-list{ margin-top:1.4rem; padding-top:1.2rem; border-top:1px solid rgba(255,255,255,0.07); }
+    .perk-row{ display:flex; align-items:center; gap:0.5rem; font-size:0.75rem; color:rgba(255,255,255,0.55); padding:0.25rem 0; }
+    .perk-row .pi{ font-size:0.85rem; }
+    .perk-row strong{ color:rgba(255,255,255,0.8); }
+
+    /* ── SUCCESS STATE ── */
+    .success-panel{
+      display:none; text-align:center; padding:3rem 2rem;
+    }
+    .success-panel.show{ display:block; animation:slideIn 0.4s ease; }
+    .success-icon{ font-size:4rem; margin-bottom:1rem; animation:bounceIn 0.6s ease; }
+    @keyframes bounceIn{ 0%{transform:scale(0)} 60%{transform:scale(1.2)} 100%{transform:scale(1)} }
+    .success-panel h2{ font-family:'Anton',sans-serif; font-size:2.2rem; text-transform:uppercase; color:var(--neon); margin-bottom:0.75rem; }
+    .success-panel p{ font-size:0.9rem; color:rgba(255,255,255,0.65); line-height:1.7; max-width:480px; margin:0 auto; }
+
+    /* ── MOBILE PRICE BAR ── */
+    .mobile-price-bar{
+      display:none; position:fixed; bottom:0; left:0; right:0; z-index:100;
+      background:rgba(8,8,15,0.97); border-top:1px solid rgba(255,214,10,0.25);
+      padding:0.85rem 1.5rem; align-items:center; justify-content:space-between;
+    }
+    @media(max-width:820px){
+      .mobile-price-bar{ display:flex; }
+    }
+    .mb-label{ font-size:0.7rem; color:rgba(255,255,255,0.4); font-weight:600; letter-spacing:0.06em; text-transform:uppercase; }
+    .mb-amount{ font-family:'Anton',sans-serif; font-size:1.6rem; color:var(--yellow); }
+    .mb-note{ font-size:0.62rem; color:rgba(255,255,255,0.3); }
+
+    /* ── SERVICE SELECTOR ── */
+    .service-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:0.9rem; margin-bottom:1.6rem; }
+    @media(max-width:640px){ .service-grid{ grid-template-columns:1fr 1fr; } }
+    @media(max-width:400px){ .service-grid{ grid-template-columns:1fr; } }
+    .svc-card{
+      border:2px solid rgba(255,255,255,0.1); border-radius:14px; padding:1.1rem 0.8rem;
+      cursor:pointer; transition:border-color 0.2s,background 0.2s,transform 0.18s;
+      background:rgba(255,255,255,0.03); text-align:center; position:relative;
+    }
+    .svc-card:hover{ transform:translateY(-2px); }
+    .svc-card.svc-truck:hover,   .svc-card.svc-truck.selected  { border-color:var(--blue);  background:rgba(0,123,255,0.1);  box-shadow:0 0 20px rgba(0,123,255,0.2); }
+    .svc-card.svc-rock:hover,    .svc-card.svc-rock.selected   { border-color:#f97316;       background:rgba(249,115,22,0.09); box-shadow:0 0 20px rgba(249,115,22,0.2); }
+    .svc-card.svc-snoball:hover, .svc-card.svc-snoball.selected{ border-color:#ec4899;       background:rgba(236,72,153,0.09); box-shadow:0 0 20px rgba(236,72,153,0.2); }
+    .svc-card.svc-combo:hover,   .svc-card.svc-combo.selected  { border-color:var(--yellow); background:rgba(255,214,10,0.09); box-shadow:0 0 22px rgba(255,214,10,0.2); }
+    .svc-card.svc-fullcombo:hover,.svc-card.svc-fullcombo.selected{ border-color:var(--neon); background:rgba(57,255,20,0.07); box-shadow:0 0 22px rgba(57,255,20,0.2); }
+    .svc-card.svc-combo::before   { content:'POPULAR';   position:absolute; top:-1px; left:50%; transform:translateX(-50%); background:var(--yellow); color:#000; font-size:0.55rem; font-weight:800; letter-spacing:0.1em; padding:0.18rem 0.6rem; border-radius:0 0 6px 6px; }
+    .svc-card.svc-fullcombo::before{ content:'MAX VALUE'; position:absolute; top:-1px; left:50%; transform:translateX(-50%); background:var(--neon);   color:#000; font-size:0.55rem; font-weight:800; letter-spacing:0.1em; padding:0.18rem 0.6rem; border-radius:0 0 6px 6px; }
+    .svc-card .sc-icon{ font-size:1.9rem; margin-bottom:0.4rem; }
+    .svc-card .sc-title{ font-family:'Anton',sans-serif; font-size:0.9rem; letter-spacing:0.04em; text-transform:uppercase; margin-bottom:0.25rem; }
+    .svc-card .sc-sub{ font-size:0.65rem; color:rgba(255,255,255,0.45); line-height:1.5; }
+    .svc-card.selected .sc-title{ color:var(--yellow); }
+    .svc-card.svc-truck.selected .sc-title   { color:var(--sky); }
+    .svc-card.svc-rock.selected .sc-title    { color:#fb923c; }
+    .svc-card.svc-snoball.selected .sc-title { color:#f9a8d4; }
+    .svc-card.svc-fullcombo.selected .sc-title{ color:var(--neon); }
+
+    /* ── ROCK WALL CARDS ── */
+    .rw-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:0.75rem; }
+    @media(max-width:580px){ .rw-grid{ grid-template-columns:repeat(2,1fr); } }
+    .rw-card{
+      border:2px solid rgba(255,255,255,0.1); border-radius:12px; padding:0.9rem 0.5rem;
+      cursor:pointer; transition:border-color 0.2s,background 0.2s,transform 0.18s;
+      background:rgba(255,255,255,0.03); text-align:center;
+    }
+    .rw-card:hover{ border-color:rgba(249,115,22,0.5); transform:translateY(-2px); }
+    .rw-card.selected{ border-color:#f97316; background:rgba(249,115,22,0.1); box-shadow:0 0 16px rgba(249,115,22,0.25); }
+    .rw-card .rw-hrs{ font-family:'Anton',sans-serif; font-size:1.05rem; letter-spacing:0.03em; }
+    .rw-card .rw-label{ font-size:0.63rem; color:rgba(255,255,255,0.4); margin-bottom:0.4rem; }
+    .rw-card .rw-price{ font-size:0.85rem; font-weight:700; color:#fb923c; }
+    .rw-card.selected .rw-hrs{ color:#fb923c; }
+    .rw-info-box{
+      background:rgba(249,115,22,0.07); border:1px solid rgba(249,115,22,0.25);
+      border-radius:10px; padding:0.9rem 1rem; margin-top:1rem; font-size:0.78rem; color:rgba(255,255,255,0.65); line-height:1.6;
+    }
+
+    /* ── SNOBALL CARDS ── */
+    .sb-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:0.75rem; }
+    @media(max-width:580px){ .sb-grid{ grid-template-columns:1fr 1fr; } }
+    .sb-card{
+      border:2px solid rgba(255,255,255,0.1); border-radius:12px; padding:0.9rem 0.5rem;
+      cursor:pointer; transition:border-color 0.2s,background 0.2s,transform 0.18s;
+      background:rgba(255,255,255,0.03); text-align:center; position:relative;
+    }
+    .sb-card:hover{ border-color:rgba(236,72,153,0.5); transform:translateY(-2px); }
+    .sb-card.selected{ border-color:#ec4899; background:rgba(236,72,153,0.1); box-shadow:0 0 16px rgba(236,72,153,0.25); }
+    .sb-card.sb-pop::before{ content:'POPULAR'; position:absolute; top:-1px; left:50%; transform:translateX(-50%); background:#ec4899; color:#fff; font-size:0.55rem; font-weight:800; letter-spacing:0.1em; padding:0.18rem 0.65rem; border-radius:0 0 7px 7px; }
+    .sb-card .sb-guests{ font-family:'Anton',sans-serif; font-size:0.95rem; letter-spacing:0.03em; }
+    .sb-card .sb-label{ font-size:0.62rem; color:rgba(255,255,255,0.4); margin-bottom:0.4rem; }
+    .sb-card .sb-price{ font-size:0.88rem; font-weight:700; color:#f9a8d4; }
+    .sb-card .sb-vs{ font-size:0.58rem; color:rgba(255,255,255,0.3); margin-top:0.15rem; text-decoration:line-through; }
+    .sb-card.selected .sb-guests{ color:#f9a8d4; }
+    .sb-info-box{
+      background:rgba(236,72,153,0.07); border:1px solid rgba(236,72,153,0.22);
+      border-radius:10px; padding:0.9rem 1rem; margin-top:1rem; font-size:0.78rem; color:rgba(255,255,255,0.65); line-height:1.6;
+    }
+
+    /* ── FOAM PARTY CARDS ── */
+    .svc-card.svc-foam:hover,     .svc-card.svc-foam.selected    { border-color:#a855f7; background:rgba(168,85,247,0.09); box-shadow:0 0 20px rgba(168,85,247,0.2); }
+    .svc-card.svc-truckfoam:hover,.svc-card.svc-truckfoam.selected{ border-color:#8b5cf6; background:rgba(139,92,246,0.09); box-shadow:0 0 20px rgba(139,92,246,0.2); }
+    .svc-card.svc-foam.selected .sc-title    { color:#d8b4fe; }
+    .svc-card.svc-truckfoam.selected .sc-title{ color:#c4b5fd; }
+    .fp-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:0.75rem; }
+    @media(max-width:580px){ .fp-grid{ grid-template-columns:repeat(2,1fr); } }
+    .fp-card{
+      border:2px solid rgba(255,255,255,0.1); border-radius:12px; padding:0.9rem 0.5rem;
+      cursor:pointer; transition:border-color 0.2s,background 0.2s,transform 0.18s;
+      background:rgba(255,255,255,0.03); text-align:center; position:relative;
+    }
+    .fp-card:hover{ border-color:rgba(168,85,247,0.5); transform:translateY(-2px); }
+    .fp-card.selected{ border-color:#a855f7; background:rgba(168,85,247,0.1); box-shadow:0 0 16px rgba(168,85,247,0.25); }
+    .fp-card.fp-pop::before{ content:'POPULAR'; position:absolute; top:-1px; left:50%; transform:translateX(-50%); background:#a855f7; color:#fff; font-size:0.55rem; font-weight:800; letter-spacing:0.1em; padding:0.18rem 0.65rem; border-radius:0 0 7px 7px; }
+    .fp-card .fp-name{ font-family:'Anton',sans-serif; font-size:0.9rem; letter-spacing:0.03em; line-height:1.2; margin-bottom:0.2rem; }
+    .fp-card .fp-label{ font-size:0.62rem; color:rgba(255,255,255,0.4); margin-bottom:0.4rem; }
+    .fp-card .fp-price{ font-size:0.88rem; font-weight:700; color:#d8b4fe; }
+    .fp-card .fp-vs{ font-size:0.58rem; color:rgba(255,255,255,0.3); margin-top:0.15rem; text-decoration:line-through; }
+    .fp-card.selected .fp-name{ color:#d8b4fe; }
+    .fp-info-box{
+      background:rgba(168,85,247,0.07); border:1px solid rgba(168,85,247,0.22);
+      border-radius:10px; padding:0.9rem 1rem; margin-top:1rem; font-size:0.78rem; color:rgba(255,255,255,0.65); line-height:1.6;
+    }
+
+    /* ── VALIDATION ── */
+    .field.error select, .field.error input, .field.error textarea{ border-color:var(--pink)!important; }
+    .err-msg{ font-size:0.7rem; color:var(--pink); margin-top:0.3rem; display:none; }
+    .field.error .err-msg{ display:block; }
+  </style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav class="top-nav">
+  <a href="index.html" class="nav-logo">
+    <img src="logo.jpg" alt="Party Game Truck"/>
+    Party Game <span>Truck</span>
+  </a>
+  <div class="nav-links-row">
+    <a href="index.html">Home</a>
+    <a href="schools.html">Schools &amp; Events</a>
+    <a href="pricing.html">Pricing</a>
+    <a href="invitations.html">Free Invitations</a>
+    <a href="booking.html" style="color:var(--yellow);font-weight:700;">📅 Book Online</a>
+  </div>
+  <a href="booking.html" class="nav-cta">📞 Book Now</a>
+</nav>
+
+<!-- ── HERO BANNER ── -->
+<div class="hero-banner">
+  <div class="hero-badge"><span class="dot"></span>Free Tool — No Signup Required</div>
+  <h1 style="position:relative;">
+    <span style="color:var(--yellow);">🎮</span>
+    <span style="color:#fff;"> School Event </span><br/>
+    <span style="color:var(--blue);">Calculator</span>
+  </h1>
+  <p>Find the perfect gaming experience for your school —<br/><strong>instant pricing, no guesswork.</strong></p>
+  <div style="display:flex;flex-wrap:wrap;gap:0.75rem;justify-content:center;margin-top:0.5rem;">
+    <div class="min-badge">🕐 2-hour minimum on all events</div>
+    <div class="min-badge" style="background:rgba(57,255,20,0.08);border-color:rgba(57,255,20,0.3);color:var(--neon);">🎮 From $650 — Baltimore &amp; Local</div>
+  </div>
+</div>
+
+<!-- ── STEP PROGRESS ── -->
+<div class="step-bar" id="stepBar">
+  <div class="step-node active" id="node1">
+    <div class="step-circle">1</div>
+    <div class="step-label">Event Info</div>
+  </div>
+  <div class="step-node" id="node2">
+    <div class="step-circle">2</div>
+    <div class="step-label">Packages</div>
+  </div>
+  <div class="step-node" id="node3">
+    <div class="step-circle">3</div>
+    <div class="step-label">Contact</div>
+  </div>
+</div>
+
+<!-- ── MAIN LAYOUT ── -->
+<div class="calc-wrap">
+
+  <!-- LEFT: STEPS -->
+  <div>
+
+    <!-- ── STEP 1 ── -->
+    <div class="step-panel active" id="step1">
+      <div class="panel-card">
+        <div class="panel-title" style="color:var(--blue);">Step 1 — Event Info</div>
+        <div class="panel-sub">Tell us about your school and event so we can find the right fit.</div>
+
+        <div class="no-travel">
+          <span class="nt-icon">🚫💸</span>
+          <div><strong>Schools pay ZERO travel fees</strong> — travel fees do not apply to school events. Our rates are flat, no matter where you are in the DMV.</div>
+        </div>
+
+        <div class="field" id="f-county">
+          <label>Your County / Region <span class="req">*</span></label>
+          <select id="county" onchange="onCountyChange()">
+            <option value="">— Select your county or city —</option>
+            <optgroup label="Maryland — FREE Zone (0–29 miles)">
+              <option value="baltimore-city">Baltimore City</option>
+              <option value="baltimore-county">Baltimore County</option>
+              <option value="howard-county">Howard County</option>
+              <option value="anne-arundel">Anne Arundel County</option>
+              <option value="carroll-county">Carroll County</option>
+              <option value="harford-county">Harford County</option>
+            </optgroup>
+            <optgroup label="Maryland — $45 Zone (30–34 miles)">
+              <option value="montgomery-south">Montgomery County (Silver Spring / Takoma Park)</option>
+              <option value="queen-annes">Queen Anne's County</option>
+              <option value="kent-county">Kent County</option>
+            </optgroup>
+            <optgroup label="Maryland — $90 Zone (35–39 miles)">
+              <option value="montgomery-mid">Montgomery County (Rockville / Gaithersburg)</option>
+              <option value="pg-county-north">Prince George's County (College Park / Hyattsville)</option>
+              <option value="frederick-east">Frederick County (eastern)</option>
+            </optgroup>
+            <optgroup label="Maryland / DC — $150 Zone (40–44 miles)">
+              <option value="washington-dc">Washington DC</option>
+              <option value="pg-county-south">Prince George's County (Oxon Hill / Temple Hills)</option>
+              <option value="montgomery-north">Montgomery County (Germantown / Clarksburg)</option>
+              <option value="frederick-west">Frederick County (Frederick City / western)</option>
+            </optgroup>
+            <optgroup label="Virginia / Outer MD — 45+ miles (price doubles on weekends)">
+              <option value="arlington-va">Arlington, VA</option>
+              <option value="alexandria-va">Alexandria, VA</option>
+              <option value="fairfax-va">Fairfax County, VA</option>
+              <option value="prince-william-va">Prince William County, VA</option>
+              <option value="loudoun-va">Loudoun County, VA</option>
+              <option value="charles-md">Charles County, MD</option>
+              <option value="calvert-md">Calvert County, MD</option>
+              <option value="stmarys-md">St. Mary's County, MD</option>
+              <option value="washington-county-md">Washington County, MD (Hagerstown)</option>
+            </optgroup>
+          </select>
+          <div class="err-msg">Please select your county or region.</div>
+        </div>
+
+        <div class="field" id="f-event-type">
+          <label>What kind of event? <span class="req">*</span></label>
+          <div class="event-type-grid">
+            <div class="event-type-card" onclick="selectEventType('structured',this)">
+              <div class="etc-icon">🔄</div>
+              <div class="etc-title">Structured Rotations</div>
+              <div class="etc-desc">Students rotate through in scheduled groups — we calculate capacity, timing, and the best experience tier for your count.</div>
+            </div>
+            <div class="event-type-card" onclick="selectEventType('open',this)">
+              <div class="etc-icon">🎪</div>
+              <div class="etc-title">Open Play / Field Day</div>
+              <div class="etc-desc">Game trucks are available as stations — students come and go freely. Just pick your trucks and hours.</div>
+            </div>
+          </div>
+          <div class="err-msg">Please select your event type.</div>
+        </div>
+
+        <div class="field" id="f-students" style="display:none;">
+          <label>Total Student Attendance <span class="req">*</span></label>
+          <input type="number" id="students" placeholder="e.g. 120" min="1" max="1000" oninput="calcRotations()"/>
+          <div class="err-msg">Please enter the expected student count.</div>
+        </div>
+
+        <div class="field" id="f-event-date">
+          <label>Preferred Event Date</label>
+          <input type="date" id="eventDate" oninput="checkWeekend()"/>
+        </div>
+        <div id="weekend-notice" style="display:none;margin-top:-0.8rem;margin-bottom:1rem;padding:0.7rem 1rem;background:rgba(255,45,139,0.08);border:1px solid rgba(255,45,139,0.3);border-radius:10px;font-size:0.78rem;color:rgba(255,255,255,0.75);">
+          ⚠️ <strong style="color:var(--pink);">Weekend date selected.</strong> For locations 45+ miles away (Virginia / Outer MD), the event price doubles. Schools in the primary DMV area are unaffected.
+        </div>
+
+        <div class="step-nav">
+          <button class="btn-next" onclick="goStep2()">Next: Choose Your Package →</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── STEP 2 ── -->
+    <div class="step-panel" id="step2">
+      <div class="panel-card">
+        <div class="panel-title" style="color:var(--yellow);">Step 2 — Build Your Package</div>
+        <div class="panel-sub">Choose your game theaters and event length. Price updates instantly.</div>
+
+        <!-- Service Selector -->
+        <div class="field" id="f-service">
+          <label>What services do you need? <span class="req">*</span></label>
+          <div class="service-grid">
+            <div class="svc-card svc-truck selected" id="svc-truck" onclick="selectService('truck')">
+              <div class="sc-icon">🎮🚌</div>
+              <div class="sc-title">Game Truck Only</div>
+              <div class="sc-sub">Mobile video game theater(s)</div>
+            </div>
+            <div class="svc-card svc-rock" id="svc-rock" onclick="selectService('rock')">
+              <div class="sc-icon">🧗🪨</div>
+              <div class="sc-title">Rock Wall Only</div>
+              <div class="sc-sub">Mobile climbing wall — insured &amp; staffed</div>
+            </div>
+            <div class="svc-card svc-snoball" id="svc-snoball" onclick="selectService('snoball')">
+              <div class="sc-icon">🍧❄️</div>
+              <div class="sc-title">SnoBall Truck Only</div>
+              <div class="sc-sub">Awesome Snoballs — 20+ flavors, gourmet toppings</div>
+            </div>
+            <div class="svc-card svc-combo" id="svc-combo" onclick="selectService('combo')">
+              <div class="sc-icon">🎮🧗</div>
+              <div class="sc-title">Truck + Rock Wall</div>
+              <div class="sc-sub">Game truck &amp; rock wall together</div>
+            </div>
+            <div class="svc-card svc-snoball" id="svc-trucksnow" onclick="selectService('trucksnow')" style="border-color:rgba(236,72,153,0.2);">
+              <div class="sc-icon">🎮🍧</div>
+              <div class="sc-title">Truck + SnoBalls</div>
+              <div class="sc-sub">Game truck &amp; snoball truck combo</div>
+            </div>
+            <div class="svc-card svc-fullcombo" id="svc-fullcombo" onclick="selectService('fullcombo')">
+              <div class="sc-icon">🎮🧗🍧</div>
+              <div class="sc-title">Full Combo</div>
+              <div class="sc-sub">Game truck + Rock wall + SnoBalls</div>
+            </div>
+            <div class="svc-card svc-foam" id="svc-foam" onclick="selectService('foam')">
+              <div class="sc-icon">💦🫧</div>
+              <div class="sc-title">Foam Party Only</div>
+              <div class="sc-sub">Fancy Foam Events — glo foam, color foam &amp; more</div>
+            </div>
+            <div class="svc-card svc-truckfoam" id="svc-truckfoam" onclick="selectService('truckfoam')">
+              <div class="sc-icon">🎮💦</div>
+              <div class="sc-title">Truck + Foam Party</div>
+              <div class="sc-sub">Game truck &amp; foam party together</div>
+            </div>
+          </div>
+          <div class="err-msg">Please select a service.</div>
+        </div>
+
+        <!-- Rotation analysis (structured only) -->
+        <div class="rotation-box" id="rotationBox">
+          <h4>📊 Rotation Analysis</h4>
+          <div class="rot-row"><span class="miles">Students per rotation (per truck)</span><strong>20 players</strong></div>
+          <div class="rot-row"><span class="miles" id="rot-total-label">Total students</span><strong id="rot-total-val">—</strong></div>
+          <div class="rot-row"><span class="miles" id="rot-rcount-label">Rotations needed (1 truck)</span><strong id="rot-rcount-val">—</strong></div>
+          <div class="rot-row"><span class="miles" id="rot-time-label">Est. time needed (1 truck)</span><strong id="rot-time-val">—</strong></div>
+          <div class="rot-row" style="border:none;margin-top:0.4rem;">
+            <span style="color:var(--sky);font-size:0.75rem;font-weight:700;" id="rot-rec">👾 Select trucks below to update this estimate.</span>
+          </div>
+        </div>
+
+        <!-- Trucks -->
+        <div class="field" style="margin-top:1.4rem;" id="f-trucks">
+          <label>Number of Game Theaters <span class="req">*</span></label>
+          <div class="truck-grid">
+            <div class="truck-card" id="tc1" onclick="selectTrucks(1)">
+              <div class="tc-emoji">🚌</div>
+              <div class="tc-count">1 Theater</div>
+              <div class="tc-label">Up to 20 players</div>
+              <div class="tc-price" id="tc1-price">from $650</div>
+            </div>
+            <div class="truck-card" id="tc2" onclick="selectTrucks(2)">
+              <div class="tc-emoji">🚌🚌</div>
+              <div class="tc-count">2 Theaters</div>
+              <div class="tc-label">Up to 40 players</div>
+              <div class="tc-price" id="tc2-price">from $1,300</div>
+            </div>
+            <div class="truck-card" id="tc3" onclick="selectTrucks(3)">
+              <div class="tc-emoji">🚌🚌🚌</div>
+              <div class="tc-count">3 Theaters</div>
+              <div class="tc-label">Up to 60 players</div>
+              <div class="tc-price" id="tc3-price">from $1,950</div>
+            </div>
+          </div>
+          <div class="err-msg">Please select the number of theaters.</div>
+        </div>
+
+        <!-- Rock Wall Duration (shown when rock/combo selected) -->
+        <div class="field" id="f-rockwall" style="display:none;">
+          <label style="color:#fb923c;">🪨 Rock Wall Rental Duration <span class="req">*</span></label>
+          <div class="rw-grid">
+            <div class="rw-card" id="rw1" onclick="selectRockWall(1.5,700)">
+              <div class="rw-hrs">1.5 hrs</div>
+              <div class="rw-label">30-min sessions</div>
+              <div class="rw-price">$700</div>
+            </div>
+            <div class="rw-card" id="rw2" onclick="selectRockWall(2,900)">
+              <div class="rw-hrs">2 hrs</div>
+              <div class="rw-label">standard</div>
+              <div class="rw-price">$900</div>
+            </div>
+            <div class="rw-card" id="rw3" onclick="selectRockWall(3,1200)">
+              <div class="rw-hrs">3 hrs</div>
+              <div class="rw-label">extended</div>
+              <div class="rw-price">$1,200</div>
+            </div>
+            <div class="rw-card" id="rw4" onclick="selectRockWall(4,1500)">
+              <div class="rw-hrs">4 hrs</div>
+              <div class="rw-label">full day</div>
+              <div class="rw-price">$1,500</div>
+            </div>
+          </div>
+          <div class="rw-info-box">
+            🧗 <strong style="color:#fb923c;">Maryland Mobile Rock Wall Rentals</strong> — Safe, Reliable &amp; Insured. Serving Maryland, Washington DC &amp; Virginia. Certified staff included. Call <a href="tel:4432444089" style="color:#fb923c;font-weight:700;">(443) 244-4089</a> for details.
+          </div>
+        </div>
+
+        <!-- SnoBall Package (shown when snoball/trucksnow/fullcombo selected) -->
+        <div class="field" id="f-snoball" style="display:none;">
+          <label style="color:#f9a8d4;">🍧 Awesome Snoballs Package <span class="req">*</span></label>
+          <div class="sb-grid">
+            <div class="sb-card" id="sb1" onclick="selectSnoball('Mini',40,299)">
+              <div class="sb-guests">Up to 40</div>
+              <div class="sb-label">Mini / Small Event</div>
+              <div class="sb-price">$299</div>
+              <div class="sb-vs">Others charge $400+</div>
+            </div>
+            <div class="sb-card sb-pop" id="sb2" onclick="selectSnoball('Standard',75,379)">
+              <div class="sb-guests">Up to 75</div>
+              <div class="sb-label">Standard · 2 hrs</div>
+              <div class="sb-price">$379</div>
+              <div class="sb-vs">Others charge $600+</div>
+            </div>
+            <div class="sb-card" id="sb3" onclick="selectSnoball('Party',100,449)">
+              <div class="sb-guests">Up to 100</div>
+              <div class="sb-label">Party · 2 hrs</div>
+              <div class="sb-price">$449</div>
+              <div class="sb-vs">Others charge $800+</div>
+            </div>
+            <div class="sb-card" id="sb4" onclick="selectSnoball('Large',150,579)">
+              <div class="sb-guests">Up to 150</div>
+              <div class="sb-label">Large Event · 3 hrs</div>
+              <div class="sb-price">$579</div>
+              <div class="sb-vs">Others charge $1,200+</div>
+            </div>
+            <div class="sb-card" id="sb5" onclick="selectSnoball('School',200,699)">
+              <div class="sb-guests">Up to 200</div>
+              <div class="sb-label">School Day · 3 hrs</div>
+              <div class="sb-price">$699</div>
+              <div class="sb-vs">Others charge $1,400+</div>
+            </div>
+            <div class="sb-card" id="sb6" onclick="selectSnoball('Festival',300,899)">
+              <div class="sb-guests">300+</div>
+              <div class="sb-label">Festival / Full Day</div>
+              <div class="sb-price">$899</div>
+              <div class="sb-vs">Custom pricing elsewhere</div>
+            </div>
+          </div>
+          <div class="sb-info-box">
+            🍧 <strong style="color:#f9a8d4;">Awesome Snoballs</strong> — New Orleans-style authentic Hawaiian shaved ice with 20+ flavors &amp; gourmet toppings. Serving Maryland, DC &amp; VA. <a href="tel:4432813331" style="color:#f9a8d4;font-weight:700;">(443) 281-3331</a> · <a href="https://awesomesnoballs.com" target="_blank" rel="noopener" style="color:#f9a8d4;font-weight:700;">awesomesnoballs.com</a>
+          </div>
+          <div class="err-msg">Please select a SnoBall package.</div>
+        </div>
+
+        <!-- Foam Party Package (shown when foam/truckfoam selected) -->
+        <div class="field" id="f-foam" style="display:none;">
+          <label style="color:#d8b4fe;">💦 Foam Party Package <span class="req">*</span></label>
+          <div class="fp-grid">
+            <div class="fp-card" id="fp1" onclick="selectFoam('Basic',350)">
+              <div class="fp-name">Basic Foam</div>
+              <div class="fp-label">1 hr · up to 20 guests</div>
+              <div class="fp-price">$350</div>
+              <div class="fp-vs">Others from $375</div>
+            </div>
+            <div class="fp-card fp-pop" id="fp2" onclick="selectFoam('Glo / Color',500)">
+              <div class="fp-name">Glo / Color</div>
+              <div class="fp-label">1 hr · up to 20 guests</div>
+              <div class="fp-price">$500</div>
+              <div class="fp-vs">Others from $425</div>
+            </div>
+            <div class="fp-card" id="fp3" onclick="selectFoam('Ultimate Cannon',600)">
+              <div class="fp-name">Ultimate</div>
+              <div class="fp-label">1 hr · cannon · 20 guests</div>
+              <div class="fp-price">$600</div>
+              <div class="fp-vs">Others from $670</div>
+            </div>
+            <div class="fp-card" id="fp4" onclick="selectFoam('Drop-Off Rental',250)">
+              <div class="fp-name">Drop-Off</div>
+              <div class="fp-label">Self-operated rental</div>
+              <div class="fp-price">$250</div>
+              <div class="fp-vs">Most affordable DMV</div>
+            </div>
+          </div>
+          <div class="fp-info-box">
+            💦 <strong style="color:#d8b4fe;">Fancy Foam Events</strong> — Professional foam party entertainment serving Maryland, DC &amp; VA. Foam cannons, glo foam, color foam &amp; more. <a href="tel:4432523434" style="color:#d8b4fe;font-weight:700;">(443) 252-3434</a> · <a href="https://fancyfoamevents.com" target="_blank" rel="noopener" style="color:#d8b4fe;font-weight:700;">fancyfoamevents.com</a>
+          </div>
+          <div class="err-msg">Please select a foam party package.</div>
+        </div>
+
+        <!-- Hours (Game Truck) -->
+        <div class="field" id="f-hours-truck">
+          <label id="hours-label-txt">Game Truck Duration</label>
+          <div class="hours-row">
+            <button class="hrs-btn" onclick="changeHours(-0.5)">−</button>
+            <div class="hrs-display">
+              <span id="hrs-num">2</span>
+              <span id="hrs-label">hours (minimum)</span>
+            </div>
+            <button class="hrs-btn" onclick="changeHours(0.5)">+</button>
+          </div>
+        </div>
+
+        <!-- Travel fee note -->
+        <div style="margin-top:0.5rem;">
+          <div class="no-travel" style="margin-bottom:0.5rem;">
+            <span class="nt-icon">✅</span>
+            <div><strong>$0 travel fee</strong> — travel charges do not apply to school events.</div>
+          </div>
+          <button class="travel-toggle" onclick="toggleTravel()">What are regular travel fees? (for reference)</button>
+          <div class="travel-detail" id="travelDetail">
+            <div style="font-size:0.72rem;color:var(--neon);font-weight:700;margin-bottom:0.6rem;">⚠️ These rates apply to PRIVATE events only. Schools always pay $0 travel.</div>
+            <div class="travel-tier"><span class="miles">0–29 miles</span><span class="fee free">FREE</span></div>
+            <div class="travel-tier"><span class="miles">30–34 miles</span><span class="fee">$45</span></div>
+            <div class="travel-tier"><span class="miles">35–39 miles</span><span class="fee">$90</span></div>
+            <div class="travel-tier"><span class="miles">40–44 miles</span><span class="fee">$150</span></div>
+            <div class="travel-tier"><span class="miles">45+ miles (Fri–Sun)</span><span class="fee doubles">Price doubles</span></div>
+            <div style="margin-top:0.6rem;font-size:0.7rem;color:rgba(255,255,255,0.4);">All distances calculated from HQ at 21133 (Owings Mills, MD).</div>
+          </div>
+        </div>
+
+        <div class="step-nav">
+          <button class="btn-back" onclick="goStep(1)">← Back</button>
+          <button class="btn-next" onclick="goStep3()">Next: Contact Info →</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── STEP 3 ── -->
+    <div class="step-panel" id="step3">
+      <div class="panel-card">
+        <div class="panel-title" style="color:var(--neon);">Step 3 — Get Your Quote</div>
+        <div class="panel-sub">We'll confirm your custom quote within 1 business day and lock in your date.</div>
+
+        <div class="field" id="f-name">
+          <label>Your Name <span class="req">*</span></label>
+          <input type="text" id="cName" placeholder="First and Last Name"/>
+          <div class="err-msg">Please enter your name.</div>
+        </div>
+        <div class="field" id="f-school">
+          <label>School / Organization Name <span class="req">*</span></label>
+          <input type="text" id="cSchool" placeholder="e.g. Owings Mills Elementary"/>
+          <div class="err-msg">Please enter your school or organization name.</div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+          <div class="field" id="f-phone">
+            <label>Phone Number <span class="req">*</span></label>
+            <input type="tel" id="cPhone" placeholder="(410) 000-0000"/>
+            <div class="err-msg">Please enter your phone number.</div>
+          </div>
+          <div class="field" id="f-email">
+            <label>Email Address <span class="req">*</span></label>
+            <input type="email" id="cEmail" placeholder="you@school.edu"/>
+            <div class="err-msg">Please enter your email address.</div>
+          </div>
+        </div>
+        <div class="field">
+          <label>Additional Notes</label>
+          <textarea id="cNotes" placeholder="Any special requests, indoor/outdoor preference, gym access info, etc."></textarea>
+        </div>
+
+        <div class="step-nav">
+          <button class="btn-back" onclick="goStep(2)">← Back</button>
+          <button class="btn-submit" onclick="submitQuote()">🎮 Send My Quote Request →</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── SUCCESS ── -->
+    <div class="success-panel" id="successPanel">
+      <div class="panel-card" style="text-align:center;padding:3rem 2rem;">
+        <div class="success-icon">🏆</div>
+        <h2 style="font-family:'Anton',sans-serif;font-size:2rem;text-transform:uppercase;color:var(--neon);margin-bottom:0.75rem;">Quote Sent!</h2>
+        <p style="font-size:0.9rem;color:rgba(255,255,255,0.65);line-height:1.7;max-width:480px;margin:0 auto 1.5rem;">Thanks! Our team will reach out within <strong style="color:#fff;">1 business day</strong> to confirm your event details, answer questions, and lock in your date.</p>
+        <p style="font-size:0.82rem;color:rgba(255,255,255,0.4);margin-bottom:1.5rem;">Need us sooner? Call <a href="tel:8773991997" style="color:var(--blue);font-weight:700;">877-399-1997</a></p>
+        <a href="index.html" style="display:inline-block;background:var(--blue);color:#fff;font-family:'Anton',sans-serif;font-size:1rem;letter-spacing:0.06em;text-transform:uppercase;padding:0.75rem 2rem;border-radius:10px;text-decoration:none;transition:background 0.18s;">← Back to Home</a>
+      </div>
+    </div>
+
+  </div><!-- /left -->
+
+  <!-- RIGHT: PRICE SIDEBAR -->
+  <div class="price-sidebar">
+    <div class="price-card">
+      <h3>💰 Your Estimate</h3>
+
+      <div class="price-line">
+        <span class="pl-label" id="sl-trucks">1 Game Theater × 2 hrs</span>
+        <span class="pl-val" id="sl-base">$650</span>
+      </div>
+      <div class="price-line" id="sl-extra-row" style="display:none;">
+        <span class="pl-label" id="sl-extra-label">Extra hours</span>
+        <span class="pl-val" id="sl-extra-val">+$0</span>
+      </div>
+      <div class="price-line" id="sl-rock-row" style="display:none;">
+        <span class="pl-label" id="sl-rock-label">Rock Wall</span>
+        <span class="pl-val" id="sl-rock-val" style="color:#fb923c;">+$0</span>
+      </div>
+      <div class="price-line" id="sl-snow-row" style="display:none;">
+        <span class="pl-label" id="sl-snow-label">Awesome Snoballs</span>
+        <span class="pl-val" id="sl-snow-val" style="color:#f9a8d4;">+$0</span>
+      </div>
+      <div class="price-line" id="sl-foam-row" style="display:none;">
+        <span class="pl-label" id="sl-foam-label">Foam Party</span>
+        <span class="pl-val" id="sl-foam-val" style="color:#d8b4fe;">+$0</span>
+      </div>
+      <div class="price-line">
+        <span class="pl-label">Travel Fee</span>
+        <span class="pl-val free">FREE 🎉</span>
+      </div>
+      <div class="price-line">
+        <span class="pl-label">Schools Discount on Travel</span>
+        <span class="pl-val free">Included</span>
+      </div>
+
+      <div class="price-total-box">
+        <div class="pt-label">Estimated Total</div>
+        <div class="pt-amount" id="sl-total">$650</div>
+        <div class="pt-note" id="sl-detail">1 theater · 2 hours</div>
+      </div>
+
+      <div class="perks-list">
+        <div style="font-size:0.68rem;font-weight:700;letter-spacing:0.09em;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-bottom:0.5rem;">Included Free</div>
+        <div class="perk-row"><span class="pi">✅</span><span><strong>Certified</strong> Event Manager</span></div>
+        <div class="perk-row"><span class="pi">✅</span><span><strong>Latest</strong> Consoles &amp; Games</span></div>
+        <div class="perk-row"><span class="pi">✅</span><span><strong>COI / PO / W9</strong> documentation</span></div>
+        <div class="perk-row"><span class="pi">✅</span><span><strong>$2M</strong> liability insurance</span></div>
+        <div class="perk-row"><span class="pi">✅</span><span><strong>Climate controlled</strong> theaters</span></div>
+        <div class="perk-row"><span class="pi">✅</span><span><strong>$0</strong> travel fee for schools</span></div>
+      </div>
+
+      <div style="margin-top:1.4rem;padding-top:1.2rem;border-top:1px solid rgba(255,255,255,0.07);">
+        <div style="font-size:0.72rem;color:rgba(255,255,255,0.35);line-height:1.6;">
+          This is an estimate. Pricing starts at <strong style="color:rgba(255,255,255,0.6);">$650/theater</strong> for Baltimore &amp; local areas and adjusts by distance. Additional hours: <strong style="color:rgba(255,255,255,0.6);">+$175/hr per theater.</strong> Final pricing confirmed by our team.
+        </div>
+      </div>
+
+      <a href="tel:8773991997" style="display:flex;align-items:center;justify-content:center;gap:0.5rem;margin-top:1.2rem;background:rgba(0,123,255,0.1);border:1px solid rgba(0,123,255,0.3);border-radius:10px;padding:0.75rem;color:var(--blue);font-size:0.8rem;font-weight:700;text-decoration:none;transition:background 0.18s;" onmouseover="this.style.background='rgba(0,123,255,0.18)'" onmouseout="this.style.background='rgba(0,123,255,0.1)'">📞 Call Us: 877-399-1997</a>
+    </div>
+  </div><!-- /sidebar -->
+
+</div><!-- /calc-wrap -->
+
+<!-- MOBILE PRICE BAR -->
+<div class="mobile-price-bar">
+  <div>
+    <div class="mb-label">Estimated Total</div>
+    <div class="mb-note" id="mb-detail">1 theater · 2 hrs</div>
+  </div>
+  <div class="mb-amount" id="mb-total">$650</div>
+</div>
+
+<script>
+  /* ── STATE ── */
+  let eventType = null;
+  let trucks = 1;
+  let hours = 2;
+  let service = 'truck';   // 'truck' | 'rock' | 'snoball' | 'combo' | 'trucksnow' | 'fullcombo'
+  let rwHours = 0;
+  let rwPrice = 0;
+  let sbName  = '';
+  let sbGuests = 0;
+  let sbPrice  = 0;
+  let foamName  = '';
+  let foamPrice = 0;
+  let BASE = 650;           // dynamic — set by county zone
+  const EXTRA_RATE = 175;  // per truck per extra hour
+
+  /* ── ZONE PRICING ── */
+  const ZONE_PRICES = {
+    // 0–29 miles — Baltimore & local ($650)
+    'baltimore-city':    { price:650, label:'Baltimore / Local (0–29 mi)' },
+    'baltimore-county':  { price:650, label:'Baltimore County (0–29 mi)' },
+    'howard-county':     { price:650, label:'Howard County (0–29 mi)' },
+    'anne-arundel':      { price:650, label:'Anne Arundel County (0–29 mi)' },
+    'carroll-county':    { price:650, label:'Carroll County (0–29 mi)' },
+    'harford-county':    { price:650, label:'Harford County (0–29 mi)' },
+    // 30–34 miles ($695)
+    'montgomery-south':  { price:695, label:'Montgomery County South (30–34 mi)' },
+    'queen-annes':       { price:695, label:"Queen Anne's County (30–34 mi)" },
+    'kent-county':       { price:695, label:'Kent County (30–34 mi)' },
+    // 35–39 miles ($725)
+    'montgomery-mid':    { price:725, label:'Montgomery County (35–39 mi)' },
+    'pg-county-north':   { price:725, label:"Prince George's County North (35–39 mi)" },
+    'frederick-east':    { price:725, label:'Frederick County East (35–39 mi)' },
+    // 40–44 miles / DC ($749)
+    'washington-dc':     { price:749, label:'Washington DC (40–44 mi)' },
+    'pg-county-south':   { price:749, label:"Prince George's County South (40–44 mi)" },
+    'montgomery-north':  { price:749, label:'Montgomery County North (40–44 mi)' },
+    'frederick-west':    { price:749, label:'Frederick County West (40–44 mi)' },
+    // 45+ miles — VA / Outer MD ($799)
+    'arlington-va':      { price:799, label:'Arlington, VA (45+ mi)' },
+    'alexandria-va':     { price:799, label:'Alexandria, VA (45+ mi)' },
+    'fairfax-va':        { price:799, label:'Fairfax County, VA (45+ mi)' },
+    'prince-william-va': { price:799, label:'Prince William County, VA (45+ mi)' },
+    'loudoun-va':        { price:799, label:'Loudoun County, VA (45+ mi)' },
+    'charles-md':        { price:799, label:'Charles County, MD (45+ mi)' },
+    'calvert-md':        { price:799, label:'Calvert County, MD (45+ mi)' },
+    'stmarys-md':        { price:799, label:"St. Mary's County, MD (45+ mi)" },
+    'washington-county-md':{ price:799, label:'Washington County, MD (45+ mi)' }
+  };
+
+  function onCountyChange() {
+    const val = document.getElementById('county').value;
+    const zone = ZONE_PRICES[val];
+    if (zone) {
+      BASE = zone.price;
+      // Show zone badge
+      let badge = document.getElementById('zone-badge');
+      if (!badge) {
+        badge = document.createElement('div');
+        badge.id = 'zone-badge';
+        badge.style.cssText = 'margin-top:0.5rem;padding:0.45rem 0.9rem;border-radius:8px;font-size:0.75rem;font-weight:700;display:inline-flex;align-items:center;gap:0.4rem;';
+        document.getElementById('f-county').appendChild(badge);
+      }
+      const colorMap = {
+        650: {bg:'rgba(57,255,20,0.1)',  border:'rgba(57,255,20,0.3)',   color:'#39FF14'},
+        695: {bg:'rgba(0,194,255,0.1)',  border:'rgba(0,194,255,0.3)',   color:'#00C2FF'},
+        725: {bg:'rgba(255,214,10,0.1)', border:'rgba(255,214,10,0.3)', color:'#FFD60A'},
+        749: {bg:'rgba(0,123,255,0.12)', border:'rgba(0,123,255,0.35)', color:'#007BFF'},
+        799: {bg:'rgba(255,45,139,0.1)', border:'rgba(255,45,139,0.3)', color:'#FF2D8B'}
+      };
+      const c = colorMap[zone.price] || colorMap[650];
+      badge.style.background = c.bg;
+      badge.style.border = '1px solid ' + c.border;
+      badge.style.color = c.color;
+      badge.style.borderRadius = '8px';
+      badge.style.padding = '0.45rem 0.9rem';
+      badge.style.fontSize = '0.75rem';
+      badge.style.fontWeight = '700';
+      badge.style.display = 'inline-flex';
+      badge.style.alignItems = 'center';
+      badge.style.gap = '0.4rem';
+      badge.style.marginTop = '0.5rem';
+      badge.innerHTML = '📍 Base rate for this area: <strong>$' + zone.price + '/theater</strong>';
+    }
+    document.getElementById('f-county').classList.remove('error');
+    updateTruckPrices();
+    updatePrice();
+  }
+
+  /* ── SERVICE SELECTION ── */
+  function selectService(s) {
+    service = s;
+    ['truck','rock','snoball','combo','trucksnow','fullcombo','foam','truckfoam'].forEach(id => {
+      const el = document.getElementById('svc-'+id);
+      if (el) el.classList.toggle('selected', id === s);
+    });
+    const showTruck  = ['truck','combo','trucksnow','fullcombo','truckfoam'].includes(s);
+    const showRock   = ['rock','combo','fullcombo'].includes(s);
+    const showSnow   = ['snoball','trucksnow','fullcombo'].includes(s);
+    const showFoam   = ['foam','truckfoam'].includes(s);
+    document.getElementById('f-trucks').style.display      = showTruck ? 'block' : 'none';
+    document.getElementById('f-hours-truck').style.display  = showTruck ? 'block' : 'none';
+    document.getElementById('f-rockwall').style.display     = showRock  ? 'block' : 'none';
+    document.getElementById('f-snoball').style.display      = showSnow  ? 'block' : 'none';
+    document.getElementById('f-foam').style.display         = showFoam  ? 'block' : 'none';
+    document.getElementById('hours-label-txt').textContent  = showTruck && !showRock ? 'Event Duration' : showTruck ? 'Game Truck Duration' : 'Event Duration';
+    if (!showRock)  { rwHours = 0; rwPrice = 0; clearRwCards(); }
+    if (!showSnow)  { sbName = ''; sbGuests = 0; sbPrice = 0; clearSbCards(); }
+    if (!showFoam)  { foamName = ''; foamPrice = 0; clearFoamCards(); }
+    updatePrice();
+  }
+
+  function selectSnoball(name, guests, price) {
+    sbName = name; sbGuests = guests; sbPrice = price;
+    ['sb1','sb2','sb3','sb4','sb5','sb6'].forEach(id => document.getElementById(id).classList.remove('selected'));
+    const map = {'Mini':'sb1','Standard':'sb2','Party':'sb3','Large':'sb4','School':'sb5','Festival':'sb6'};
+    if (map[name]) document.getElementById(map[name]).classList.add('selected');
+    document.getElementById('f-snoball').classList.remove('error');
+    updatePrice();
+  }
+
+  function clearSbCards() {
+    ['sb1','sb2','sb3','sb4','sb5','sb6'].forEach(id => document.getElementById(id).classList.remove('selected'));
+  }
+
+  function selectFoam(name, price) {
+    foamName = name; foamPrice = price;
+    ['fp1','fp2','fp3','fp4'].forEach(id => document.getElementById(id).classList.remove('selected'));
+    const map = {'Basic':'fp1','Glo / Color':'fp2','Ultimate Cannon':'fp3','Drop-Off Rental':'fp4'};
+    if (map[name]) document.getElementById(map[name]).classList.add('selected');
+    document.getElementById('f-foam').classList.remove('error');
+    updatePrice();
+  }
+
+  function clearFoamCards() {
+    ['fp1','fp2','fp3','fp4'].forEach(id => document.getElementById(id).classList.remove('selected'));
+  }
+
+  function selectRockWall(h, p) {
+    rwHours = h; rwPrice = p;
+    ['rw1','rw2','rw3','rw4'].forEach(id => document.getElementById(id).classList.remove('selected'));
+    const map = {1.5:'rw1', 2:'rw2', 3:'rw3', 4:'rw4'};
+    if (map[h]) document.getElementById(map[h]).classList.add('selected');
+    updatePrice();
+  }
+
+  function clearRwCards() {
+    ['rw1','rw2','rw3','rw4'].forEach(id => document.getElementById(id).classList.remove('selected'));
+  }
+
+  /* ── EVENT TYPE ── */
+  function selectEventType(type, el) {
+    eventType = type;
+    document.querySelectorAll('.event-type-card').forEach(c => c.classList.remove('selected'));
+    el.classList.add('selected');
+    const sf = document.getElementById('f-students');
+    sf.style.display = (type === 'structured') ? 'block' : 'none';
+    if (type === 'structured') calcRotations();
+    document.getElementById('f-event-type').classList.remove('error');
+  }
+
+  /* ── WEEKEND CHECK ── */
+  function checkWeekend() {
+    const val = document.getElementById('eventDate').value;
+    const notice = document.getElementById('weekend-notice');
+    if (!val) { notice.style.display='none'; return; }
+    const d = new Date(val + 'T00:00:00');
+    const day = d.getDay();
+    notice.style.display = (day === 0 || day === 5 || day === 6) ? 'block' : 'none';
+  }
+
+  /* ── ROTATION CALC ── */
+  function calcRotations() {
+    const s = parseInt(document.getElementById('students').value) || 0;
+    const rb = document.getElementById('rotationBox');
+    if (!s || eventType !== 'structured') { rb.classList.remove('show'); return; }
+    rb.classList.add('show');
+
+    document.getElementById('rot-total-val').textContent = s + ' students';
+
+    const rotPerTruck = Math.ceil(s / (trucks * 20));
+    const totalRots = rotPerTruck;
+    const minTime = totalRots * 25; // 25 min per rotation
+    const hrs = Math.max(2, Math.ceil(minTime / 30) * 0.5); // round to nearest 0.5, min 2
+
+    document.getElementById('rot-rcount-val').textContent = totalRots + ' rotation' + (totalRots !== 1 ? 's' : '');
+    document.getElementById('rot-time-val').textContent = '~' + hrs + ' hrs recommended';
+    document.getElementById('rot-rcount-label').textContent = 'Rotations needed (' + trucks + ' truck' + (trucks > 1 ? 's' : '') + ')';
+    document.getElementById('rot-time-label').textContent = 'Est. time needed (' + trucks + ' truck' + (trucks > 1 ? 's' : '') + ')';
+
+    const recTrucks = s <= 20 ? 1 : s <= 40 ? 2 : 3;
+    document.getElementById('rot-rec').textContent =
+      '👾 Tip: For ' + s + ' students, we recommend ' + recTrucks + ' theater' + (recTrucks > 1 ? 's' : '') + ' for the best experience.';
+
+    // Auto-suggest hours
+    if (hours < hrs) {
+      hours = hrs;
+      document.getElementById('hrs-num').textContent = hours;
+      updateHrsLabel();
+    }
+    updatePrice();
+  }
+
+  /* ── TRUCK SELECTION ── */
+  function selectTrucks(n) {
+    trucks = n;
+    [1,2,3].forEach(i => {
+      document.getElementById('tc'+i).classList.toggle('selected', i === n);
+    });
+    document.getElementById('f-trucks').classList.remove('error');
+    calcRotations();
+    updatePrice();
+    updateTruckPrices();
+  }
+
+  function updateTruckPrices() {
+    [1,2,3].forEach(i => {
+      const base = i * BASE;
+      const extra = i * Math.max(0, hours - 2) * EXTRA_RATE;
+      document.getElementById('tc'+i+'-price').textContent = '$' + fmt(base + extra) + ' total';
+    });
+  }
+
+  /* ── HOURS ── */
+  function changeHours(delta) {
+    hours = Math.max(2, Math.min(8, hours + delta));
+    document.getElementById('hrs-num').textContent = hours;
+    updateHrsLabel();
+    updatePrice();
+    updateTruckPrices();
+    calcRotations();
+  }
+
+  function updateHrsLabel() {
+    const lbl = document.getElementById('hrs-label');
+    lbl.textContent = hours === 2 ? 'hours (minimum)' : 'hours';
+  }
+
+  /* ── PRICE ── */
+  function updatePrice() {
+    const showTruck  = ['truck','combo','trucksnow','fullcombo','truckfoam'].includes(service);
+    const showRock   = ['rock','combo','fullcombo'].includes(service);
+    const showSnow   = ['snoball','trucksnow','fullcombo'].includes(service);
+    const showFoam   = ['foam','truckfoam'].includes(service);
+    const truckBase  = showTruck ? trucks * BASE : 0;
+    const extraHrs   = showTruck ? Math.max(0, hours - 2) : 0;
+    const truckExtra = showTruck ? trucks * extraHrs * EXTRA_RATE : 0;
+    const rockTotal  = showRock  ? rwPrice : 0;
+    const snowTotal  = showSnow  ? sbPrice : 0;
+    const foamTotal  = showFoam  ? foamPrice : 0;
+    const total = truckBase + truckExtra + rockTotal + snowTotal + foamTotal;
+
+    // Base line label
+    if (service === 'rock') {
+      document.getElementById('sl-trucks').textContent = 'Rock Wall (see below)';
+      document.getElementById('sl-base').textContent = '—';
+    } else {
+      document.getElementById('sl-trucks').textContent = trucks + ' Theater' + (trucks > 1 ? 's' : '') + ' × 2 hrs';
+      document.getElementById('sl-base').textContent = '$' + fmt(truckBase);
+    }
+
+    // Extra hours
+    const extraRow = document.getElementById('sl-extra-row');
+    if (truckExtra > 0) {
+      extraRow.style.display = 'flex';
+      document.getElementById('sl-extra-label').textContent = '+' + extraHrs + ' extra hr' + (extraHrs !== 1 ? 's' : '') + ' × ' + trucks + ' theater' + (trucks > 1 ? 's' : '');
+      document.getElementById('sl-extra-val').textContent = '+$' + fmt(truckExtra);
+    } else {
+      extraRow.style.display = 'none';
+    }
+
+    // Rock wall line
+    const rockRow = document.getElementById('sl-rock-row');
+    if (rockTotal > 0) {
+      rockRow.style.display = 'flex';
+      document.getElementById('sl-rock-label').textContent = 'Rock Wall (' + rwHours + ' hrs)';
+      document.getElementById('sl-rock-val').textContent = (showTruck ? '+' : '') + '$' + fmt(rockTotal);
+    } else {
+      rockRow.style.display = 'none';
+    }
+
+    // SnoBall line
+    const snowRow = document.getElementById('sl-snow-row');
+    if (snowTotal > 0) {
+      snowRow.style.display = 'flex';
+      document.getElementById('sl-snow-label').textContent = 'Snoballs (' + sbName + ' · up to ' + sbGuests + ')';
+      document.getElementById('sl-snow-val').textContent = (showTruck || showRock ? '+' : '') + '$' + fmt(snowTotal);
+    } else {
+      snowRow.style.display = 'none';
+    }
+
+    // Foam Party line
+    const foamRow = document.getElementById('sl-foam-row');
+    if (foamTotal > 0) {
+      foamRow.style.display = 'flex';
+      document.getElementById('sl-foam-label').textContent = 'Foam Party (' + foamName + ')';
+      document.getElementById('sl-foam-val').textContent = (showTruck ? '+' : '') + '$' + fmt(foamTotal);
+    } else {
+      foamRow.style.display = 'none';
+    }
+
+    const detailParts = [];
+    if (showTruck) detailParts.push(trucks + ' theater' + (trucks > 1 ? 's' : '') + ' · ' + hours + ' hrs');
+    if (rockTotal > 0) detailParts.push('rock wall · ' + rwHours + ' hrs');
+    if (snowTotal > 0) detailParts.push('snoballs · ' + sbGuests + ' guests');
+    if (foamTotal > 0) detailParts.push('foam · ' + foamName);
+    const detail = detailParts.join(' + ') || '—';
+
+    document.getElementById('sl-total').textContent = total > 0 ? '$' + fmt(total) : '—';
+    document.getElementById('sl-detail').textContent = detail;
+    document.getElementById('mb-total').textContent = total > 0 ? '$' + fmt(total) : '—';
+    document.getElementById('mb-detail').textContent = detail;
+  }
+
+  function fmt(n) {
+    return n.toLocaleString('en-US');
+  }
+
+  /* ── TRAVEL TOGGLE ── */
+  function toggleTravel() {
+    document.getElementById('travelDetail').classList.toggle('open');
+  }
+
+  /* ── STEP NAVIGATION ── */
+  function goStep(n) {
+    [1,2,3].forEach(i => {
+      document.getElementById('step'+i).classList.toggle('active', i === n);
+      const node = document.getElementById('node'+i);
+      node.className = 'step-node' + (i < n ? ' done' : i === n ? ' active' : '');
+    });
+    document.getElementById('stepBar').style.display = n <= 3 ? 'flex' : 'none';
+    window.scrollTo({top:0,behavior:'smooth'});
+  }
+
+  function goStep2() {
+    let valid = true;
+    if (!document.getElementById('county').value) {
+      document.getElementById('f-county').classList.add('error'); valid = false;
+    } else {
+      document.getElementById('f-county').classList.remove('error');
+    }
+    if (!eventType) {
+      document.getElementById('f-event-type').classList.add('error'); valid = false;
+    } else {
+      document.getElementById('f-event-type').classList.remove('error');
+    }
+    if (eventType === 'structured') {
+      const s = document.getElementById('students').value;
+      if (!s || parseInt(s) < 1) {
+        document.getElementById('f-students').classList.add('error'); valid = false;
+      } else {
+        document.getElementById('f-students').classList.remove('error');
+      }
+    }
+    if (!valid) { window.scrollTo({top:0,behavior:'smooth'}); return; }
+
+    // Auto-recommend trucks for structured
+    if (eventType === 'structured') {
+      const s = parseInt(document.getElementById('students').value) || 0;
+      const rec = s <= 20 ? 1 : s <= 40 ? 2 : 3;
+      selectTrucks(rec);
+      // Mark recommended
+      [1,2,3].forEach(i => {
+        document.getElementById('tc'+i).classList.toggle('recommended', i === rec);
+      });
+    }
+
+    goStep(2);
+    if (eventType === 'structured') {
+      document.getElementById('rotationBox').classList.add('show');
+      calcRotations();
+    }
+  }
+
+  function goStep3() {
+    let valid = true;
+    if ((service === 'truck' || service === 'combo') && !trucks) {
+      document.getElementById('f-trucks').classList.add('error'); valid = false;
+    } else {
+      document.getElementById('f-trucks').classList.remove('error');
+    }
+    if (['rock','combo','fullcombo'].includes(service) && !rwPrice) {
+      document.getElementById('f-rockwall').classList.add('error'); valid = false;
+    } else {
+      document.getElementById('f-rockwall').classList.remove('error');
+    }
+    if (['snoball','trucksnow','fullcombo'].includes(service) && !sbPrice) {
+      document.getElementById('f-snoball').classList.add('error'); valid = false;
+    } else {
+      document.getElementById('f-snoball').classList.remove('error');
+    }
+    if (['foam','truckfoam'].includes(service) && !foamPrice) {
+      document.getElementById('f-foam').classList.add('error'); valid = false;
+    } else {
+      document.getElementById('f-foam').classList.remove('error');
+    }
+    if (!valid) { window.scrollTo({top:0,behavior:'smooth'}); return; }
+    goStep(3);
+  }
+
+  function submitQuote() {
+    let valid = true;
+    const checks = [
+      { id:'cName', fid:'f-name' },
+      { id:'cSchool', fid:'f-school' },
+      { id:'cPhone', fid:'f-phone' },
+      { id:'cEmail', fid:'f-email' }
+    ];
+    checks.forEach(c => {
+      const val = document.getElementById(c.id).value.trim();
+      if (!val) {
+        document.getElementById(c.fid).classList.add('error'); valid = false;
+      } else {
+        document.getElementById(c.fid).classList.remove('error');
+      }
+    });
+    if (!valid) return;
+
+    // Build summary
+    const county   = document.getElementById('county').options[document.getElementById('county').selectedIndex].text;
+    const eType    = eventType === 'structured' ? 'Structured Rotations' : 'Open Play / Field Day';
+    const students = document.getElementById('students').value;
+    const date     = document.getElementById('eventDate').value;
+    const name     = document.getElementById('cName').value.trim();
+    const school   = document.getElementById('cSchool').value.trim();
+    const phone    = document.getElementById('cPhone').value.trim();
+    const email    = document.getElementById('cEmail').value.trim();
+    const notes    = document.getElementById('cNotes').value.trim();
+
+    const svcLabels = {
+      truck:'Game Truck Only', rock:'Rock Wall Only', snoball:'SnoBall Truck Only',
+      combo:'Game Truck + Rock Wall', trucksnow:'Game Truck + SnoBalls', fullcombo:'Full Combo (Truck + Rock Wall + SnoBalls)',
+      foam:'Foam Party Only', truckfoam:'Game Truck + Foam Party'
+    };
+    const svcLabel   = svcLabels[service] || service;
+    const showTruckQ = ['truck','combo','trucksnow','fullcombo','truckfoam'].includes(service);
+    const showRockQ  = ['rock','combo','fullcombo'].includes(service);
+    const showSnowQ  = ['snoball','trucksnow','fullcombo'].includes(service);
+    const showFoamQ  = ['foam','truckfoam'].includes(service);
+    const truckBase  = showTruckQ ? trucks * BASE : 0;
+    const truckExtra = showTruckQ ? trucks * Math.max(0,hours-2) * EXTRA_RATE : 0;
+    const rockTotal  = showRockQ ? rwPrice : 0;
+    const snowTotal  = showSnowQ ? sbPrice : 0;
+    const foamTotal  = showFoamQ ? foamPrice : 0;
+    const total = truckBase + truckExtra + rockTotal + snowTotal + foamTotal;
+
+    const body = encodeURIComponent(
+      `School Event Quote Request\n\n` +
+      `Name: ${name}\nSchool: ${school}\nPhone: ${phone}\nEmail: ${email}\n\n` +
+      `County/Region: ${county}\nEvent Type: ${eType}\n` +
+      (students ? `Students: ${students}\n` : '') +
+      (date ? `Preferred Date: ${date}\n` : '') +
+      `\nServices Requested: ${svcLabel}\n` +
+      (showTruckQ ? `  Game Theaters: ${trucks}  |  Hours: ${hours}\n` : '') +
+      (rockTotal  ? `  Rock Wall: ${rwHours} hrs  |  $${fmt(rockTotal)}\n` : '') +
+      (snowTotal  ? `  SnoBall Truck: ${sbName} (up to ${sbGuests} guests)  |  $${fmt(snowTotal)}\n` : '') +
+      (foamTotal  ? `  Foam Party: ${foamName}  |  $${fmt(foamTotal)}\n` : '') +
+      `\nEstimated Total: $${fmt(total)}\n\n` +
+      (notes ? `Notes: ${notes}` : '')
+    );
+
+    const subject = encodeURIComponent(`School Event Quote — ${school}`);
+    window.location.href = `mailto:info@partygametruck.com?subject=${subject}&body=${body}`;
+
+    // Show success
+    document.getElementById('step3').classList.remove('active');
+    document.getElementById('node3').className = 'step-node done';
+    document.getElementById('stepBar').style.display = 'none';
+    document.getElementById('successPanel').classList.add('show');
+  }
+
+  /* ── INIT ── */
+  BASE = 650;
+  selectService('truck');
+  selectTrucks(1);
+  updatePrice();
+</script>
+</body>
+</html>

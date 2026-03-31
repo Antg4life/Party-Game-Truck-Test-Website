@@ -1,0 +1,1101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pricing | Party Game Truck Maryland</title>
+  <meta name="description" content="Clear, transparent pricing for Party Game Truck Maryland. 3 tiers — Player, Champion, Legend. Weekday & weekend rates. No hidden fees. Serving Baltimore, Owings Mills & all DMV cities." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --blue:      #007BFF;
+      --deep-blue: #003F88;
+      --yellow:    #FFD60A;
+      --neon:      #39FF14;
+      --black:     #0A0E1A;
+      --white:     #FFFFFF;
+      --body-bg:   #F2F7FF;
+      --card-bg:   #FFFFFF;
+      --text-dark: #0F1C2E;
+      --text-mid:  #3A5068;
+      --text-light:#637A92;
+      --border:    rgba(0,123,255,0.14);
+      --alt:       #E8F2FF;
+
+      /* price band colors */
+      --green-bg:  #E8FFF0;
+      --green-txt: #0a7c34;
+      --green-bdr: #52c97a;
+      --yellow-bg: #FFF8DC;
+      --yellow-txt:#8a6500;
+      --yellow-bdr:#e6b800;
+      --red-bg:    #FFF0F0;
+      --red-txt:   #c0392b;
+      --red-bdr:   #e57373;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Montserrat', sans-serif; background: var(--body-bg); color: var(--text-dark); overflow-x: hidden; }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(255,255,255,0.97); backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(0,123,255,0.12);
+      box-shadow: 0 2px 16px rgba(0,63,136,0.08);
+      padding: 0 2rem; height: 72px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-logo { display:flex; align-items:center; gap:0.75rem; text-decoration:none; }
+    .nav-logo img { height:46px; width:46px; object-fit:contain; border-radius:50%; box-shadow:0 0 14px rgba(0,123,255,0.5); }
+    .nav-logo-text { font-family:'Anton',sans-serif; font-size:1.1rem; letter-spacing:0.04em; text-transform:uppercase; color:var(--text-dark); line-height:1.1; }
+    .nav-logo-text em { display:block; font-style:normal; font-size:0.6rem; color:var(--blue); letter-spacing:0.12em; }
+    .nav-actions { display:flex; align-items:center; gap:1rem; flex-wrap:wrap; }
+    .nav-back { font-family:'Montserrat',sans-serif; font-weight:600; font-size:0.8rem; color:var(--text-mid); text-decoration:none; transition:color 0.2s; }
+    .nav-back:hover { color:var(--blue); }
+    .btn-primary { font-family:'Anton',sans-serif; font-size:0.85rem; letter-spacing:0.1em; text-transform:uppercase; background:var(--blue); color:#fff; border:none; border-radius:10px; padding:0.6rem 1.3rem; cursor:pointer; text-decoration:none; display:inline-block; transition:background 0.2s, transform 0.15s; box-shadow:0 4px 16px rgba(0,123,255,0.35); }
+    .btn-primary:hover { background:var(--deep-blue); transform:translateY(-2px); }
+
+    /* ── HERO ── */
+    .hero {
+      background: linear-gradient(135deg, #000c24 0%, #001a50 55%, #000c24 100%);
+      padding: 3.5rem 2rem 3rem; text-align: center; position: relative; overflow: hidden;
+    }
+    .hero::before {
+      content:''; position:absolute; inset:0; pointer-events:none;
+      background: radial-gradient(ellipse 70% 60% at 50% 50%, rgba(0,123,255,0.2) 0%, transparent 65%),
+                  radial-gradient(ellipse 30% 40% at 85% 15%, rgba(255,214,10,0.08) 0%, transparent 60%);
+    }
+    .badge { display:inline-flex; align-items:center; gap:0.5rem; font-size:0.68rem; font-weight:700; letter-spacing:0.18em; text-transform:uppercase; color:var(--yellow); background:rgba(255,214,10,0.1); border:1px solid rgba(255,214,10,0.3); padding:0.35rem 0.85rem; border-radius:999px; margin-bottom:1.25rem; position:relative; }
+    .hero h1 { font-family:'Anton',sans-serif; font-size:clamp(2.2rem,5.5vw,3.8rem); line-height:0.95; color:#fff; margin-bottom:1rem; position:relative; letter-spacing:0.02em; }
+    .hero h1 .yellow { color:var(--yellow); text-shadow:0 0 30px rgba(255,214,10,0.5); }
+    .hero h1 .blue   { color:var(--blue);   text-shadow:0 0 30px rgba(0,123,255,0.5); }
+    .hero-sub { font-size:0.98rem; line-height:1.65; color:rgba(255,255,255,0.92); max-width:580px; margin:0 auto 1.75rem; position:relative; }
+    .hero-chips { display:flex; gap:0.75rem; justify-content:center; flex-wrap:wrap; position:relative; }
+    .chip { font-size:0.72rem; font-weight:700; padding:0.35rem 0.85rem; border-radius:999px; }
+    .chip-green  { background:rgba(57,255,20,0.15);  color:var(--neon);    border:1px solid rgba(57,255,20,0.3); }
+    .chip-yellow { background:rgba(255,214,10,0.15); color:var(--yellow);  border:1px solid rgba(255,214,10,0.3); }
+    .chip-blue   { background:rgba(0,123,255,0.15);  color:#7EB8FF;        border:1px solid rgba(0,123,255,0.3); }
+
+    /* ── TRUST STRIP ── */
+    .trust-strip { background:var(--card-bg); border-bottom:1px solid var(--border); padding:1rem 2rem; display:flex; justify-content:center; gap:2rem; flex-wrap:wrap; }
+    .trust-item { display:flex; align-items:center; gap:0.45rem; font-size:0.78rem; font-weight:700; color:var(--text-dark); }
+
+    /* ── SECTION ── */
+    .section { padding:4rem 2rem; }
+    .section.alt { background:var(--alt); }
+    .section.dark { background:#0a0f1e; }
+    .wrap { max-width:1200px; margin:0 auto; }
+    .sec-label { font-size:0.65rem; font-weight:700; letter-spacing:0.22em; text-transform:uppercase; color:var(--blue); margin-bottom:0.4rem; }
+    .sec-title { font-family:'Anton',sans-serif; font-size:clamp(1.7rem,3.5vw,2.6rem); letter-spacing:0.02em; text-transform:uppercase; color:var(--text-dark); line-height:1.05; margin-bottom:0.6rem; }
+    .sec-title.white { color:#fff; }
+    .sec-sub { font-size:0.9rem; color:var(--text-mid); line-height:1.7; max-width:580px; }
+
+    /* ── DISCOUNT BANNER ── */
+    .discount-banner {
+      background: linear-gradient(135deg, #003F88 0%, #007BFF 50%, #003F88 100%);
+      border-radius: 18px; padding: 1.75rem 2rem;
+      display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem;
+      margin-bottom: 3rem; position: relative; overflow: hidden;
+    }
+    .discount-banner::before {
+      content:''; position:absolute; inset:0;
+      background: repeating-linear-gradient(45deg, transparent, transparent 30px, rgba(255,255,255,0.03) 30px, rgba(255,255,255,0.03) 31px);
+    }
+    .disc-item { position:relative; text-align:center; padding:1rem; }
+    .disc-badge { font-family:'Anton',sans-serif; font-size:2rem; color:var(--yellow); line-height:1; text-shadow:0 0 20px rgba(255,214,10,0.5); }
+    .disc-title { font-family:'Anton',sans-serif; font-size:0.85rem; letter-spacing:0.1em; text-transform:uppercase; color:#fff; margin:0.25rem 0 0.15rem; }
+    .disc-desc { font-size:0.72rem; color:rgba(255,255,255,0.75); line-height:1.4; }
+
+    /* ── TIER CARDS ── */
+    .tiers { display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; margin-top:2.5rem; }
+    .tier {
+      background:var(--card-bg); border:1.5px solid var(--border); border-radius:22px;
+      padding:2rem 1.75rem; position:relative; overflow:hidden;
+      box-shadow:0 4px 24px rgba(0,63,136,0.07);
+      transition:transform 0.25s cubic-bezier(.34,1.56,.64,1), box-shadow 0.25s;
+      display:flex; flex-direction:column;
+    }
+    .tier:hover { transform:translateY(-8px); box-shadow:0 24px 60px rgba(0,63,136,0.13); }
+    .tier.hot  { border-color:var(--yellow); border-width:2.5px; box-shadow:0 0 0 3px rgba(255,214,10,0.2), 0 16px 50px rgba(0,63,136,0.12); }
+    .tier.hot:hover { box-shadow:0 0 0 3px rgba(255,214,10,0.3), 0 28px 70px rgba(0,63,136,0.15); }
+    .tier.glow-e { border-color:#c084fc; border-width:2px; box-shadow:0 0 0 3px rgba(192,132,252,0.15), 0 16px 50px rgba(0,63,136,0.1); }
+    .tier.glow-e:hover { box-shadow:0 0 0 3px rgba(192,132,252,0.25), 0 28px 70px rgba(0,63,136,0.14); }
+
+    .pop-pill { position:absolute; top:1.25rem; right:1.25rem; font-family:'Anton',sans-serif; font-size:0.65rem; letter-spacing:0.1em; text-transform:uppercase; background:var(--yellow); color:#000; padding:0.2rem 0.65rem; border-radius:999px; }
+
+    .tier-icon { font-size:2.2rem; margin-bottom:0.6rem; display:block; }
+    .tier-name { font-family:'Anton',sans-serif; font-size:1.55rem; letter-spacing:0.05em; text-transform:uppercase; margin-bottom:0.15rem; }
+    .tier-name.p { color:var(--blue); }
+    .tier-name.c { color:var(--yellow); }
+    .tier-name.e { color:#c084fc; filter:drop-shadow(0 0 8px rgba(192,132,252,0.5)); }
+    .tier-name.l { color:var(--neon); filter:drop-shadow(0 0 8px rgba(57,255,20,0.5)); }
+    .tier-tag { font-size:0.75rem; color:var(--text-mid); font-weight:600; margin-bottom:1.25rem; line-height:1.4; }
+
+    /* Price rows inside card */
+    .price-box { border-radius:12px; padding:1rem 1.1rem; margin-bottom:1.5rem; }
+    .price-box.p { background:#EAF3FF; }
+    .price-box.c { background:#FFF8DC; }
+    .price-box.e { background:#1a0a2e; border:1px solid rgba(192,132,252,0.2); }
+    .price-box.l { background:#0a1020; border:1px solid rgba(57,255,20,0.15); }
+    .price-lbl { font-size:0.62rem; font-weight:700; letter-spacing:0.15em; text-transform:uppercase; color:var(--text-light); margin-bottom:0.5rem; }
+    .price-lbl.dark { color:rgba(255,255,255,0.45); }
+
+    .prow { display:flex; align-items:center; gap:0.5rem; margin-bottom:0.35rem; }
+    .prow:last-child { margin-bottom:0; }
+    .pday { font-size:0.7rem; font-weight:700; color:var(--text-mid); min-width:100px; }
+    .pday.dark { color:rgba(255,255,255,0.6); }
+    .pamt { font-family:'Anton',sans-serif; font-size:1.45rem; line-height:1; }
+    .pamt.wday { color:var(--blue); }
+    .pamt.wend { color:#c97d00; }
+    .pamt.wend-lg { color:var(--neon); }
+    .punit { font-size:0.68rem; color:var(--text-light); }
+    .punit.dark { color:rgba(255,255,255,0.4); }
+    .save-tag { font-size:0.6rem; font-weight:700; background:rgba(57,200,20,0.15); color:#0a7c34; border:1px solid rgba(57,200,20,0.35); padding:0.1rem 0.4rem; border-radius:4px; margin-left:auto; }
+    .save-tag.dark { background:rgba(57,255,20,0.15); color:var(--neon); border-color:rgba(57,255,20,0.3); }
+
+    .feat-lbl { font-size:0.65rem; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:var(--text-light); margin-bottom:0.65rem; }
+    .feat-list { list-style:none; display:flex; flex-direction:column; gap:0.55rem; flex:1; margin-bottom:1.5rem; }
+    .feat-list li { display:flex; align-items:flex-start; gap:0.55rem; font-size:0.8rem; color:var(--text-dark); font-weight:500; line-height:1.4; }
+    .feat-list li.no { opacity:0.38; text-decoration:line-through; }
+
+    .btn-tier { font-family:'Anton',sans-serif; font-size:0.85rem; letter-spacing:0.12em; text-transform:uppercase; display:block; width:100%; text-align:center; padding:0.85rem 1rem; border-radius:12px; border:none; cursor:pointer; text-decoration:none; transition:transform 0.15s cubic-bezier(.34,1.56,.64,1), box-shadow 0.2s; }
+    .btn-tier:hover { transform:translateY(-3px); }
+    .btn-p { background:var(--blue); color:#fff; box-shadow:0 6px 20px rgba(0,123,255,0.35); }
+    .btn-p:hover { box-shadow:0 10px 28px rgba(0,123,255,0.45); }
+    .btn-c { background:var(--yellow); color:#000; box-shadow:0 6px 20px rgba(255,214,10,0.4); }
+    .btn-c:hover { box-shadow:0 10px 28px rgba(255,214,10,0.55); }
+    .btn-e { background:#1a0a2e; color:#c084fc; border:2px solid #c084fc; box-shadow:0 6px 20px rgba(192,132,252,0.2); }
+    .btn-e:hover { box-shadow:0 10px 28px rgba(192,132,252,0.38); }
+    .btn-l { background:#0F1C2E; color:var(--neon); border:2px solid var(--neon); box-shadow:0 6px 20px rgba(57,255,20,0.2); }
+    .btn-l:hover { box-shadow:0 10px 28px rgba(57,255,20,0.35); }
+
+    /* ── PRICING GRID (calendar style) ── */
+    .grid-tabs { display:flex; gap:0.5rem; justify-content:center; margin:1.75rem 0 1.25rem; flex-wrap:wrap; }
+    .gtab { font-family:'Anton',sans-serif; font-size:0.78rem; letter-spacing:0.1em; text-transform:uppercase; padding:0.55rem 1.3rem; border-radius:10px; border:2px solid var(--border); background:transparent; color:var(--text-mid); cursor:pointer; transition:all 0.2s; }
+    .gtab.ap { background:var(--blue);   color:#fff;  border-color:var(--blue); box-shadow:0 4px 14px rgba(0,123,255,0.35); }
+    .gtab.ac { background:var(--yellow); color:#000;  border-color:var(--yellow); box-shadow:0 4px 14px rgba(255,214,10,0.35); }
+    .gtab.al { background:#0F1C2E; color:var(--neon); border-color:var(--neon); box-shadow:0 4px 14px rgba(57,255,20,0.2); }
+
+    .cal-wrap { overflow-x:auto; -webkit-overflow-scrolling:touch; border-radius:16px; border:2px solid var(--border); box-shadow:0 6px 32px rgba(0,63,136,0.09); }
+    table.cal { width:100%; border-collapse:collapse; min-width:640px; background:var(--card-bg); }
+    table.cal thead tr { background:#0F1C2E; }
+    table.cal thead th { padding:0.9rem 0.5rem; font-family:'Anton',sans-serif; font-size:0.78rem; letter-spacing:0.12em; text-transform:uppercase; color:#fff; text-align:center; }
+    table.cal thead th:first-child { text-align:left; padding-left:1.25rem; min-width:140px; }
+    table.cal thead th.wkd { color:#7EB8FF; }
+    table.cal thead th.wknd { color:var(--yellow); }
+
+    table.cal tbody td { padding:0; border-bottom:1px solid rgba(0,123,255,0.08); }
+    table.cal tbody td:first-child { padding:0.7rem 0.5rem 0.7rem 1.25rem; }
+    table.cal tbody tr:last-child td { border-bottom:none; }
+
+    .slot-name { font-weight:700; font-size:0.78rem; color:var(--text-dark); }
+    .slot-time { font-size:0.65rem; color:var(--text-light); margin-top:0.1rem; }
+
+    .cell { padding:0.6rem 0.4rem; text-align:center; }
+    .price-cell { display:flex; flex-direction:column; align-items:center; justify-content:center; height:100%; padding:0.55rem 0.3rem; border-radius:8px; margin:3px; }
+    .price-cell .pc-amt { font-family:'Anton',sans-serif; font-size:1.05rem; line-height:1; }
+    .price-cell .pc-tag { font-size:0.58rem; font-weight:700; margin-top:0.15rem; letter-spacing:0.05em; text-transform:uppercase; }
+
+    /* Green = cheapest (weekday morning) */
+    .c-green  { background:var(--green-bg);  border:1.5px solid var(--green-bdr); }
+    .c-green .pc-amt { color:var(--green-txt); }
+    .c-green .pc-tag { color:var(--green-txt); opacity:0.8; }
+
+    /* Blue = weekday standard */
+    .c-blue   { background:#EAF3FF; border:1.5px solid rgba(0,123,255,0.35); }
+    .c-blue .pc-amt { color:var(--blue); }
+    .c-blue .pc-tag { color:var(--blue); opacity:0.8; }
+
+    /* Yellow = weekend standard */
+    .c-yellow { background:var(--yellow-bg); border:1.5px solid var(--yellow-bdr); }
+    .c-yellow .pc-amt { color:var(--yellow-txt); }
+    .c-yellow .pc-tag { color:var(--yellow-txt); opacity:0.8; }
+
+    /* Red/orange = peak weekend */
+    .c-peak   { background:var(--red-bg);    border:1.5px solid var(--red-bdr); }
+    .c-peak .pc-amt { color:var(--red-txt); }
+    .c-peak .pc-tag { color:var(--red-txt); opacity:0.8; }
+
+    /* Legend */
+    .legend-bar { display:flex; gap:1rem; flex-wrap:wrap; justify-content:center; margin-top:1.25rem; }
+    .leg-item { display:flex; align-items:center; gap:0.5rem; font-size:0.74rem; font-weight:700; }
+    .leg-dot { width:14px; height:14px; border-radius:4px; flex-shrink:0; }
+    .leg-green  { background:var(--green-bdr); }
+    .leg-blue   { background:var(--blue); opacity:0.7; }
+    .leg-yellow { background:var(--yellow-bdr); }
+    .leg-red    { background:var(--red-bdr); }
+
+    /* ── COMPARISON TABLE ── */
+    .comp-table-wrap { overflow-x:auto; border-radius:16px; border:2px solid var(--border); box-shadow:0 6px 32px rgba(0,63,136,0.12); margin-top:2.5rem; }
+    table.comp { width:100%; border-collapse:collapse; min-width:540px; }
+    table.comp thead th { background:#0F1C2E; color:#fff; font-family:'Anton',sans-serif; font-size:0.88rem; letter-spacing:0.1em; text-transform:uppercase; padding:1.1rem 1rem; text-align:center; }
+    table.comp thead th:first-child { text-align:left; padding-left:1.5rem; font-size:0.82rem; }
+    table.comp tbody tr { border-bottom:2px solid rgba(0,123,255,0.1); }
+    table.comp tbody tr:last-child { border-bottom:none; }
+    table.comp tbody tr:nth-child(even) { background:rgba(0,123,255,0.04); }
+    table.comp tbody td { padding:1rem 1rem; font-size:0.9rem; text-align:center; color:var(--text-dark); font-weight:700; }
+    table.comp tbody td:first-child { text-align:left; padding-left:1.5rem; font-weight:700; font-size:0.88rem; color:#0F1C2E; }
+    .comp-us { font-family:'Anton',sans-serif; font-size:1.15rem; color:var(--blue); }
+    .comp-them { font-family:'Anton',sans-serif; font-size:1.15rem; color:#c0392b; }
+    .comp-win { background:rgba(57,200,20,0.13); border-left:4px solid var(--green-bdr); }
+    .comp-win td:first-child { color:var(--green-txt) !important; font-weight:800; }
+    .win-badge { display:inline-flex; align-items:center; gap:0.3rem; font-size:0.7rem; font-weight:800; background:var(--green-bdr); color:#fff; padding:0.18rem 0.55rem; border-radius:999px; margin-left:0.5rem; }
+
+    /* ── ADD-ONS ── */
+    .addons { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:1.1rem; margin-top:2.5rem; }
+    .addon { background:var(--card-bg); border:1px solid var(--border); border-radius:14px; padding:1.1rem 1.4rem; display:flex; align-items:center; gap:1rem; }
+    .addon-ico { font-size:1.8rem; flex-shrink:0; }
+    .addon-name { font-family:'Anton',sans-serif; font-size:0.88rem; letter-spacing:0.06em; text-transform:uppercase; color:var(--text-dark); }
+    .addon-desc { font-size:0.72rem; color:var(--text-mid); line-height:1.45; margin-top:0.1rem; }
+    .addon-price { margin-left:auto; font-family:'Anton',sans-serif; font-size:1.05rem; color:var(--blue); flex-shrink:0; padding-left:0.75rem; white-space:nowrap; }
+
+    /* ── CTA ── */
+    .cta { background:linear-gradient(135deg,#000c24 0%,#001f5e 60%,#000c24 100%); padding:4rem 2rem; text-align:center; position:relative; overflow:hidden; }
+    .cta::before { content:''; position:absolute; inset:0; background:radial-gradient(ellipse 70% 70% at 50% 50%,rgba(0,123,255,0.18) 0%,transparent 70%); pointer-events:none; }
+    .cta h2 { font-family:'Anton',sans-serif; font-size:clamp(1.8rem,4vw,2.8rem); letter-spacing:0.03em; text-transform:uppercase; color:#fff; margin-bottom:0.9rem; position:relative; }
+    .cta p { font-size:1rem; color:rgba(255,255,255,0.88); max-width:500px; margin:0 auto 2rem; line-height:1.65; position:relative; }
+    .cta-btns { display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; position:relative; }
+    .btn-yellow { font-family:'Anton',sans-serif; font-size:0.95rem; letter-spacing:0.1em; text-transform:uppercase; background:var(--yellow); color:#000; border:none; border-radius:12px; padding:0.9rem 2rem; cursor:pointer; text-decoration:none; display:inline-block; transition:transform 0.15s cubic-bezier(.34,1.56,.64,1),box-shadow 0.2s; box-shadow:0 6px 24px rgba(255,214,10,0.4); }
+    .btn-yellow:hover { transform:translateY(-3px); box-shadow:0 12px 32px rgba(255,214,10,0.5); }
+    .btn-outline-w { font-family:'Anton',sans-serif; font-size:0.95rem; letter-spacing:0.1em; text-transform:uppercase; background:transparent; color:#fff; border:2px solid rgba(255,255,255,0.45); border-radius:12px; padding:0.9rem 2rem; cursor:pointer; text-decoration:none; display:inline-block; transition:background 0.2s,transform 0.15s; }
+    .btn-outline-w:hover { background:rgba(255,255,255,0.1); transform:translateY(-2px); }
+
+    footer { background:#000510; padding:1.5rem 2rem; text-align:center; border-top:1px solid rgba(0,123,255,0.12); }
+    footer p { font-size:0.78rem; color:rgba(255,255,255,0.55); }
+    footer a { color:rgba(255,255,255,0.8); text-decoration:none; }
+    footer a:hover { color:var(--yellow); }
+
+    .power-hour-grid { display:grid; grid-template-columns:1fr 1fr 1fr; gap:2rem; align-items:center; }
+    @media (max-width:960px) { .tiers { grid-template-columns:1fr; max-width:480px; margin-left:auto; margin-right:auto; } .discount-banner { grid-template-columns:1fr; } .power-hour-grid { grid-template-columns:1fr; } }
+    @media (max-width:640px) {
+      nav { padding:0 1rem; }
+      .nav-logo-text { display:none; }
+      .nav-actions { gap:0.5rem; }
+      .tiers { grid-template-columns:1fr; }
+      .trust-strip { gap:0.75rem; }
+      .grid-tabs { gap:0.4rem; }
+      .addons { grid-template-columns:1fr; }
+      .cta-btns { flex-direction:column; align-items:center; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- URGENCY BAR -->
+<div id="urgency-bar" style="background:linear-gradient(90deg,#c00000 0%,#e00000 50%,#c00000 100%);padding:0.55rem 1.5rem;text-align:center;position:sticky;top:0;z-index:300;display:flex;align-items:center;justify-content:center;gap:1rem;flex-wrap:wrap;">
+  <span style="font-family:'Anton',sans-serif;font-size:0.85rem;letter-spacing:0.06em;text-transform:uppercase;color:#fff;">⚡ Weekend dates are filling up fast —</span>
+  <span style="font-size:0.8rem;color:rgba(255,255,255,0.9);font-weight:600;">Think our price is too high? <strong style="color:#FFD60A;">Call us — we'll work something out.</strong></span>
+  <a href="tel:8773991997" style="background:#FFD60A;color:#000;font-family:'Anton',sans-serif;font-size:0.78rem;letter-spacing:0.08em;text-transform:uppercase;padding:0.3rem 0.9rem;border-radius:6px;text-decoration:none;white-space:nowrap;transition:background 0.15s;" onmouseover="this.style.background='#fff'" onmouseout="this.style.background='#FFD60A'">📞 877-399-1997</a>
+</div>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo">
+    <img src="logo.jpg" alt="Party Game Truck Logo" />
+    <span class="nav-logo-text">Party Game Truck<em>Best Arcade on Wheels</em></span>
+  </a>
+  <div class="nav-actions">
+    <a href="index.html" class="nav-back">← Back to Main Site</a>
+    <a href="quote.html" class="nav-back" style="color:var(--blue);">💬 Quote</a>
+    <a href="booking.html" class="nav-back" style="color:var(--yellow);font-weight:700;">📅 Book Online</a>
+    <a href="booking.html" class="btn-primary">📞 Book Now</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="badge">💰 Transparent Pricing · No Hidden Fees</div>
+  <h1>Best Value <span class="yellow">Game Truck</span><br>in <span class="blue">Maryland</span></h1>
+  <p class="hero-sub">3 tiers. Weekday & early morning discounts. Starting <strong>$25–$50 below competitors</strong> — with more consoles, more players, and the same certified Game Coach experience.</p>
+  <div class="hero-chips">
+    <span class="chip chip-green">🌅 Early Morning Discount</span>
+    <span class="chip chip-yellow">📅 Weekday Savings</span>
+    <span class="chip chip-blue">🎮 50+ Games · No Extra Fee</span>
+  </div>
+  <div style="position:relative;margin-top:1.5rem;">
+    <div style="display:inline-flex;align-items:center;gap:0.65rem;background:linear-gradient(135deg,rgba(255,214,10,0.12),rgba(0,123,255,0.1));border:1px solid rgba(255,214,10,0.4);border-radius:14px;padding:0.75rem 1.5rem;">
+      <span style="font-size:1.5rem;">📺</span>
+      <span style="font-family:'Anton',sans-serif;font-size:clamp(0.85rem,2vw,1.1rem);letter-spacing:0.04em;text-transform:uppercase;color:#fff;">Every Game Truck Rental Comes With <span style="color:var(--yellow);">10 Huge 50" TV Screens</span> — For Your Gamers' Pleasure</span>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST -->
+<div class="trust-strip">
+  <div class="trust-item">✅ $50 deposit secures your date</div>
+  <div class="trust-item">✅ Setup & takedown included</div>
+  <div class="trust-item">✅ 50+ game library — no upcharge</div>
+  <div class="trust-item">🎉 <a href="invitations.html" style="color:inherit;font-weight:700;text-decoration:underline;text-underline-offset:3px;">Free Party Invitations</a> with every booking</div>
+  <div class="trust-item">📍 All Maryland & DMV</div>
+  <div class="trust-item">📞 877-399-1997</div>
+</div>
+
+<!-- DISCOUNT BANNER -->
+<section class="section" style="padding-bottom:0;">
+  <div class="wrap">
+    <div class="discount-banner">
+      <div class="disc-item">
+        <div class="disc-badge">$25 OFF</div>
+        <div class="disc-title">🌅 Early Morning</div>
+        <div class="disc-desc">Book the 9 AM – 11 AM time slot any day and save $25 off standard pricing</div>
+      </div>
+      <div class="disc-item" style="border-left:1px solid rgba(255,255,255,0.1);border-right:1px solid rgba(255,255,255,0.1);">
+        <div class="disc-badge">$25 OFF</div>
+        <div class="disc-title">📅 Weekday Rate</div>
+        <div class="disc-desc">Monday – Thursday events are $25 less than Friday, Saturday & Sunday rates</div>
+      </div>
+      <div class="disc-item">
+        <div class="disc-badge">10% OFF</div>
+        <div class="disc-title">📦 Bundle & Save</div>
+        <div class="disc-desc">Book any inflatable rental + tent & tables together and save 10% on your entire order</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- POWER HOUR -->
+<section class="section" style="padding-bottom:0;">
+  <div class="wrap">
+    <div style="text-align:center;margin-bottom:1.75rem;">
+      <div class="sec-label">⚡ Pure Gaming · 1 Hour</div>
+      <h2 class="sec-title">The <span style="color:var(--blue);">Power Hour</span></h2>
+      <p class="sec-sub" style="margin:0 auto;">One hour of pure, unfiltered gaming action. Perfect for younger players, quick celebrations, or anyone who wants the full experience in a tight window.</p>
+    </div>
+
+    <!-- Power Hour card — full width accent -->
+    <div class="power-hour-grid" style="background:linear-gradient(135deg,#EAF3FF 0%,#f0f7ff 100%);border:2px solid rgba(0,123,255,0.3);border-radius:22px;padding:2rem;gap:2rem;box-shadow:0 6px 32px rgba(0,63,136,0.1);">
+      <!-- left: title + price -->
+      <div>
+        <span style="font-size:2.4rem;display:block;margin-bottom:0.5rem;">🎮</span>
+        <div style="font-family:'Anton',sans-serif;font-size:2rem;letter-spacing:0.04em;text-transform:uppercase;color:var(--blue);margin-bottom:0.2rem;">Power Hour</div>
+        <div style="font-size:0.8rem;color:var(--text-mid);font-weight:600;margin-bottom:1.25rem;">Great for birthdays &amp; small groups · Ages 7+</div>
+        <div style="background:#fff;border:1.5px solid rgba(0,123,255,0.2);border-radius:12px;padding:0.9rem 1.1rem;">
+          <div class="price-lbl" style="margin-bottom:0.5rem;">Pricing — 1 hour</div>
+          <div class="prow"><span class="pday">🌅 Early Morn.</span><span class="pamt wday">$325</span><span class="punit">/ hr</span><span class="save-tag">BEST DEAL</span></div>
+          <div class="prow"><span class="pday">📅 Weekday</span><span class="pamt wday">$350</span><span class="punit">/ hr</span></div>
+          <div class="prow"><span class="pday">🌟 Weekend</span><span class="pamt wend">$375</span><span class="punit">/ hr</span></div>
+        </div>
+      </div>
+      <!-- center: features -->
+      <div>
+        <div class="feat-lbl">What's Included</div>
+        <ul class="feat-list" style="color:var(--text-dark);">
+          <li style="color:var(--text-dark);">✅ Up to 16 players at once</li>
+          <li style="color:var(--text-dark);">✅ Xbox, PlayStation 5, Nintendo Switch</li>
+          <li style="color:var(--text-dark);">✅ Real Mario Kart Race Seat</li>
+          <li style="color:var(--text-dark);">✅ Interior unlimited music</li>
+          <li style="color:var(--text-dark);">✅ 1 certified Game Coach</li>
+          <li style="color:var(--text-dark);">✅ Setup &amp; takedown included</li>
+          <li class="no">✗ Nintendo Switch 2</li>
+          <li class="no">✗ Tournament bracket system</li>
+        </ul>
+      </div>
+      <!-- right: CTA -->
+      <div style="text-align:center;">
+        <div style="font-size:0.72rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-light);margin-bottom:0.5rem;">Starting at</div>
+        <div style="font-family:'Anton',sans-serif;font-size:3.2rem;color:var(--blue);line-height:1;">$325</div>
+        <div style="font-size:0.72rem;color:var(--text-light);margin-bottom:1.25rem;">per hour</div>
+        <a href="booking.html" class="btn-tier btn-p" style="display:block;">🎮 Book Power Hour</a>
+        <div style="font-size:0.68rem;color:var(--text-light);margin-top:0.6rem;">+$175 for each additional hour</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 2-HOUR TIERS -->
+<section class="section">
+  <div class="wrap">
+    <div style="text-align:center;margin-bottom:0.5rem;">
+      <div class="sec-label">⏱ 2-Hour Events · Choose Your Level</div>
+      <h2 class="sec-title">2-Hour <span style="color:var(--yellow)">Party Packages</span></h2>
+      <p class="sec-sub" style="margin:0 auto;">All 2-hour packages include a certified Game Coach, setup &amp; takedown, climate-controlled truck, 50+ game library, and the Real Mario Kart Race Seat. Pick the level of entertainment that fits your party.</p>
+    </div>
+
+    <div class="tiers" style="margin-top:2.5rem;">
+
+      <!-- CHAMPION -->
+      <div class="tier hot">
+        <div class="pop-pill">Most Popular</div>
+        <span class="tier-icon">⚡</span>
+        <div class="tier-name c">Champion</div>
+        <div class="tier-tag">The fan-favorite 2-hour party · All ages<br>Full gaming experience, all consoles</div>
+
+        <div class="price-box c">
+          <div class="price-lbl">Pricing (2-hour base)</div>
+          <div class="prow">
+            <span class="pday">🌅 Early Morn.</span>
+            <span class="pamt wday">$499</span>
+            <span class="punit">/ 2 hrs</span>
+            <span class="save-tag">BEST DEAL</span>
+          </div>
+          <div class="prow">
+            <span class="pday">📅 Weekday</span>
+            <span class="pamt wday">$525</span>
+            <span class="punit">/ 2 hrs</span>
+          </div>
+          <div class="prow">
+            <span class="pday">🌟 Weekend</span>
+            <span class="pamt wend">$549</span>
+            <span class="punit">/ 2 hrs</span>
+          </div>
+        </div>
+
+        <div class="feat-lbl">What's Included</div>
+        <ul class="feat-list">
+          <li>✅ Up to 16 players at once</li>
+          <li>✅ All consoles: Xbox, PS5, Nintendo Switch</li>
+          <li>✅ Tournament bracket mode</li>
+          <li>✅ Full 50+ game library</li>
+          <li>✅ Real Mario Kart Race Seat</li>
+          <li>✅ Interior unlimited music</li>
+          <li>✅ 1 certified Game Coach</li>
+          <li>✅ Priority setup</li>
+        </ul>
+        <a href="booking.html" class="btn-tier btn-c">⚡ Book Champion — From $499</a>
+      </div>
+
+      <!-- ELITE -->
+      <div class="tier glow-e">
+        <div class="pop-pill" style="background:#c084fc;color:#fff;">Best Value</div>
+        <span class="tier-icon">🎤</span>
+        <div class="tier-name e">Elite</div>
+        <div class="tier-tag">Gaming + Karaoke + Photo Booth · All ages<br>The party that keeps everyone talking</div>
+
+        <div class="price-box e">
+          <div class="price-lbl dark">Pricing (2-hour base)</div>
+          <div class="prow">
+            <span class="pday dark">🌅 Early Morn.</span>
+            <span class="pamt wday" style="color:#c084fc;">$599</span>
+            <span class="punit dark">/ 2 hrs</span>
+            <span class="save-tag dark" style="background:rgba(192,132,252,0.2);color:#c084fc;border-color:rgba(192,132,252,0.4);">BEST DEAL</span>
+          </div>
+          <div class="prow">
+            <span class="pday dark">📅 Weekday</span>
+            <span class="pamt wday" style="color:#c084fc;">$649</span>
+            <span class="punit dark">/ 2 hrs</span>
+          </div>
+          <div class="prow">
+            <span class="pday dark">🌟 Weekend</span>
+            <span class="pamt" style="color:#c084fc;font-family:'Anton',sans-serif;font-size:1.45rem;line-height:1;">$699</span>
+            <span class="punit dark">/ 2 hrs</span>
+          </div>
+        </div>
+
+        <div class="feat-lbl">Everything in Champion, Plus</div>
+        <ul class="feat-list">
+          <li>✅ Up to 20 players at once</li>
+          <li>✅ All consoles including Nintendo Switch 2</li>
+          <li>✅ Tournament bracket + scoreboard</li>
+          <li>✅ Real Mario Kart Race Seat</li>
+          <li style="color:#c084fc;font-weight:700;">🎤 Karaoke Machine included</li>
+          <li>✅ Wireless microphones</li>
+          <li>✅ Custom music playlist</li>
+          <li>✅ 1 certified Game Coach</li>
+        </ul>
+        <a href="booking.html" class="btn-tier btn-e">🎤 Book Elite — From $599</a>
+      </div>
+
+      <!-- LEGEND -->
+      <div class="tier">
+        <span class="tier-icon">👑</span>
+        <div class="tier-name l">Legend</div>
+        <div class="tier-tag">The ultimate party — everything included<br>Indoor + outdoor entertainment · Photo Booth</div>
+
+        <div class="price-box l">
+          <div class="price-lbl dark">Pricing (2-hour base)</div>
+          <div class="prow">
+            <span class="pday dark">🌅 Early Morn.</span>
+            <span class="pamt wday" style="color:#fff;">$699</span>
+            <span class="punit dark">/ 2 hrs</span>
+            <span class="save-tag dark">BEST DEAL</span>
+          </div>
+          <div class="prow">
+            <span class="pday dark">📅 Weekday</span>
+            <span class="pamt wday" style="color:#fff;">$749</span>
+            <span class="punit dark">/ 2 hrs</span>
+          </div>
+          <div class="prow">
+            <span class="pday dark">🌟 Weekend</span>
+            <span class="pamt wend-lg">$799</span>
+            <span class="punit dark">/ 2 hrs</span>
+          </div>
+        </div>
+
+        <div class="feat-lbl">Everything in Elite, Plus</div>
+        <ul class="feat-list">
+          <li>✅ Up to 24 players inside at once</li>
+          <li>✅ All consoles including Nintendo Switch 2</li>
+          <li>✅ Live tournament bracket + scoreboard</li>
+          <li>✅ Real Mario Kart Race Seat</li>
+          <li>✅ 2 additional outdoor gaming stations</li>
+          <li style="color:var(--neon);font-weight:700;">🎤 Karaoke Machine included</li>
+          <li>✅ Just Dance &amp; Karaoke on outdoor TVs</li>
+          <li>✅ Wireless microphones</li>
+          <li>✅ Outdoor music speakers</li>
+          <li style="color:var(--neon);font-weight:700;">📸 Real Live Photo Booth included</li>
+          <li>✅ $2M liability insurance docs available</li>
+          <li>✅ Priority booking + dedicated coordinator</li>
+        </ul>
+        <a href="booking.html" class="btn-tier btn-l">👑 Book Legend — From $699</a>
+      </div>
+
+    </div>
+
+    <p style="text-align:center;margin-top:1.75rem;font-size:0.78rem;color:var(--text-light);">* All prices are base rates. Additional hours: <strong style="color:var(--text-dark);">+$175/hr</strong>. Early morning = 9–11 AM booking start. Custom quotes for schools, multi-truck &amp; corporate events. Call <a href="tel:8773991997" style="color:var(--blue);font-weight:700;">877-399-1997</a></p>
+  </div>
+</section>
+
+<!-- FREE INVITATIONS BANNER -->
+<section style="background:linear-gradient(135deg,#05000e 0%,#050215 50%,#050010 100%);padding:3rem 2rem;border-top:1px solid rgba(255,214,10,0.15);border-bottom:1px solid rgba(255,214,10,0.15);">
+  <div style="max-width:860px;margin:0 auto;">
+    <div style="background:linear-gradient(135deg,rgba(255,214,10,0.07),rgba(0,123,255,0.06));border:1px solid rgba(255,214,10,0.3);border-radius:20px;padding:2.5rem 2rem;display:flex;flex-wrap:wrap;align-items:center;gap:2rem;">
+      <!-- left: icons -->
+      <div style="font-size:3rem;line-height:1;flex-shrink:0;">🎉</div>
+      <!-- center: text -->
+      <div style="flex:1;min-width:220px;">
+        <div style="font-size:0.7rem;font-weight:800;letter-spacing:0.14em;text-transform:uppercase;color:var(--yellow,#FFD60A);margin-bottom:0.4rem;">Included With Every Booking — 100% Free</div>
+        <h3 style="font-family:'Anton',sans-serif;font-size:clamp(1.4rem,3vw,2rem);text-transform:uppercase;letter-spacing:0.03em;color:#fff;line-height:1.1;margin-bottom:0.5rem;">Free Video Game Party<br/><span style="color:var(--yellow,#FFD60A);">Invitations</span></h3>
+        <p style="font-size:0.875rem;color:rgba(255,255,255,0.6);line-height:1.65;max-width:480px;">Download 6 custom-designed video game party invitations — Neon Arcade, Level Up Champion, Retro Terminal & more. Fill in your party details, then print or text to guests. No sign-up required.</p>
+        <div style="display:flex;flex-wrap:wrap;gap:0.5rem;margin-top:1rem;">
+          <span style="display:inline-flex;align-items:center;gap:0.3rem;background:rgba(57,255,20,0.08);border:1px solid rgba(57,255,20,0.25);border-radius:100px;color:#39FF14;font-size:0.7rem;font-weight:700;padding:0.3rem 0.75rem;letter-spacing:0.06em;">✅ 6 Unique Designs</span>
+          <span style="display:inline-flex;align-items:center;gap:0.3rem;background:rgba(57,255,20,0.08);border:1px solid rgba(57,255,20,0.25);border-radius:100px;color:#39FF14;font-size:0.7rem;font-weight:700;padding:0.3rem 0.75rem;letter-spacing:0.06em;">✅ Print or Send Digitally</span>
+          <span style="display:inline-flex;align-items:center;gap:0.3rem;background:rgba(57,255,20,0.08);border:1px solid rgba(57,255,20,0.25);border-radius:100px;color:#39FF14;font-size:0.7rem;font-weight:700;padding:0.3rem 0.75rem;letter-spacing:0.06em;">✅ No Sign-Up Needed</span>
+        </div>
+      </div>
+      <!-- right: CTA -->
+      <div style="flex-shrink:0;text-align:center;">
+        <a href="invitations.html" style="display:inline-flex;align-items:center;gap:0.5rem;background:linear-gradient(135deg,var(--yellow,#FFD60A),#f7c500);color:#000;font-family:'Anton',sans-serif;font-size:1rem;letter-spacing:0.06em;text-transform:uppercase;text-decoration:none;border:none;border-radius:12px;padding:1rem 1.75rem;font-weight:900;box-shadow:0 6px 24px rgba(255,214,10,0.35);transition:transform 0.2s,box-shadow 0.2s;" onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 12px 32px rgba(255,214,10,0.5)'" onmouseout="this.style.transform='';this.style.boxShadow='0 6px 24px rgba(255,214,10,0.35)'">
+          🎮 Get Free Invitations
+        </a>
+        <div style="margin-top:0.6rem;font-size:0.72rem;color:rgba(255,255,255,0.35);">Download instantly — no account needed</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING CALENDAR GRID -->
+<section class="section alt">
+  <div class="wrap">
+    <div style="text-align:center;">
+      <div class="sec-label">Full Pricing Schedule</div>
+      <h2 class="sec-title">📅 Pricing <span style="color:var(--yellow)">at a Glance</span></h2>
+      <p class="sec-sub" style="margin:0 auto;">Select your tier below. Green = cheapest slots, Red/Orange = peak weekend. Early morning slots always have the lowest rate.</p>
+    </div>
+
+    <div class="grid-tabs" id="gtabs">
+      <button class="gtab ap" onclick="showGrid('p',this)">🎮 Player</button>
+      <button class="gtab"    onclick="showGrid('c',this)">⚡ Champion</button>
+      <button class="gtab"    onclick="showGrid('l',this)">👑 Legend</button>
+    </div>
+
+    <!-- PLAYER GRID -->
+    <div id="grid-p" class="cal-wrap">
+      <table class="cal">
+        <thead>
+          <tr>
+            <th>Time Slot</th>
+            <th class="wkd">Mon</th>
+            <th class="wkd">Tue</th>
+            <th class="wkd">Wed</th>
+            <th class="wkd">Thu</th>
+            <th class="wknd">Fri</th>
+            <th class="wknd">Sat</th>
+            <th class="wknd">Sun</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><div class="slot-name">🌅 Early Morning</div><div class="slot-time">9 AM – 11 AM</div></td>
+            <td class="cell"><div class="price-cell c-green"><span class="pc-amt">$325</span><span class="pc-tag">Best Deal</span></div></td>
+            <td class="cell"><div class="price-cell c-green"><span class="pc-amt">$325</span><span class="pc-tag">Best Deal</span></div></td>
+            <td class="cell"><div class="price-cell c-green"><span class="pc-amt">$325</span><span class="pc-tag">Best Deal</span></div></td>
+            <td class="cell"><div class="price-cell c-green"><span class="pc-amt">$325</span><span class="pc-tag">Best Deal</span></div></td>
+            <td class="cell"><div class="price-cell c-green"><span class="pc-amt">$350</span><span class="pc-tag">Save $25</span></div></td>
+            <td class="cell"><div class="price-cell c-green"><span class="pc-amt">$350</span><span class="pc-tag">Save $25</span></div></td>
+            <td class="cell"><div class="price-cell c-green"><span class="pc-amt">$350</span><span class="pc-tag">Save $25</span></div></td>
+          </tr>
+          <tr>
+            <td><div class="slot-name">☀️ Midday</div><div class="slot-time">11 AM – 3 PM</div></td>
+            <td class="cell"><div class="price-cell c-blue"><span class="pc-amt">$350</span><span class="pc-tag">Weekday</span></div></td>
+            <td class="cell"><div class="price-cell c-blue"><span class="pc-amt">$350</span><span class="pc-tag">Weekday</span></div></td>
+            <td class="cell"><div class="price-cell c-blue"><span class="pc-amt">$350</span><span class="pc-tag">Weekday</span></div></td>
+            <td class="cell"><div class="price-cell c-blue"><span class="pc-amt">$350</span><span class="pc-tag">Weekday</span></div></td>
+            <td class="cell"><div class="price-cell c-yellow"><span class="pc-amt">$375</span><span class="pc-tag">Weekend</span></div></td>
+            <td class="cell"><div class="price-cell c-yellow"><span class="pc-amt">$375</span><span class="pc-tag">Weekend</span></div></td>
+            <td class="cell"><div class="price-cell c-yellow"><span class="pc-amt">$375</span><span class="pc-tag">Weekend</span></div></td>
+          </tr>
+          <tr>
+            <td><div class="slot-name">🌤️ Afternoon</div><div class="slot-time">3 PM – 6 PM</div></td>
+            <td class="cell"><div class="price-cell c-blue"><span class="pc-amt">$350</span><span class="pc-tag">Weekday</span></div></td>
+            <td class="cell"><div class="price-cell c-blue"><span class="pc-amt">$350</span><span class="pc-tag">Weekday</span></div></td>
+            <td class="cell"><div class="price-cell c-blue"><span class="pc-amt">$350</span><span class="pc-tag">Weekday</span></div></td>
+            <td class="cell"><div class="price-cell c-blue"><span class="pc-amt">$350</span><span class="pc-tag">Weekday</span></div></td>
+            <td class="cell"><div class="price-cell c-yellow"><span class="pc-amt">$375</span><span class="pc-tag">Weekend</span></div></td>
+            <td class="cell"><div class="price-cell c-peak"><span class="pc-amt">$375</span><span class="pc-tag">Peak</span></div></td>
+            <td class="cell"><div class="price-cell c-peak"><span class="pc-amt">$375</span><span class="pc-tag">Peak</span></div></td>
+          </tr>
+          <tr>
+            <td><div class="slot-name">🌙 Evening</div><div class="slot-time">6 PM – 9 PM</div></td>
+            <td class="cell"><div class="price-cell c-blue"><span class="pc-amt">$350</span><span class="pc-tag">Weekday</span></div></td>
+            <td class="cell"><div class="price-cell c-blue"><span class="pc-amt">$350</span><span class="pc-tag">Weekday</span></div></td>
+            <td class="cell"><div class="price-cell c-blue"><span class="pc-amt">$350</span><span class="pc-tag">Weekday</span></div></td>
+            <td class="cell"><div class="price-cell c-blue"><span class="pc-amt">$350</span><span class="pc-tag">Weekday</span></div></td>
+            <td class="cell"><div class="price-cell c-peak"><span class="pc-amt">$375</span><span class="pc-tag">Peak</span></div></td>
+            <td class="cell"><div class="price-cell c-peak"><span class="pc-amt">$375</span><span class="pc-tag">Peak</span></div></td>
+            <td class="cell"><div class="price-cell c-peak"><span class="pc-amt">$375</span><span class="pc-tag">Peak</span></div></td>
+          </tr>
+          <tr>
+            <td><div class="slot-name">+Extra Hour</div><div class="slot-time">Any time slot</div></td>
+            <td class="cell" colspan="4" style="text-align:center;font-family:'Anton',sans-serif;font-size:1.1rem;color:var(--blue);padding:0.8rem;">+$175</td>
+            <td class="cell" colspan="3" style="text-align:center;font-family:'Anton',sans-serif;font-size:1.1rem;color:#c97d00;padding:0.8rem;">+$175</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- CHAMPION GRID -->
+    <div id="grid-c" class="cal-wrap" style="display:none;">
+      <table class="cal">
+        <thead>
+          <tr>
+            <th>Time Slot</th>
+            <th class="wkd">Mon</th>
+            <th class="wkd">Tue</th>
+            <th class="wkd">Wed</th>
+            <th class="wkd">Thu</th>
+            <th class="wknd">Fri</th>
+            <th class="wknd">Sat</th>
+            <th class="wknd">Sun</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><div class="slot-name">🌅 Early Morning</div><div class="slot-time">9 AM – 11 AM</div></td>
+            <td class="cell"><div class="price-cell c-green"><span class="pc-amt">$499</span><span class="pc-tag">Best Deal</span></div></td>
+            <td class="cell"><div class="price-cell c-green"><span class="pc-amt">$499</span><span class="pc-tag">Best Deal</span></div></td>
+            <td class="cell"><div class="price-cell c-green"><span class="pc-amt">$499</span><span class="pc-tag">Best Deal</span></div></td>
+            <td class="cell"><div class="price-cell c-green"><span class="pc-amt">$499</span><span class="pc-tag">Best Deal</span></div></td>
+            <td class="cell"><div class="price-cell c-green"><span class="pc-amt">$525</span><span class="pc-tag">Save $24</span></div></td>
+            <td class="cell"><div class="price-cell c-green"><span class="pc-amt">$525</span><span class="pc-tag">Save $24</span></div></td>
+            <td class="cell"><div class="price-cell c-green"><span class="pc-amt">$525</span><span class="pc-tag">Save $24</span></div></td>
+          </tr>
+          <tr>
+            <td><div class="slot-name">☀️ Midday</div><div class="slot-time">11 AM – 3 PM</div></td>
+            <td class="cell"><div class="price-cell c-blue"><span class="pc-amt">$525</span><span class="pc-tag">Weekday</span></div></td>
+            <td class="cell"><div class="price-cell c-blue"><span class="pc-amt">$525</span><span class="pc-tag">Weekday</span></div></td>
+            <td class="cell"><div class="price-cell c-blue"><span class="pc-amt">$525</span><span class="pc-tag">Weekday</span></div></td>
+            <td class="cell"><div class="price-cell c-blue"><span class="pc-amt">$525</span><span class="pc-tag">Weekday</span></div></td>
+            <td class="cell"><div class="price-cell c-yellow"><span class="pc-amt">$549</span><span class="pc-tag">Weekend</span></div></td>
+            <td class="cell"><div class="price-cell c-yellow"><span class="pc-amt">$549</span><span class="pc-tag">Weekend</span></div></td>
+            <td class="cell"><div class="price-cell c-yellow"><span class="pc-amt">$549</span><span class="pc-tag">Weekend</span></div></td>
+          </tr>
+          <tr>
+            <td><div class="slot-name">🌤️ Afternoon</div><div class="slot-time">3 PM – 6 PM</div></td>
+            <td class="cell"><div class="price-cell c-blue"><span class="pc-amt">$525</span><span class="pc-tag">Weekday</span></div></td>
+            <td class="cell"><div class="price-cell c-blue"><span class="pc-amt">$525</span><span class="pc-tag">Weekday</span></div></td>
+            <td class="cell"><div class="price-cell c-blue"><span class="pc-amt">$525</span><span class="pc-tag">Weekday</span></div></td>
+            <td class="cell"><div class="price-cell c-blue"><span class="pc-amt">$525</span><span class="pc-tag">Weekday</span></div></td>
+            <td class="cell"><div class="price-cell c-yellow"><span class="pc-amt">$549</span><span class="pc-tag">Weekend</span></div></td>
+            <td class="cell"><div class="price-cell c-peak"><span class="pc-amt">$549</span><span class="pc-tag">Peak</span></div></td>
+            <td class="cell"><div class="price-cell c-peak"><span class="pc-amt">$549</span><span class="pc-tag">Peak</span></div></td>
+          </tr>
+          <tr>
+            <td><div class="slot-name">🌙 Evening</div><div class="slot-time">6 PM – 9 PM</div></td>
+            <td class="cell"><div class="price-cell c-blue"><span class="pc-amt">$525</span><span class="pc-tag">Weekday</span></div></td>
+            <td class="cell"><div class="price-cell c-blue"><span class="pc-amt">$525</span><span class="pc-tag">Weekday</span></div></td>
+            <td class="cell"><div class="price-cell c-blue"><span class="pc-amt">$525</span><span class="pc-tag">Weekday</span></div></td>
+            <td class="cell"><div class="price-cell c-blue"><span class="pc-amt">$525</span><span class="pc-tag">Weekday</span></div></td>
+            <td class="cell"><div class="price-cell c-peak"><span class="pc-amt">$549</span><span class="pc-tag">Peak</span></div></td>
+            <td class="cell"><div class="price-cell c-peak"><span class="pc-amt">$549</span><span class="pc-tag">Peak</span></div></td>
+            <td class="cell"><div class="price-cell c-peak"><span class="pc-amt">$549</span><span class="pc-tag">Peak</span></div></td>
+          </tr>
+          <tr>
+            <td><div class="slot-name">+Extra Hour</div><div class="slot-time">Any time slot</div></td>
+            <td class="cell" colspan="4" style="text-align:center;font-family:'Anton',sans-serif;font-size:1.1rem;color:var(--blue);padding:0.8rem;">+$175</td>
+            <td class="cell" colspan="3" style="text-align:center;font-family:'Anton',sans-serif;font-size:1.1rem;color:#c97d00;padding:0.8rem;">+$175</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- LEGEND GRID -->
+    <div id="grid-l" class="cal-wrap" style="display:none;">
+      <table class="cal">
+        <thead>
+          <tr>
+            <th>Time Slot</th>
+            <th class="wkd">Mon</th>
+            <th class="wkd">Tue</th>
+            <th class="wkd">Wed</th>
+            <th class="wkd">Thu</th>
+            <th class="wknd">Fri</th>
+            <th class="wknd">Sat</th>
+            <th class="wknd">Sun</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><div class="slot-name">🌅 Early Morning</div><div class="slot-time">9 AM – 11 AM</div></td>
+            <td class="cell"><div class="price-cell c-green"><span class="pc-amt">$699</span><span class="pc-tag">Best Deal</span></div></td>
+            <td class="cell"><div class="price-cell c-green"><span class="pc-amt">$699</span><span class="pc-tag">Best Deal</span></div></td>
+            <td class="cell"><div class="price-cell c-green"><span class="pc-amt">$699</span><span class="pc-tag">Best Deal</span></div></td>
+            <td class="cell"><div class="price-cell c-green"><span class="pc-amt">$699</span><span class="pc-tag">Best Deal</span></div></td>
+            <td class="cell"><div class="price-cell c-green"><span class="pc-amt">$749</span><span class="pc-tag">Save $50</span></div></td>
+            <td class="cell"><div class="price-cell c-green"><span class="pc-amt">$749</span><span class="pc-tag">Save $50</span></div></td>
+            <td class="cell"><div class="price-cell c-green"><span class="pc-amt">$749</span><span class="pc-tag">Save $50</span></div></td>
+          </tr>
+          <tr>
+            <td><div class="slot-name">☀️ Midday</div><div class="slot-time">11 AM – 3 PM</div></td>
+            <td class="cell"><div class="price-cell c-blue"><span class="pc-amt">$749</span><span class="pc-tag">Weekday</span></div></td>
+            <td class="cell"><div class="price-cell c-blue"><span class="pc-amt">$749</span><span class="pc-tag">Weekday</span></div></td>
+            <td class="cell"><div class="price-cell c-blue"><span class="pc-amt">$749</span><span class="pc-tag">Weekday</span></div></td>
+            <td class="cell"><div class="price-cell c-blue"><span class="pc-amt">$749</span><span class="pc-tag">Weekday</span></div></td>
+            <td class="cell"><div class="price-cell c-yellow"><span class="pc-amt">$799</span><span class="pc-tag">Weekend</span></div></td>
+            <td class="cell"><div class="price-cell c-yellow"><span class="pc-amt">$799</span><span class="pc-tag">Weekend</span></div></td>
+            <td class="cell"><div class="price-cell c-yellow"><span class="pc-amt">$799</span><span class="pc-tag">Weekend</span></div></td>
+          </tr>
+          <tr>
+            <td><div class="slot-name">🌤️ Afternoon</div><div class="slot-time">3 PM – 6 PM</div></td>
+            <td class="cell"><div class="price-cell c-blue"><span class="pc-amt">$749</span><span class="pc-tag">Weekday</span></div></td>
+            <td class="cell"><div class="price-cell c-blue"><span class="pc-amt">$749</span><span class="pc-tag">Weekday</span></div></td>
+            <td class="cell"><div class="price-cell c-blue"><span class="pc-amt">$749</span><span class="pc-tag">Weekday</span></div></td>
+            <td class="cell"><div class="price-cell c-blue"><span class="pc-amt">$749</span><span class="pc-tag">Weekday</span></div></td>
+            <td class="cell"><div class="price-cell c-yellow"><span class="pc-amt">$799</span><span class="pc-tag">Weekend</span></div></td>
+            <td class="cell"><div class="price-cell c-peak"><span class="pc-amt">$799</span><span class="pc-tag">Peak</span></div></td>
+            <td class="cell"><div class="price-cell c-peak"><span class="pc-amt">$799</span><span class="pc-tag">Peak</span></div></td>
+          </tr>
+          <tr>
+            <td><div class="slot-name">🌙 Evening</div><div class="slot-time">6 PM – 9 PM</div></td>
+            <td class="cell"><div class="price-cell c-blue"><span class="pc-amt">$749</span><span class="pc-tag">Weekday</span></div></td>
+            <td class="cell"><div class="price-cell c-blue"><span class="pc-amt">$749</span><span class="pc-tag">Weekday</span></div></td>
+            <td class="cell"><div class="price-cell c-blue"><span class="pc-amt">$749</span><span class="pc-tag">Weekday</span></div></td>
+            <td class="cell"><div class="price-cell c-blue"><span class="pc-amt">$749</span><span class="pc-tag">Weekday</span></div></td>
+            <td class="cell"><div class="price-cell c-peak"><span class="pc-amt">$799</span><span class="pc-tag">Peak</span></div></td>
+            <td class="cell"><div class="price-cell c-peak"><span class="pc-amt">$799</span><span class="pc-tag">Peak</span></div></td>
+            <td class="cell"><div class="price-cell c-peak"><span class="pc-amt">$799</span><span class="pc-tag">Peak</span></div></td>
+          </tr>
+          <tr>
+            <td><div class="slot-name">+Extra Hour</div><div class="slot-time">Any time slot</div></td>
+            <td class="cell" colspan="4" style="text-align:center;font-family:'Anton',sans-serif;font-size:1.1rem;color:var(--blue);padding:0.8rem;">+$175</td>
+            <td class="cell" colspan="3" style="text-align:center;font-family:'Anton',sans-serif;font-size:1.1rem;color:#c97d00;padding:0.8rem;">+$175</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- COLOR LEGEND -->
+    <div class="legend-bar">
+      <div class="leg-item"><div class="leg-dot leg-green"></div><span style="color:var(--green-txt);">Early Morning / Weekday Discount (Best Price)</span></div>
+      <div class="leg-item"><div class="leg-dot leg-blue"></div><span style="color:var(--blue);">Standard Weekday Rate (Mon–Thu)</span></div>
+      <div class="leg-item"><div class="leg-dot leg-yellow"></div><span style="color:var(--yellow-txt);">Weekend Rate (Fri–Sun)</span></div>
+      <div class="leg-item"><div class="leg-dot leg-red"></div><span style="color:var(--red-txt);">Peak Time (Fri–Sun Afternoon/Evening)</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE SECTION -->
+<section style="background:linear-gradient(180deg,#000c24 0%,#00112e 100%);padding:5rem 2rem;position:relative;overflow:hidden;">
+  <div style="position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse 70% 55% at 50% 30%,rgba(0,123,255,0.18) 0%,transparent 65%),radial-gradient(ellipse 40% 40% at 85% 80%,rgba(255,214,10,0.07) 0%,transparent 60%);"></div>
+  <div class="wrap" style="position:relative;">
+
+    <!-- Section header -->
+    <div style="text-align:center;margin-bottom:3.5rem;">
+      <div style="display:inline-block;font-size:0.65rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--yellow);background:rgba(255,214,10,0.1);border:1px solid rgba(255,214,10,0.3);padding:0.35rem 0.9rem;border-radius:999px;margin-bottom:1rem;">Maryland's Ultimate Game Truck Party</div>
+      <h2 style="font-family:'Anton',sans-serif;font-size:clamp(2rem,4.5vw,3.2rem);letter-spacing:0.02em;text-transform:uppercase;color:#fff;line-height:1.05;margin-bottom:0.9rem;">Zero Stress. <span style="color:var(--yellow);text-shadow:0 0 24px rgba(255,214,10,0.4);">Maximum Joy.</span></h2>
+      <p style="font-size:1rem;color:rgba(255,255,255,0.72);max-width:640px;margin:0 auto 2rem;line-height:1.75;">With gaming for up to 20 inside at one time, your gamer becomes the star of the show for their special day. One of our friendly, trained Next Level Gaming Event Managers will be at your disposal — and when you book with us, you're not just getting a truck, you're gaining access to our entire exceptional team.</p>
+      <a href="booking.html" style="display:inline-flex;align-items:center;gap:0.5rem;background:var(--blue);color:#fff;font-family:'Anton',sans-serif;font-size:0.9rem;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;padding:0.8rem 2rem;border-radius:12px;box-shadow:0 6px 24px rgba(0,123,255,0.4);transition:transform 0.15s,box-shadow 0.2s;" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 10px 32px rgba(0,123,255,0.55)'" onmouseout="this.style.transform='';this.style.boxShadow='0 6px 24px rgba(0,123,255,0.4)'">🎮 Book Now</a>
+    </div>
+
+    <!-- Dream Party Cards -->
+    <div class="exp-dreams" style="display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-bottom:4rem;">
+
+      <!-- Kid's Dream -->
+      <div style="background:rgba(0,123,255,0.07);border:1px solid rgba(0,123,255,0.25);border-radius:22px;padding:2.25rem 2rem;position:relative;overflow:hidden;">
+        <div style="position:absolute;top:0;right:0;width:120px;height:120px;background:radial-gradient(circle,rgba(0,123,255,0.15) 0%,transparent 70%);pointer-events:none;"></div>
+        <div style="font-size:2.4rem;margin-bottom:0.75rem;">🎮🔊</div>
+        <div style="font-size:0.65rem;font-weight:800;letter-spacing:0.2em;text-transform:uppercase;color:var(--blue);margin-bottom:0.4rem;">For the Birthday Kid</div>
+        <h3 style="font-family:'Anton',sans-serif;font-size:1.55rem;letter-spacing:0.03em;text-transform:uppercase;color:#fff;line-height:1.1;margin-bottom:1rem;">Two Hours of<br/><span style="color:var(--blue);">Controlled Chaos</span></h3>
+        <p style="font-size:0.88rem;color:rgba(255,255,255,0.7);line-height:1.8;">The Gamer's Dream Party: be as loud as you want with your best crew, playing your all-time favorite games. No one's telling you to tone it down or calm your excitement. You're inside the coolest game truck in Maryland with your go-to playlist, luxury gamer chairs, and LED lighting that sets the perfect vibe. We show up so your kid's biggest dream day can actually happen.</p>
+      </div>
+
+      <!-- Parent's Dream -->
+      <div style="background:rgba(255,214,10,0.05);border:1px solid rgba(255,214,10,0.2);border-radius:22px;padding:2.25rem 2rem;position:relative;overflow:hidden;">
+        <div style="position:absolute;top:0;right:0;width:120px;height:120px;background:radial-gradient(circle,rgba(255,214,10,0.1) 0%,transparent 70%);pointer-events:none;"></div>
+        <div style="font-size:2.4rem;margin-bottom:0.75rem;">😌☕</div>
+        <div style="font-size:0.65rem;font-weight:800;letter-spacing:0.2em;text-transform:uppercase;color:var(--yellow);margin-bottom:0.4rem;">For the Parent</div>
+        <h3 style="font-family:'Anton',sans-serif;font-size:1.55rem;letter-spacing:0.03em;text-transform:uppercase;color:#fff;line-height:1.1;margin-bottom:1rem;">Two Hours of<br/><span style="color:var(--yellow);">Blissful Quiet</span></h3>
+        <p style="font-size:0.88rem;color:rgba(255,255,255,0.7);line-height:1.8;">The Parent's Dream Party: your kids are having the time of their lives under exceptional supervision, doing exactly what they love, with exactly who they want to do it with. You place one booking, and the perfect party arrives — no cooking, no cleaning, no driving, no logistics. Kick back, catch up with guests, sneak in a nap, or binge your favorite show while we handle everything else. We can be your dream come true.</p>
+      </div>
+
+    </div>
+
+    <!-- Reasons to Love It + Community -->
+    <div class="exp-bottom" style="display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:start;">
+
+      <!-- Feature list -->
+      <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.1);border-radius:22px;padding:2rem;">
+        <div style="font-size:0.65rem;font-weight:800;letter-spacing:0.2em;text-transform:uppercase;color:var(--neon);margin-bottom:0.5rem;">Every Booking</div>
+        <h3 style="font-family:'Anton',sans-serif;font-size:1.4rem;letter-spacing:0.04em;text-transform:uppercase;color:#fff;margin-bottom:1.5rem;">Reasons Your Family<br/>Will Love It</h3>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:0.7rem;">
+          <li style="display:flex;align-items:center;gap:0.7rem;font-size:0.85rem;color:rgba(255,255,255,0.85);font-weight:600;"><span style="color:var(--neon);font-size:1rem;">✅</span> The Highest Quality Game Theaters</li>
+          <li style="display:flex;align-items:center;gap:0.7rem;font-size:0.85rem;color:rgba(255,255,255,0.85);font-weight:600;"><span style="color:var(--neon);font-size:1rem;">✅</span> Your Own Personal, Trained Event Manager</li>
+          <li style="display:flex;align-items:center;gap:0.7rem;font-size:0.85rem;color:rgba(255,255,255,0.85);font-weight:600;"><span style="color:var(--neon);font-size:1rem;">✅</span> The Latest Gaming Consoles</li>
+          <li style="display:flex;align-items:center;gap:0.7rem;font-size:0.85rem;color:rgba(255,255,255,0.85);font-weight:600;"><span style="color:var(--neon);font-size:1rem;">✅</span> Real Mario Kart Race Seat</li>
+          <li style="display:flex;align-items:center;gap:0.7rem;font-size:0.85rem;color:rgba(255,255,255,0.85);font-weight:600;"><span style="color:var(--neon);font-size:1rem;">✅</span> Luxury Gamer Chairs</li>
+          <li style="display:flex;align-items:center;gap:0.7rem;font-size:0.85rem;color:rgba(255,255,255,0.75);"><span style="color:var(--yellow);font-size:1rem;">➕</span> Outdoor Gaming Available <span style="font-size:0.72rem;color:rgba(255,255,255,0.4);margin-left:0.25rem;">(additional fee)</span></li>
+          <li style="display:flex;align-items:center;gap:0.7rem;font-size:0.85rem;color:rgba(255,255,255,0.85);font-weight:600;"><span style="color:var(--neon);font-size:1rem;">✅</span> Up to 20 Players at Once</li>
+          <li style="display:flex;align-items:center;gap:0.7rem;font-size:0.85rem;color:rgba(255,255,255,0.85);font-weight:600;"><span style="color:var(--neon);font-size:1rem;">✅</span> Climate Controlled Interior</li>
+          <li style="display:flex;align-items:center;gap:0.7rem;font-size:0.85rem;color:rgba(255,255,255,0.85);font-weight:600;"><span style="color:var(--neon);font-size:1rem;">✅</span> Huge Game Library — 50+ Titles</li>
+        </ul>
+      </div>
+
+      <!-- Community -->
+      <div style="display:flex;flex-direction:column;gap:1.5rem;">
+        <div style="background:linear-gradient(135deg,rgba(57,255,20,0.06),rgba(0,123,255,0.06));border:1px solid rgba(57,255,20,0.2);border-radius:22px;padding:2rem;">
+          <div style="font-size:2rem;margin-bottom:0.75rem;">🌍</div>
+          <div style="font-size:0.65rem;font-weight:800;letter-spacing:0.2em;text-transform:uppercase;color:var(--neon);margin-bottom:0.4rem;">Community First</div>
+          <h3 style="font-family:'Anton',sans-serif;font-size:1.2rem;letter-spacing:0.04em;text-transform:uppercase;color:#fff;line-height:1.2;margin-bottom:0.75rem;">More We Do in<br/>Your Community</h3>
+          <p style="font-size:0.85rem;color:rgba(255,255,255,0.68);line-height:1.75;margin-bottom:1.25rem;">We believe in the social power of gaming — the way it brings people of all ages together. That's why we go beyond birthdays. We partner with schools, neighborhoods, and local organizations to create evenings of real connection and pure fun, right in your own community.</p>
+          <a href="booking.html" style="display:inline-flex;align-items:center;gap:0.5rem;background:rgba(57,255,20,0.12);border:1px solid rgba(57,255,20,0.35);color:var(--neon);font-family:'Anton',sans-serif;font-size:0.82rem;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;padding:0.7rem 1.5rem;border-radius:10px;transition:background 0.18s;" onmouseover="this.style.background='rgba(57,255,20,0.2)'" onmouseout="this.style.background='rgba(57,255,20,0.12)'">🎮 Book Now</a>
+        </div>
+
+        <!-- Quick trust badge row -->
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+          <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.09);border-radius:14px;padding:1.1rem;text-align:center;">
+            <div style="font-family:'Anton',sans-serif;font-size:1.8rem;color:var(--yellow);line-height:1;">20+</div>
+            <div style="font-size:0.72rem;color:rgba(255,255,255,0.5);margin-top:0.2rem;font-weight:600;">Players inside at once</div>
+          </div>
+          <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.09);border-radius:14px;padding:1.1rem;text-align:center;">
+            <div style="font-family:'Anton',sans-serif;font-size:1.8rem;color:var(--blue);line-height:1;">50+</div>
+            <div style="font-size:0.72rem;color:rgba(255,255,255,0.5);margin-top:0.2rem;font-weight:600;">Game titles, always free</div>
+          </div>
+          <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.09);border-radius:14px;padding:1.1rem;text-align:center;">
+            <div style="font-family:'Anton',sans-serif;font-size:1.8rem;color:var(--neon);line-height:1;">$2M</div>
+            <div style="font-size:0.72rem;color:rgba(255,255,255,0.5);margin-top:0.2rem;font-weight:600;">Liability insurance</div>
+          </div>
+          <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.09);border-radius:14px;padding:1.1rem;text-align:center;">
+            <div style="font-family:'Anton',sans-serif;font-size:1.8rem;color:#f472b6;line-height:1;">1</div>
+            <div style="font-size:0.72rem;color:rgba(255,255,255,0.5);margin-top:0.2rem;font-weight:600;">Dedicated Event Manager</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<style>
+  @media(max-width:760px){
+    .exp-dreams { grid-template-columns:1fr !important; }
+    .exp-bottom { grid-template-columns:1fr !important; }
+  }
+</style>
+
+<!-- ADD-ONS -->
+<section class="section alt">
+  <div class="wrap">
+    <div style="text-align:center;">
+      <div class="sec-label">Level Up Your Event</div>
+      <h2 class="sec-title">Add-Ons & <span style="color:var(--yellow)">Extras</span></h2>
+      <p class="sec-sub" style="margin:0 auto;">Stack any add-on with any tier. Bundle inflatables + tent & tables for 10% off your whole order.</p>
+    </div>
+    <div class="addons">
+      <div class="addon"><span class="addon-ico">🎯</span><div><div class="addon-name">Laser Tag</div><div class="addon-desc">8 players at a time · Unlimited total</div></div><div class="addon-price">$175+</div></div>
+      <div class="addon"><span class="addon-ico">🥽</span><div><div class="addon-name">Virtual Reality</div><div class="addon-desc">8 VR headsets · Up to 16 players</div></div><div class="addon-price">$450+</div></div>
+      <div class="addon"><span class="addon-ico">🧗</span><div><div class="addon-name">Rock Wall</div><div class="addon-desc">75 climbers/hr · Great for large events</div></div><div class="addon-price">$700+</div></div>
+      <div class="addon"><span class="addon-ico">🏠</span><div><div class="addon-name">Bounce Houses</div><div class="addon-desc">Multiple styles · Setup included</div></div><div class="addon-price">From $175</div></div>
+      <div class="addon"><span class="addon-ico">⛺</span><div><div class="addon-name">Tent & Tables</div><div class="addon-desc">20×20 tent · 6 tables · 50 chairs</div></div><div class="addon-price">$250</div></div>
+      <div class="addon"><span class="addon-ico">✨</span><div><div class="addon-name">LED Marquee Signs</div><div class="addon-desc">MR&MRS, names, numbers, custom words</div></div><div class="addon-price">From $125</div></div>
+      <div class="addon"><span class="addon-ico">🍧</span><div><div class="addon-name">SnoBall Station</div><div class="addon-desc">Premium shaved ice · 35 servings</div></div><div class="addon-price">$275</div></div>
+      <div class="addon"><span class="addon-ico">🍩</span><div><div class="addon-name">Mini Donut Bar</div><div class="addon-desc">Fresh mini donuts made on-site</div></div><div class="addon-price">$350</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CHURCHES & NONPROFITS -->
+<section style="background:linear-gradient(180deg,#03091a 0%,#060d20 100%);padding:5rem 2rem;position:relative;overflow:hidden;">
+
+  <!-- Background glow -->
+  <div style="position:absolute;inset:0;pointer-events:none;
+    background:radial-gradient(ellipse 60% 50% at 20% 50%,rgba(57,255,20,0.08) 0%,transparent 60%),
+               radial-gradient(ellipse 50% 50% at 80% 50%,rgba(0,123,255,0.1) 0%,transparent 60%);"></div>
+
+  <div class="wrap" style="position:relative;">
+
+    <!-- Header -->
+    <div style="text-align:center;margin-bottom:3rem;">
+      <div style="display:inline-flex;align-items:center;gap:0.5rem;font-size:0.65rem;font-weight:800;letter-spacing:0.2em;text-transform:uppercase;color:var(--neon);background:rgba(57,255,20,0.08);border:1px solid rgba(57,255,20,0.25);padding:0.38rem 1rem;border-radius:999px;margin-bottom:1rem;">
+        <span style="width:7px;height:7px;background:var(--neon);border-radius:50%;box-shadow:0 0 8px var(--neon);animation:pulse 1.8s infinite;display:inline-block;"></span>
+        Special Community Pricing
+      </div>
+      <h2 style="font-family:'Anton',sans-serif;font-size:clamp(2rem,4.5vw,3.2rem);letter-spacing:0.02em;text-transform:uppercase;color:#fff;line-height:1.05;margin-bottom:0.9rem;">
+        Churches &amp; <span style="color:var(--neon);text-shadow:0 0 24px rgba(57,255,20,0.4);">Nonprofits</span>
+      </h2>
+      <p style="font-size:1rem;color:rgba(255,255,255,0.7);max-width:640px;margin:0 auto;line-height:1.75;">We believe in community. That's why we offer an exclusive package for churches and nonprofit organizations — one flat rate that handles your <strong style="color:#fff;">entire group</strong>, with more entertainment than any competitor in Maryland. Spots fill up fast — lock yours in today.</p>
+    </div>
+
+    <!-- Main layout: price card + features -->
+    <div class="church-layout" style="display:grid;grid-template-columns:340px 1fr;gap:2.5rem;align-items:start;max-width:960px;margin:0 auto;">
+
+      <!-- Price Card -->
+      <div style="background:rgba(57,255,20,0.05);border:2px solid rgba(57,255,20,0.3);border-radius:22px;padding:2rem;text-align:center;position:relative;overflow:hidden;box-shadow:0 0 40px rgba(57,255,20,0.08);">
+        <div style="position:absolute;top:-1px;left:50%;transform:translateX(-50%);background:var(--neon);color:#000;font-family:'Anton',sans-serif;font-size:0.6rem;font-weight:800;letter-spacing:0.14em;padding:0.22rem 1rem;border-radius:0 0 10px 10px;white-space:nowrap;">BEST VALUE IN MARYLAND</div>
+        <div style="font-size:2.5rem;margin:1rem 0 0.5rem;">⛪🕊️</div>
+        <div style="font-size:0.68rem;font-weight:800;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.45);margin-bottom:0.25rem;">Church &amp; Nonprofit Package</div>
+        <div style="font-family:'Anton',sans-serif;font-size:4rem;color:var(--neon);line-height:1;text-shadow:0 0 30px rgba(57,255,20,0.4);">$600</div>
+        <div style="font-size:0.82rem;color:rgba(255,255,255,0.55);margin-bottom:1.5rem;">2 hours · entire group covered</div>
+
+        <!-- Price comparison context -->
+        <div style="background:rgba(0,0,0,0.3);border:1px solid rgba(255,255,255,0.08);border-radius:12px;padding:1rem;margin-bottom:1.5rem;text-align:left;">
+          <div style="font-size:0.62rem;font-weight:800;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-bottom:0.6rem;">How We Compare</div>
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:0.35rem 0;border-bottom:1px solid rgba(255,255,255,0.05);">
+            <span style="font-size:0.75rem;color:rgba(255,255,255,0.6);">GameTruck (community)</span>
+            <span style="font-family:'Anton',sans-serif;font-size:0.9rem;color:#e57373;">$800+</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:0.35rem 0;border-bottom:1px solid rgba(255,255,255,0.05);">
+            <span style="font-size:0.75rem;color:rgba(255,255,255,0.6);">BYA Game Truck (2 hrs)</span>
+            <span style="font-family:'Anton',sans-serif;font-size:0.9rem;color:#e57373;">$520</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:0.35rem 0;">
+            <span style="font-size:0.75rem;color:rgba(255,255,255,0.6);">Party Game USA (combo)</span>
+            <span style="font-family:'Anton',sans-serif;font-size:0.9rem;color:#e57373;">$699</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:0.5rem 0 0;margin-top:0.25rem;border-top:1px solid rgba(57,255,20,0.2);">
+            <span style="font-size:0.75rem;font-weight:700;color:#fff;">Party Game Truck</span>
+            <span style="font-family:'Anton',sans-serif;font-size:1rem;color:var(--neon);">$600 ✓</span>
+          </div>
+        </div>
+
+        <div style="font-size:0.72rem;color:rgba(255,255,255,0.4);margin-bottom:1.25rem;">+$175/hr for each additional hour</div>
+        <a href="church-calculator.html" style="display:block;background:var(--neon);color:#000;font-family:'Anton',sans-serif;font-size:1rem;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;padding:0.9rem 1.5rem;border-radius:12px;box-shadow:0 6px 28px rgba(57,255,20,0.35);transition:transform 0.15s,box-shadow 0.2s;margin-bottom:0.75rem;" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 10px 36px rgba(57,255,20,0.5)'" onmouseout="this.style.transform='';this.style.boxShadow='0 6px 28px rgba(57,255,20,0.35)'">⛪ Get Instant Price Estimate</a>
+        <a href="booking.html" style="display:block;background:transparent;border:1px solid rgba(255,255,255,0.2);color:rgba(255,255,255,0.7);font-family:'Anton',sans-serif;font-size:0.82rem;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;padding:0.7rem 1.5rem;border-radius:12px;transition:border-color 0.18s,color 0.18s;" onmouseover="this.style.borderColor='rgba(255,255,255,0.5)';this.style.color='#fff'" onmouseout="this.style.borderColor='rgba(255,255,255,0.2)';this.style.color='rgba(255,255,255,0.7)'">📞 Book Now</a>
+      </div>
+
+      <!-- Features -->
+      <div>
+
+        <!-- Only-in-Maryland badge -->
+        <div style="background:linear-gradient(135deg,rgba(255,214,10,0.08),rgba(255,214,10,0.04));border:1px solid rgba(255,214,10,0.3);border-radius:16px;padding:1.25rem 1.5rem;margin-bottom:1.75rem;display:flex;align-items:center;gap:1rem;">
+          <div style="font-size:2rem;flex-shrink:0;">🏆</div>
+          <div>
+            <div style="font-family:'Anton',sans-serif;font-size:0.95rem;letter-spacing:0.06em;text-transform:uppercase;color:var(--yellow);margin-bottom:0.2rem;">Only Truck in Maryland</div>
+            <div style="font-size:0.82rem;color:rgba(255,255,255,0.7);line-height:1.55;">We're the <strong style="color:#fff;">only mobile game truck in Maryland</strong> featuring a real large Mario Kart racing seat — an experience your congregation will be talking about for years.</div>
+          </div>
+        </div>
+
+        <!-- Feature checklist -->
+        <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:16px;padding:1.5rem;">
+          <div style="font-size:0.62rem;font-weight:800;letter-spacing:0.16em;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-bottom:1.1rem;">Everything Included at $600</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.65rem 1.5rem;">
+            <div style="display:flex;align-items:flex-start;gap:0.6rem;font-size:0.83rem;color:rgba(255,255,255,0.85);font-weight:600;"><span style="color:var(--neon);margin-top:0.05rem;flex-shrink:0;">✅</span>Up to 24 players inside at once</div>
+            <div style="display:flex;align-items:flex-start;gap:0.6rem;font-size:0.83rem;color:rgba(255,255,255,0.85);font-weight:600;"><span style="color:var(--neon);margin-top:0.05rem;flex-shrink:0;">✅</span>10 large 50" TV screens</div>
+            <div style="display:flex;align-items:flex-start;gap:0.6rem;font-size:0.83rem;color:rgba(255,255,255,0.85);font-weight:600;"><span style="color:var(--neon);margin-top:0.05rem;flex-shrink:0;">✅</span>2 large outdoor screens</div>
+            <div style="display:flex;align-items:flex-start;gap:0.6rem;font-size:0.83rem;color:rgba(255,255,255,0.85);font-weight:600;"><span style="color:var(--neon);margin-top:0.05rem;flex-shrink:0;">✅</span>Karaoke on outdoor TVs</div>
+            <div style="display:flex;align-items:flex-start;gap:0.6rem;font-size:0.83rem;color:rgba(255,255,255,0.85);font-weight:600;"><span style="color:var(--neon);margin-top:0.05rem;flex-shrink:0;">✅</span>Wireless microphones</div>
+            <div style="display:flex;align-items:flex-start;gap:0.6rem;font-size:0.83rem;color:rgba(255,255,255,0.85);font-weight:600;"><span style="color:var(--neon);margin-top:0.05rem;flex-shrink:0;">✅</span>Outdoor music speakers</div>
+            <div style="display:flex;align-items:flex-start;gap:0.6rem;font-size:0.83rem;color:rgba(255,255,255,0.85);font-weight:600;"><span style="color:var(--neon);margin-top:0.05rem;flex-shrink:0;">✅</span>Just Dance on outdoor TVs</div>
+            <div style="display:flex;align-items:flex-start;gap:0.6rem;font-size:0.83rem;color:rgba(255,255,255,0.85);font-weight:600;"><span style="color:var(--neon);margin-top:0.05rem;flex-shrink:0;">✅</span>Mario Kart racing seat</div>
+            <div style="display:flex;align-items:flex-start;gap:0.6rem;font-size:0.83rem;color:rgba(255,255,255,0.85);font-weight:600;"><span style="color:var(--neon);margin-top:0.05rem;flex-shrink:0;">✅</span>Latest consoles &amp; 50+ games</div>
+            <div style="display:flex;align-items:flex-start;gap:0.6rem;font-size:0.83rem;color:rgba(255,255,255,0.85);font-weight:600;"><span style="color:var(--neon);margin-top:0.05rem;flex-shrink:0;">✅</span>1 certified Event Manager</div>
+            <div style="display:flex;align-items:flex-start;gap:0.6rem;font-size:0.83rem;color:rgba(255,255,255,0.85);font-weight:600;"><span style="color:var(--neon);margin-top:0.05rem;flex-shrink:0;">✅</span>$2M liability insurance docs</div>
+            <div style="display:flex;align-items:flex-start;gap:0.6rem;font-size:0.83rem;color:rgba(255,255,255,0.85);font-weight:600;"><span style="color:var(--neon);margin-top:0.05rem;flex-shrink:0;">✅</span>Setup &amp; takedown included</div>
+          </div>
+        </div>
+
+        <!-- Urgency nudge -->
+        <div style="background:rgba(255,45,139,0.07);border:1px solid rgba(255,45,139,0.25);border-radius:12px;padding:1rem 1.25rem;margin-top:1.25rem;display:flex;align-items:center;gap:0.75rem;">
+          <div style="font-size:1.4rem;flex-shrink:0;">⚡</div>
+          <div style="font-size:0.82rem;color:rgba(255,255,255,0.75);line-height:1.6;"><strong style="color:#fff;">Weekend dates book out weeks in advance.</strong> Lock in your church or nonprofit event with just a $100 deposit — remaining balance due closer to your event date. Call us at <a href="tel:8773991997" style="color:var(--blue);font-weight:700;">877-399-1997</a> to reserve your spot today.</div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  @media(max-width:780px){
+    .church-layout { grid-template-columns:1fr !important; }
+  }
+</style>
+
+<!-- WE BEAT ANY DEAL -->
+<section style="background:#fff;padding:4rem 2rem;border-top:4px solid #c00000;">
+  <div class="wrap">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center;max-width:900px;margin:0 auto;">
+
+      <!-- Left: Value reframe -->
+      <div>
+        <div style="font-size:0.65rem;font-weight:800;letter-spacing:0.2em;text-transform:uppercase;color:#c00000;margin-bottom:0.5rem;">Our Promise to You</div>
+        <h2 style="font-family:'Anton',sans-serif;font-size:clamp(1.8rem,3.5vw,2.6rem);letter-spacing:0.02em;text-transform:uppercase;color:var(--text-dark);line-height:1.05;margin-bottom:1rem;">Think Our Price<br/>Is Too High?<br/><span style="color:#c00000;">Call Us.</span></h2>
+        <p style="font-size:0.92rem;color:var(--text-mid);line-height:1.75;margin-bottom:1rem;">We know you have options. If you've seen a lower price for the same experience — same screens, same coach, same quality — <strong style="color:var(--text-dark);">call us and we'll work something out.</strong> We'd rather earn your business than lose it over a number.</p>
+        <p style="font-size:0.88rem;color:var(--text-mid);line-height:1.75;">And if another company is simply cheaper because they offer <em>less</em> — fewer TVs, no coach, older consoles — we'll walk you through exactly what you're getting for your money, so you can decide with confidence.</p>
+        <div style="margin-top:1.5rem;display:flex;flex-wrap:wrap;gap:0.75rem;">
+          <a href="tel:8773991997" style="display:inline-flex;align-items:center;gap:0.5rem;background:#c00000;color:#fff;font-family:'Anton',sans-serif;font-size:0.95rem;letter-spacing:0.08em;text-transform:uppercase;padding:0.85rem 1.75rem;border-radius:12px;text-decoration:none;box-shadow:0 6px 20px rgba(192,0,0,0.3);transition:transform 0.15s,box-shadow 0.2s;" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 10px 28px rgba(192,0,0,0.45)'" onmouseout="this.style.transform='';this.style.boxShadow='0 6px 20px rgba(192,0,0,0.3)'">📞 Call 877-399-1997</a>
+          <a href="quote.html" style="display:inline-flex;align-items:center;gap:0.5rem;background:transparent;border:2px solid var(--border);color:var(--text-mid);font-family:'Anton',sans-serif;font-size:0.95rem;letter-spacing:0.08em;text-transform:uppercase;padding:0.85rem 1.75rem;border-radius:12px;text-decoration:none;transition:border-color 0.18s,color 0.18s;" onmouseover="this.style.borderColor='var(--blue)';this.style.color='var(--blue)'" onmouseout="this.style.borderColor='var(--border)';this.style.color='var(--text-mid)'">💬 Get a Custom Quote</a>
+        </div>
+      </div>
+
+      <!-- Right: Reason cards -->
+      <div style="display:flex;flex-direction:column;gap:1rem;">
+        <div style="background:var(--alt);border-left:4px solid var(--blue);border-radius:0 12px 12px 0;padding:1rem 1.25rem;">
+          <div style="font-family:'Anton',sans-serif;font-size:0.88rem;letter-spacing:0.06em;text-transform:uppercase;color:var(--blue);margin-bottom:0.2rem;">📺 10 Huge 50" Screens</div>
+          <div style="font-size:0.8rem;color:var(--text-mid);line-height:1.5;">Most competitors use 5 or fewer screens. We bring 10 — every gamer has a great view, every time.</div>
+        </div>
+        <div style="background:var(--alt);border-left:4px solid var(--yellow-bdr);border-radius:0 12px 12px 0;padding:1rem 1.25rem;">
+          <div style="font-family:'Anton',sans-serif;font-size:0.88rem;letter-spacing:0.06em;text-transform:uppercase;color:var(--yellow-txt);margin-bottom:0.2rem;">🏎️ Mario Kart Race Seat</div>
+          <div style="font-size:0.8rem;color:var(--text-mid);line-height:1.5;">The only game truck in Maryland with a real racing seat. Nobody else can offer this.</div>
+        </div>
+        <div style="background:var(--alt);border-left:4px solid var(--green-bdr);border-radius:0 12px 12px 0;padding:1rem 1.25rem;">
+          <div style="font-family:'Anton',sans-serif;font-size:0.88rem;letter-spacing:0.06em;text-transform:uppercase;color:var(--green-txt);margin-bottom:0.2rem;">👤 Certified Event Manager</div>
+          <div style="font-size:0.8rem;color:var(--text-mid);line-height:1.5;">Every booking includes a trained Event Manager on-site so you don't lift a finger. Not all companies do this.</div>
+        </div>
+        <div style="background:var(--alt);border-left:4px solid #c00000;border-radius:0 12px 12px 0;padding:1rem 1.25rem;">
+          <div style="font-family:'Anton',sans-serif;font-size:0.88rem;letter-spacing:0.06em;text-transform:uppercase;color:#c00000;margin-bottom:0.2rem;">⚡ We'll Work With You</div>
+          <div style="font-size:0.8rem;color:var(--text-mid);line-height:1.5;">Call us before you walk away. Weekday rates, morning slots, and bundle deals can all bring the price down. One call could change everything.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<style>
+  @media(max-width:760px){
+    .beat-deal-grid{ grid-template-columns:1fr !important; }
+  }
+</style>
+
+<!-- CTA -->
+<section class="cta">
+  <h2>Ready to <span style="color:var(--yellow);">Level Up</span> Your Party?</h2>
+  <p>$50 deposit locks in your date. Book early — weekends fill up fast! ⚡</p>
+  <div class="cta-btns">
+    <a href="booking.html" class="btn-yellow">🎮 Book Your Event Now</a>
+    <a href="quote.html" class="btn-outline-w">💬 Custom Quote</a>
+    <a href="tel:8773991997" class="btn-outline-w">📞 877-399-1997</a>
+  </div>
+  <p style="margin-top:1.25rem;font-size:0.72rem;color:rgba(255,255,255,0.45);">⚠️ Phone calls only — this number does not receive text messages.</p>
+</section>
+
+<footer>
+  <p>© 2026 Party Game Truck — Maryland's #1 Mobile Video Game Truck &nbsp;·&nbsp; <a href="tel:8773991997">877-399-1997</a> &nbsp;·&nbsp; <a href="mailto:partygametruck@yahoo.com">partygametruck@yahoo.com</a> &nbsp;·&nbsp; <a href="index.html">partygametruck.com</a></p>
+</footer>
+
+<script>
+  function showGrid(tier, btn) {
+    ['p','c','l'].forEach(t => {
+      document.getElementById('grid-' + t).style.display = 'none';
+    });
+    document.getElementById('grid-' + tier).style.display = 'block';
+
+    document.querySelectorAll('.gtab').forEach(b => b.className = 'gtab');
+    btn.classList.add('a' + tier);
+  }
+</script>
+
+</body>
+</html>

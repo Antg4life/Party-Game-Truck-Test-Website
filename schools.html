@@ -1,0 +1,1205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>School & Event Services | Party Game Truck Maryland DC VA</title>
+  <meta name="description" content="Party Game Truck serves schools and events across Maryland, Washington DC, and Virginia. Mobile game theaters for incentive days, end-of-year celebrations, school festivals, and corporate events."/>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --blue:#007BFF; --deep:#003F88; --yellow:#FFD60A;
+      --neon:#39FF14; --pink:#FF2D8B; --sky:#00C2FF;
+      --dark:#08080F; --card:#0f0f1c; --white:#ffffff;
+    }
+    *{ box-sizing:border-box; margin:0; padding:0; }
+    html{ scroll-behavior:smooth; }
+    body{ background:var(--dark); font-family:'Montserrat',sans-serif; color:#fff; overflow-x:hidden; }
+
+    /* ── NAV ── */
+    .top-nav{
+      background:rgba(8,8,15,0.97); border-bottom:1px solid rgba(0,123,255,0.2);
+      padding:0 2rem; height:68px; display:flex; align-items:center;
+      justify-content:space-between; position:sticky; top:0; z-index:200;
+    }
+    .nav-logo{ font-family:'Anton',sans-serif; font-size:1.4rem; color:#fff; text-decoration:none; letter-spacing:0.04em; }
+    .nav-logo span{ color:var(--yellow); }
+    .nav-links-row{ display:flex; align-items:center; gap:1.5rem; }
+    .nav-links-row a{ color:rgba(255,255,255,0.75); font-size:0.82rem; font-weight:600; text-decoration:none; letter-spacing:0.04em; transition:color 0.2s; }
+    .nav-links-row a:hover{ color:#fff; }
+    .nav-cta{ background:var(--yellow); color:#000; font-weight:800; font-size:0.8rem; letter-spacing:0.06em; text-transform:uppercase; padding:0.5rem 1.1rem; border-radius:8px; text-decoration:none; transition:background 0.2s,transform 0.15s; }
+    .nav-cta:hover{ background:#ffe033; transform:scale(1.04); }
+
+    /* ── HERO ── */
+    .hero{
+      position:relative; min-height:92vh; display:flex; align-items:center; justify-content:center;
+      text-align:center; overflow:hidden; padding:6rem 2rem 4rem;
+      background:
+        radial-gradient(ellipse 90% 70% at 50% 30%, rgba(0,123,255,0.22) 0%, transparent 65%),
+        radial-gradient(ellipse 60% 50% at 80% 70%, rgba(57,255,20,0.08) 0%, transparent 60%),
+        linear-gradient(180deg,#000820 0%,#000510 60%,#000318 100%);
+    }
+    /* Animated grid lines */
+    .hero::before{
+      content:''; position:absolute; inset:0; pointer-events:none;
+      background-image:
+        linear-gradient(rgba(0,123,255,0.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,123,255,0.06) 1px, transparent 1px);
+      background-size:60px 60px;
+      animation:gridMove 20s linear infinite;
+    }
+    @keyframes gridMove{ 0%{ background-position:0 0; } 100%{ background-position:60px 60px; } }
+    .hero-badge{
+      display:inline-flex; align-items:center; gap:0.5rem;
+      background:rgba(57,255,20,0.1); border:1px solid rgba(57,255,20,0.3);
+      border-radius:100px; color:var(--neon); font-size:0.75rem; font-weight:700;
+      letter-spacing:0.12em; text-transform:uppercase; padding:0.4rem 1.1rem;
+      margin-bottom:1.5rem;
+    }
+    .hero-badge span{ width:7px; height:7px; background:var(--neon); border-radius:50%; box-shadow:0 0 8px var(--neon); animation:livePulse 1.8s infinite; }
+    @keyframes livePulse{ 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.5;transform:scale(0.8)} }
+    .hero h1{
+      font-family:'Anton',sans-serif;
+      font-size:clamp(2.6rem,7vw,6rem);
+      line-height:0.93; text-transform:uppercase; letter-spacing:-0.01em;
+      margin-bottom:1.25rem;
+    }
+    .hero h1 .white{ color:#fff; text-shadow:0 0 60px rgba(255,255,255,0.15); }
+    .hero h1 .blue{ color:var(--blue); text-shadow:0 0 50px rgba(0,123,255,0.5); }
+    .hero h1 .yellow{ color:var(--yellow); text-shadow:0 0 50px rgba(255,214,10,0.5); }
+    .hero h1 .neon{ color:var(--neon); text-shadow:0 0 40px rgba(57,255,20,0.6); }
+    .hero-sub{
+      font-size:clamp(1rem,2vw,1.2rem); line-height:1.7; color:rgba(255,255,255,0.7);
+      max-width:680px; margin:0 auto 2rem;
+    }
+    .hero-sub strong{ color:#fff; font-weight:700; }
+    .hero-region{
+      display:flex; align-items:center; justify-content:center; gap:0.75rem;
+      flex-wrap:wrap; margin-bottom:2.5rem;
+    }
+    .region-pill{
+      display:inline-flex; align-items:center; gap:0.4rem;
+      background:rgba(0,123,255,0.12); border:1px solid rgba(0,123,255,0.3);
+      border-radius:100px; color:var(--sky); font-size:0.78rem; font-weight:700;
+      padding:0.35rem 0.9rem; letter-spacing:0.06em;
+    }
+    .hero-actions{ display:flex; flex-wrap:wrap; gap:1rem; justify-content:center; }
+    .btn-primary{
+      display:inline-flex; align-items:center; gap:0.5rem;
+      background:linear-gradient(135deg,var(--yellow),#f7c500);
+      color:#000; font-weight:800; font-size:0.95rem; letter-spacing:0.05em;
+      text-transform:uppercase; text-decoration:none; border:none; border-radius:12px;
+      padding:0.9rem 2rem;
+      box-shadow:0 6px 28px rgba(255,214,10,0.4);
+      transition:transform 0.2s,box-shadow 0.2s;
+    }
+    .btn-primary:hover{ transform:translateY(-3px); box-shadow:0 12px 36px rgba(255,214,10,0.55); }
+    .btn-outline{
+      display:inline-flex; align-items:center; gap:0.5rem;
+      background:rgba(0,123,255,0.1); border:1.5px solid rgba(0,123,255,0.5);
+      color:#fff; font-weight:700; font-size:0.95rem; letter-spacing:0.05em;
+      text-transform:uppercase; text-decoration:none; border-radius:12px;
+      padding:0.9rem 2rem; transition:background 0.2s,border-color 0.2s,transform 0.2s;
+    }
+    .btn-outline:hover{ background:rgba(0,123,255,0.2); border-color:var(--blue); transform:translateY(-2px); }
+    /* Scrolling stats bar */
+    .stats-bar{
+      background:rgba(0,123,255,0.1); border-top:1px solid rgba(0,123,255,0.2);
+      border-bottom:1px solid rgba(0,123,255,0.2);
+      padding:1rem 2rem; display:flex; justify-content:center;
+      flex-wrap:wrap; gap:2rem 4rem;
+    }
+    .stat-item{ text-align:center; }
+    .stat-num{ font-family:'Anton',sans-serif; font-size:2rem; color:var(--yellow); line-height:1; }
+    .stat-label{ font-size:0.72rem; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:rgba(255,255,255,0.5); margin-top:0.2rem; }
+
+    /* ── SECTIONS ── */
+    section{ padding:5rem 2rem; position:relative; }
+    .wrap{ max-width:1100px; margin:0 auto; }
+    .sec-label{
+      display:inline-block; font-size:0.72rem; font-weight:800; letter-spacing:0.14em;
+      text-transform:uppercase; color:var(--blue); margin-bottom:0.75rem;
+    }
+    .sec-title{
+      font-family:'Anton',sans-serif; font-size:clamp(2rem,4vw,3rem);
+      text-transform:uppercase; letter-spacing:0.02em; line-height:1;
+      margin-bottom:1.25rem;
+    }
+    .sec-title span{ color:var(--yellow); }
+    .sec-sub{ font-size:1rem; line-height:1.75; color:rgba(255,255,255,0.65); max-width:700px; }
+
+    /* ── INTRO SPLIT ── */
+    .intro-grid{
+      display:grid; grid-template-columns:1fr 1fr; gap:3rem; align-items:center;
+    }
+    .intro-text p{ font-size:1rem; line-height:1.8; color:rgba(255,255,255,0.7); margin-bottom:1.1rem; }
+    .intro-text p strong{ color:#fff; }
+    .intro-visual{
+      background:linear-gradient(135deg,rgba(0,123,255,0.12),rgba(57,255,20,0.06));
+      border:1px solid rgba(0,123,255,0.2); border-radius:20px;
+      padding:2.5rem 2rem; text-align:center;
+    }
+    .big-emoji{ font-size:5rem; display:block; margin-bottom:1rem; line-height:1; }
+    .intro-visual h3{ font-family:'Anton',sans-serif; font-size:1.6rem; text-transform:uppercase; letter-spacing:0.05em; color:var(--yellow); margin-bottom:0.5rem; }
+    .intro-visual p{ font-size:0.88rem; color:rgba(255,255,255,0.6); line-height:1.65; }
+
+    /* ── CAPACITY SECTION ── */
+    .capacity-section{
+      background:linear-gradient(180deg,#05000e 0%,#020012 100%);
+      border-top:1px solid rgba(0,123,255,0.15); border-bottom:1px solid rgba(0,123,255,0.15);
+    }
+    .capacity-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; margin-top:2.5rem; }
+    .cap-card{
+      background:rgba(0,123,255,0.07); border:1px solid rgba(0,123,255,0.2);
+      border-radius:16px; padding:2rem 1.5rem; text-align:center;
+      transition:transform 0.25s,box-shadow 0.25s;
+    }
+    .cap-card:hover{ transform:translateY(-5px); box-shadow:0 16px 40px rgba(0,123,255,0.15); }
+    .cap-icon{ font-size:2.8rem; margin-bottom:0.75rem; }
+    .cap-num{ font-family:'Anton',sans-serif; font-size:3rem; color:var(--yellow); line-height:1; }
+    .cap-label{ font-size:0.8rem; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:rgba(255,255,255,0.55); margin-top:0.3rem; margin-bottom:0.75rem; }
+    .cap-desc{ font-size:0.85rem; color:rgba(255,255,255,0.6); line-height:1.6; }
+    .capacity-note{
+      margin-top:2rem; padding:1.5rem 2rem; background:rgba(57,255,20,0.06);
+      border:1px solid rgba(57,255,20,0.2); border-radius:14px;
+      font-size:0.95rem; color:rgba(255,255,255,0.75); line-height:1.75;
+      text-align:center;
+    }
+    .capacity-note strong{ color:var(--neon); }
+
+    /* ── EVENTS GRID ── */
+    .events-grid{ display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:1rem; margin-top:2.5rem; }
+    .event-card{
+      background:var(--card); border:1px solid rgba(255,255,255,0.07);
+      border-radius:14px; padding:1.5rem 1.25rem; text-align:center;
+      transition:transform 0.22s,border-color 0.22s,box-shadow 0.22s;
+      cursor:default;
+    }
+    .event-card:hover{
+      transform:translateY(-5px); border-color:rgba(255,214,10,0.4);
+      box-shadow:0 12px 36px rgba(255,214,10,0.1);
+    }
+    .event-icon{ font-size:2.2rem; margin-bottom:0.75rem; }
+    .event-name{ font-weight:800; font-size:0.9rem; color:#fff; margin-bottom:0.3rem; }
+    .event-desc{ font-size:0.75rem; color:rgba(255,255,255,0.45); line-height:1.5; }
+
+    /* ── REFERRAL BANNER ── */
+    .referral-banner{
+      background:linear-gradient(135deg,rgba(255,214,10,0.1),rgba(57,255,20,0.07));
+      border:1.5px solid rgba(255,214,10,0.35); border-radius:20px;
+      padding:2.5rem 2.5rem; display:flex; align-items:center; gap:2rem; flex-wrap:wrap;
+      margin-top:4rem;
+    }
+    .referral-icon{ font-size:4rem; flex-shrink:0; }
+    .referral-text h3{ font-family:'Anton',sans-serif; font-size:1.6rem; text-transform:uppercase; letter-spacing:0.05em; color:var(--yellow); margin-bottom:0.5rem; }
+    .referral-text p{ font-size:0.92rem; color:rgba(255,255,255,0.7); line-height:1.7; }
+    .referral-cta{ flex-shrink:0; }
+
+    /* ── FEATURES LIST ── */
+    .features-section{
+      background:
+        radial-gradient(ellipse 70% 50% at 10% 50%, rgba(0,123,255,0.1) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 40% at 90% 40%, rgba(57,255,20,0.06) 0%, transparent 60%),
+        linear-gradient(180deg,#080812 0%,#050510 100%);
+    }
+    .features-cols{ display:grid; grid-template-columns:1fr 1fr; gap:0.75rem; margin-top:2.5rem; }
+    .feat-item{
+      display:flex; align-items:flex-start; gap:0.85rem;
+      background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.07);
+      border-radius:12px; padding:1.1rem 1.25rem;
+      transition:background 0.2s,border-color 0.2s;
+    }
+    .feat-item:hover{ background:rgba(0,123,255,0.07); border-color:rgba(0,123,255,0.25); }
+    .feat-check{
+      width:28px; height:28px; background:rgba(57,255,20,0.12);
+      border:1px solid rgba(57,255,20,0.3); border-radius:8px;
+      display:flex; align-items:center; justify-content:center;
+      font-size:0.85rem; flex-shrink:0; margin-top:0.1rem;
+    }
+    .feat-content{ flex:1; }
+    .feat-title{ font-weight:800; font-size:0.9rem; color:#fff; margin-bottom:0.2rem; }
+    .feat-detail{ font-size:0.78rem; color:rgba(255,255,255,0.5); line-height:1.5; }
+
+    /* ── PROCESS / HOW IT WORKS ── */
+    .process-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:1.5rem; margin-top:2.5rem; position:relative; }
+    .process-grid::before{
+      content:''; position:absolute; top:40px; left:10%; right:10%; height:2px;
+      background:linear-gradient(90deg, transparent, rgba(0,123,255,0.3), transparent);
+      pointer-events:none;
+    }
+    .process-step{ text-align:center; }
+    .step-num{
+      width:52px; height:52px; background:linear-gradient(135deg,var(--blue),var(--deep));
+      border-radius:14px; display:flex; align-items:center; justify-content:center;
+      font-family:'Anton',sans-serif; font-size:1.4rem; color:#fff;
+      margin:0 auto 1rem; box-shadow:0 4px 20px rgba(0,123,255,0.35);
+    }
+    .step-title{ font-weight:800; font-size:0.92rem; color:#fff; margin-bottom:0.35rem; }
+    .step-desc{ font-size:0.8rem; color:rgba(255,255,255,0.5); line-height:1.55; }
+
+    /* ── TESTIMONIAL ── */
+    .testimonial-section{
+      background:linear-gradient(180deg,#030310 0%,#050515 100%);
+      border-top:1px solid rgba(0,123,255,0.12); border-bottom:1px solid rgba(0,123,255,0.12);
+    }
+    .testimonials-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:1.5rem; margin-top:2.5rem; }
+    .tcard{
+      background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.07);
+      border-radius:16px; padding:1.75rem;
+    }
+    .tcard-stars{ color:var(--yellow); font-size:0.9rem; letter-spacing:2px; margin-bottom:0.75rem; }
+    .tcard-quote{ font-size:0.9rem; color:rgba(255,255,255,0.75); line-height:1.75; margin-bottom:1rem; font-style:italic; }
+    .tcard-author{ font-weight:800; font-size:0.82rem; color:var(--blue); letter-spacing:0.06em; text-transform:uppercase; }
+
+    /* ── CTA SECTION ── */
+    .cta-section{
+      text-align:center; padding:5rem 2rem;
+      background:
+        radial-gradient(ellipse 80% 60% at 50% 50%, rgba(0,123,255,0.18) 0%, transparent 70%),
+        linear-gradient(180deg,#050515 0%,#020210 100%);
+    }
+    .cta-section h2{ font-family:'Anton',sans-serif; font-size:clamp(2rem,5vw,3.5rem); text-transform:uppercase; letter-spacing:0.02em; line-height:1; margin-bottom:1rem; }
+    .cta-section h2 span{ color:var(--yellow); }
+    .cta-section p{ font-size:1rem; color:rgba(255,255,255,0.65); max-width:540px; margin:0 auto 2.5rem; line-height:1.7; }
+    .cta-phone{ display:block; font-family:'Anton',sans-serif; font-size:2rem; color:var(--yellow); letter-spacing:0.05em; margin-top:1.5rem; text-decoration:none; transition:text-shadow 0.2s; }
+    .cta-phone:hover{ text-shadow:0 0 30px rgba(255,214,10,0.6); }
+    .cta-subtext{ font-size:0.8rem; color:rgba(255,255,255,0.35); margin-top:0.5rem; letter-spacing:0.06em; }
+
+    /* ── FOOTER ── */
+    .page-footer{
+      background:#030308; border-top:1px solid rgba(255,255,255,0.06);
+      padding:2rem; text-align:center;
+      font-size:0.8rem; color:rgba(255,255,255,0.3);
+    }
+    .page-footer a{ color:var(--yellow); text-decoration:none; font-weight:700; }
+
+    /* ── DIVIDER ── */
+    .glow-div{
+      height:2px;
+      background:linear-gradient(90deg,transparent,rgba(0,123,255,0.5),rgba(57,255,20,0.3),transparent);
+    }
+
+    /* ── RESPONSIVE ── */
+    @media(max-width:900px){
+      .intro-grid{ grid-template-columns:1fr; }
+      .capacity-grid{ grid-template-columns:1fr 1fr; }
+      .features-cols{ grid-template-columns:1fr; }
+      .process-grid::before{ display:none; }
+    }
+    @media(max-width:600px){
+      .capacity-grid{ grid-template-columns:1fr; }
+      .nav-links-row{ display:none; }
+      .referral-banner{ flex-direction:column; text-align:center; }
+    }
+
+    /* ── FADE-IN ANIMATION ── */
+    .fade-up{ opacity:0; transform:translateY(28px); animation:fadeUp 0.7s ease forwards; }
+    @keyframes fadeUp{ to{ opacity:1; transform:translateY(0); } }
+    .d1{ animation-delay:0.1s; } .d2{ animation-delay:0.25s; } .d3{ animation-delay:0.4s; } .d4{ animation-delay:0.55s; }
+  </style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav class="top-nav">
+  <a href="index.html" class="nav-logo">PARTY<span>GAME</span>TRUCK</a>
+  <div class="nav-links-row">
+    <a href="index.html">Home</a>
+    <a href="index.html#services">Services</a>
+    <a href="pricing.html">Pricing</a>
+    <a href="schools.html" style="color:var(--yellow);">Schools &amp; Events</a>
+    <a href="school-calculator.html" style="color:var(--neon);">🎮 Calculator</a>
+    <a href="index.html#contact">Contact</a>
+    <a href="booking.html" style="color:var(--yellow);font-weight:700;">📅 Book Online</a>
+    <a href="quote.html" class="nav-cta">📋 Get a Quote</a>
+  </div>
+</nav>
+
+<!-- ══════════════════════ HERO ══════════════════════ -->
+<section class="hero">
+  <div style="position:relative;z-index:2;width:100%;max-width:900px;">
+    <div class="hero-badge fade-up d1"><span></span>Now Scheduling 2025 &amp; 2026 School Events</div>
+    <h1 class="fade-up d2">
+      <span class="white">The Best Day</span><br/>
+      <span class="yellow">Of The School</span><br/>
+      <span class="neon">Year</span> <span class="white">—</span> <span class="blue">Guaranteed.</span>
+    </h1>
+    <p class="hero-sub fade-up d3">
+      Party Game Truck brings <strong>Maryland's #1 mobile gaming theater</strong> directly to your campus. No permission slips. No off-site travel. No stress. Just the most talked-about school day of the year.
+    </p>
+    <div class="hero-region fade-up d3">
+      <span class="region-pill">📍 Maryland</span>
+      <span class="region-pill">📍 Washington D.C.</span>
+      <span class="region-pill">📍 Virginia</span>
+      <span class="region-pill">📍 All DMV Cities</span>
+    </div>
+    <div class="hero-actions fade-up d4">
+      <a href="school-calculator.html" class="btn-primary">🎮 School Event Calculator</a>
+      <a href="tel:8773991997" class="btn-outline">📞 Call 877-399-1997</a>
+    </div>
+  </div>
+</section>
+
+<!-- Stats Bar -->
+<div class="stats-bar">
+  <div class="stat-item"><div class="stat-num">500+</div><div class="stat-label">School Events Completed</div></div>
+  <div class="stat-item"><div class="stat-num">3</div><div class="stat-label">Trucks Available at Once</div></div>
+  <div class="stat-item"><div class="stat-num">60+</div><div class="stat-label">Simultaneous Players</div></div>
+  <div class="stat-item"><div class="stat-num">100s</div><div class="stat-label">Students Per Event Day</div></div>
+  <div class="stat-item"><div class="stat-num">5★</div><div class="stat-label">Rated by Schools</div></div>
+</div>
+
+<div class="glow-div"></div>
+
+<!-- ══════════════════════ INTRO ══════════════════════ -->
+<section style="background:linear-gradient(180deg,#040412 0%,#050515 100%);padding:5rem 2rem;">
+  <div class="wrap">
+    <div class="intro-grid">
+      <div class="intro-text">
+        <div class="sec-label">🎮 Our Theaters, Your Event</div>
+        <h2 class="sec-title">We Turn Your <span>Campus</span> Into The Highlight Of The Day</h2>
+        <p>Our mobile game theaters don't just show up — they transform your school grounds into an experience students will talk about for months. Whether it's a <strong>reward day, academic milestone, end-of-year bash, or spring festival</strong>, we deliver an event students actually work toward.</p>
+        <p>No permission slips. No off-site liability. No coordination nightmares. Your students never leave school grounds, and your admin team barely lifts a finger.</p>
+        <p>Every event is led by our <strong>professionally trained Next Level Gaming Event Managers</strong> — they handle rotations, age-appropriate game selection, and keep everything running on schedule so your staff can focus on what matters.</p>
+        <div style="display:flex;flex-wrap:wrap;gap:0.6rem;margin-top:1.5rem;">
+          <span style="background:rgba(57,255,20,0.1);border:1px solid rgba(57,255,20,0.25);color:var(--neon);font-size:0.72rem;font-weight:700;letter-spacing:0.08em;padding:0.3rem 0.75rem;border-radius:100px;">✅ No Permission Slips</span>
+          <span style="background:rgba(57,255,20,0.1);border:1px solid rgba(57,255,20,0.25);color:var(--neon);font-size:0.72rem;font-weight:700;letter-spacing:0.08em;padding:0.3rem 0.75rem;border-radius:100px;">✅ Stays On School Grounds</span>
+          <span style="background:rgba(57,255,20,0.1);border:1px solid rgba(57,255,20,0.25);color:var(--neon);font-size:0.72rem;font-weight:700;letter-spacing:0.08em;padding:0.3rem 0.75rem;border-radius:100px;">✅ Stress-Free Admin</span>
+          <span style="background:rgba(57,255,20,0.1);border:1px solid rgba(57,255,20,0.25);color:var(--neon);font-size:0.72rem;font-weight:700;letter-spacing:0.08em;padding:0.3rem 0.75rem;border-radius:100px;">✅ Trained Event Managers</span>
+        </div>
+      </div>
+      <div class="intro-visual">
+        <span class="big-emoji">🎮🚌🏫</span>
+        <h3>The Experience<br/>Students Work Toward</h3>
+        <p>When students hear "Party Game Truck is coming," attendance spikes, behavior improves, and grades go up. We're not just entertainment — we're motivation.</p>
+        <div style="margin-top:1.5rem;padding:1rem;background:rgba(255,214,10,0.07);border:1px solid rgba(255,214,10,0.2);border-radius:10px;">
+          <div style="font-family:'Anton',sans-serif;font-size:1.1rem;color:var(--yellow);letter-spacing:0.04em;">COI · PO · W9</div>
+          <div style="font-size:0.75rem;color:rgba(255,255,255,0.5);margin-top:0.25rem;">Full school admin documentation provided</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="glow-div"></div>
+
+<!-- ══════════════════════ CAPACITY ══════════════════════ -->
+<section class="capacity-section">
+  <div class="wrap">
+    <div style="text-align:center;">
+      <div class="sec-label">🚛 Game Theater Capacity</div>
+      <h2 class="sec-title">Built For <span>Big</span> Schools &amp; Bigger Events</h2>
+      <p class="sec-sub" style="margin:0 auto 0.5rem;">We do large-scale events all the time. With up to 3 trucks on-site at once, hundreds of students can rotate through in a single school day.</p>
+    </div>
+    <div class="capacity-grid">
+      <div class="cap-card">
+        <div class="cap-icon">🚌</div>
+        <div class="cap-num">3</div>
+        <div class="cap-label">Trucks On-Site at Once</div>
+        <div class="cap-desc">Request up to three mobile game theaters simultaneously for your campus event — perfect for large student bodies.</div>
+      </div>
+      <div class="cap-card">
+        <div class="cap-icon">🎮</div>
+        <div class="cap-num">60+</div>
+        <div class="cap-label">Players At The Same Time</div>
+        <div class="cap-desc">With 3 trucks running, 60+ students are gaming simultaneously — maximum excitement, minimum wait time.</div>
+      </div>
+      <div class="cap-card">
+        <div class="cap-icon">⏱️</div>
+        <div class="cap-num">20–30</div>
+        <div class="cap-label">Minute Rotation Intervals</div>
+        <div class="cap-desc">Students rotate at your chosen interval, letting hundreds of players experience the truck throughout the day.</div>
+      </div>
+    </div>
+    <div class="capacity-note">
+      <strong>Big school? Big event? No problem.</strong> With 20–30 minute rotations you decide, we can easily accommodate <strong>hundreds of students in a single day.</strong><br/>Need more time for more players? We've got you — just let us know and we'll customize the schedule.
+    </div>
+  </div>
+</section>
+
+<div class="glow-div"></div>
+
+<!-- ══════════════════════ ROCK WALL ══════════════════════ -->
+<section style="background:linear-gradient(180deg,#07050f 0%,#0a040c 100%);padding:5rem 2rem;position:relative;overflow:hidden;">
+  <!-- Background accent -->
+  <div style="position:absolute;top:0;left:50%;transform:translateX(-50%);width:600px;height:300px;background:radial-gradient(ellipse,rgba(249,115,22,0.12) 0%,transparent 70%);pointer-events:none;"></div>
+  <div class="wrap" style="position:relative;">
+    <div style="text-align:center;margin-bottom:3rem;">
+      <div class="sec-label" style="background:rgba(249,115,22,0.12);border-color:rgba(249,115,22,0.3);color:#fb923c;">🧗 Add-On Service</div>
+      <h2 class="sec-title">Mobile Rock Wall <span style="color:#fb923c;">Rentals</span></h2>
+      <p class="sec-sub" style="margin:0 auto;">Take your school event to new heights — literally. Our mobile rock climbing wall is safe, insured, and fully staffed. Perfect paired with the game truck or as a standalone station.</p>
+    </div>
+
+    <!-- Two-column: info + pricing -->
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:2.5rem;align-items:start;">
+
+      <!-- Info -->
+      <div>
+        <div style="background:rgba(249,115,22,0.07);border:1px solid rgba(249,115,22,0.22);border-radius:16px;padding:1.8rem;">
+          <div style="font-family:'Anton',sans-serif;font-size:1.3rem;letter-spacing:0.04em;text-transform:uppercase;color:#fb923c;margin-bottom:1.2rem;">Maryland Mobile Rock Wall</div>
+          <div style="display:flex;flex-direction:column;gap:0.75rem;">
+            <div style="display:flex;align-items:flex-start;gap:0.75rem;font-size:0.84rem;color:rgba(255,255,255,0.75);">
+              <span style="color:#fb923c;font-size:1rem;flex-shrink:0;">✅</span>
+              <span><strong style="color:#fff;">Safe &amp; Insured</strong> — $2M liability coverage, certified staff at every event</span>
+            </div>
+            <div style="display:flex;align-items:flex-start;gap:0.75rem;font-size:0.84rem;color:rgba(255,255,255,0.75);">
+              <span style="color:#fb923c;font-size:1rem;flex-shrink:0;">✅</span>
+              <span><strong style="color:#fff;">Self-Contained Setup</strong> — drives right to your school, no venue prep needed</span>
+            </div>
+            <div style="display:flex;align-items:flex-start;gap:0.75rem;font-size:0.84rem;color:rgba(255,255,255,0.75);">
+              <span style="color:#fb923c;font-size:1rem;flex-shrink:0;">✅</span>
+              <span><strong style="color:#fff;">All Ages &amp; Skill Levels</strong> — multiple difficulty routes, harness &amp; helmet included</span>
+            </div>
+            <div style="display:flex;align-items:flex-start;gap:0.75rem;font-size:0.84rem;color:rgba(255,255,255,0.75);">
+              <span style="color:#fb923c;font-size:1rem;flex-shrink:0;">✅</span>
+              <span><strong style="color:#fff;">COI / PO / W9</strong> — all school admin documentation provided</span>
+            </div>
+            <div style="display:flex;align-items:flex-start;gap:0.75rem;font-size:0.84rem;color:rgba(255,255,255,0.75);">
+              <span style="color:#fb923c;font-size:1rem;flex-shrink:0;">📍</span>
+              <span>Serving <strong style="color:#fff;">Maryland, Washington DC &amp; Virginia</strong></span>
+            </div>
+          </div>
+          <div style="margin-top:1.4rem;padding-top:1.2rem;border-top:1px solid rgba(249,115,22,0.15);font-size:0.78rem;color:rgba(255,255,255,0.45);">
+            Maryland Mobile Rock Wall Rentals · <a href="tel:4432444089" style="color:#fb923c;font-weight:700;">(443) 244-4089</a>
+          </div>
+        </div>
+
+        <!-- Combo CTA -->
+        <div style="margin-top:1.2rem;background:linear-gradient(135deg,rgba(0,123,255,0.1),rgba(249,115,22,0.1));border:1px solid rgba(255,214,10,0.2);border-radius:14px;padding:1.4rem;text-align:center;">
+          <div style="font-family:'Anton',sans-serif;font-size:1rem;text-transform:uppercase;letter-spacing:0.05em;color:var(--yellow);margin-bottom:0.4rem;">🎮 + 🧗 Combo It!</div>
+          <p style="font-size:0.8rem;color:rgba(255,255,255,0.6);margin-bottom:1rem;line-height:1.6;">Book the Game Truck &amp; Rock Wall together — students can rotate between stations all day. Maximum energy, maximum fun.</p>
+          <a href="school-calculator.html" style="display:inline-block;background:var(--yellow);color:#000;font-family:'Anton',sans-serif;font-size:0.9rem;letter-spacing:0.06em;text-transform:uppercase;padding:0.65rem 1.6rem;border-radius:10px;text-decoration:none;">Build a Combo Package →</a>
+        </div>
+      </div>
+
+      <!-- Pricing Cards -->
+      <div>
+        <div style="font-size:0.7rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-bottom:0.9rem;">Rock Wall Rental Pricing</div>
+        <div style="display:flex;flex-direction:column;gap:0.75rem;">
+          <div style="display:flex;align-items:center;justify-content:space-between;background:rgba(249,115,22,0.06);border:1px solid rgba(249,115,22,0.18);border-radius:12px;padding:1rem 1.2rem;">
+            <div>
+              <div style="font-family:'Anton',sans-serif;font-size:1.05rem;letter-spacing:0.04em;">1.5 Hour Rental</div>
+              <div style="font-size:0.72rem;color:rgba(255,255,255,0.4);margin-top:0.15rem;">1 hr 30 mins</div>
+            </div>
+            <div style="font-family:'Anton',sans-serif;font-size:1.5rem;color:#fb923c;">$700</div>
+          </div>
+          <div style="display:flex;align-items:center;justify-content:space-between;background:rgba(249,115,22,0.09);border:2px solid rgba(249,115,22,0.35);border-radius:12px;padding:1rem 1.2rem;position:relative;">
+            <div style="position:absolute;top:-1px;right:14px;background:#fb923c;color:#000;font-size:0.56rem;font-weight:800;letter-spacing:0.1em;padding:0.18rem 0.65rem;border-radius:0 0 7px 7px;">POPULAR</div>
+            <div>
+              <div style="font-family:'Anton',sans-serif;font-size:1.05rem;letter-spacing:0.04em;">2 Hour Rental</div>
+              <div style="font-size:0.72rem;color:rgba(255,255,255,0.4);margin-top:0.15rem;">standard</div>
+            </div>
+            <div style="font-family:'Anton',sans-serif;font-size:1.5rem;color:#fb923c;">$900</div>
+          </div>
+          <div style="display:flex;align-items:center;justify-content:space-between;background:rgba(249,115,22,0.06);border:1px solid rgba(249,115,22,0.18);border-radius:12px;padding:1rem 1.2rem;">
+            <div>
+              <div style="font-family:'Anton',sans-serif;font-size:1.05rem;letter-spacing:0.04em;">3 Hour Rental</div>
+              <div style="font-size:0.72rem;color:rgba(255,255,255,0.4);margin-top:0.15rem;">extended</div>
+            </div>
+            <div style="font-family:'Anton',sans-serif;font-size:1.5rem;color:#fb923c;">$1,200</div>
+          </div>
+          <div style="display:flex;align-items:center;justify-content:space-between;background:rgba(249,115,22,0.06);border:1px solid rgba(249,115,22,0.18);border-radius:12px;padding:1rem 1.2rem;">
+            <div>
+              <div style="font-family:'Anton',sans-serif;font-size:1.05rem;letter-spacing:0.04em;">4 Hour Rental</div>
+              <div style="font-size:0.72rem;color:rgba(255,255,255,0.4);margin-top:0.15rem;">full day</div>
+            </div>
+            <div style="font-family:'Anton',sans-serif;font-size:1.5rem;color:#fb923c;">$1,500</div>
+          </div>
+        </div>
+        <div style="margin-top:1rem;font-size:0.72rem;color:rgba(255,255,255,0.3);line-height:1.6;text-align:center;">
+          Prices shown for Rock Wall only. Use the <a href="school-calculator.html" style="color:#fb923c;">School Event Calculator</a> to price a combo package.
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════ SNOBALLS ══════════════════════ -->
+<section style="background:linear-gradient(180deg,#0a0410 0%,#08030f 100%);padding:5rem 2rem;position:relative;overflow:hidden;">
+  <div style="position:absolute;top:0;left:50%;transform:translateX(-50%);width:700px;height:350px;background:radial-gradient(ellipse,rgba(236,72,153,0.14) 0%,transparent 70%);pointer-events:none;"></div>
+  <div class="wrap" style="position:relative;">
+    <div style="text-align:center;margin-bottom:3rem;">
+      <div class="sec-label" style="background:rgba(236,72,153,0.1);border-color:rgba(236,72,153,0.3);color:#f9a8d4;">🍧 Add-On Service</div>
+      <h2 class="sec-title">Awesome Snoballs <span style="color:#ec4899;">Truck</span></h2>
+      <p class="sec-sub" style="margin:0 auto;">New Orleans-style authentic Hawaiian shaved ice with 20+ flavors and gourmet toppings — brought right to your school event. Priced well below competitors so every student gets a treat.</p>
+      <div style="display:flex;flex-wrap:wrap;gap:0.6rem;justify-content:center;margin-top:1rem;">
+        <span style="font-size:0.72rem;font-weight:700;background:rgba(236,72,153,0.1);border:1px solid rgba(236,72,153,0.25);border-radius:6px;padding:0.3rem 0.75rem;color:#f9a8d4;">20+ Flavors</span>
+        <span style="font-size:0.72rem;font-weight:700;background:rgba(236,72,153,0.1);border:1px solid rgba(236,72,153,0.25);border-radius:6px;padding:0.3rem 0.75rem;color:#f9a8d4;">Gourmet Toppings</span>
+        <span style="font-size:0.72rem;font-weight:700;background:rgba(236,72,153,0.1);border:1px solid rgba(236,72,153,0.25);border-radius:6px;padding:0.3rem 0.75rem;color:#f9a8d4;">Self-Service 6-Flavor Stations</span>
+        <span style="font-size:0.72rem;font-weight:700;background:rgba(57,255,20,0.08);border:1px solid rgba(57,255,20,0.22);border-radius:6px;padding:0.3rem 0.75rem;color:var(--neon);">MD · DC · VA</span>
+      </div>
+    </div>
+
+    <!-- Two-column: pricing table + info -->
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:2.5rem;align-items:start;">
+
+      <!-- Pricing Table -->
+      <div>
+        <div style="font-size:0.7rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-bottom:0.9rem;">Event Pricing — Affordable vs. Competitors</div>
+        <!-- Header -->
+        <div style="display:grid;grid-template-columns:1fr auto auto;gap:0;background:rgba(236,72,153,0.1);border:1px solid rgba(236,72,153,0.2);border-radius:10px 10px 0 0;padding:0.6rem 1.1rem;font-size:0.68rem;font-weight:800;letter-spacing:0.08em;text-transform:uppercase;color:#f9a8d4;">
+          <span>Package</span><span style="text-align:right;padding-right:1.2rem;">Our Price</span><span style="text-align:right;">Others</span>
+        </div>
+        <!-- Rows -->
+        <div style="border:1px solid rgba(236,72,153,0.15);border-top:none;border-radius:0 0 10px 10px;overflow:hidden;">
+          <div style="display:grid;grid-template-columns:1fr auto auto;gap:0;padding:0.75rem 1.1rem;background:rgba(255,255,255,0.02);border-bottom:1px solid rgba(255,255,255,0.05);">
+            <div><div style="font-weight:700;font-size:0.85rem;">Up to 40 guests</div><div style="font-size:0.67rem;color:rgba(255,255,255,0.4);margin-top:0.1rem;">Mini / Small Event</div></div>
+            <div style="font-family:'Anton',sans-serif;font-size:1.2rem;color:#f9a8d4;padding-right:1.2rem;white-space:nowrap;">$299</div>
+            <div style="font-size:0.75rem;color:rgba(255,255,255,0.3);text-decoration:line-through;white-space:nowrap;">$400+</div>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr auto auto;gap:0;padding:0.75rem 1.1rem;background:rgba(236,72,153,0.05);border-bottom:1px solid rgba(255,255,255,0.05);position:relative;">
+            <div style="position:absolute;left:0;top:0;bottom:0;width:3px;background:#ec4899;border-radius:0;"></div>
+            <div><div style="font-weight:700;font-size:0.85rem;">Up to 75 guests <span style="background:#ec4899;color:#fff;font-size:0.55rem;font-weight:800;padding:0.1rem 0.4rem;border-radius:4px;margin-left:4px;vertical-align:middle;">POPULAR</span></div><div style="font-size:0.67rem;color:rgba(255,255,255,0.4);margin-top:0.1rem;">Standard · 2 hrs</div></div>
+            <div style="font-family:'Anton',sans-serif;font-size:1.2rem;color:#f9a8d4;padding-right:1.2rem;white-space:nowrap;">$379</div>
+            <div style="font-size:0.75rem;color:rgba(255,255,255,0.3);text-decoration:line-through;white-space:nowrap;">$600+</div>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr auto auto;gap:0;padding:0.75rem 1.1rem;background:rgba(255,255,255,0.02);border-bottom:1px solid rgba(255,255,255,0.05);">
+            <div><div style="font-weight:700;font-size:0.85rem;">Up to 100 guests</div><div style="font-size:0.67rem;color:rgba(255,255,255,0.4);margin-top:0.1rem;">Party · 2 hrs</div></div>
+            <div style="font-family:'Anton',sans-serif;font-size:1.2rem;color:#f9a8d4;padding-right:1.2rem;white-space:nowrap;">$449</div>
+            <div style="font-size:0.75rem;color:rgba(255,255,255,0.3);text-decoration:line-through;white-space:nowrap;">$800+</div>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr auto auto;gap:0;padding:0.75rem 1.1rem;background:rgba(236,72,153,0.04);border-bottom:1px solid rgba(255,255,255,0.05);">
+            <div><div style="font-weight:700;font-size:0.85rem;">Up to 150 guests</div><div style="font-size:0.67rem;color:rgba(255,255,255,0.4);margin-top:0.1rem;">Large Event · 3 hrs</div></div>
+            <div style="font-family:'Anton',sans-serif;font-size:1.2rem;color:#f9a8d4;padding-right:1.2rem;white-space:nowrap;">$579</div>
+            <div style="font-size:0.75rem;color:rgba(255,255,255,0.3);text-decoration:line-through;white-space:nowrap;">$1,200+</div>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr auto auto;gap:0;padding:0.75rem 1.1rem;background:rgba(255,255,255,0.02);border-bottom:1px solid rgba(255,255,255,0.05);">
+            <div><div style="font-weight:700;font-size:0.85rem;">Up to 200 guests</div><div style="font-size:0.67rem;color:rgba(255,255,255,0.4);margin-top:0.1rem;">School Day · 3 hrs</div></div>
+            <div style="font-family:'Anton',sans-serif;font-size:1.2rem;color:#f9a8d4;padding-right:1.2rem;white-space:nowrap;">$699</div>
+            <div style="font-size:0.75rem;color:rgba(255,255,255,0.3);text-decoration:line-through;white-space:nowrap;">$1,400+</div>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr auto auto;gap:0;padding:0.75rem 1.1rem;background:rgba(236,72,153,0.04);">
+            <div><div style="font-weight:700;font-size:0.85rem;">300+ guests</div><div style="font-size:0.67rem;color:rgba(255,255,255,0.4);margin-top:0.1rem;">Festival / Full Day</div></div>
+            <div style="font-family:'Anton',sans-serif;font-size:1.2rem;color:#f9a8d4;padding-right:1.2rem;white-space:nowrap;">$899</div>
+            <div style="font-size:0.75rem;color:rgba(255,255,255,0.3);white-space:nowrap;">Custom</div>
+          </div>
+        </div>
+        <div style="margin-top:0.65rem;font-size:0.68rem;color:rgba(255,255,255,0.3);line-height:1.5;">Competitor pricing based on TikiMan Hawaiian Shave Ice &amp; similar Maryland/DMV vendors. Book Awesome Snoballs alone or add it to any game truck package.</div>
+      </div>
+
+      <!-- Info + CTAs -->
+      <div>
+        <div style="background:rgba(236,72,153,0.07);border:1px solid rgba(236,72,153,0.2);border-radius:16px;padding:1.8rem;margin-bottom:1.2rem;">
+          <div style="font-family:'Anton',sans-serif;font-size:1.3rem;letter-spacing:0.04em;text-transform:uppercase;color:#ec4899;margin-bottom:1.2rem;">🍧 What's Included</div>
+          <div style="display:flex;flex-direction:column;gap:0.7rem;">
+            <div style="display:flex;align-items:flex-start;gap:0.75rem;font-size:0.84rem;color:rgba(255,255,255,0.75);">
+              <span style="color:#ec4899;flex-shrink:0;">✅</span>
+              <span><strong style="color:#fff;">20+ Premium Flavors</strong> — classic &amp; tropical options, kids love it</span>
+            </div>
+            <div style="display:flex;align-items:flex-start;gap:0.75rem;font-size:0.84rem;color:rgba(255,255,255,0.75);">
+              <span style="color:#ec4899;flex-shrink:0;">✅</span>
+              <span><strong style="color:#fff;">Gourmet Toppings</strong> — condensed milk, cream cheese, fresh fruit &amp; more</span>
+            </div>
+            <div style="display:flex;align-items:flex-start;gap:0.75rem;font-size:0.84rem;color:rgba(255,255,255,0.75);">
+              <span style="color:#ec4899;flex-shrink:0;">✅</span>
+              <span><strong style="color:#fff;">6-Flavor Self-Service Stations</strong> — students create their own combinations</span>
+            </div>
+            <div style="display:flex;align-items:flex-start;gap:0.75rem;font-size:0.84rem;color:rgba(255,255,255,0.75);">
+              <span style="color:#ec4899;flex-shrink:0;">✅</span>
+              <span><strong style="color:#fff;">New Orleans-Style Authentic</strong> — real shaved ice, not crushed ice</span>
+            </div>
+            <div style="display:flex;align-items:flex-start;gap:0.75rem;font-size:0.84rem;color:rgba(255,255,255,0.75);">
+              <span style="color:#ec4899;flex-shrink:0;">✅</span>
+              <span><strong style="color:#fff;">Staffed &amp; Self-Contained</strong> — drives to your school, no setup work for you</span>
+            </div>
+            <div style="display:flex;align-items:flex-start;gap:0.75rem;font-size:0.84rem;color:rgba(255,255,255,0.75);">
+              <span style="color:#ec4899;flex-shrink:0;">📍</span>
+              <span>Serving <strong style="color:#fff;">Maryland, Washington DC &amp; Virginia</strong></span>
+            </div>
+          </div>
+          <div style="margin-top:1.4rem;padding-top:1.1rem;border-top:1px solid rgba(236,72,153,0.15);display:flex;align-items:center;gap:0.5rem;flex-wrap:wrap;font-size:0.78rem;color:rgba(255,255,255,0.45);">
+            <span>Awesome Snoballs · Owings Mills, MD 21117</span>
+            <span>·</span>
+            <a href="tel:4432813331" style="color:#f9a8d4;font-weight:700;">(443) 281-3331</a>
+            <span>·</span>
+            <a href="https://awesomesnoballs.com" target="_blank" rel="noopener" style="color:#f9a8d4;font-weight:700;">awesomesnoballs.com</a>
+          </div>
+        </div>
+
+        <!-- Combo CTA -->
+        <div style="background:linear-gradient(135deg,rgba(0,123,255,0.1),rgba(236,72,153,0.1));border:1px solid rgba(255,214,10,0.2);border-radius:14px;padding:1.4rem;text-align:center;">
+          <div style="font-family:'Anton',sans-serif;font-size:1rem;text-transform:uppercase;letter-spacing:0.05em;color:var(--yellow);margin-bottom:0.4rem;">🎮 + 🍧 Add Snoballs to Any Event!</div>
+          <p style="font-size:0.8rem;color:rgba(255,255,255,0.6);margin-bottom:1rem;line-height:1.6;">Book the game truck and SnoBall truck together — students game AND get a treat. Perfect school day combo that kids will talk about all year.</p>
+          <a href="school-calculator.html" style="display:inline-block;background:var(--yellow);color:#000;font-family:'Anton',sans-serif;font-size:0.9rem;letter-spacing:0.06em;text-transform:uppercase;padding:0.65rem 1.6rem;border-radius:10px;text-decoration:none;">Build Your Package →</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════ FOAM PARTY ══════════════════════ -->
+<section style="background:linear-gradient(180deg,#040a12 0%,#060c10 100%);padding:5rem 2rem;position:relative;overflow:hidden;">
+  <div style="position:absolute;top:0;left:50%;transform:translateX(-50%);width:700px;height:350px;background:radial-gradient(ellipse,rgba(14,165,233,0.14) 0%,transparent 70%);pointer-events:none;"></div>
+  <!-- Floating foam bubbles -->
+  <div style="position:absolute;top:10%;left:8%;width:60px;height:60px;border-radius:50%;background:rgba(14,165,233,0.08);border:1px solid rgba(14,165,233,0.15);animation:floatBubble 6s ease-in-out infinite;pointer-events:none;"></div>
+  <div style="position:absolute;top:30%;right:6%;width:40px;height:40px;border-radius:50%;background:rgba(56,189,248,0.07);border:1px solid rgba(56,189,248,0.12);animation:floatBubble 8s ease-in-out infinite 1.5s;pointer-events:none;"></div>
+  <div style="position:absolute;bottom:20%;left:12%;width:30px;height:30px;border-radius:50%;background:rgba(125,211,252,0.07);border:1px solid rgba(125,211,252,0.12);animation:floatBubble 5s ease-in-out infinite 3s;pointer-events:none;"></div>
+  <style>@keyframes floatBubble{0%,100%{transform:translateY(0) scale(1)}50%{transform:translateY(-18px) scale(1.06)}}</style>
+
+  <div class="wrap" style="position:relative;">
+    <div style="text-align:center;margin-bottom:3rem;">
+      <div class="sec-label" style="background:rgba(14,165,233,0.1);border-color:rgba(14,165,233,0.3);color:#7dd3fc;">🫧 Add-On Service</div>
+      <h2 class="sec-title">Foam Party <span style="color:#38bdf8;">Events</span></h2>
+      <p class="sec-sub" style="margin:0 auto;">Turn any school event, field day, or festival into an epic foam experience. Kids love it. Teachers love how easy it is. Foam is 100% organic, safe, and hypoallergenic — zero cleanup needed.</p>
+      <div style="display:flex;flex-wrap:wrap;gap:0.6rem;justify-content:center;margin-top:1rem;">
+        <span style="font-size:0.72rem;font-weight:700;background:rgba(14,165,233,0.1);border:1px solid rgba(14,165,233,0.25);border-radius:6px;padding:0.3rem 0.75rem;color:#7dd3fc;">100% Organic Foam</span>
+        <span style="font-size:0.72rem;font-weight:700;background:rgba(14,165,233,0.1);border:1px solid rgba(14,165,233,0.25);border-radius:6px;padding:0.3rem 0.75rem;color:#7dd3fc;">No Cleanup Required</span>
+        <span style="font-size:0.72rem;font-weight:700;background:rgba(14,165,233,0.1);border:1px solid rgba(14,165,233,0.25);border-radius:6px;padding:0.3rem 0.75rem;color:#7dd3fc;">Safe for All Ages</span>
+        <span style="font-size:0.72rem;font-weight:700;background:rgba(14,165,233,0.1);border:1px solid rgba(14,165,233,0.25);border-radius:6px;padding:0.3rem 0.75rem;color:#7dd3fc;">Trained Foam Operator</span>
+        <span style="font-size:0.72rem;font-weight:700;background:rgba(57,255,20,0.08);border:1px solid rgba(57,255,20,0.22);border-radius:6px;padding:0.3rem 0.75rem;color:var(--neon);">MD · DC · VA</span>
+      </div>
+    </div>
+
+    <!-- Package Cards -->
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.2rem;margin-bottom:2.5rem;">
+
+      <!-- Basic -->
+      <div style="background:rgba(14,165,233,0.06);border:1px solid rgba(14,165,233,0.2);border-radius:16px;padding:1.6rem 1.2rem;display:flex;flex-direction:column;gap:0.5rem;">
+        <div style="font-size:1.8rem;">🫧</div>
+        <div style="font-family:'Anton',sans-serif;font-size:1.1rem;letter-spacing:0.04em;text-transform:uppercase;color:#7dd3fc;">Basic Foam Party</div>
+        <div style="font-family:'Anton',sans-serif;font-size:2rem;color:#38bdf8;line-height:1;">$350</div>
+        <div style="font-size:0.68rem;color:rgba(255,255,255,0.4);margin-bottom:0.4rem;">1 hour · up to 20 guests</div>
+        <div style="display:flex;flex-direction:column;gap:0.35rem;font-size:0.78rem;color:rgba(255,255,255,0.65);flex:1;">
+          <div>✅ Foam machine &amp; operator</div>
+          <div>✅ Goggles &amp; beach balls</div>
+          <div>✅ Music playlist</div>
+          <div>✅ Setup &amp; cleanup</div>
+        </div>
+        <div style="margin-top:0.75rem;padding-top:0.75rem;border-top:1px solid rgba(14,165,233,0.15);font-size:0.7rem;color:rgba(255,255,255,0.35);">+$175/hr extra · Foam Pit add-on +$100</div>
+        <div style="font-size:0.68rem;color:rgba(56,189,248,0.6);margin-top:0.2rem;">Competitors charge $375–$449</div>
+      </div>
+
+      <!-- Glo/Color -->
+      <div style="background:rgba(139,92,246,0.07);border:2px solid rgba(139,92,246,0.3);border-radius:16px;padding:1.6rem 1.2rem;display:flex;flex-direction:column;gap:0.5rem;position:relative;">
+        <div style="position:absolute;top:-1px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,#7c3aed,#a855f7);color:#fff;font-size:0.56rem;font-weight:800;letter-spacing:0.1em;padding:0.2rem 0.75rem;border-radius:0 0 8px 8px;">MOST POPULAR</div>
+        <div style="font-size:1.8rem;">🌈✨</div>
+        <div style="font-family:'Anton',sans-serif;font-size:1.1rem;letter-spacing:0.04em;text-transform:uppercase;color:#c4b5fd;">Glo / Color Foam</div>
+        <div style="font-family:'Anton',sans-serif;font-size:2rem;color:#a78bfa;line-height:1;">$500</div>
+        <div style="font-size:0.68rem;color:rgba(255,255,255,0.4);margin-bottom:0.4rem;">1 hour · up to 20 guests</div>
+        <div style="display:flex;flex-direction:column;gap:0.35rem;font-size:0.78rem;color:rgba(255,255,255,0.65);flex:1;">
+          <div>✅ Glow foam + LED/UV lighting</div>
+          <div>✅ Sound system &amp; playlist</div>
+          <div>✅ Glow sticks &amp; body paint</div>
+          <div>✅ Beach balls &amp; games</div>
+          <div>✅ Foam operator included</div>
+        </div>
+        <div style="margin-top:0.75rem;padding-top:0.75rem;border-top:1px solid rgba(139,92,246,0.15);font-size:0.7rem;color:rgba(255,255,255,0.35);">+$199/hr extra · Foam Pit add-on +$100</div>
+        <div style="font-size:0.68rem;color:rgba(167,139,250,0.6);margin-top:0.2rem;">Competitors charge $425–$575</div>
+      </div>
+
+      <!-- Ultimate Cannon -->
+      <div style="background:rgba(255,214,10,0.05);border:1px solid rgba(255,214,10,0.2);border-radius:16px;padding:1.6rem 1.2rem;display:flex;flex-direction:column;gap:0.5rem;">
+        <div style="font-size:1.8rem;">🚀💦</div>
+        <div style="font-family:'Anton',sans-serif;font-size:1.1rem;letter-spacing:0.04em;text-transform:uppercase;color:var(--yellow);">Ultimate Cannon</div>
+        <div style="font-family:'Anton',sans-serif;font-size:2rem;color:var(--yellow);line-height:1;">$600</div>
+        <div style="font-size:0.68rem;color:rgba(255,255,255,0.4);margin-bottom:0.4rem;">1 hour · up to 20 guests</div>
+        <div style="display:flex;flex-direction:column;gap:0.35rem;font-size:0.78rem;color:rgba(255,255,255,0.65);flex:1;">
+          <div>✅ 15' inflatable foam pit</div>
+          <div>✅ 10 water tag blasters + vests</div>
+          <div>✅ Black lights &amp; 10 glow sticks</div>
+          <div>✅ 8 beach balls + Bluetooth speaker</div>
+          <div>✅ Foam operator + full setup/cleanup</div>
+        </div>
+        <div style="margin-top:0.75rem;padding-top:0.75rem;border-top:1px solid rgba(255,214,10,0.12);font-size:0.7rem;color:rgba(255,255,255,0.35);">+$125/hr extra</div>
+        <div style="font-size:0.68rem;color:rgba(255,214,10,0.5);margin-top:0.2rem;">Competitors charge $670–$898 for 2 hrs</div>
+      </div>
+
+      <!-- Drop-Off -->
+      <div style="background:rgba(57,255,20,0.04);border:1px solid rgba(57,255,20,0.18);border-radius:16px;padding:1.6rem 1.2rem;display:flex;flex-direction:column;gap:0.5rem;">
+        <div style="font-size:1.8rem;">📦</div>
+        <div style="font-family:'Anton',sans-serif;font-size:1.1rem;letter-spacing:0.04em;text-transform:uppercase;color:var(--neon);">Drop-Off Rental</div>
+        <div style="font-family:'Anton',sans-serif;font-size:2rem;color:var(--neon);line-height:1;">$250</div>
+        <div style="font-size:0.68rem;color:rgba(255,255,255,0.4);margin-bottom:0.4rem;">Self-operated · 1 hr foam solution</div>
+        <div style="display:flex;flex-direction:column;gap:0.35rem;font-size:0.78rem;color:rgba(255,255,255,0.65);flex:1;">
+          <div>✅ Machine delivered &amp; picked up</div>
+          <div>✅ Organic foam solution included</div>
+          <div>✅ All supplies provided</div>
+          <div>✅ Easy-to-operate setup</div>
+        </div>
+        <div style="margin-top:0.75rem;padding-top:0.75rem;border-top:1px solid rgba(57,255,20,0.12);font-size:0.7rem;color:rgba(255,255,255,0.35);">+$50/hr extra foam solution</div>
+        <div style="font-size:0.68rem;color:rgba(57,255,20,0.5);margin-top:0.2rem;">Most affordable option in the DMV</div>
+      </div>
+
+    </div>
+
+    <!-- Bottom: info + CTA -->
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:2rem;align-items:start;">
+
+      <!-- Features -->
+      <div style="background:rgba(14,165,233,0.06);border:1px solid rgba(14,165,233,0.18);border-radius:16px;padding:1.6rem;">
+        <div style="font-family:'Anton',sans-serif;font-size:1.1rem;letter-spacing:0.04em;text-transform:uppercase;color:#38bdf8;margin-bottom:1.1rem;">🫧 Why Schools Love It</div>
+        <div style="display:flex;flex-direction:column;gap:0.7rem;">
+          <div style="display:flex;gap:0.75rem;font-size:0.83rem;color:rgba(255,255,255,0.72);"><span style="color:#38bdf8;flex-shrink:0;">✅</span><span><strong style="color:#fff;">Zero Cleanup</strong> — foam dissolves on its own, nothing left behind</span></div>
+          <div style="display:flex;gap:0.75rem;font-size:0.83rem;color:rgba(255,255,255,0.72);"><span style="color:#38bdf8;flex-shrink:0;">✅</span><span><strong style="color:#fff;">100% Organic &amp; Hypoallergenic</strong> — safe for kids with sensitive skin</span></div>
+          <div style="display:flex;gap:0.75rem;font-size:0.83rem;color:rgba(255,255,255,0.72);"><span style="color:#38bdf8;flex-shrink:0;">✅</span><span><strong style="color:#fff;">Trained Operator On-Site</strong> — we run it, you enjoy it</span></div>
+          <div style="display:flex;gap:0.75rem;font-size:0.83rem;color:rgba(255,255,255,0.72);"><span style="color:#38bdf8;flex-shrink:0;">✅</span><span><strong style="color:#fff;">Works Outdoors or Indoors</strong> — field day, gym, parking lot</span></div>
+          <div style="display:flex;gap:0.75rem;font-size:0.83rem;color:rgba(255,255,255,0.72);"><span style="color:#38bdf8;flex-shrink:0;">✅</span><span><strong style="color:#fff;">All Ages Welcome</strong> — K–12, teachers jump in too</span></div>
+          <div style="display:flex;gap:0.75rem;font-size:0.83rem;color:rgba(255,255,255,0.72);"><span style="color:#38bdf8;flex-shrink:0;">📍</span><span>Serving <strong style="color:#fff;">Maryland, Washington DC &amp; Virginia</strong></span></div>
+        </div>
+        <div style="margin-top:1.2rem;padding-top:1rem;border-top:1px solid rgba(14,165,233,0.12);font-size:0.76rem;color:rgba(255,255,255,0.4);">
+          Fancy Foam Events · Maryland<br/>
+          <a href="tel:4432523434" style="color:#7dd3fc;font-weight:700;">(443) 252-3434</a> &nbsp;·&nbsp;
+          <a href="https://fancyfoamevents.com" target="_blank" rel="noopener" style="color:#7dd3fc;font-weight:700;">fancyfoamevents.com</a>
+        </div>
+      </div>
+
+      <!-- Add-Ons + CTA -->
+      <div style="display:flex;flex-direction:column;gap:1.2rem;">
+        <!-- Add-ons -->
+        <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:14px;padding:1.2rem 1.4rem;">
+          <div style="font-size:0.68rem;font-weight:800;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-bottom:0.8rem;">Optional Add-Ons</div>
+          <div style="display:flex;flex-direction:column;gap:0.55rem;">
+            <div style="display:flex;justify-content:space-between;font-size:0.82rem;"><span style="color:rgba(255,255,255,0.65);">🏊 Inflatable Foam Pit</span><strong style="color:#7dd3fc;">+$100</strong></div>
+            <div style="display:flex;justify-content:space-between;font-size:0.82rem;"><span style="color:rgba(255,255,255,0.65);">⏱ Additional Hour (Basic)</span><strong style="color:#7dd3fc;">+$175</strong></div>
+            <div style="display:flex;justify-content:space-between;font-size:0.82rem;"><span style="color:rgba(255,255,255,0.65);">⏱ Additional Hour (Glo)</span><strong style="color:#a78bfa;">+$199</strong></div>
+            <div style="display:flex;justify-content:space-between;font-size:0.82rem;"><span style="color:rgba(255,255,255,0.65);">⏱ Additional Hour (Ultimate)</span><strong style="color:var(--yellow);">+$125</strong></div>
+            <div style="display:flex;justify-content:space-between;font-size:0.82rem;"><span style="color:rgba(255,255,255,0.65);">⏱ Drop-Off Extra Hour Solution</span><strong style="color:var(--neon);">+$50</strong></div>
+          </div>
+        </div>
+
+        <!-- Combo CTA -->
+        <div style="background:linear-gradient(135deg,rgba(14,165,233,0.1),rgba(57,255,20,0.07));border:1px solid rgba(255,214,10,0.2);border-radius:14px;padding:1.4rem;text-align:center;">
+          <div style="font-family:'Anton',sans-serif;font-size:1rem;text-transform:uppercase;letter-spacing:0.05em;color:var(--yellow);margin-bottom:0.4rem;">🎮 + 🫧 Add a Foam Party!</div>
+          <p style="font-size:0.8rem;color:rgba(255,255,255,0.6);margin-bottom:1rem;line-height:1.6;">Stack a foam party with the game truck, rock wall, or snoballs for the ultimate school event experience. Use the calculator to build your full package.</p>
+          <a href="school-calculator.html" style="display:inline-block;background:var(--yellow);color:#000;font-family:'Anton',sans-serif;font-size:0.9rem;letter-spacing:0.06em;text-transform:uppercase;padding:0.65rem 1.6rem;border-radius:10px;text-decoration:none;">Build Your Package →</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════ COMMON EVENTS ══════════════════════ -->
+<section style="background:linear-gradient(180deg,#050515 0%,#040410 100%);padding:5rem 2rem;">
+  <div class="wrap">
+    <div style="text-align:center;">
+      <div class="sec-label">📅 Most Common Events</div>
+      <h2 class="sec-title">Every Occasion <span>Covered</span></h2>
+      <p class="sec-sub" style="margin:0 auto;">We've done them all — from surprise incentive days to massive end-of-year countdowns. If it happens at a school or community event, we've shown up and leveled it up.</p>
+    </div>
+    <div class="events-grid">
+      <div class="event-card">
+        <div class="event-icon">🏅</div>
+        <div class="event-name">Incentive Days</div>
+        <div class="event-desc">Reward students who hit attendance, behavior, or academic targets with the ultimate motivator.</div>
+      </div>
+      <div class="event-card">
+        <div class="event-icon">🎓</div>
+        <div class="event-name">Academic Milestones</div>
+        <div class="event-desc">Celebrate test scores, honor roll achievements, and reading goals in a way students actually get excited about.</div>
+      </div>
+      <div class="event-card">
+        <div class="event-icon">🎉</div>
+        <div class="event-name">End-of-Year Celebrations</div>
+        <div class="event-desc">Send students out on the highest note possible. The last day of school just became legendary.</div>
+      </div>
+      <div class="event-card">
+        <div class="event-icon">🍎</div>
+        <div class="event-name">Back-to-School Events</div>
+        <div class="event-desc">Start the year with energy and excitement that gets students hyped to be back on campus.</div>
+      </div>
+      <div class="event-card">
+        <div class="event-icon">🌸</div>
+        <div class="event-name">Spring &amp; Fall Festivals</div>
+        <div class="event-desc">Level up your festival game — we park right on school grounds and become the centerpiece of the day.</div>
+      </div>
+      <div class="event-card">
+        <div class="event-icon">⏰</div>
+        <div class="event-name">Half-Day Incentives</div>
+        <div class="event-desc">Make every half-day count. Students who earn it get to game; everyone else wants to earn it next time.</div>
+      </div>
+      <div class="event-card">
+        <div class="event-icon">🏢</div>
+        <div class="event-name">Corporate Events</div>
+        <div class="event-desc">Team-building, employee appreciation, company picnics — we bring the wow factor to professional events too.</div>
+      </div>
+      <div class="event-card">
+        <div class="event-icon">🎪</div>
+        <div class="event-name">Community Festivals</div>
+        <div class="event-desc">Block parties, neighborhood events, church festivals — wherever the community gathers, we show up.</div>
+      </div>
+    </div>
+
+    <!-- Referral Program Banner -->
+    <div class="referral-banner">
+      <div class="referral-icon">🎁</div>
+      <div class="referral-text" style="flex:1;">
+        <h3>Ask About Our School Referral Program</h3>
+        <p>Refer another school and <strong style="color:var(--yellow);">earn gift cards for your school</strong> to use at raffles, giveaways, fundraising events, and more. The more schools you refer, the more your school earns. It's our way of saying thank you for spreading the word.</p>
+      </div>
+      <div class="referral-cta">
+        <a href="tel:8773991997" class="btn-primary">📞 Ask Us How</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="glow-div"></div>
+
+<!-- ══════════════════════ FEATURES ══════════════════════ -->
+<section class="features-section">
+  <div class="wrap">
+    <div style="text-align:center;">
+      <div class="sec-label">⭐ Why Schools Choose Us</div>
+      <h2 class="sec-title">Reasons Your School <span>Will Love It!</span></h2>
+      <p class="sec-sub" style="margin:0 auto;">From admin paperwork to the final rotation, every detail is handled with professionalism — and every student walks away with a smile.</p>
+    </div>
+    <div class="features-cols" style="margin-top:2.5rem;">
+      <div class="feat-item">
+        <div class="feat-check">✅</div>
+        <div class="feat-content">
+          <div class="feat-title">Super Easy Admin &amp; Pricing</div>
+          <div class="feat-detail">We provide COI, PO, and W9 documentation — everything your district needs, handled fast.</div>
+        </div>
+      </div>
+      <div class="feat-item">
+        <div class="feat-check">🏆</div>
+        <div class="feat-content">
+          <div class="feat-title">The Highest Quality Game Theaters</div>
+          <div class="feat-detail">Climate-controlled, fully self-powered mobile theaters with the latest consoles and 50+ game library.</div>
+        </div>
+      </div>
+      <div class="feat-item">
+        <div class="feat-check">👨‍💼</div>
+        <div class="feat-content">
+          <div class="feat-title">Your Own Trained Event Manager</div>
+          <div class="feat-detail">Every event comes with a certified Next Level Gaming Event Manager who handles everything on-site.</div>
+        </div>
+      </div>
+      <div class="feat-item">
+        <div class="feat-check">🎮</div>
+        <div class="feat-content">
+          <div class="feat-title">The Latest Gaming Consoles</div>
+          <div class="feat-detail">PS5, Xbox Series X, Nintendo Switch, Nintendo Switch 2 — always current, always upgraded.</div>
+        </div>
+      </div>
+      <div class="feat-item">
+        <div class="feat-check">🏎️</div>
+        <div class="feat-content">
+          <div class="feat-title">Real Mario Kart Race Seat</div>
+          <div class="feat-detail">Maryland's only game truck with a real racing seat — students buckle in and feel every turn of the track.</div>
+        </div>
+      </div>
+      <div class="feat-item">
+        <div class="feat-check">🪑</div>
+        <div class="feat-content">
+          <div class="feat-title">Luxury Gamer Chairs</div>
+          <div class="feat-detail">Every seat is a premium gaming chair — students are comfortable, focused, and completely immersed.</div>
+        </div>
+      </div>
+      <div class="feat-item">
+        <div class="feat-check">☀️</div>
+        <div class="feat-content">
+          <div class="feat-title">Outdoor Gaming Option</div>
+          <div class="feat-detail">Take the experience outside with our optional outdoor gaming setup (additional fee applies).</div>
+        </div>
+      </div>
+      <div class="feat-item">
+        <div class="feat-check">👥</div>
+        <div class="feat-content">
+          <div class="feat-title">Up to 20 Players Per Theater</div>
+          <div class="feat-detail">20 students gaming simultaneously per truck — and with 3 trucks, that's 60 at once.</div>
+        </div>
+      </div>
+      <div class="feat-item">
+        <div class="feat-check">❄️</div>
+        <div class="feat-content">
+          <div class="feat-title">Fully Climate Controlled</div>
+          <div class="feat-detail">AC in summer, heat in winter — the gaming experience is perfect year-round, rain or shine.</div>
+        </div>
+      </div>
+      <div class="feat-item">
+        <div class="feat-check">🏅</div>
+        <div class="feat-content">
+          <div class="feat-title">Optional Video Game Tournaments</div>
+          <div class="feat-detail">Live bracket tournaments with winners, prizes, and school-wide bragging rights — we run the whole thing.</div>
+        </div>
+      </div>
+      <div class="feat-item">
+        <div class="feat-check">⚡</div>
+        <div class="feat-content">
+          <div class="feat-title">Completely Self-Powered</div>
+          <div class="feat-detail">Zero setup requirements from your school. No extension cords, no power hookups — we're 100% self-contained.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="glow-div"></div>
+
+<!-- ══════════════════════ HOW IT WORKS ══════════════════════ -->
+<section style="background:linear-gradient(180deg,#040412 0%,#05050f 100%);padding:5rem 2rem;">
+  <div class="wrap">
+    <div style="text-align:center;">
+      <div class="sec-label">📋 How It Works</div>
+      <h2 class="sec-title">From <span>One Call</span> to an Unforgettable Day</h2>
+    </div>
+    <div class="process-grid">
+      <div class="process-step">
+        <div class="step-num">1</div>
+        <div class="step-title">Call or Request a Quote</div>
+        <div class="step-desc">Reach out by phone or fill out our school quote form. We respond fast — usually same day.</div>
+      </div>
+      <div class="process-step">
+        <div class="step-num">2</div>
+        <div class="step-title">We Handle Admin</div>
+        <div class="step-desc">We provide COI, W9, and PO documents instantly. No back-and-forth, no delays.</div>
+      </div>
+      <div class="process-step">
+        <div class="step-num">3</div>
+        <div class="step-title">Lock Your Date</div>
+        <div class="step-desc">A small deposit secures your date on our calendar. School dates go fast — especially spring and fall.</div>
+      </div>
+      <div class="process-step">
+        <div class="step-num">4</div>
+        <div class="step-title">We Show Up &amp; Set Up</div>
+        <div class="step-desc">Our team arrives early, sets up, and is ready before the first bell. You don't lift a finger.</div>
+      </div>
+      <div class="process-step">
+        <div class="step-num">5</div>
+        <div class="step-title">Students Game &amp; Celebrate</div>
+        <div class="step-desc">Our Event Managers run every rotation, every bracket, every group. You just watch the smiles.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="glow-div"></div>
+
+<!-- ══════════════════════ TESTIMONIALS ══════════════════════ -->
+<section class="testimonial-section">
+  <div class="wrap">
+    <div style="text-align:center;">
+      <div class="sec-label">💬 What Schools Are Saying</div>
+      <h2 class="sec-title">Heard It From <span>The Principals</span></h2>
+    </div>
+    <div class="testimonials-grid">
+      <div class="tcard">
+        <div class="tcard-stars">★★★★★</div>
+        <div class="tcard-quote">"The kids were LINED UP at 7am waiting for the truck to open. Attendance was the highest it's been all year. We're already planning our next one."</div>
+        <div class="tcard-author">— Assistant Principal, Baltimore County School</div>
+      </div>
+      <div class="tcard">
+        <div class="tcard-stars">★★★★★</div>
+        <div class="tcard-quote">"Admin paperwork was handled in 24 hours. The event manager kept everything on schedule perfectly. Easiest school event we've ever run."</div>
+        <div class="tcard-author">— Event Coordinator, Montgomery County School</div>
+      </div>
+      <div class="tcard">
+        <div class="tcard-stars">★★★★★</div>
+        <div class="tcard-quote">"We booked 3 trucks for our end-of-year celebration. Over 400 students rotated through. Not a single complaint from staff or students — only requests to bring them back."</div>
+        <div class="tcard-author">— Principal, Prince George's County School</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="glow-div"></div>
+
+<!-- ══════════════════════ BOOKING FAQ ══════════════════════ -->
+<section style="background:linear-gradient(180deg,#060610 0%,#04040e 100%);padding:5rem 2rem;">
+  <div class="wrap">
+    <div style="text-align:center;margin-bottom:3rem;">
+      <div class="sec-label">📋 Before You Book</div>
+      <h2 class="sec-title">Good To Know <span>Before You Reserve</span></h2>
+      <p class="sec-sub" style="margin:0 auto;">We get these questions a lot — so we put the answers right here. Read through before reserving your date and you'll be all set.</p>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:0;max-width:820px;margin:0 auto;border:1px solid rgba(0,123,255,0.18);border-radius:18px;overflow:hidden;">
+
+      <!-- Q1 -->
+      <div class="bfaq-item" style="border-bottom:1px solid rgba(0,123,255,0.12);">
+        <button class="bfaq-q" onclick="toggleBfaq(this)" aria-expanded="false">
+          <span class="bfaq-icon">📅</span>
+          <span>When Should I Reserve My Date?</span>
+          <span class="bfaq-arrow">▼</span>
+        </button>
+        <div class="bfaq-body">
+          <p>Certain spots go quickly — <strong>Saturday and Sunday at 2 PM and 5 PM</strong> are our most requested time slots. Once you know you want an event, don't wait on those. Reserve it.</p>
+          <p>For everything else, giving us <strong>3–4 weeks notice is usually enough. 5–6 weeks gives you more breathing room</strong> and the best shot at your first choice.</p>
+          <div class="bfaq-tip">
+            💡 Our online booking system makes it easy to browse availability and grab your spot. If you'd rather talk it through first, reach out — we respond fast.
+          </div>
+          <div class="bfaq-warn">
+            ⚠️ <strong>Heads up:</strong> We occasionally need to shift your start time slightly to keep our schedule running smoothly. It happens rarely, but it can. <strong>Hold off on sending invitations until we've confirmed your event in writing and your deposit is in.</strong>
+          </div>
+        </div>
+      </div>
+
+      <!-- Q2 -->
+      <div class="bfaq-item" style="border-bottom:1px solid rgba(0,123,255,0.12);">
+        <button class="bfaq-q" onclick="toggleBfaq(this)" aria-expanded="false">
+          <span class="bfaq-icon">🔍</span>
+          <span>Don't See Your Date Available?</span>
+          <span class="bfaq-arrow">▼</span>
+        </button>
+        <div class="bfaq-body">
+          <p>The calendar on our site shows most availability — but not all of it. There are slots we can see on the backend that don't always show up online.</p>
+          <p>Before writing off a date, <strong>give us a call or shoot us a message.</strong> If there's any way to make it work, we'll find it. We've pulled off same-week bookings before.</p>
+          <div class="bfaq-cta-row">
+            <a href="tel:8773991997" class="bfaq-btn">📞 Call 877-399-1997</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Q3 -->
+      <div class="bfaq-item" style="border-bottom:1px solid rgba(0,123,255,0.12);">
+        <button class="bfaq-q" onclick="toggleBfaq(this)" aria-expanded="false">
+          <span class="bfaq-icon">🗺️</span>
+          <span>Do You Charge Travel Fees?</span>
+          <span class="bfaq-arrow">▼</span>
+        </button>
+        <div class="bfaq-body">
+          <div class="bfaq-tip" style="background:rgba(57,255,20,0.08);border-color:rgba(57,255,20,0.28);color:rgba(255,255,255,0.8);">
+            🏫 <strong style="color:var(--neon);">Schools never pay travel fees.</strong> Your rate is flat regardless of where your school sits in Maryland, DC, or Virginia.
+          </div>
+          <p style="margin-top:0.9rem;">For private parties, we work out of <strong>Columbia, Maryland (zip: 21046)</strong> and calculate distance from there.</p>
+          <div style="border:1px solid rgba(0,123,255,0.18);border-radius:10px;overflow:hidden;margin-top:0.9rem;font-size:0.84rem;">
+            <div style="display:grid;grid-template-columns:1fr auto;padding:0.55rem 1rem;background:rgba(0,123,255,0.1);font-weight:800;font-size:0.68rem;letter-spacing:0.09em;text-transform:uppercase;color:rgba(255,255,255,0.5);">
+              <span>Distance from HQ (Columbia, MD)</span><span>Private Event Fee</span>
+            </div>
+            <div style="display:grid;grid-template-columns:1fr auto;padding:0.65rem 1rem;border-top:1px solid rgba(255,255,255,0.05);"><span style="color:rgba(255,255,255,0.65);">0 – 29 miles</span><strong style="color:var(--neon);">FREE ✅</strong></div>
+            <div style="display:grid;grid-template-columns:1fr auto;padding:0.65rem 1rem;border-top:1px solid rgba(255,255,255,0.05);background:rgba(255,255,255,0.02);"><span style="color:rgba(255,255,255,0.65);">30 – 34 miles</span><strong style="color:#fff;">$45</strong></div>
+            <div style="display:grid;grid-template-columns:1fr auto;padding:0.65rem 1rem;border-top:1px solid rgba(255,255,255,0.05);"><span style="color:rgba(255,255,255,0.65);">35 – 39 miles</span><strong style="color:#fff;">$90</strong></div>
+            <div style="display:grid;grid-template-columns:1fr auto;padding:0.65rem 1rem;border-top:1px solid rgba(255,255,255,0.05);background:rgba(255,255,255,0.02);"><span style="color:rgba(255,255,255,0.65);">40 – 44 miles</span><strong style="color:#fff;">$150</strong></div>
+            <div style="display:grid;grid-template-columns:1fr auto;padding:0.65rem 1rem;border-top:1px solid rgba(255,255,255,0.05);background:rgba(255,45,139,0.06);"><span style="color:rgba(255,255,255,0.65);">45+ miles (Fri – Sun)</span><strong style="color:var(--pink);">Price doubles</strong></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Q4 -->
+      <div class="bfaq-item" style="border-bottom:1px solid rgba(0,123,255,0.12);">
+        <button class="bfaq-q" onclick="toggleBfaq(this)" aria-expanded="false">
+          <span class="bfaq-icon">🕐</span>
+          <span>Can I Choose My Exact Start Time?</span>
+          <span class="bfaq-arrow">▼</span>
+        </button>
+        <div class="bfaq-body">
+          <p>On weekdays — yes, almost always. If you don't see your preferred time listed, <strong>pick the closest option and drop your ideal time in the booking notes.</strong> We'll make it work when we can.</p>
+          <p>Weekends are a different story. We're usually fully scheduled and timing has to stay tight. If a specific Saturday or Sunday time matters to you, locking it in early is the only real way to guarantee it.</p>
+        </div>
+      </div>
+
+      <!-- Q5 -->
+      <div class="bfaq-item">
+        <button class="bfaq-q" onclick="toggleBfaq(this)" aria-expanded="false">
+          <span class="bfaq-icon">🚀</span>
+          <span>What's the Process After I Submit a Request?</span>
+          <span class="bfaq-arrow">▼</span>
+        </button>
+        <div class="bfaq-body">
+          <div style="display:flex;flex-direction:column;gap:1rem;margin-bottom:1rem;">
+            <div style="display:flex;align-items:flex-start;gap:0.85rem;">
+              <div style="width:28px;height:28px;min-width:28px;border-radius:50%;background:var(--blue);display:flex;align-items:center;justify-content:center;font-family:'Anton',sans-serif;font-size:0.85rem;color:#fff;">1</div>
+              <div style="font-size:0.88rem;color:rgba(255,255,255,0.7);line-height:1.65;"><strong style="color:#fff;">Our team reviews everything.</strong> We go through your request, check the schedule, and make sure we can deliver exactly what you need on your date.</div>
+            </div>
+            <div style="display:flex;align-items:flex-start;gap:0.85rem;">
+              <div style="width:28px;height:28px;min-width:28px;border-radius:50%;background:var(--blue);display:flex;align-items:center;justify-content:center;font-family:'Anton',sans-serif;font-size:0.85rem;color:#fff;">2</div>
+              <div style="font-size:0.88rem;color:rgba(255,255,255,0.7);line-height:1.65;"><strong style="color:#fff;">You hear from us within 24 hours</strong> — confirmation or next steps, plus an invoice. A <strong style="color:var(--yellow);">$100 deposit holds your date</strong> and must be submitted within 24 hours of receiving your invoice.</div>
+            </div>
+            <div style="display:flex;align-items:flex-start;gap:0.85rem;">
+              <div style="width:28px;height:28px;min-width:28px;border-radius:50%;background:var(--neon);display:flex;align-items:center;justify-content:center;font-family:'Anton',sans-serif;font-size:0.85rem;color:#000;">✓</div>
+              <div style="font-size:0.88rem;color:rgba(255,255,255,0.7);line-height:1.65;"><strong style="color:#fff;">Your date is locked.</strong> Deposit received — you're on the calendar. We take it from there and make sure your event is everything you hoped for.</div>
+            </div>
+          </div>
+          <div class="bfaq-warn">
+            ⚠️ <strong>Quick reminder:</strong> Don't send out invites or announce your date until you've gotten written confirmation from us and your $100 deposit is submitted.
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /faq wrapper -->
+  </div>
+</section>
+
+<style>
+  .bfaq-item{ background:rgba(10,10,22,0.9); }
+  .bfaq-item:first-child .bfaq-q{ border-radius:17px 17px 0 0; }
+  .bfaq-item:last-child .bfaq-q[aria-expanded="false"]{ border-radius:0 0 17px 17px; }
+  .bfaq-q{
+    width:100%; display:flex; align-items:center; gap:0.85rem;
+    padding:1.3rem 1.6rem; background:transparent; border:none; cursor:pointer;
+    text-align:left; font-family:'Montserrat',sans-serif; font-size:0.95rem; font-weight:700;
+    color:#fff; letter-spacing:0.01em; transition:background 0.18s;
+  }
+  .bfaq-q:hover{ background:rgba(0,123,255,0.07); }
+  .bfaq-q[aria-expanded="true"]{ background:rgba(0,123,255,0.1); color:var(--sky); }
+  .bfaq-icon{ font-size:1.15rem; flex-shrink:0; }
+  .bfaq-q > span:nth-child(2){ flex:1; }
+  .bfaq-arrow{ font-size:0.78rem; color:var(--blue); transition:transform 0.22s; flex-shrink:0; }
+  .bfaq-q[aria-expanded="true"] .bfaq-arrow{ transform:rotate(180deg); }
+  .bfaq-body{
+    display:none; padding:0 1.6rem 1.5rem 3.4rem;
+    animation:faqIn 0.22s ease;
+  }
+  @keyframes faqIn{ from{opacity:0;transform:translateY(-6px)} to{opacity:1;transform:translateY(0)} }
+  .bfaq-body.open{ display:block; }
+  .bfaq-body p{ font-size:0.88rem; color:rgba(255,255,255,0.65); line-height:1.75; margin-bottom:0.75rem; }
+  .bfaq-body p:last-child{ margin-bottom:0; }
+  .bfaq-tip{
+    background:rgba(0,123,255,0.08); border:1px solid rgba(0,123,255,0.22);
+    border-radius:10px; padding:0.9rem 1.1rem; font-size:0.82rem; color:rgba(255,255,255,0.7);
+    line-height:1.65; margin-bottom:0.75rem;
+  }
+  .bfaq-warn{
+    background:rgba(255,214,10,0.07); border:1px solid rgba(255,214,10,0.25);
+    border-radius:10px; padding:0.9rem 1.1rem; font-size:0.82rem; color:rgba(255,255,255,0.7);
+    line-height:1.65; margin-top:0.75rem;
+  }
+  .bfaq-cta-row{ margin-top:0.9rem; }
+  .bfaq-btn{
+    display:inline-flex; align-items:center; gap:0.45rem;
+    background:var(--blue); color:#fff; font-family:'Anton',sans-serif;
+    font-size:0.85rem; letter-spacing:0.06em; text-transform:uppercase;
+    padding:0.6rem 1.3rem; border-radius:9px; text-decoration:none;
+    transition:background 0.18s,transform 0.15s;
+  }
+  .bfaq-btn:hover{ background:#1a8eff; transform:translateY(-2px); }
+</style>
+<script>
+  function toggleBfaq(btn) {
+    const body = btn.nextElementSibling;
+    const open = btn.getAttribute('aria-expanded') === 'true';
+    btn.setAttribute('aria-expanded', !open);
+    body.classList.toggle('open', !open);
+  }
+</script>
+
+<div class="glow-div"></div>
+
+<!-- ══════════════════════ CTA ══════════════════════ -->
+<section class="cta-section">
+  <div class="sec-label">🚀 Ready to Book?</div>
+  <h2>Let's Make It <span>The Best Day</span><br/>Of The Year</h2>
+  <p>School dates fill up fast — especially end-of-year and incentive days. Don't wait. Get your date locked in today and give your students something to work toward.</p>
+  <div style="display:flex;flex-wrap:wrap;gap:1rem;justify-content:center;">
+    <a href="school-calculator.html" class="btn-primary" style="font-size:1rem;padding:1rem 2.25rem;">🎮 School Event Calculator</a>
+    <a href="tel:8773991997" class="btn-outline" style="font-size:1rem;padding:1rem 2.25rem;">📞 Call Us Now</a>
+  </div>
+  <a href="tel:8773991997" class="cta-phone">📞 877-399-1997</a>
+  <div class="cta-subtext">SERVING ALL MARYLAND, WASHINGTON D.C. &amp; VIRGINIA SCHOOLS &amp; EVENTS</div>
+  <div style="margin-top:2rem;display:flex;flex-wrap:wrap;gap:0.6rem;justify-content:center;opacity:0.5;">
+    <span style="font-size:0.72rem;letter-spacing:0.08em;">Baltimore</span> <span>·</span>
+    <span style="font-size:0.72rem;letter-spacing:0.08em;">Owings Mills</span> <span>·</span>
+    <span style="font-size:0.72rem;letter-spacing:0.08em;">Silver Spring</span> <span>·</span>
+    <span style="font-size:0.72rem;letter-spacing:0.08em;">Rockville</span> <span>·</span>
+    <span style="font-size:0.72rem;letter-spacing:0.08em;">Annapolis</span> <span>·</span>
+    <span style="font-size:0.72rem;letter-spacing:0.08em;">Columbia</span> <span>·</span>
+    <span style="font-size:0.72rem;letter-spacing:0.08em;">Bowie</span> <span>·</span>
+    <span style="font-size:0.72rem;letter-spacing:0.08em;">Waldorf</span> <span>·</span>
+    <span style="font-size:0.72rem;letter-spacing:0.08em;">Washington D.C.</span> <span>·</span>
+    <span style="font-size:0.72rem;letter-spacing:0.08em;">Northern Virginia</span>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<div class="page-footer">
+  © 2025 Party Game Truck Maryland — Maryland's #1 Mobile Video Game Truck<br/>
+  <a href="index.html">Home</a> &nbsp;·&nbsp; <a href="pricing.html">Pricing</a> &nbsp;·&nbsp; <a href="school-calculator.html">School Calculator</a> &nbsp;·&nbsp; <a href="quote.html">Get a Quote</a> &nbsp;·&nbsp; <a href="apply.html">Join Our Team</a> &nbsp;·&nbsp; <a href="invitations.html">Free Invitations</a>
+</div>
+
+</body>
+</html>

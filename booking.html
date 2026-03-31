@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Book Your Event | Party Game Truck Maryland</title>
+  <meta name="description" content="Book your Party Game Truck event online — instant confirmation, all services in one place. Serving Maryland, DC & Virginia."/>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+  <!-- EmailJS SDK -->
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <style>
+    :root{
+      --blue:#007BFF; --deep:#003F88; --yellow:#FFD60A;
+      --neon:#39FF14; --pink:#FF2D8B; --sky:#00C2FF;
+      --dark:#08080F; --card:#0f0f1c; --border:rgba(0,123,255,0.18);
+    }
+    *{ box-sizing:border-box; margin:0; padding:0; }
+    body{ background:var(--dark); font-family:'Montserrat',sans-serif; color:#fff; overflow-x:hidden; }
+
+    /* NAV */
+    .top-nav{ background:rgba(8,8,15,0.97); border-bottom:1px solid var(--border); padding:0 2rem; height:68px; display:flex; align-items:center; justify-content:space-between; position:sticky; top:0; z-index:200; }
+    .nav-logo{ font-family:'Anton',sans-serif; font-size:1.35rem; color:#fff; text-decoration:none; letter-spacing:0.04em; display:flex; align-items:center; gap:0.5rem; }
+    .nav-logo img{ height:36px; border-radius:50%; }
+    .nav-logo span{ color:var(--yellow); }
+    .nav-links-row{ display:flex; align-items:center; gap:1.4rem; }
+    .nav-links-row a{ color:rgba(255,255,255,0.72); font-size:0.8rem; font-weight:600; text-decoration:none; transition:color 0.18s; }
+    .nav-links-row a:hover{ color:#fff; }
+    .nav-cta{ background:var(--yellow); color:#000; font-weight:800; font-size:0.78rem; letter-spacing:0.06em; text-transform:uppercase; padding:0.48rem 1.1rem; border-radius:8px; text-decoration:none; transition:background 0.18s; }
+    .nav-cta:hover{ background:#ffe033; }
+
+    /* DROPDOWN */
+    .nav-drop-wrap{ position:relative; }
+    .nav-drop-wrap > a{ display:flex; align-items:center; gap:0.3rem; }
+    .nav-drop-wrap > a::after{ content:'▾'; font-size:0.7rem; opacity:0.6; transition:transform 0.2s; }
+    .nav-drop-wrap:hover > a::after{ transform:rotate(180deg); }
+    .nav-dropdown{
+      position:absolute; top:calc(100% + 12px); left:50%; transform:translateX(-50%);
+      background:rgba(10,10,22,0.98); border:1px solid rgba(0,123,255,0.25);
+      border-radius:14px; padding:0.6rem; min-width:560px;
+      box-shadow:0 20px 60px rgba(0,0,0,0.7),0 0 0 1px rgba(255,255,255,0.04);
+      opacity:0; pointer-events:none;
+      transform:translateX(-50%) translateY(6px);
+      transition:opacity 0.18s,transform 0.18s;
+      z-index:300;
+    }
+    .nav-drop-wrap:hover .nav-dropdown{ opacity:1; pointer-events:all; transform:translateX(-50%) translateY(0); }
+    .nav-dropdown::before{ content:''; position:absolute; top:-6px; left:50%; transform:translateX(-50%); width:12px; height:6px; background:rgba(10,10,22,0.98); clip-path:polygon(50% 0%,0% 100%,100% 100%); }
+    .drop-cat{ font-size:0.6rem; font-weight:800; letter-spacing:0.12em; text-transform:uppercase; padding:0.5rem 0.75rem 0.3rem; opacity:0.45; }
+    .drop-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:0.3rem; padding:0 0.2rem 0.5rem; }
+    .drop-item{ display:flex; align-items:center; gap:0.5rem; padding:0.45rem 0.65rem; border-radius:8px; text-decoration:none; color:rgba(255,255,255,0.8); font-size:0.74rem; font-weight:600; transition:background 0.15s,color 0.15s; cursor:pointer; }
+    .drop-item:hover{ background:rgba(0,123,255,0.15); color:#fff; }
+    .drop-item .di-ico{ font-size:1rem; flex-shrink:0; }
+    .drop-item .di-info{ display:flex; flex-direction:column; gap:0.05rem; }
+    .drop-item .di-name{ font-size:0.74rem; font-weight:700; }
+    .drop-item .di-price{ font-size:0.62rem; color:var(--yellow); font-weight:600; }
+    .drop-divider{ height:1px; background:rgba(255,255,255,0.06); margin:0.3rem 0.4rem; }
+
+    @media(max-width:680px){ .nav-links-row{ display:none; } }
+
+    /* HERO */
+    .hero{ background:radial-gradient(ellipse 80% 60% at 50% 40%,rgba(0,123,255,0.25) 0%,transparent 65%),linear-gradient(180deg,#000820 0%,#000510 100%); padding:4rem 2rem 3rem; text-align:center; position:relative; overflow:hidden; }
+    .hero::before{ content:''; position:absolute; inset:0; pointer-events:none; background-image:linear-gradient(rgba(0,123,255,0.05) 1px,transparent 1px),linear-gradient(90deg,rgba(0,123,255,0.05) 1px,transparent 1px); background-size:50px 50px; animation:grid 18s linear infinite; }
+    @keyframes grid{ 0%{background-position:0 0} 100%{background-position:50px 50px} }
+    @keyframes pulse{ 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.4;transform:scale(0.7)} }
+    .dot{ width:7px; height:7px; background:var(--neon); border-radius:50%; box-shadow:0 0 8px var(--neon); animation:pulse 1.8s infinite; display:inline-block; }
+
+    /* FORM LAYOUT */
+    .booking-wrap{ max-width:860px; margin:0 auto; padding:2.5rem 1.5rem 5rem; }
+    .form-section{ background:rgba(15,15,28,0.9); border:1px solid var(--border); border-radius:18px; padding:2rem; margin-bottom:1.5rem; box-shadow:0 8px 40px rgba(0,0,0,0.4); }
+    .form-section-title{ font-family:'Anton',sans-serif; font-size:1.15rem; letter-spacing:0.05em; text-transform:uppercase; color:var(--yellow); margin-bottom:0.3rem; display:flex; align-items:center; gap:0.5rem; }
+    .form-section-sub{ font-size:0.78rem; color:rgba(255,255,255,0.5); margin-bottom:1.5rem; line-height:1.5; }
+
+    /* FIELDS */
+    .field{ margin-bottom:1.25rem; }
+    .field label{ display:block; font-size:0.72rem; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:rgba(255,255,255,0.55); margin-bottom:0.45rem; }
+    .field label .req{ color:var(--pink); }
+    .field select,.field input,.field textarea{
+      width:100%; background:rgba(255,255,255,0.05); border:1.5px solid rgba(0,123,255,0.25);
+      border-radius:10px; color:#fff; font-family:'Montserrat',sans-serif; font-size:0.88rem; font-weight:500;
+      padding:0.72rem 1rem; outline:none; transition:border-color 0.2s,box-shadow 0.2s; appearance:none;
+    }
+    .field select{ background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23007BFF' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat:no-repeat; background-position:right 1rem center; padding-right:2.5rem; cursor:pointer; }
+    .field select option{ background:#0f0f1c; }
+    .field select:focus,.field input:focus,.field textarea:focus{ border-color:var(--blue); box-shadow:0 0 0 3px rgba(0,123,255,0.15); }
+    .field textarea{ resize:vertical; min-height:80px; }
+    .field.error select,.field.error input,.field.error textarea{ border-color:var(--pink)!important; box-shadow:0 0 0 3px rgba(255,45,139,0.1)!important; }
+    .err-msg{ font-size:0.7rem; color:var(--pink); margin-top:0.3rem; display:none; }
+    .field.error .err-msg{ display:block; }
+    .field-row{ display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
+    @media(max-width:560px){ .field-row{ grid-template-columns:1fr; } }
+
+    /* SERVICE CARDS */
+    .svc-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:0.85rem; margin-bottom:0.5rem; }
+    @media(max-width:620px){ .svc-grid{ grid-template-columns:1fr 1fr; } }
+    @media(max-width:400px){ .svc-grid{ grid-template-columns:1fr; } }
+    .svc-card{ border:2px solid rgba(255,255,255,0.1); border-radius:14px; padding:1rem 0.75rem; cursor:pointer; transition:border-color 0.2s,background 0.2s,transform 0.18s; background:rgba(255,255,255,0.03); text-align:center; position:relative; user-select:none; }
+    .svc-card:hover{ transform:translateY(-2px); }
+    .svc-card.selected{ border-color:var(--blue); background:rgba(0,123,255,0.1); box-shadow:0 0 20px rgba(0,123,255,0.18); }
+    .svc-card .sc-check{ position:absolute; top:0.5rem; right:0.5rem; width:18px; height:18px; border-radius:50%; background:var(--blue); display:none; align-items:center; justify-content:center; font-size:0.6rem; }
+    .svc-card.selected .sc-check{ display:flex; }
+    .svc-card .sc-ico{ font-size:1.7rem; margin-bottom:0.35rem; }
+    .svc-card .sc-name{ font-family:'Anton',sans-serif; font-size:0.82rem; letter-spacing:0.04em; text-transform:uppercase; line-height:1.2; margin-bottom:0.2rem; }
+    .svc-card .sc-price{ font-size:0.72rem; color:var(--yellow); font-weight:700; }
+    .svc-card .sc-note{ font-size:0.6rem; color:rgba(255,255,255,0.4); margin-top:0.1rem; line-height:1.4; }
+    .svc-card.selected .sc-name{ color:var(--sky); }
+
+    /* PACKAGE CARDS */
+    .pkg-grid{ display:grid; grid-template-columns:1fr 1fr 1fr; gap:0.85rem; }
+    @media(max-width:600px){ .pkg-grid{ grid-template-columns:1fr; } }
+    .pkg-card{ border:2px solid rgba(255,255,255,0.1); border-radius:12px; padding:1rem; cursor:pointer; transition:border-color 0.2s,background 0.2s; background:rgba(255,255,255,0.03); position:relative; }
+    .pkg-card.selected{ border-color:var(--yellow); background:rgba(255,214,10,0.07); box-shadow:0 0 16px rgba(255,214,10,0.15); }
+    .pkg-card .pk-badge{ position:absolute; top:-1px; left:50%; transform:translateX(-50%); font-size:0.55rem; font-weight:800; letter-spacing:0.1em; padding:0.18rem 0.65rem; border-radius:0 0 7px 7px; }
+    .pkg-card .pk-name{ font-family:'Anton',sans-serif; font-size:1rem; letter-spacing:0.04em; text-transform:uppercase; margin-bottom:0.15rem; }
+    .pkg-card .pk-price{ font-size:1.1rem; font-weight:800; color:var(--yellow); margin-bottom:0.35rem; }
+    .pkg-card .pk-feat{ font-size:0.68rem; color:rgba(255,255,255,0.55); line-height:1.6; }
+    .pkg-card.selected .pk-name{ color:var(--yellow); }
+
+    /* HOURS */
+    .hours-row{ display:flex; align-items:center; gap:1rem; }
+    .hrs-btn{ width:42px; height:42px; border-radius:10px; border:2px solid rgba(255,255,255,0.15); background:rgba(255,255,255,0.04); color:#fff; font-size:1.3rem; font-weight:700; cursor:pointer; display:flex; align-items:center; justify-content:center; transition:border-color 0.18s; }
+    .hrs-btn:hover{ border-color:var(--blue); background:rgba(0,123,255,0.1); }
+    .hrs-display{ flex:1; text-align:center; font-family:'Anton',sans-serif; font-size:2rem; color:var(--yellow); letter-spacing:0.03em; }
+    .hrs-display span{ font-size:0.82rem; color:rgba(255,255,255,0.4); font-family:'Montserrat',sans-serif; font-weight:600; display:block; }
+
+    /* PRICE SUMMARY */
+    .price-summary{ background:rgba(255,214,10,0.06); border:1px solid rgba(255,214,10,0.2); border-radius:14px; padding:1.25rem 1.5rem; margin-top:1rem; }
+    .ps-row{ display:flex; justify-content:space-between; align-items:center; font-size:0.82rem; padding:0.35rem 0; border-bottom:1px solid rgba(255,255,255,0.05); }
+    .ps-row:last-of-type{ border:none; }
+    .ps-label{ color:rgba(255,255,255,0.6); }
+    .ps-val{ font-weight:700; color:#fff; }
+    .ps-total{ font-family:'Anton',sans-serif; font-size:1.6rem; color:var(--yellow); }
+
+    /* SUBMIT */
+    .btn-submit{ width:100%; background:linear-gradient(135deg,var(--yellow),#ffb300); color:#000; font-family:'Anton',sans-serif; font-size:1.2rem; letter-spacing:0.08em; text-transform:uppercase; border:none; padding:1rem 2rem; border-radius:12px; cursor:pointer; transition:transform 0.15s,box-shadow 0.18s; box-shadow:0 6px 24px rgba(255,214,10,0.4); margin-top:1rem; }
+    .btn-submit:hover{ transform:translateY(-2px); box-shadow:0 10px 32px rgba(255,214,10,0.55); }
+    .btn-submit:disabled{ opacity:0.5; cursor:not-allowed; transform:none; }
+
+    /* SUCCESS / ERROR */
+    .result-panel{ display:none; text-align:center; padding:3rem 2rem; }
+    .result-panel.show{ display:block; animation:fadeIn 0.4s ease; }
+    @keyframes fadeIn{ from{opacity:0;transform:translateY(10px)} to{opacity:1;transform:translateY(0)} }
+
+    /* SPINNER */
+    .spinner{ width:24px; height:24px; border:3px solid rgba(0,0,0,0.2); border-top-color:#000; border-radius:50%; animation:spin 0.7s linear infinite; display:inline-block; }
+    @keyframes spin{ to{transform:rotate(360deg)} }
+
+    /* NOTICE */
+    .notice{ background:rgba(0,194,255,0.07); border:1px solid rgba(0,194,255,0.25); border-radius:10px; padding:0.85rem 1rem; font-size:0.78rem; color:rgba(255,255,255,0.7); line-height:1.6; margin-bottom:1.25rem; }
+    .notice strong{ color:var(--sky); }
+  </style>
+</head>
+<body>
+
+<nav class="top-nav">
+  <a href="index.html" class="nav-logo">
+    <img src="logo.jpg" alt="Party Game Truck"/>
+    Party Game <span>Truck</span>
+  </a>
+  <div class="nav-links-row">
+    <a href="index.html">Home</a>
+    <a href="pricing.html">Pricing</a>
+    <div class="nav-drop-wrap">
+      <a href="#section-pkg" onclick="this.closest('.nav-drop-wrap').querySelector('.nav-dropdown').style.opacity='0';this.closest('.nav-drop-wrap').querySelector('.nav-dropdown').style.pointerEvents='none';">Services</a>
+      <div class="nav-dropdown">
+        <!-- Gaming -->
+        <div class="drop-cat">🎮 Game Truck Packages</div>
+        <div class="drop-grid">
+          <a class="drop-item" href="#section-pkg"><div class="di-ico">⚡</div><div class="di-info"><div class="di-name">Power Hour</div><div class="di-price">from $325</div></div></a>
+          <a class="drop-item" href="#section-pkg"><div class="di-ico">🎮</div><div class="di-info"><div class="di-name">1.5 Hour</div><div class="di-price">from $450</div></div></a>
+          <a class="drop-item" href="#section-pkg"><div class="di-ico">⚡</div><div class="di-info"><div class="di-name">Champion</div><div class="di-price">from $499</div></div></a>
+          <a class="drop-item" href="#section-pkg"><div class="di-ico">🎤</div><div class="di-info"><div class="di-name">Elite</div><div class="di-price">from $599</div></div></a>
+          <a class="drop-item" href="#section-pkg"><div class="di-ico">👑</div><div class="di-info"><div class="di-name">Legend</div><div class="di-price">from $699</div></div></a>
+          <a class="drop-item" href="#section-pkg"><div class="di-ico">🏫</div><div class="di-info"><div class="di-name">School / Event</div><div class="di-price">from $650</div></div></a>
+        </div>
+        <div class="drop-divider"></div>
+        <!-- Gaming Add-ons -->
+        <div class="drop-cat">🕹️ Gaming Extras</div>
+        <div class="drop-grid">
+          <a class="drop-item" href="#section-addons"><div class="di-ico">🥽</div><div class="di-info"><div class="di-name">Virtual Reality</div><div class="di-price">+$450</div></div></a>
+          <a class="drop-item" href="#section-addons"><div class="di-ico">🎮</div><div class="di-info"><div class="di-name">Switch Portable</div><div class="di-price">+$300</div></div></a>
+          <a class="drop-item" href="#section-addons"><div class="di-ico">🕹️</div><div class="di-info"><div class="di-name">3 Gaming Stations</div><div class="di-price">+$400</div></div></a>
+          <a class="drop-item" href="#section-addons"><div class="di-ico">🎤</div><div class="di-info"><div class="di-name">Karaoke Machine</div><div class="di-price">+$175</div></div></a>
+          <a class="drop-item" href="#section-addons"><div class="di-ico">✨</div><div class="di-info"><div class="di-name">LED Marquee Signs</div><div class="di-price">+$125</div></div></a>
+        </div>
+        <div class="drop-divider"></div>
+        <!-- Inflatables -->
+        <div class="drop-cat">🎪 Inflatables & Activities</div>
+        <div class="drop-grid">
+          <a class="drop-item" href="#section-addons"><div class="di-ico">🧗</div><div class="di-info"><div class="di-name">Rock Climbing Wall</div><div class="di-price">+$700</div></div></a>
+          <a class="drop-item" href="#section-addons"><div class="di-ico">🎯</div><div class="di-info"><div class="di-name">Laser Tag</div><div class="di-price">+$375</div></div></a>
+          <a class="drop-item" href="#section-addons"><div class="di-ico">💦</div><div class="di-info"><div class="di-name">Foam Party</div><div class="di-price">+$350</div></div></a>
+          <a class="drop-item" href="#section-addons"><div class="di-ico">🏠</div><div class="di-info"><div class="di-name">Bounce House</div><div class="di-price">+$300</div></div></a>
+          <a class="drop-item" href="#section-addons"><div class="di-ico">⚽</div><div class="di-info"><div class="di-name">Giant Soccer Ball</div><div class="di-price">+$300</div></div></a>
+          <a class="drop-item" href="#section-addons"><div class="di-ico">⚔️</div><div class="di-info"><div class="di-name">Inflatable Joust</div><div class="di-price">+$300</div></div></a>
+        </div>
+        <div class="drop-divider"></div>
+        <!-- Concessions -->
+        <div class="drop-cat">🍭 Concessions</div>
+        <div class="drop-grid">
+          <a class="drop-item" href="#section-addons"><div class="di-ico">🍧</div><div class="di-info"><div class="di-name">SnoBall Truck</div><div class="di-price">+$299</div></div></a>
+          <a class="drop-item" href="#section-addons"><div class="di-ico">🍩</div><div class="di-info"><div class="di-name">Mini Donut Bar</div><div class="di-price">+$350</div></div></a>
+          <a class="drop-item" href="#section-addons"><div class="di-ico">🩷</div><div class="di-info"><div class="di-name">Cotton Candy</div><div class="di-price">+$75</div></div></a>
+          <a class="drop-item" href="#section-addons"><div class="di-ico">🍿</div><div class="di-info"><div class="di-name">Popcorn Machine</div><div class="di-price">+$75</div></div></a>
+          <a class="drop-item" href="#section-addons"><div class="di-ico">🧊</div><div class="di-info"><div class="di-name">Sno Kone Machine</div><div class="di-price">+$75</div></div></a>
+        </div>
+        <div class="drop-divider"></div>
+        <!-- Party -->
+        <div class="drop-cat">🎉 Party Extras</div>
+        <div class="drop-grid">
+          <a class="drop-item" href="#section-addons"><div class="di-ico">⛺</div><div class="di-info"><div class="di-name">Tent &amp; Tables</div><div class="di-price">+$250</div></div></a>
+          <a class="drop-item" href="#section-addons"><div class="di-ico">👑</div><div class="di-info"><div class="di-name">Throne Chair</div><div class="di-price">+$250</div></div></a>
+        </div>
+      </div>
+    </div>
+    <a href="schools.html">Schools &amp; Events</a>
+  </div>
+  <a href="tel:8773991997" class="nav-cta">📞 877-399-1997</a>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div style="display:inline-flex;align-items:center;gap:0.5rem;background:rgba(57,255,20,0.1);border:1px solid rgba(57,255,20,0.3);border-radius:100px;color:var(--neon);font-size:0.72rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;padding:0.38rem 1rem;margin-bottom:1.1rem;position:relative;">
+    <span class="dot"></span>Online Booking — Instant Confirmation
+  </div>
+  <h1 style="font-family:'Anton',sans-serif;font-size:clamp(2rem,5.5vw,4rem);line-height:0.95;text-transform:uppercase;margin-bottom:0.9rem;position:relative;">
+    <span style="color:var(--yellow);">Book Your</span><br/>
+    <span style="color:#fff;">Party Game Truck</span>
+  </h1>
+  <p style="font-size:clamp(0.88rem,1.8vw,1.05rem);line-height:1.7;color:rgba(255,255,255,0.65);max-width:520px;margin:0 auto 1rem;position:relative;">Fill out the form below — we'll email you a confirmation and invoice within <strong style="color:#fff;">1 business day.</strong> A $100 deposit secures your date.</p>
+  <div style="display:inline-flex;align-items:center;gap:0.6rem;background:rgba(255,45,139,0.08);border:1px solid rgba(255,45,139,0.25);border-radius:8px;padding:0.4rem 1rem;font-size:0.78rem;color:rgba(255,255,255,0.7);position:relative;">
+    ⚡ <strong style="color:var(--pink);">Weekend dates fill fast</strong> — book early to lock in your date
+  </div>
+</div>
+
+<div class="booking-wrap">
+
+  <!-- SUCCESS PANEL -->
+  <div class="result-panel" id="successPanel">
+    <div class="form-section" style="text-align:center;padding:3.5rem 2rem;">
+      <div style="font-size:4rem;margin-bottom:1rem;">🎮🏆</div>
+      <h2 style="font-family:'Anton',sans-serif;font-size:2.2rem;text-transform:uppercase;color:var(--neon);margin-bottom:0.75rem;">Booking Request Sent!</h2>
+      <p style="font-size:0.95rem;color:rgba(255,255,255,0.7);line-height:1.75;max-width:500px;margin:0 auto 1.5rem;">We received your request and will send you a <strong style="color:#fff;">confirmation &amp; invoice within 1 business day.</strong> A $100 deposit will lock in your date.</p>
+      <p style="font-size:0.82rem;color:rgba(255,255,255,0.4);margin-bottom:2rem;">Need us sooner? Call <a href="tel:8773991997" style="color:var(--blue);font-weight:700;">877-399-1997</a></p>
+      <a href="index.html" style="display:inline-block;background:var(--blue);color:#fff;font-family:'Anton',sans-serif;font-size:1rem;letter-spacing:0.06em;text-transform:uppercase;padding:0.8rem 2rem;border-radius:10px;text-decoration:none;">← Back to Home</a>
+    </div>
+  </div>
+
+  <!-- ERROR PANEL -->
+  <div class="result-panel" id="errorPanel">
+    <div class="form-section" style="border-color:rgba(255,45,139,0.3);">
+      <div style="font-size:2.5rem;margin-bottom:0.75rem;">⚠️</div>
+      <h3 style="font-family:'Anton',sans-serif;font-size:1.4rem;color:var(--pink);margin-bottom:0.5rem;">Something Went Wrong</h3>
+      <p style="font-size:0.85rem;color:rgba(255,255,255,0.65);line-height:1.65;margin-bottom:1rem;" id="errorMsg">We couldn't send your request. Please try calling us directly.</p>
+      <a href="tel:8773991997" style="display:inline-block;background:var(--pink);color:#fff;font-family:'Anton',sans-serif;font-size:0.9rem;letter-spacing:0.06em;text-transform:uppercase;padding:0.7rem 1.5rem;border-radius:10px;text-decoration:none;margin-right:0.75rem;">📞 Call 877-399-1997</a>
+      <button onclick="document.getElementById('errorPanel').classList.remove('show');document.getElementById('bookingForm').style.display='block';" style="background:transparent;border:1px solid rgba(255,255,255,0.25);color:rgba(255,255,255,0.7);font-family:'Montserrat',sans-serif;font-size:0.85rem;font-weight:700;padding:0.7rem 1.5rem;border-radius:10px;cursor:pointer;">Try Again</button>
+    </div>
+  </div>
+
+  <!-- MAIN FORM -->
+  <form id="bookingForm" onsubmit="submitBooking(event)" novalidate>
+
+    <!-- SECTION 1: CONTACT -->
+    <div class="form-section">
+      <div class="form-section-title">👤 1. Your Information</div>
+      <div class="form-section-sub">We'll use this to send your confirmation and invoice.</div>
+
+      <div class="field-row">
+        <div class="field" id="f-name">
+          <label>Full Name <span class="req">*</span></label>
+          <input type="text" id="cName" placeholder="First and Last Name" autocomplete="name"/>
+          <div class="err-msg">Please enter your name.</div>
+        </div>
+        <div class="field" id="f-phone">
+          <label>Phone Number <span class="req">*</span></label>
+          <input type="tel" id="cPhone" placeholder="(410) 000-0000" autocomplete="tel"/>
+          <div class="err-msg">Please enter your phone number.</div>
+        </div>
+      </div>
+      <div class="field" id="f-email">
+        <label>Email Address <span class="req">*</span></label>
+        <input type="email" id="cEmail" placeholder="you@email.com" autocomplete="email"/>
+        <div class="err-msg">Please enter a valid email address.</div>
+      </div>
+      <div class="field">
+        <label>How did you hear about us?</label>
+        <select id="cSource">
+          <option value="">— Select one —</option>
+          <option>Google Search</option>
+          <option>Facebook / Instagram</option>
+          <option>Friend or Family Referral</option>
+          <option>Saw the Truck</option>
+          <option>School / Church</option>
+          <option>Other</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- SECTION 2: EVENT DETAILS -->
+    <div class="form-section">
+      <div class="form-section-title">📅 2. Event Details</div>
+      <div class="form-section-sub">Tell us about your event so we can set everything up perfectly.</div>
+
+      <div class="field-row">
+        <div class="field" id="f-date">
+          <label>Preferred Event Date <span class="req">*</span></label>
+          <input type="date" id="eDate" oninput="checkWeekend()"/>
+          <div class="err-msg">Please select a date.</div>
+        </div>
+        <div class="field" id="f-time">
+          <label>Preferred Start Time <span class="req">*</span></label>
+          <select id="eTime">
+            <option value="">— Select start time —</option>
+            <option value="9:00 AM (Early Morning — save $25)">🌅 9:00 AM (Early Morning — save $25)</option>
+            <option value="10:00 AM">10:00 AM</option>
+            <option value="11:00 AM">11:00 AM</option>
+            <option value="12:00 PM">12:00 PM</option>
+            <option value="1:00 PM">1:00 PM</option>
+            <option value="2:00 PM">2:00 PM</option>
+            <option value="3:00 PM">3:00 PM</option>
+            <option value="4:00 PM">4:00 PM</option>
+            <option value="5:00 PM">5:00 PM</option>
+            <option value="6:00 PM">6:00 PM</option>
+          </select>
+          <div class="err-msg">Please select a start time.</div>
+        </div>
+      </div>
+      <div id="weekend-notice" style="display:none;margin-top:-0.75rem;margin-bottom:1rem;padding:0.7rem 1rem;background:rgba(255,45,139,0.07);border:1px solid rgba(255,45,139,0.3);border-radius:10px;font-size:0.78rem;color:rgba(255,255,255,0.75);">
+        ⚠️ <strong style="color:var(--pink);">Weekend selected.</strong> Weekend dates book out fast — we recommend calling to confirm availability: <a href="tel:8773991997" style="color:var(--blue);font-weight:700;">877-399-1997</a>
+      </div>
+
+      <div class="field-row">
+        <div class="field" id="f-location">
+          <label>Event Location / Address <span class="req">*</span></label>
+          <input type="text" id="eLocation" placeholder="Street address or city, MD"/>
+          <div class="err-msg">Please enter the event location.</div>
+        </div>
+        <div class="field">
+          <label>Event Type</label>
+          <select id="eType">
+            <option value="">— Select type —</option>
+            <option>Birthday Party</option>
+            <option>School Event</option>
+            <option>Church / Nonprofit Event</option>
+            <option>Corporate Event</option>
+            <option>Block Party / Community</option>
+            <option>Graduation Party</option>
+            <option>Other</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Expected Guests</label>
+        <select id="eGuests">
+          <option value="">— Approximate count —</option>
+          <option>Under 20</option>
+          <option>20–40</option>
+          <option>40–75</option>
+          <option>75–150</option>
+          <option>150–300</option>
+          <option>300+</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- SECTION 3: PACKAGE -->
+    <div class="form-section" id="section-pkg">
+      <div class="form-section-title">🎮 3. Game Truck Package</div>
+      <div class="form-section-sub">Select a package. Your price updates live below.</div>
+
+      <div class="field" id="f-pkg">
+        <label>Choose Your Package <span class="req">*</span></label>
+        <div class="pkg-grid">
+          <div class="pkg-card" id="pkg-power" onclick="selectPackage('Power Hour','$325','1-hour · up to 16 players · Xbox · PS5 · Switch · Mario Kart Race Seat',325,1,this)">
+            <div class="pk-name" style="color:var(--blue);">⚡ Power Hour</div>
+            <div class="pk-price">from $325</div>
+            <div class="pk-feat">1 hr · up to 16 players<br/>Xbox, PS5, Switch<br/>Mario Kart Race Seat</div>
+          </div>
+          <div class="pkg-card" id="pkg-1-5hr" onclick="selectPackage('1.5 Hour Game Truck','$450','90-min · up to 16 players · All consoles · Mario Kart Race Seat',450,2,this)">
+            <div class="pk-name" style="color:var(--sky);">🎮 1.5 Hour</div>
+            <div class="pk-price">from $450</div>
+            <div class="pk-feat">90 min · up to 16 players<br/>All consoles · Mario Kart Race Seat</div>
+          </div>
+          <div class="pkg-card" id="pkg-champ" onclick="selectPackage('Champion','$499','2-hour · up to 16 players · All consoles · Tournament mode · Mario Kart Race Seat',499,2,this)">
+            <div class="pk-badge" style="background:var(--yellow);color:#000;">POPULAR</div>
+            <div class="pk-name" style="color:var(--yellow);">⚡ Champion</div>
+            <div class="pk-price">from $499</div>
+            <div class="pk-feat">2 hrs · up to 16 players<br/>All consoles · Tournament mode<br/>Mario Kart Race Seat</div>
+          </div>
+          <div class="pkg-card" id="pkg-elite" onclick="selectPackage('Elite','$599','2-hour · up to 20 players · All consoles · Karaoke Machine · Wireless mics · Mario Kart Race Seat',599,2,this)">
+            <div class="pk-badge" style="background:#c084fc;color:#fff;">BEST VALUE</div>
+            <div class="pk-name" style="color:#c084fc;">🎤 Elite</div>
+            <div class="pk-price">from $599</div>
+            <div class="pk-feat">2 hrs · up to 20 players<br/>Karaoke machine + mics<br/>Mario Kart Race Seat</div>
+          </div>
+          <div class="pkg-card" id="pkg-legend" onclick="selectPackage('Legend','$699','2-hour · up to 24 players · All consoles · Karaoke · Just Dance · Photo Booth · Outdoor stations · Mario Kart Race Seat',699,2,this)">
+            <div class="pk-badge" style="background:var(--neon);color:#000;">ULTIMATE</div>
+            <div class="pk-name" style="color:var(--neon);">👑 Legend</div>
+            <div class="pk-price">from $699</div>
+            <div class="pk-feat">2 hrs · up to 24 players<br/>Photo Booth + Karaoke<br/>Outdoor stations + Just Dance</div>
+          </div>
+          <div class="pkg-card" id="pkg-school" onclick="selectPackage('School / Event Package','$650','2-hour school event · entire group covered · county-based pricing applies',650,2,this)">
+            <div class="pk-name" style="color:var(--sky);">🏫 School / Event</div>
+            <div class="pk-price">from $650</div>
+            <div class="pk-feat">2 hrs · entire group<br/>County zone pricing<br/>See school calculator</div>
+          </div>
+          <div class="pkg-card" id="pkg-church" onclick="selectPackage('Church / Nonprofit Package','$600','2-hour · entire group · 24 players · outdoor screens · Karaoke · Mario Kart · Photo Booth',600,2,this)">
+            <div class="pk-name" style="color:var(--neon);">⛪ Church / Nonprofit</div>
+            <div class="pk-price">from $600</div>
+            <div class="pk-feat">2 hrs · entire group<br/>Outdoor screens + Karaoke<br/>Mario Kart + Photo Booth</div>
+          </div>
+        </div>
+        <div class="err-msg" style="display:none;" id="pkg-err">Please select a package.</div>
+      </div>
+
+      <!-- Hours -->
+      <div class="field" id="f-hours" style="margin-top:1rem;">
+        <label>Event Duration</label>
+        <div class="hours-row">
+          <button type="button" class="hrs-btn" onclick="changeHours(-1)">−</button>
+          <div class="hrs-display">
+            <span id="hrs-num">2</span>
+            <span id="hrs-lbl">hours</span>
+          </div>
+          <button type="button" class="hrs-btn" onclick="changeHours(1)">+</button>
+        </div>
+        <div style="margin-top:0.6rem;font-size:0.72rem;color:rgba(255,255,255,0.4);">2-hour minimum on all packages. Each extra hour adds +$175.</div>
+      </div>
+    </div>
+
+    <!-- SECTION 4: ADD-ONS -->
+    <div class="form-section" id="section-addons">
+      <div class="form-section-title">🎯 4. Add-Ons <span style="font-size:0.75rem;color:rgba(255,255,255,0.4);font-family:'Montserrat',sans-serif;font-weight:600;text-transform:none;letter-spacing:0;">(optional)</span></div>
+      <div class="form-section-sub">Select any extras. All prices added to your estimate below.</div>
+
+      <!-- GAMING EXTRAS -->
+      <div style="font-size:0.7rem;font-weight:800;letter-spacing:0.12em;text-transform:uppercase;color:var(--blue);margin-bottom:0.75rem;padding-bottom:0.4rem;border-bottom:1px solid rgba(0,123,255,0.2);">🎮 Gaming Extras</div>
+      <div class="svc-grid" style="margin-bottom:1.5rem;">
+        <div class="svc-card" id="ao-vr" onclick="toggleAddon('vr',450,this)">
+          <div class="sc-check">✓</div>
+          <div class="sc-ico">🥽</div>
+          <div class="sc-name">Virtual Reality</div>
+          <div class="sc-price">+$450</div>
+          <div class="sc-note">8 VR headsets · up to 16 players</div>
+        </div>
+        <div class="svc-card" id="ao-switch" onclick="toggleAddon('switch',300,this)">
+          <div class="sc-check">✓</div>
+          <div class="sc-ico">🎮</div>
+          <div class="sc-name">Nintendo Switch Portable</div>
+          <div class="sc-price">+$300</div>
+          <div class="sc-note">10 consoles · portable setup · 90 min</div>
+        </div>
+        <div class="svc-card" id="ao-stations" onclick="toggleAddon('stations',400,this)">
+          <div class="sc-check">✓</div>
+          <div class="sc-ico">🕹️</div>
+          <div class="sc-name">3 Gaming Stations</div>
+          <div class="sc-price">+$400</div>
+          <div class="sc-note">3 extra consoles · 1 hr rental</div>
+        </div>
+        <div class="svc-card" id="ao-karaoke" onclick="toggleAddon('karaoke',175,this)">
+          <div class="sc-check">✓</div>
+          <div class="sc-ico">🎤</div>
+          <div class="sc-name">Karaoke Machine</div>
+          <div class="sc-price">+$175</div>
+          <div class="sc-note">2 wireless mics · 2 hrs</div>
+        </div>
+        <div class="svc-card" id="ao-signs" onclick="toggleAddon('signs',125,this)">
+          <div class="sc-check">✓</div>
+          <div class="sc-ico">✨</div>
+          <div class="sc-name">LED Marquee Signs</div>
+          <div class="sc-price">+$125</div>
+          <div class="sc-note">Custom names, numbers, words</div>
+        </div>
+      </div>
+
+      <!-- INFLATABLES -->
+      <div style="font-size:0.7rem;font-weight:800;letter-spacing:0.12em;text-transform:uppercase;color:#FF2D8B;margin-bottom:0.75rem;padding-bottom:0.4rem;border-bottom:1px solid rgba(255,45,139,0.2);">🎪 Inflatables & Activities</div>
+      <div class="svc-grid" style="margin-bottom:1.5rem;">
+        <div class="svc-card" id="ao-rockwall" onclick="toggleAddon('rockwall',700,this)">
+          <div class="sc-check">✓</div>
+          <div class="sc-ico">🧗</div>
+          <div class="sc-name">Rock Climbing Wall</div>
+          <div class="sc-price">+$700</div>
+          <div class="sc-note">75 climbers/hr · staffed · 90 min</div>
+        </div>
+        <div class="svc-card" id="ao-laser" onclick="toggleAddon('laser',375,this)">
+          <div class="sc-check">✓</div>
+          <div class="sc-ico">🎯</div>
+          <div class="sc-name">Laser Tag</div>
+          <div class="sc-price">+$375</div>
+          <div class="sc-note">Up to 8 players · 1 hr</div>
+        </div>
+        <div class="svc-card" id="ao-foam" onclick="toggleAddon('foam',350,this)">
+          <div class="sc-check">✓</div>
+          <div class="sc-ico">💦</div>
+          <div class="sc-name">Foam Party</div>
+          <div class="sc-price">+$350</div>
+          <div class="sc-note">Fancy Foam Events · 1 hr · 20 guests</div>
+        </div>
+        <div class="svc-card" id="ao-bounce" onclick="toggleAddon('bounce',300,this)">
+          <div class="sc-check">✓</div>
+          <div class="sc-ico">🏠</div>
+          <div class="sc-name">Bounce House</div>
+          <div class="sc-price">+$300</div>
+          <div class="sc-note">13×13 · setup included · 4 hrs</div>
+        </div>
+        <div class="svc-card" id="ao-soccer" onclick="toggleAddon('soccer',300,this)">
+          <div class="sc-check">✓</div>
+          <div class="sc-ico">⚽</div>
+          <div class="sc-name">Giant Soccer Ball</div>
+          <div class="sc-price">+$300</div>
+          <div class="sc-note">10-foot inflatable · 2 hrs</div>
+        </div>
+        <div class="svc-card" id="ao-bball" onclick="toggleAddon('bball',300,this)">
+          <div class="sc-check">✓</div>
+          <div class="sc-ico">🏀</div>
+          <div class="sc-name">Inflatable Basketball</div>
+          <div class="sc-price">+$300</div>
+          <div class="sc-note">All-day rental · setup included</div>
+        </div>
+        <div class="svc-card" id="ao-football" onclick="toggleAddon('football',300,this)">
+          <div class="sc-check">✓</div>
+          <div class="sc-ico">🏈</div>
+          <div class="sc-name">Inflatable Football Game</div>
+          <div class="sc-price">+$300</div>
+          <div class="sc-note">2-player · 4 hrs</div>
+        </div>
+        <div class="svc-card" id="ao-joust" onclick="toggleAddon('joust',300,this)">
+          <div class="sc-check">✓</div>
+          <div class="sc-ico">⚔️</div>
+          <div class="sc-name">Inflatable Joust Game</div>
+          <div class="sc-price">+$300</div>
+          <div class="sc-note">2-player battle · 4 hrs</div>
+        </div>
+      </div>
+
+      <!-- CONCESSIONS -->
+      <div style="font-size:0.7rem;font-weight:800;letter-spacing:0.12em;text-transform:uppercase;color:var(--neon);margin-bottom:0.75rem;padding-bottom:0.4rem;border-bottom:1px solid rgba(57,255,20,0.2);">🍭 Concessions & Food</div>
+      <div class="svc-grid" style="margin-bottom:1.5rem;">
+        <div class="svc-card" id="ao-snoball" onclick="toggleAddon('snoball',299,this)">
+          <div class="sc-check">✓</div>
+          <div class="sc-ico">🍧</div>
+          <div class="sc-name">SnoBall Truck</div>
+          <div class="sc-price">+$299</div>
+          <div class="sc-note">Awesome Snoballs · 20+ flavors</div>
+        </div>
+        <div class="svc-card" id="ao-donut" onclick="toggleAddon('donut',350,this)">
+          <div class="sc-check">✓</div>
+          <div class="sc-ico">🍩</div>
+          <div class="sc-name">Mini Donut Bar</div>
+          <div class="sc-price">+$350</div>
+          <div class="sc-note">Fresh mini donuts · up to 100 servings</div>
+        </div>
+        <div class="svc-card" id="ao-donut-xl" onclick="toggleAddon('donut-xl',500,this)">
+          <div class="sc-check">✓</div>
+          <div class="sc-ico">🍩</div>
+          <div class="sc-name">Mini Donut Event</div>
+          <div class="sc-price">+$500</div>
+          <div class="sc-note">Up to 150 guests · specialty toppings</div>
+        </div>
+        <div class="svc-card" id="ao-cotton" onclick="toggleAddon('cotton',75,this)">
+          <div class="sc-check">✓</div>
+          <div class="sc-ico">🩷</div>
+          <div class="sc-name">Cotton Candy Machine</div>
+          <div class="sc-price">+$75</div>
+          <div class="sc-note">40 servings · 2 hrs</div>
+        </div>
+        <div class="svc-card" id="ao-popcorn" onclick="toggleAddon('popcorn',75,this)">
+          <div class="sc-check">✓</div>
+          <div class="sc-ico">🍿</div>
+          <div class="sc-name">Popcorn Machine</div>
+          <div class="sc-price">+$75</div>
+          <div class="sc-note">40 servings · 2 hrs</div>
+        </div>
+        <div class="svc-card" id="ao-snocone" onclick="toggleAddon('snocone',75,this)">
+          <div class="sc-check">✓</div>
+          <div class="sc-ico">🧊</div>
+          <div class="sc-name">Sno Kone Machine</div>
+          <div class="sc-price">+$75</div>
+          <div class="sc-note">40 servings · 2 hrs</div>
+        </div>
+      </div>
+
+      <!-- PARTY EXTRAS -->
+      <div style="font-size:0.7rem;font-weight:800;letter-spacing:0.12em;text-transform:uppercase;color:var(--yellow);margin-bottom:0.75rem;padding-bottom:0.4rem;border-bottom:1px solid rgba(255,214,10,0.2);">🎉 Party Extras</div>
+      <div class="svc-grid">
+        <div class="svc-card" id="ao-tent" onclick="toggleAddon('tent',250,this)">
+          <div class="sc-check">✓</div>
+          <div class="sc-ico">⛺</div>
+          <div class="sc-name">Tent &amp; Tables</div>
+          <div class="sc-price">+$250</div>
+          <div class="sc-note">20×20 tent · 6 tables · 50 chairs</div>
+        </div>
+        <div class="svc-card" id="ao-throne" onclick="toggleAddon('throne',250,this)">
+          <div class="sc-check">✓</div>
+          <div class="sc-ico">👑</div>
+          <div class="sc-name">Throne Chair</div>
+          <div class="sc-price">+$250</div>
+          <div class="sc-note">All-day rental · birthday royalty</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SECTION 5: PRICE SUMMARY -->
+    <div class="form-section">
+      <div class="form-section-title">💰 5. Your Estimate</div>
+      <div class="form-section-sub">Live total based on your selections. Final price confirmed by our team.</div>
+
+      <div class="price-summary">
+        <div class="ps-row" id="ps-pkg-row" style="display:none;">
+          <span class="ps-label" id="ps-pkg-label">Package</span>
+          <span class="ps-val" id="ps-pkg-val">—</span>
+        </div>
+        <div class="ps-row" id="ps-hrs-row" style="display:none;">
+          <span class="ps-label" id="ps-hrs-label">Extra hours</span>
+          <span class="ps-val" id="ps-hrs-val">—</span>
+        </div>
+        <div class="ps-row" id="ps-addons-row" style="display:none;">
+          <span class="ps-label" id="ps-addons-label">Add-ons</span>
+          <span class="ps-val" id="ps-addons-val">—</span>
+        </div>
+        <div class="ps-row">
+          <span class="ps-label" style="font-weight:700;color:#fff;">Estimated Total</span>
+          <span class="ps-total" id="ps-total">Select a package</span>
+        </div>
+        <div style="margin-top:0.6rem;font-size:0.7rem;color:rgba(255,255,255,0.35);line-height:1.5;">Estimate only. Final pricing confirmed after our team reviews your booking. A $100 deposit locks in your date.</div>
+      </div>
+    </div>
+
+    <!-- SECTION 6: NOTES + SUBMIT -->
+    <div class="form-section">
+      <div class="form-section-title">📝 6. Final Details</div>
+
+      <div class="notice">
+        <strong>📧 What happens next:</strong> After you submit, we'll email you a <strong>booking confirmation &amp; invoice</strong> within 1 business day. A <strong>$100 deposit</strong> secures your date. Questions? Call <a href="tel:8773991997" style="color:var(--sky);">877-399-1997</a> anytime.
+      </div>
+
+      <div class="field">
+        <label>Special Requests / Notes</label>
+        <textarea id="cNotes" placeholder="Indoor or outdoor? Space details, themes, access info, or anything else we should know..."></textarea>
+      </div>
+
+      <div class="field">
+        <label style="display:flex;align-items:flex-start;gap:0.6rem;cursor:pointer;text-transform:none;letter-spacing:0;font-size:0.82rem;color:rgba(255,255,255,0.7);" id="terms-label">
+          <input type="checkbox" id="cTerms" style="width:18px;height:18px;margin-top:2px;flex-shrink:0;accent-color:var(--blue);cursor:pointer;"/>
+          I understand this is a booking <em>request</em> — my date is locked in only after a $100 deposit is received. I agree to the <a href="quote.html" target="_blank" style="color:var(--blue);">terms of service</a>. <span class="req">*</span>
+        </label>
+        <div class="err-msg" id="terms-err" style="display:none;">Please agree to the terms to continue.</div>
+      </div>
+
+      <button type="submit" class="btn-submit" id="submitBtn">
+        🎮 Send My Booking Request →
+      </button>
+    </div>
+
+  </form>
+</div>
+
+<script>
+  /* ──────────────────────────────────────────────
+     EMAILJS CONFIG — REPLACE THESE 3 VALUES
+     1. Go to emailjs.com → sign up free
+     2. Add service: connect your Yahoo account
+     3. Create template (see SETUP.md)
+     4. Paste your IDs below
+  ────────────────────────────────────────────── */
+  const EMAILJS_PUBLIC_KEY  = 'gnNUcSyvE-S3qFjy3';
+  const EMAILJS_SERVICE_ID  = 'service_jxrv8mi';
+  const EMAILJS_TEMPLATE_ID = 'template_otmypzo';
+
+  emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
+
+  /* ── STATE ── */
+  let pkgName  = '';
+  let pkgBase  = 0;
+  let hours    = 2;
+  const EXTRA  = 175;
+  let addons   = {};
+
+  const ADDON_NAMES = {
+    vr:'Virtual Reality (+$450)', switch:'Nintendo Switch Portable (+$300)',
+    stations:'3 Gaming Stations (+$400)', karaoke:'Karaoke Machine (+$175)',
+    signs:'LED Marquee Signs (+$125)',
+    rockwall:'Rock Climbing Wall (+$700)', laser:'Laser Tag (+$375)',
+    foam:'Foam Party (+$350)', bounce:'Bounce House (+$300)',
+    soccer:'Giant Soccer Ball (+$300)', bball:'Inflatable Basketball (+$300)',
+    football:'Inflatable Football (+$300)', joust:'Inflatable Joust (+$300)',
+    snoball:'SnoBall Truck (+$299)', donut:'Mini Donut Bar (+$350)',
+    'donut-xl':'Mini Donut Event (+$500)', cotton:'Cotton Candy Machine (+$75)',
+    popcorn:'Popcorn Machine (+$75)', snocone:'Sno Kone Machine (+$75)',
+    tent:'Tent & Tables (+$250)', throne:'Throne Chair (+$250)'
+  };
+
+  /* ── PACKAGE SELECT ── */
+  let pkgMinHours = 1;
+  function selectPackage(name, display, features, base, minHrs, el) {
+    pkgName = name; pkgBase = base; pkgMinHours = minHrs;
+    document.querySelectorAll('.pkg-card').forEach(c => c.classList.remove('selected'));
+    el.classList.add('selected');
+    document.getElementById('pkg-err').style.display = 'none';
+    if (hours < minHrs) { hours = minHrs; }
+    document.getElementById('hrs-num').textContent = hours;
+    document.getElementById('hrs-lbl').textContent = hours === 1 ? 'hour' : 'hours';
+    updatePrice();
+  }
+
+  /* ── HOURS ── */
+  function changeHours(d) {
+    const min = pkgMinHours || 1;
+    hours = Math.max(min, Math.min(8, hours + d));
+    document.getElementById('hrs-num').textContent = hours;
+    document.getElementById('hrs-lbl').textContent = hours === 1 ? 'hour' : 'hours';
+    updatePrice();
+  }
+
+  /* ── ADD-ONS ── */
+  function toggleAddon(key, price, el) {
+    if (addons[key]) { delete addons[key]; el.classList.remove('selected'); }
+    else { addons[key] = price; el.classList.add('selected'); }
+    updatePrice();
+  }
+
+  /* ── PRICE ── */
+  function updatePrice() {
+    if (!pkgBase) return;
+    const extra = Math.max(0, hours - pkgMinHours) * EXTRA;
+    const addonTotal = Object.values(addons).reduce((a,b)=>a+b,0);
+    const total = pkgBase + extra + addonTotal;
+
+    document.getElementById('ps-pkg-row').style.display = 'flex';
+    document.getElementById('ps-pkg-label').textContent = pkgName + ' (' + hours + ' hr' + (hours !== 1 ? 's' : '') + ')';
+    document.getElementById('ps-pkg-val').textContent = '$' + pkgBase.toLocaleString();
+
+    const hRow = document.getElementById('ps-hrs-row');
+    if (extra > 0) {
+      hRow.style.display = 'flex';
+      document.getElementById('ps-hrs-label').textContent = '+' + Math.max(0, hours - pkgMinHours) + ' extra hr(s)';
+      document.getElementById('ps-hrs-val').textContent = '+$' + extra.toLocaleString();
+    } else { hRow.style.display = 'none'; }
+
+    const aRow = document.getElementById('ps-addons-row');
+    if (addonTotal > 0) {
+      aRow.style.display = 'flex';
+      document.getElementById('ps-addons-label').textContent = Object.keys(addons).map(k => ADDON_NAMES[k].split(' (')[0]).join(', ');
+      document.getElementById('ps-addons-val').textContent = '+$' + addonTotal.toLocaleString();
+    } else { aRow.style.display = 'none'; }
+
+    document.getElementById('ps-total').textContent = '$' + total.toLocaleString();
+  }
+
+  /* ── WEEKEND CHECK ── */
+  function checkWeekend() {
+    const v = document.getElementById('eDate').value;
+    const el = document.getElementById('weekend-notice');
+    if (!v) { el.style.display = 'none'; return; }
+    const d = new Date(v + 'T00:00:00');
+    el.style.display = (d.getDay() === 0 || d.getDay() >= 5) ? 'block' : 'none';
+  }
+
+  /* ── VALIDATION ── */
+  function validateField(id, fieldId) {
+    const val = document.getElementById(id).value.trim();
+    const field = document.getElementById(fieldId);
+    if (!val) { field.classList.add('error'); return false; }
+    field.classList.remove('error'); return true;
+  }
+
+  /* ── SUBMIT ── */
+  async function submitBooking(e) {
+    e.preventDefault();
+    let valid = true;
+    if (!validateField('cName','f-name'))     valid = false;
+    if (!validateField('cPhone','f-phone'))   valid = false;
+    if (!validateField('cEmail','f-email'))   valid = false;
+    if (!validateField('eDate','f-date'))     valid = false;
+    if (!validateField('eTime','f-time'))     valid = false;
+    if (!validateField('eLocation','f-location')) valid = false;
+    if (!pkgName) { document.getElementById('pkg-err').style.display = 'block'; valid = false; }
+    if (!document.getElementById('cTerms').checked) {
+      document.getElementById('terms-err').style.display = 'block'; valid = false;
+    } else { document.getElementById('terms-err').style.display = 'none'; }
+    if (!valid) { window.scrollTo({top:0,behavior:'smooth'}); return; }
+
+    const btn = document.getElementById('submitBtn');
+    btn.disabled = true;
+    btn.innerHTML = '<span class="spinner"></span> Sending...';
+
+    // Build add-on list
+    const addonList = Object.keys(addons).length
+      ? Object.keys(addons).map(k => ADDON_NAMES[k]).join('\n  ')
+      : 'None';
+    const extra = Math.max(0, hours - pkgMinHours) * EXTRA;
+    const addonTotal = Object.values(addons).reduce((a,b)=>a+b,0);
+    const total = pkgBase + extra + addonTotal;
+
+    const templateParams = {
+      // Customer info
+      customer_name:   document.getElementById('cName').value.trim(),
+      customer_phone:  document.getElementById('cPhone').value.trim(),
+      customer_email:  document.getElementById('cEmail').value.trim(),
+      heard_from:      document.getElementById('cSource').value || 'Not specified',
+      // Event info
+      event_date:      document.getElementById('eDate').value,
+      event_time:      document.getElementById('eTime').value,
+      event_location:  document.getElementById('eLocation').value.trim(),
+      event_type:      document.getElementById('eType').value || 'Not specified',
+      guest_count:     document.getElementById('eGuests').value || 'Not specified',
+      // Package
+      package_name:    pkgName,
+      package_hours:   hours + ' hour' + (hours !== 1 ? 's' : ''),
+      package_base:    '$' + pkgBase.toLocaleString(),
+      extra_hours:     extra > 0 ? '+$' + extra.toLocaleString() : 'None',
+      addons_list:     addonList,
+      addons_total:    addonTotal > 0 ? '+$' + addonTotal.toLocaleString() : '$0',
+      estimated_total: '$' + total.toLocaleString(),
+      // Notes
+      notes:           document.getElementById('cNotes').value.trim() || 'None',
+      // Reply-to
+      reply_to:        document.getElementById('cEmail').value.trim(),
+    };
+
+    try {
+      await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams);
+      document.getElementById('bookingForm').style.display = 'none';
+      document.getElementById('successPanel').classList.add('show');
+      window.scrollTo({top:0,behavior:'smooth'});
+    } catch (err) {
+      console.error('EmailJS error:', err);
+      document.getElementById('errorMsg').textContent =
+        'Error: ' + (err.text || 'Could not send. Please call 877-399-1997.');
+      document.getElementById('errorPanel').classList.add('show');
+      document.getElementById('errorPanel').scrollIntoView({behavior:'smooth'});
+      btn.disabled = false;
+      btn.innerHTML = '🎮 Send My Booking Request →';
+    }
+  }
+</script>
+</body>
+</html>
