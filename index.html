@@ -2306,6 +2306,37 @@
     .footer-tag span { color: var(--yellow); }
 
     /* ── MOBILE NAV HAMBURGER ── */
+    /* MOBILE CALL BAR */
+    #mobile-call-bar {
+      display: none;
+    }
+    @media (max-width: 768px) {
+      #mobile-call-bar {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        background: linear-gradient(90deg, #007BFF, #0055cc);
+        color: #fff;
+        font-family: 'Montserrat', sans-serif;
+        font-size: 0.88rem;
+        font-weight: 700;
+        text-decoration: none;
+        padding: 0.65rem 1rem;
+        text-align: center;
+        position: sticky;
+        top: 0;
+        z-index: 999;
+        letter-spacing: 0.02em;
+        box-shadow: 0 2px 12px rgba(0,123,255,0.4);
+        animation: callPulse 2.5s ease-in-out infinite;
+      }
+      @keyframes callPulse {
+        0%, 100% { background: linear-gradient(90deg, #007BFF, #0055cc); }
+        50%       { background: linear-gradient(90deg, #0055cc, #003F88); }
+      }
+    }
+
     .hamburger {
       display: none;
       flex-direction: column;
@@ -2840,6 +2871,11 @@
 <body>
 
   <!-- ══ NAV ══ -->
+  <!-- MOBILE CALL BAR — hidden on desktop -->
+  <a href="tel:8773991997" id="mobile-call-bar">
+    📞 <strong>Call Now — 877-399-1997</strong> <span style="opacity:0.8;font-size:0.75em;">· Tap to Call</span>
+  </a>
+
   <nav>
     <a href="#" class="nav-logo">
       <img src="logo.jpg" alt="Party Game Truck - Maryland's #1 Mobile Video Game Truck serving Baltimore, Owings Mills, Catonsville, Woodlawn and DMV" />
