@@ -366,8 +366,8 @@
 
     <!-- SECTION 3: PACKAGE -->
     <div class="form-section" id="section-pkg">
-      <div class="form-section-title">🎮 3. Game Truck Package</div>
-      <div class="form-section-sub">Select a package. Your price updates live below.</div>
+      <div class="form-section-title">🎮 3. Game Truck Package <span style="font-size:0.7rem;color:rgba(255,255,255,0.4);font-family:'Montserrat',sans-serif;font-weight:600;text-transform:none;letter-spacing:0;">(optional)</span></div>
+      <div class="form-section-sub">Skip this if you're booking add-ons only. Select a package to include a Game Truck.</div>
 
       <div class="field" id="f-pkg">
         <label>Choose Your Package <span class="req">*</span></label>
@@ -620,9 +620,13 @@
           <span class="ps-label" id="ps-addons-label">Add-ons</span>
           <span class="ps-val" id="ps-addons-val">—</span>
         </div>
+        <div class="ps-row" id="ps-discount-row" style="display:none;background:rgba(57,255,20,0.08);border-radius:8px;padding:0.4rem 0.6rem;">
+          <span class="ps-label" style="color:var(--neon);font-weight:700;">🎉 Multi-Item Discount (10%)</span>
+          <span class="ps-val" style="color:var(--neon);font-weight:700;" id="ps-discount-val">—</span>
+        </div>
         <div class="ps-row">
           <span class="ps-label" style="font-weight:700;color:#fff;">Estimated Total</span>
-          <span class="ps-total" id="ps-total">Select a package</span>
+          <span class="ps-total" id="ps-total">Select a service</span>
         </div>
         <div style="margin-top:0.6rem;font-size:0.7rem;color:rgba(255,255,255,0.35);line-height:1.5;">Estimate only. Final pricing confirmed after our team reviews your booking. A $100 deposit locks in your date.</div>
       </div>
@@ -723,15 +727,37 @@
 
   /* ── PRICE ── */
   function updatePrice() {
-    if (!pkgBase) return;
-    const extra = Math.max(0, hours - pkgMinHours) * EXTRA;
-    const addonTotal = Object.values(addons).reduce((a,b)=>a+b,0);
-    const total = pkgBase + extra + addonTotal;
+    const addonCount  = Object.keys(addons).length;
+    const addonTotal  = Object.values(addons).reduce((a,b)=>a+b,0);
+    const hasPackage  = pkgBase > 0;
+    const hasAddons   = addonCount > 0;
 
-    document.getElementById('ps-pkg-row').style.display = 'flex';
-    document.getElementById('ps-pkg-label').textContent = pkgName + ' (' + hours + ' hr' + (hours !== 1 ? 's' : '') + ')';
-    document.getElementById('ps-pkg-val').textContent = '$' + pkgBase.toLocaleString();
+    // Nothing selected yet
+    if (!hasPackage && !hasAddons) {
+      document.getElementById('ps-total').textContent = 'Select a service';
+      ['ps-pkg-row','ps-hrs-row','ps-addons-row','ps-discount-row'].forEach(id => {
+        document.getElementById(id).style.display = 'none';
+      });
+      return;
+    }
 
+    const extra    = hasPackage ? Math.max(0, hours - pkgMinHours) * EXTRA : 0;
+    const subtotal = (hasPackage ? pkgBase : 0) + extra + addonTotal;
+
+    // 10% discount when 2+ items booked (pkg + addon, or 2+ addons)
+    const itemCount   = (hasPackage ? 1 : 0) + addonCount;
+    const multiDiscount = itemCount >= 2 ? Math.round(subtotal * 0.10) : 0;
+    const total       = subtotal - multiDiscount;
+
+    // Package row
+    const pkgRow = document.getElementById('ps-pkg-row');
+    if (hasPackage) {
+      pkgRow.style.display = 'flex';
+      document.getElementById('ps-pkg-label').textContent = pkgName + ' (' + hours + ' hr' + (hours !== 1 ? 's' : '') + ')';
+      document.getElementById('ps-pkg-val').textContent = '$' + pkgBase.toLocaleString();
+    } else { pkgRow.style.display = 'none'; }
+
+    // Extra hours row
     const hRow = document.getElementById('ps-hrs-row');
     if (extra > 0) {
       hRow.style.display = 'flex';
@@ -739,12 +765,20 @@
       document.getElementById('ps-hrs-val').textContent = '+$' + extra.toLocaleString();
     } else { hRow.style.display = 'none'; }
 
+    // Add-ons row
     const aRow = document.getElementById('ps-addons-row');
-    if (addonTotal > 0) {
+    if (hasAddons) {
       aRow.style.display = 'flex';
       document.getElementById('ps-addons-label').textContent = Object.keys(addons).map(k => ADDON_NAMES[k].split(' (')[0]).join(', ');
       document.getElementById('ps-addons-val').textContent = '+$' + addonTotal.toLocaleString();
     } else { aRow.style.display = 'none'; }
+
+    // Discount row
+    const dRow = document.getElementById('ps-discount-row');
+    if (multiDiscount > 0) {
+      dRow.style.display = 'flex';
+      document.getElementById('ps-discount-val').textContent = '-$' + multiDiscount.toLocaleString();
+    } else { dRow.style.display = 'none'; }
 
     document.getElementById('ps-total').textContent = '$' + total.toLocaleString();
   }
@@ -776,7 +810,11 @@
     if (!validateField('eDate','f-date'))     valid = false;
     if (!validateField('eTime','f-time'))     valid = false;
     if (!validateField('eLocation','f-location')) valid = false;
-    if (!pkgName) { document.getElementById('pkg-err').style.display = 'block'; valid = false; }
+    if (!pkgName && Object.keys(addons).length === 0) {
+      document.getElementById('pkg-err').style.display = 'block';
+      document.getElementById('pkg-err').textContent = 'Please select at least one package or add-on.';
+      valid = false;
+    }
     if (!document.getElementById('cTerms').checked) {
       document.getElementById('terms-err').style.display = 'block'; valid = false;
     } else { document.getElementById('terms-err').style.display = 'none'; }
@@ -790,9 +828,12 @@
     const addonList = Object.keys(addons).length
       ? Object.keys(addons).map(k => ADDON_NAMES[k]).join('\n  ')
       : 'None';
-    const extra = Math.max(0, hours - pkgMinHours) * EXTRA;
+    const extra      = pkgBase > 0 ? Math.max(0, hours - pkgMinHours) * EXTRA : 0;
     const addonTotal = Object.values(addons).reduce((a,b)=>a+b,0);
-    const total = pkgBase + extra + addonTotal;
+    const subtotal   = pkgBase + extra + addonTotal;
+    const itemCount  = (pkgBase > 0 ? 1 : 0) + Object.keys(addons).length;
+    const discount   = itemCount >= 2 ? Math.round(subtotal * 0.10) : 0;
+    const total      = subtotal - discount;
 
     const templateParams = {
       // Customer info
@@ -807,12 +848,13 @@
       event_type:      document.getElementById('eType').value || 'Not specified',
       guest_count:     document.getElementById('eGuests').value || 'Not specified',
       // Package
-      package_name:    pkgName,
-      package_hours:   hours + ' hour' + (hours !== 1 ? 's' : ''),
-      package_base:    '$' + pkgBase.toLocaleString(),
+      package_name:    pkgName || 'Add-ons Only',
+      package_hours:   pkgBase > 0 ? hours + ' hour' + (hours !== 1 ? 's' : '') : 'N/A',
+      package_base:    pkgBase > 0 ? '$' + pkgBase.toLocaleString() : '$0',
       extra_hours:     extra > 0 ? '+$' + extra.toLocaleString() : 'None',
       addons_list:     addonList,
       addons_total:    addonTotal > 0 ? '+$' + addonTotal.toLocaleString() : '$0',
+      multi_discount:  discount > 0 ? '-$' + discount.toLocaleString() + ' (10% multi-item)' : 'None',
       estimated_total: '$' + total.toLocaleString(),
       // Notes
       notes:           document.getElementById('cNotes').value.trim() || 'None',
