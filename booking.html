@@ -296,9 +296,25 @@
     <div class="form-section" style="text-align:center;padding:3.5rem 2rem;">
       <div style="font-size:4rem;margin-bottom:1rem;">🎮🏆</div>
       <h2 style="font-family:'Anton',sans-serif;font-size:2.2rem;text-transform:uppercase;color:var(--neon);margin-bottom:0.75rem;">Booking Request Sent!</h2>
-      <p style="font-size:0.95rem;color:rgba(255,255,255,0.7);line-height:1.75;max-width:500px;margin:0 auto 1.5rem;">We received your request and will send you a <strong style="color:#fff;">confirmation &amp; invoice within 1 business day.</strong> A $100 deposit will lock in your date.</p>
-      <p style="font-size:0.82rem;color:rgba(255,255,255,0.4);margin-bottom:2rem;">Need us sooner? Call <a href="tel:8773991997" style="color:var(--blue);font-weight:700;">877-399-1997</a></p>
-      <a href="index.html" style="display:inline-block;background:var(--blue);color:#fff;font-family:'Anton',sans-serif;font-size:1rem;letter-spacing:0.06em;text-transform:uppercase;padding:0.8rem 2rem;border-radius:10px;text-decoration:none;">← Back to Home</a>
+      <p style="font-size:0.95rem;color:rgba(255,255,255,0.7);line-height:1.75;max-width:520px;margin:0 auto 0.5rem;">
+        We received your request! <strong style="color:#fff;">Check your email</strong> — we just sent you a confirmation with all your event details.
+      </p>
+
+      <!-- Deposit CTA -->
+      <div style="background:rgba(255,214,10,0.08);border:2px solid var(--yellow);border-radius:16px;padding:2rem;max-width:480px;margin:1.75rem auto;">
+        <p style="font-family:'Anton',sans-serif;font-size:1.1rem;letter-spacing:0.06em;color:var(--yellow);text-transform:uppercase;margin-bottom:0.5rem;">Step 2 — Secure Your Date</p>
+        <p style="font-size:0.9rem;color:rgba(255,255,255,0.75);line-height:1.65;margin-bottom:1.25rem;">
+          A <strong style="color:#fff;">$100 deposit</strong> is required to officially lock in your date &amp; time. Pay securely via PayPal — no account needed.
+        </p>
+        <a href="https://paypal.me/PartyGameTruck/100" target="_blank" rel="noopener"
+          style="display:inline-block;background:var(--yellow);color:#000;font-family:'Anton',sans-serif;font-size:1.05rem;letter-spacing:0.06em;text-transform:uppercase;padding:0.85rem 2.25rem;border-radius:10px;text-decoration:none;transition:background 0.18s;">
+          💳 Pay $100 Deposit via PayPal →
+        </a>
+        <p style="font-size:0.75rem;color:rgba(255,255,255,0.35);margin-top:0.85rem;">Remaining balance due one week before your event.</p>
+      </div>
+
+      <p style="font-size:0.82rem;color:rgba(255,255,255,0.4);margin-bottom:1.75rem;">Questions? Call <a href="tel:8773991997" style="color:var(--blue);font-weight:700;">877-399-1997</a></p>
+      <a href="index.html" style="display:inline-block;background:transparent;border:1px solid rgba(255,255,255,0.2);color:rgba(255,255,255,0.6);font-family:'Anton',sans-serif;font-size:0.9rem;letter-spacing:0.06em;text-transform:uppercase;padding:0.7rem 1.75rem;border-radius:10px;text-decoration:none;">← Back to Home</a>
     </div>
   </div>
 
@@ -794,9 +810,10 @@
      3. Create template (see SETUP.md)
      4. Paste your IDs below
   ────────────────────────────────────────────── */
-  const EMAILJS_PUBLIC_KEY  = 'gnNUcSyvE-S3qFjy3';
-  const EMAILJS_SERVICE_ID  = 'service_jxrv8mi';
-  const EMAILJS_TEMPLATE_ID = 'template_otmypzo';
+  const EMAILJS_PUBLIC_KEY           = 'gnNUcSyvE-S3qFjy3';
+  const EMAILJS_SERVICE_ID           = 'service_jxrv8mi';
+  const EMAILJS_TEMPLATE_ID          = 'template_otmypzo';           // → emails YOU (the business)
+  const EMAILJS_CUSTOMER_TEMPLATE_ID = 'template_moik7dc';  // → emails the CUSTOMER
 
   emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
 
@@ -998,7 +1015,11 @@
     };
 
     try {
+      // Email 1 — notify the business (required)
       await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams);
+      // Email 2 — auto-response to the customer (best-effort, won't block booking if template not set up yet)
+      emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_CUSTOMER_TEMPLATE_ID, templateParams)
+        .catch(err => console.warn('Customer email not sent (template may not be configured yet):', err));
       document.getElementById('bookingForm').style.display = 'none';
       document.getElementById('successPanel').classList.add('show');
       window.scrollTo({top:0,behavior:'smooth'});
