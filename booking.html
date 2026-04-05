@@ -241,6 +241,16 @@
         </div>
         <div class="drop-divider"></div>
         <!-- Inflatables -->
+        <div class="drop-cat">🎲 Giant Yard Games</div>
+        <div class="drop-grid">
+          <a class="drop-item" href="#section-addons"><div class="di-ico">🎳</div><div class="di-info"><div class="di-name">Giant KerPlunk</div><div class="di-price" style="color:#FF9500;">+$125</div></div></a>
+          <a class="drop-item" href="#section-addons"><div class="di-ico">🎰</div><div class="di-info"><div class="di-name">Giant Plinko</div><div class="di-price" style="color:#FF9500;">+$125</div></div></a>
+          <a class="drop-item" href="#section-addons"><div class="di-ico">🔴</div><div class="di-info"><div class="di-name">Giant Connect Four</div><div class="di-price" style="color:#FF9500;">+$100</div></div></a>
+          <a class="drop-item" href="#section-addons"><div class="di-ico">🪓</div><div class="di-info"><div class="di-name">Kids Axe Throw</div><div class="di-price" style="color:#FF9500;">+$150</div></div></a>
+          <a class="drop-item" href="#section-addons"><div class="di-ico">🟥</div><div class="di-info"><div class="di-name">Red Carpet + Stanchions</div><div class="di-price" style="color:#FF9500;">+$200</div></div></a>
+        </div>
+        <div class="drop-divider"></div>
+
         <div class="drop-cat">🎪 Inflatables & Activities</div>
         <div class="drop-grid">
           <a class="drop-item" href="#section-addons"><div class="di-ico">🧗</div><div class="di-info"><div class="di-name">Rock Climbing Wall</div><div class="di-price">+$700</div></div></a>
@@ -668,6 +678,46 @@
         </div>
       </div>
 
+      <!-- GIANT YARD GAMES -->
+      <div style="font-size:0.7rem;font-weight:800;letter-spacing:0.12em;text-transform:uppercase;color:#FF9500;margin-bottom:0.75rem;padding-bottom:0.4rem;border-bottom:1px solid rgba(255,149,0,0.3);">🎲 Giant Yard Games <span style="font-size:0.6rem;background:rgba(255,149,0,0.12);border:1px solid rgba(255,149,0,0.3);border-radius:4px;padding:0.1rem 0.5rem;margin-left:0.5rem;color:#FF9500;font-weight:700;">NEW</span></div>
+      <div class="svc-grid" style="margin-bottom:1.5rem;">
+        <div class="svc-card" id="ao-kerplunk" onclick="toggleAddon('kerplunk',125,this)" style="border-color:rgba(255,149,0,0.25);">
+          <div class="sc-check">✓</div>
+          <div class="sc-ico">🎳</div>
+          <div class="sc-name">Giant KerPlunk</div>
+          <div class="sc-price" style="color:#FF9500;">+$125</div>
+          <div class="sc-note">4-ft tube · all ages · endless fun · 4 hrs</div>
+        </div>
+        <div class="svc-card" id="ao-plinko" onclick="toggleAddon('plinko',125,this)" style="border-color:rgba(255,149,0,0.25);">
+          <div class="sc-check">✓</div>
+          <div class="sc-ico">🎰</div>
+          <div class="sc-name">Giant Plinko Board</div>
+          <div class="sc-price" style="color:#FF9500;">+$125</div>
+          <div class="sc-note">5-ft board · colorful pegs · party favorite · 4 hrs</div>
+        </div>
+        <div class="svc-card" id="ao-connect4" onclick="toggleAddon('connect4',100,this)" style="border-color:rgba(255,149,0,0.25);">
+          <div class="sc-check">✓</div>
+          <div class="sc-ico">🔴</div>
+          <div class="sc-name">Giant Connect Four</div>
+          <div class="sc-price" style="color:#FF9500;">+$100</div>
+          <div class="sc-note">4-ft giant board · 2–4 players · all ages · 4 hrs</div>
+        </div>
+        <div class="svc-card" id="ao-axethrow" onclick="toggleAddon('axethrow',150,this)" style="border-color:rgba(255,149,0,0.25);">
+          <div class="sc-check">✓</div>
+          <div class="sc-ico">🪓</div>
+          <div class="sc-name">Kids Axe Throw</div>
+          <div class="sc-price" style="color:#FF9500;">+$150</div>
+          <div class="sc-note">Safe foam axes · ages 5+ · targets included · 1 hr</div>
+        </div>
+        <div class="svc-card" id="ao-redcarpet" onclick="toggleAddon('redcarpet',200,this)" style="border-color:rgba(255,149,0,0.25);">
+          <div class="sc-check">✓</div>
+          <div class="sc-ico">🟥</div>
+          <div class="sc-name">Red Carpet + Stanchions</div>
+          <div class="sc-price" style="color:#FF9500;">+$200</div>
+          <div class="sc-note">20-ft red carpet · 6 gold stanchions · VIP entrance</div>
+        </div>
+      </div>
+
       <!-- CONCESSIONS -->
       <div style="font-size:0.7rem;font-weight:800;letter-spacing:0.12em;text-transform:uppercase;color:var(--neon);margin-bottom:0.75rem;padding-bottom:0.4rem;border-bottom:1px solid rgba(57,255,20,0.2);">🍭 Concessions & Food</div>
       <div class="svc-grid" style="margin-bottom:1.5rem;">
@@ -732,12 +782,12 @@
           <div class="sc-price">+$250</div>
           <div class="sc-note">All-day rental · birthday royalty</div>
         </div>
-        <div class="svc-card" id="ao-yardgames" onclick="toggleAddon('yardgames',125,this)">
+        <div class="svc-card" id="ao-yardgames" onclick="toggleAddon('yardgames',300,this)">
           <div class="sc-check">✓</div>
           <div class="sc-ico">🎲</div>
-          <div class="sc-name">Yard Games Pack</div>
-          <div class="sc-price">+$125</div>
-          <div class="sc-note">3 games · Giant Jenga, Connect Four, Cornhole & more</div>
+          <div class="sc-name">Yard Games Bundle (3 games)</div>
+          <div class="sc-price">+$300</div>
+          <div class="sc-note">Pick any 3 Giant Yard Games · save vs. individual</div>
         </div>
       </div>
     </div>
