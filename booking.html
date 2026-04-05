@@ -812,8 +812,10 @@
   ────────────────────────────────────────────── */
   const EMAILJS_PUBLIC_KEY           = 'gnNUcSyvE-S3qFjy3';
   const EMAILJS_SERVICE_ID           = 'service_jxrv8mi';
-  const EMAILJS_TEMPLATE_ID          = 'template_otmypzo';           // → emails YOU (the business)
-  const EMAILJS_CUSTOMER_TEMPLATE_ID = 'template_moik7dc';  // → emails the CUSTOMER
+  const EMAILJS_TEMPLATE_ID          = 'template_otmypzo';   // → emails YOU (the business)
+  const EMAILJS_CUSTOMER_TEMPLATE_ID = 'template_moik7dc';   // → Email 1: instant customer confirmation + deposit link
+  // Paste your Make.com webhook URL below after setting it up at make.com
+  const MAKE_WEBHOOK_URL = 'PASTE_MAKE_WEBHOOK_URL_HERE';
 
   emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
 
@@ -1017,9 +1019,32 @@
     try {
       // Email 1 — notify the business (required)
       await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams);
-      // Email 2 — auto-response to the customer (best-effort, won't block booking if template not set up yet)
+
+      // Email 2 — instant customer confirmation + deposit link
       emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_CUSTOMER_TEMPLATE_ID, templateParams)
-        .catch(err => console.warn('Customer email not sent (template may not be configured yet):', err));
+        .catch(err => console.warn('Customer confirmation email error:', err));
+
+      // Fire Make.com webhook — handles: 24hr deposit reminder, deposit confirmation, post-event review
+      if (MAKE_WEBHOOK_URL && MAKE_WEBHOOK_URL !== 'PASTE_MAKE_WEBHOOK_URL_HERE') {
+        fetch(MAKE_WEBHOOK_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            customer_name:    templateParams.customer_name,
+            customer_email:   templateParams.customer_email,
+            customer_phone:   templateParams.customer_phone,
+            event_date:       templateParams.event_date,
+            event_time:       templateParams.event_time,
+            event_location:   templateParams.event_location,
+            event_type:       templateParams.event_type,
+            guest_count:      templateParams.guest_count,
+            package_name:     templateParams.package_name,
+            estimated_total:  templateParams.estimated_total,
+            booked_at:        new Date().toISOString()
+          })
+        }).catch(err => console.warn('Make.com webhook error:', err));
+      }
+
       document.getElementById('bookingForm').style.display = 'none';
       document.getElementById('successPanel').classList.add('show');
       window.scrollTo({top:0,behavior:'smooth'});
