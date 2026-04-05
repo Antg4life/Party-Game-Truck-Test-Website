@@ -787,12 +787,34 @@
       </div>
 
       <div class="field">
-        <label style="display:flex;align-items:flex-start;gap:0.6rem;cursor:pointer;text-transform:none;letter-spacing:0;font-size:0.82rem;color:rgba(255,255,255,0.7);" id="terms-label">
-          <input type="checkbox" id="cTerms" style="width:18px;height:18px;margin-top:2px;flex-shrink:0;accent-color:var(--blue);cursor:pointer;"/>
+        <label style="display:flex;align-items:flex-start;gap:0.75rem;cursor:pointer;text-transform:none;letter-spacing:0;font-size:0.82rem;color:rgba(255,255,255,0.7);" id="terms-label">
+          <span style="position:relative;width:20px;height:20px;flex-shrink:0;margin-top:1px;">
+            <input type="checkbox" id="cTerms" style="position:absolute;opacity:0;width:20px;height:20px;cursor:pointer;z-index:1;"/>
+            <span id="cTermsBox" style="display:flex;align-items:center;justify-content:center;width:20px;height:20px;border-radius:5px;border:2px solid rgba(0,123,255,0.6);background:transparent;transition:all 0.15s;pointer-events:none;">
+              <svg id="cTermsCheck" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 10" style="width:12px;height:10px;display:none;">
+                <polyline points="1,5 4.5,8.5 11,1" fill="none" stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+          </span>
           I understand this is a booking <em>request</em> — my date is locked in only after a $100 deposit is received. I agree to the <a href="quote.html" target="_blank" style="color:var(--blue);">terms of service</a>. <span class="req">*</span>
         </label>
         <div class="err-msg" id="terms-err" style="display:none;">Please agree to the terms to continue.</div>
       </div>
+      <script>
+        document.getElementById('cTerms').addEventListener('change', function() {
+          const box = document.getElementById('cTermsBox');
+          const check = document.getElementById('cTermsCheck');
+          if (this.checked) {
+            box.style.background = 'var(--yellow)';
+            box.style.borderColor = 'var(--yellow)';
+            check.style.display = 'block';
+          } else {
+            box.style.background = 'transparent';
+            box.style.borderColor = 'rgba(0,123,255,0.6)';
+            check.style.display = 'none';
+          }
+        });
+      </script>
 
       <button type="submit" class="btn-submit" id="submitBtn">
         🎮 Send My Booking Request →
